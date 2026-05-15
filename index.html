@@ -737,6 +737,16 @@
     .legal-highlight{background:var(--indigo-bg);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.5rem 0;font-size:.9rem;color:var(--body);line-height:1.75}
     .legal-footer-note{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--muted);line-height:1.7}
   </style>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wrcyj4i86y");</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VESWG8L1KW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VESWG8L1KW');
+</script>
 </head>
 <body>
 
@@ -792,7 +802,7 @@
     <span class="changelog-sep">·</span>
     <span class="changelog-item">Talent Density Heatmaps launched</span>
     <span class="changelog-sep">·</span>
-    <span class="changelog-item">Pillar 2 Distribution layer in closed beta &mdash; <button class="changelog-link" onclick="openModal('demo')">join waitlist</button></span>
+    <span class="changelog-item">Pillar 2 Distribution layer in closed beta &mdash; <button class="changelog-link" onclick="window.open('https://calendly.com/manasmajhi/intro-call','_blank')">join waitlist</button></span>
     <span class="changelog-sep">·</span>
     <span class="changelog-item">QMS gated 214 profiles this week &mdash; 0 bounces</span>
   </div>
@@ -2158,7 +2168,7 @@
           <span>Spartoi Group</span>
         </div>
         <div class="founder-links">
-          <button class="founder-link-btn" onclick="openModal('demo')">📅 Book a 30-min call</button>
+          <button class="founder-link-btn" onclick="window.open('https://calendly.com/manasmajhi/intro-call','_blank')">📅 Book a 30-min call</button>
           <a class="founder-linkedin-btn" href="https://linkedin.com/in/manasmajhi" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
         </div>
       </div>
@@ -2211,7 +2221,7 @@
         <p class="founder-graf-small">No volume. No guesswork. Just decisions made right.</p>
         <p class="founder-graf-small">Because in the end, hiring isn't about filling a position. It's about making a decision that shapes the future of your company.</p>
 
-        <div class="founder-close-line">If this is a role you cannot afford to get wrong — <button class="founder-close-cta" onclick="openModal('demo')">we should talk.</button></div>
+        <div class="founder-close-line">If this is a role you cannot afford to get wrong — <button class="founder-close-cta" onclick="window.open('https://calendly.com/manasmajhi/intro-call','_blank')">we should talk.</button></div>
 
         <div class="founder-sig">
           <div class="founder-sig-name">— Manas Majhi</div>
@@ -2230,7 +2240,7 @@
     <p class="cta-sub">Setup takes under 10 minutes. Your sourcing engine activates within 24 hours. No recruiter handshakes. No kickoff calls. Just the platform.</p>
     <div class="cta-actions">
       <button class="btn-white" onclick="openModal('trial')">Start free trial &rarr;</button>
-      <button class="btn-white-ghost" onclick="openModal('demo')">Request a demo</button>
+      <button class="btn-white-ghost" onclick="window.open('https://calendly.com/manasmajhi/intro-call','_blank')">Request a demo</button>
     </div>
   </div>
 </section>
@@ -2242,7 +2252,7 @@
     <div class="modal-tabs">
       <div class="modal-tab-indicator" id="tab-indicator"></div>
       <button class="modal-tab active" id="tab-trial" onclick="switchTab('trial')"><span class="tab-icon">✦</span>Free trial</button>
-      <button class="modal-tab" id="tab-demo" onclick="switchTab('demo')"><span class="tab-icon">📅</span>Request demo</button>
+      <a class="modal-tab" href="https://calendly.com/manasmajhi/intro-call" target="_blank" rel="noopener"><span class="tab-icon">📅</span>Request demo</a>
       <button class="modal-tab" id="tab-sales" onclick="switchTab('sales')"><span class="tab-icon">💬</span>Talk to sales</button>
       <button class="modal-tab" id="tab-contact" onclick="switchTab('contact')"><span class="tab-icon">✉</span>Contact us</button>
     </div>
@@ -2261,19 +2271,6 @@
       <div class="modal-note">14-day free trial &middot; Cancel anytime &middot; Official email required</div>
     </div>
 
-    <!-- DEMO -->
-    <div class="modal-pane" id="pane-demo" style="display:none">
-      <div class="modal-eye">See it live</div>
-      <h3 class="modal-h3">Request a demo.</h3>
-      <p class="modal-sub">We'll walk you through a live mandate from intake to outreach. 30 minutes.</p>
-      <div class="modal-field"><label class="modal-label">Work email <span class="modal-req">*</span></label><input class="modal-input" id="demo-email" type="email" placeholder="you@company.com" /></div>
-      <div class="modal-field"><label class="modal-label">Full name <span class="modal-req">*</span></label><input class="modal-input" id="demo-name" type="text" placeholder="Your name" /></div>
-      <div class="modal-field"><label class="modal-label">Company &amp; team size</label><input class="modal-input" id="demo-company" type="text" placeholder="Acme Inc · 80 employees" /></div>
-      <div class="modal-field"><label class="modal-label">What are you hiring for?</label><input class="modal-input" id="demo-role" type="text" placeholder="e.g. Head of AI" /></div>
-      <div class="modal-note modal-note-warn" id="demo-warn" style="display:none">Please use your official company email address.</div>
-      <button class="modal-submit" onclick="submitForm('demo')">Request demo &rarr;</button>
-      <div class="modal-note">We respond within 1 business day</div>
-    </div>
 
     <!-- SALES -->
     <div class="modal-pane" id="pane-sales" style="display:none">
@@ -2617,9 +2614,9 @@
       <span class="footer-logo-name">Majhi OS</span>
     </a>
     <div class="footer-links">
-      <a href="#" onclick="openLegal('privacy');event.preventDefault()">Privacy</a>
-      <a href="#" onclick="openLegal('terms');event.preventDefault()">Terms</a>
-      <a href="#" onclick="openLegal('security');event.preventDefault()">Security</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/security">Security</a>
       <a href="#" onclick="openModal('contact');event.preventDefault()">Contact</a>
     </div>
     <div class="footer-copy">&copy; 2026 Majhi OS. All rights reserved. &middot; <a href="mailto:support@majhi.tech" style="color:inherit;opacity:0.6">support@majhi.tech</a></div>
@@ -2711,7 +2708,7 @@
     modal.classList.add('open');
     switchTab(tab||'trial');
     // hide all warn banners
-    ['trial','demo','sales','contact'].forEach(t=>{
+    ['trial','sales','contact'].forEach(t=>{
       const w=document.getElementById(t+'-warn');
       if(w) w.style.display='none';
     });
@@ -2735,7 +2732,7 @@
   signinModal.addEventListener('click', e=>{ if(e.target===signinModal) closeSignin(); });
   document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeSignin(); } });
 
-  const TAB_ORDER = ['trial','demo','sales','contact'];
+  const TAB_ORDER = ['trial','sales','contact'];
   function switchTab(tab){
     const idx = TAB_ORDER.indexOf(tab);
     // Slide indicator
@@ -2777,7 +2774,6 @@
     // Build subject + body
     const subjectMap = {
       trial:   'Free Trial Request',
-      demo:    'Demo Request',
       sales:   'Enterprise Sales Enquiry',
       contact: 'Contact: General',
     };
@@ -2788,11 +2784,6 @@
       const name    = document.getElementById('trial-name').value.trim();
       const company = document.getElementById('trial-company').value.trim();
       const role    = document.getElementById('trial-role').value.trim();
-      lines = [`Name: ${name}`, `Email: ${email}`, `Company: ${company}`, `Hiring for: ${role}`];
-    } else if(type==='demo'){
-      const name    = document.getElementById('demo-name').value.trim();
-      const company = document.getElementById('demo-company').value.trim();
-      const role    = document.getElementById('demo-role').value.trim();
       lines = [`Name: ${name}`, `Email: ${email}`, `Company: ${company}`, `Hiring for: ${role}`];
     } else if(type==='sales'){
       const name = document.getElementById('sales-name').value.trim();
@@ -2830,12 +2821,11 @@
       if(!data.ok) throw new Error('failed');
 
       // Success
-      ['trial','demo','sales','contact'].forEach(t => document.getElementById('pane-'+t).style.display='none');
+      ['trial','sales','contact'].forEach(t => document.getElementById('pane-'+t).style.display='none');
       document.getElementById('pane-success').style.display = 'block';
       document.getElementById('success-title').textContent = type==='contact' ? 'Message sent.' : 'Request received.';
       const bodyMap = {
         trial:   'We\'ll have your account ready within 24 hours. Check your inbox for next steps.',
-        demo:    'We\'ll reach out within one business day to schedule your 30-minute walkthrough.',
         sales:   'Our team will be in touch shortly to discuss your requirements.',
         contact: 'We\'ve got your message and will reply within one business day.'
       };
