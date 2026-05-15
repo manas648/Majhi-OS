@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://majhios.com/">
   <meta property="og:title" content="Majhi OS — Autonomous Recruiting Operating System">
   <meta property="og:description" content="Turn a role brief into a ranked shortlist in minutes. 20 specialist agents handle sourcing, screening, outreach, and telemetry autonomously.">
-  <meta property="og:image" content="https://majhios.com/og-image.png">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
   <meta property="og:site_name" content="Majhi OS">
 
   <!-- Twitter Card -->
@@ -21,7 +21,7 @@
   <meta name="twitter:site" content="@majhios">
   <meta name="twitter:title" content="Majhi OS — Autonomous Recruiting Operating System">
   <meta name="twitter:description" content="Turn a role brief into a ranked shortlist in minutes. 20 specialist agents handle sourcing, screening, outreach, and telemetry autonomously.">
-  <meta name="twitter:image" content="https://majhios.com/og-image.png">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234F46E5'/><path d='M8 16h16M16 8l8 8-8 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -53,7 +53,7 @@
     "publisher": {
       "@type": "Organization",
       "name": "Majhi Group",
-      "email": "info@majhigroup.com",
+      "email": "support@majhi.tech",
       "url": "https://majhios.com"
     }
   }
@@ -272,10 +272,15 @@
     .modal{background:white;border-radius:20px;padding:2.5rem;width:100%;max-width:520px;box-shadow:var(--sh-lg);position:relative;max-height:90vh;overflow-y:auto}
     .modal-x{position:absolute;top:1.25rem;right:1.25rem;width:30px;height:30px;border-radius:50%;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-size:1rem;cursor:pointer;display:grid;place-items:center;transition:all .15s}
     .modal-x:hover{background:var(--bg3);color:var(--ink)}
-    .modal-tabs{display:flex;gap:.25rem;margin-bottom:1.75rem;background:var(--bg2);border-radius:10px;padding:4px}
-    .modal-tab{flex:1;font-size:.73rem;font-weight:600;padding:.45rem .25rem;border:none;background:none;cursor:pointer;border-radius:7px;color:var(--muted);transition:all .15s;white-space:nowrap}
-    .modal-tab.active{background:white;color:var(--indigo);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
-    .modal-pane{}
+    .modal-tabs{display:flex;gap:0;margin-bottom:1.75rem;background:var(--bg2);border-radius:12px;padding:4px;position:relative}
+    .modal-tab-indicator{position:absolute;top:4px;bottom:4px;width:25%;background:white;border-radius:9px;box-shadow:0 1px 8px rgba(0,0,0,.13);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:0;pointer-events:none}
+    .modal-tab{flex:1;font-size:.72rem;font-weight:600;padding:.55rem .25rem;border:none;background:none;cursor:pointer;border-radius:9px;color:var(--muted);transition:color .22s;white-space:nowrap;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:4px;letter-spacing:.01em}
+    .modal-tab .tab-icon{font-size:.8rem;line-height:1;transition:transform .22s}
+    .modal-tab:hover:not(.active){color:var(--ink)}
+    .modal-tab.active{color:var(--indigo)}
+    .modal-tab.active .tab-icon{transform:scale(1.15)}
+    @keyframes paneIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .modal-pane.pane-active{animation:paneIn .22s cubic-bezier(.4,0,.2,1) both}
     .modal-eye{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.65rem}
     .modal-h3{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
     .modal-sub{font-size:.85rem;color:var(--body);line-height:1.65;margin-bottom:1.25rem}
@@ -705,6 +710,32 @@
     .founder-sig-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;font-style:italic}
     .founder-sig-title{font-size:.78rem;color:rgba(255,255,255,0.35);margin-top:.2rem}
 
+
+    /* ── Legal overlays ─────────────────────────────────────────── */
+    .legal-overlay{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;background:white;opacity:0;pointer-events:none;transform:translateY(32px);transition:opacity .25s,transform .25s cubic-bezier(.4,0,.2,1)}
+    .legal-overlay.open{opacity:1;pointer-events:all;transform:translateY(0)}
+    .legal-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;flex-shrink:0}
+    .legal-header-left{display:flex;align-items:center;gap:1rem}
+    .legal-back{font-size:.85rem;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:.35rem .75rem;border-radius:6px;transition:color .15s,background .15s}
+    .legal-back:hover{color:var(--ink);background:var(--bg2)}
+    .legal-title-bar{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+    .legal-updated{font-size:.75rem;color:var(--muted)}
+    .legal-body{flex:1;overflow-y:auto;padding:3rem 2rem;max-width:800px;margin:0 auto;width:100%}
+    .legal-body h1{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);margin-bottom:.5rem}
+    .legal-body .legal-lead{font-size:1.05rem;color:var(--body);line-height:1.75;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+    .legal-body h2{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin:2rem 0 .75rem;letter-spacing:-.02em}
+    .legal-body p{font-size:.9rem;color:var(--body);line-height:1.8;margin-bottom:1rem}
+    .legal-body ul{font-size:.9rem;color:var(--body);line-height:1.8;margin:.5rem 0 1rem 1.25rem}
+    .legal-body ul li{margin-bottom:.35rem}
+    .legal-body a{color:var(--indigo);text-decoration:none}
+    .legal-body a:hover{text-decoration:underline}
+    .legal-chip{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.2rem .75rem;border-radius:999px;margin-bottom:1rem}
+    .legal-table{width:100%;border-collapse:collapse;font-size:.87rem;margin:1rem 0 1.5rem}
+    .legal-table th{text-align:left;padding:.6rem 1rem;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--bg2);border-bottom:1px solid var(--border)}
+    .legal-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);color:var(--body);vertical-align:top}
+    .legal-table tr:last-child td{border-bottom:none}
+    .legal-highlight{background:var(--indigo-bg);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.5rem 0;font-size:.9rem;color:var(--body);line-height:1.75}
+    .legal-footer-note{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--muted);line-height:1.7}
   </style>
 </head>
 <body>
@@ -2028,7 +2059,7 @@
             Is Majhi OS GDPR compliant?
             <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
-          <div class="faq-a">Yes. The Compliance Sentinel enforces regional privacy constraints at every stage. Candidate records include GDPR status, public-record handling flags, and global-region awareness. All sourcing is public-record-only. Contact us at info@majhigroup.com for a DPA.</div>
+          <div class="faq-a">Yes. The Compliance Sentinel enforces regional privacy constraints at every stage. Candidate records include GDPR status, public-record handling flags, and global-region awareness. All sourcing is public-record-only. Contact us at support@majhi.tech for a DPA.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -2058,7 +2089,7 @@
             What happens to my candidate data?
             <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
-          <div class="faq-a">Your mandate data, candidate dossiers, and pipeline are private to your workspace. We do not sell or share candidate data with third parties. All outreach is traceable with timestamped audit trails. Contact info@majhigroup.com for a full data processing agreement.</div>
+          <div class="faq-a">Your mandate data, candidate dossiers, and pipeline are private to your workspace. We do not sell or share candidate data with third parties. All outreach is traceable with timestamped audit trails. Contact support@majhi.tech for a full data processing agreement.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -2209,10 +2240,11 @@
   <div class="modal">
     <button class="modal-x" onclick="closeModal()" aria-label="Close">&times;</button>
     <div class="modal-tabs">
-      <button class="modal-tab active" id="tab-trial" onclick="switchTab('trial')">Free trial</button>
-      <button class="modal-tab" id="tab-demo" onclick="switchTab('demo')">Request demo</button>
-      <button class="modal-tab" id="tab-sales" onclick="switchTab('sales')">Talk to sales</button>
-      <button class="modal-tab" id="tab-contact" onclick="switchTab('contact')">Contact us</button>
+      <div class="modal-tab-indicator" id="tab-indicator"></div>
+      <button class="modal-tab active" id="tab-trial" onclick="switchTab('trial')"><span class="tab-icon">✦</span>Free trial</button>
+      <button class="modal-tab" id="tab-demo" onclick="switchTab('demo')"><span class="tab-icon">📅</span>Request demo</button>
+      <button class="modal-tab" id="tab-sales" onclick="switchTab('sales')"><span class="tab-icon">💬</span>Talk to sales</button>
+      <button class="modal-tab" id="tab-contact" onclick="switchTab('contact')"><span class="tab-icon">✉</span>Contact us</button>
     </div>
 
     <!-- FREE TRIAL -->
@@ -2254,7 +2286,7 @@
       <div class="modal-field"><label class="modal-label">Annual mandate volume (est.)</label><input class="modal-input" id="sales-vol" type="text" placeholder="e.g. 20–30 critical hires / year" /></div>
       <div class="modal-note modal-note-warn" id="sales-warn" style="display:none">Please use your official company email address.</div>
       <button class="modal-submit" onclick="submitForm('sales')">Get in touch &rarr;</button>
-      <div class="modal-note">All enquiries handled by info@majhigroup.com</div>
+      <div class="modal-note">All enquiries handled by support@majhi.tech</div>
     </div>
 
     <!-- CONTACT -->
@@ -2278,14 +2310,14 @@
       <div class="modal-field"><label class="modal-label">Message <span class="modal-req">*</span></label><textarea class="modal-input modal-textarea" id="contact-msg" placeholder="Tell us how we can help…"></textarea></div>
       <div class="modal-note modal-note-warn" id="contact-warn" style="display:none">Please fill in your email and message.</div>
       <button class="modal-submit" onclick="submitForm('contact')">Send message &rarr;</button>
-      <div class="modal-note">All messages sent to <strong>info@majhigroup.com</strong> &middot; We respond within 1 business day</div>
+      <div class="modal-note">All messages sent to <strong>support@majhi.tech</strong> &middot; We respond within 1 business day</div>
     </div>
 
     <!-- SUCCESS STATE -->
     <div class="modal-pane" id="pane-success" style="display:none;text-align:center;padding:1rem 0">
       <div style="font-size:2.5rem;margin-bottom:1rem">✓</div>
       <h3 class="modal-h3" id="success-title">Request sent.</h3>
-      <p class="modal-sub" id="success-body">Your message has been sent to info@majhigroup.com. We'll be in touch within 1 business day.</p>
+      <p class="modal-sub" id="success-body">Your message has been sent to support@majhi.tech. We'll be in touch within 1 business day.</p>
       <button class="modal-submit" onclick="closeModal()" style="margin-top:1.5rem">Close</button>
     </div>
   </div>
@@ -2302,7 +2334,278 @@
     <div class="modal-field"><label class="modal-label">Password <span class="modal-req">*</span></label><input class="modal-input" id="signin-pw" type="password" placeholder="Your password" /></div>
     <div class="modal-note modal-note-warn" id="signin-warn" style="display:none"></div>
     <button class="modal-submit" onclick="submitSignin()">Sign in &rarr;</button>
-    <div class="modal-note">Official company email required &middot; Issues? Contact <strong>info@majhigroup.com</strong></div>
+    <div class="modal-note">Official company email required &middot; Issues? Contact <strong>support@majhi.tech</strong></div>
+  </div>
+</div>
+
+
+<!-- PRIVACY OVERLAY -->
+<div class="legal-overlay" id="overlay-privacy" role="dialog" aria-modal="true" aria-label="Privacy Policy">
+  <div class="legal-header">
+    <div class="legal-header-left">
+      <button class="legal-back" onclick="closeLegal('privacy')">← Back</button>
+      <span class="legal-title-bar">Majhi OS</span>
+    </div>
+    <span class="legal-updated">Last updated: 15 May 2026</span>
+  </div>
+  <div class="legal-body">
+    <div class="legal-chip">Privacy Policy</div>
+    <h1>Your data, handled with care.</h1>
+    <p class="legal-lead">Majhi OS is a recruiting operating system. We process data on behalf of the organisations that use our platform and take our responsibilities as a data processor — and in some cases controller — seriously. This policy explains what we collect, why, and what rights you have.</p>
+
+    <h2>1. Who we are</h2>
+    <p>Majhi OS is operated by Majhi Group (referred to as "Majhi OS", "we", "us", or "our"). Our registered address and data protection contact is: <a href="mailto:privacy@majhi.tech">privacy@majhi.tech</a>. For EU/UK GDPR purposes, Majhi OS acts as a <strong>data processor</strong> for customer data and a <strong>data controller</strong> for account and usage data.</p>
+
+    <h2>2. Data we collect</h2>
+    <table class="legal-table">
+      <thead><tr><th>Category</th><th>What</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Account data</strong></td><td>Name, work email, company, role</td><td>To create and manage your account</td></tr>
+        <tr><td><strong>Usage data</strong></td><td>Feature interactions, session duration, browser/OS</td><td>Product improvement and support</td></tr>
+        <tr><td><strong>Mandate data</strong></td><td>Job descriptions, candidate pipelines, outreach content</td><td>Core service delivery; processed on your behalf</td></tr>
+        <tr><td><strong>Candidate data</strong></td><td>Publicly available professional profiles, CV data you upload</td><td>Sourcing and screening; processed on your behalf</td></tr>
+        <tr><td><strong>Communications</strong></td><td>Support emails, contact form submissions</td><td>To respond to your enquiries</td></tr>
+        <tr><td><strong>Payment data</strong></td><td>Billing name and address only — card details go directly to our payment processor</td><td>Invoicing and compliance</td></tr>
+      </tbody>
+    </table>
+
+    <h2>3. Legal basis for processing (GDPR)</h2>
+    <p>We rely on the following lawful bases:</p>
+    <ul>
+      <li><strong>Contract performance</strong> — processing necessary to deliver the service you've subscribed to.</li>
+      <li><strong>Legitimate interests</strong> — product analytics, security monitoring, and fraud prevention.</li>
+      <li><strong>Legal obligation</strong> — retaining financial records as required by applicable law.</li>
+      <li><strong>Consent</strong> — marketing communications (opt-in only; withdraw any time).</li>
+    </ul>
+
+    <h2>4. Candidate data and public records</h2>
+    <div class="legal-highlight">Majhi OS sources candidate information exclusively from publicly available professional records (LinkedIn, GitHub, personal websites, published papers, etc.). We do not purchase, scrape, or acquire personal data from data brokers or non-public sources.</div>
+    <p>All candidate records processed through Majhi OS include GDPR-status flags and regional privacy-constraint markers. Your organisation remains the data controller for candidate data you process through our platform. A Data Processing Agreement (DPA) is available on request at <a href="mailto:privacy@majhi.tech">privacy@majhi.tech</a>.</p>
+
+    <h2>5. How we use your data</h2>
+    <ul>
+      <li>Delivering, maintaining, and improving the Majhi OS platform</li>
+      <li>Sending transactional emails (account setup, mandate updates, billing)</li>
+      <li>Providing customer support and responding to enquiries</li>
+      <li>Detecting and preventing fraud, abuse, and security incidents</li>
+      <li>Complying with legal and regulatory obligations</li>
+      <li>Sending product updates and announcements (with your consent; unsubscribe any time)</li>
+    </ul>
+
+    <h2>6. Data sharing and sub-processors</h2>
+    <p>We do not sell your data. We share data only with trusted sub-processors required to operate the platform. Our current key sub-processors include infrastructure (cloud hosting), email delivery, payment processing, and analytics. A full sub-processor list is available on request.</p>
+
+    <h2>7. Data retention</h2>
+    <ul>
+      <li><strong>Account data:</strong> Retained for the duration of your subscription plus 90 days post-cancellation, then deleted.</li>
+      <li><strong>Mandate and candidate data:</strong> Deleted within 30 days of account closure or earlier on request.</li>
+      <li><strong>Financial records:</strong> Retained for 7 years as required by tax law.</li>
+      <li><strong>Usage logs:</strong> Aggregated and anonymised after 12 months.</li>
+    </ul>
+
+    <h2>8. International transfers</h2>
+    <p>Our infrastructure is primarily located in the EU/EEA. Where data is transferred outside the EEA, we rely on Standard Contractual Clauses (SCCs) approved by the European Commission, or equivalent safeguards.</p>
+
+    <h2>9. Your rights</h2>
+    <p>Under GDPR and applicable law, you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> the personal data we hold about you</li>
+      <li><strong>Rectify</strong> inaccurate data</li>
+      <li><strong>Erase</strong> your data ("right to be forgotten")</li>
+      <li><strong>Restrict</strong> or <strong>object</strong> to processing</li>
+      <li><strong>Port</strong> your data in a machine-readable format</li>
+      <li><strong>Withdraw consent</strong> at any time (where processing is consent-based)</li>
+      <li><strong>Lodge a complaint</strong> with your local supervisory authority</li>
+    </ul>
+    <p>To exercise any right, email <a href="mailto:privacy@majhi.tech">privacy@majhi.tech</a>. We respond within 30 days.</p>
+
+    <h2>10. Cookies</h2>
+    <p>We use strictly necessary cookies (session management, security) and, with your consent, analytics cookies to understand how the platform is used. You can manage cookie preferences in your account settings. We do not use advertising cookies.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this policy periodically. Material changes will be notified by email or in-app notice at least 14 days before they take effect.</p>
+
+    <div class="legal-footer-note">
+      Questions? Contact our data protection team at <a href="mailto:privacy@majhi.tech">privacy@majhi.tech</a> or write to Majhi Group, Privacy Team, India.<br>
+      This policy is governed by the laws of India, without prejudice to your GDPR rights if you are located in the EU/EEA/UK.
+    </div>
+  </div>
+</div>
+
+<!-- TERMS OVERLAY -->
+<div class="legal-overlay" id="overlay-terms" role="dialog" aria-modal="true" aria-label="Terms of Service">
+  <div class="legal-header">
+    <div class="legal-header-left">
+      <button class="legal-back" onclick="closeLegal('terms')">← Back</button>
+      <span class="legal-title-bar">Majhi OS</span>
+    </div>
+    <span class="legal-updated">Last updated: 15 May 2026</span>
+  </div>
+  <div class="legal-body">
+    <div class="legal-chip">Terms of Service</div>
+    <h1>Terms of Service</h1>
+    <p class="legal-lead">These Terms of Service ("Terms") govern your access to and use of Majhi OS, operated by Majhi Group ("we", "us", "our"). By creating an account or using the platform, you agree to be bound by these Terms. If you are accepting on behalf of an organisation, you represent that you have authority to bind that organisation.</p>
+
+    <h2>1. The service</h2>
+    <p>Majhi OS is a software-as-a-service (SaaS) recruiting operating system that automates talent sourcing, screening, outreach, and pipeline management. We grant you a limited, non-exclusive, non-transferable, revocable licence to access and use the platform during your subscription term, subject to these Terms.</p>
+
+    <h2>2. Account obligations</h2>
+    <ul>
+      <li>You must provide accurate, current, and complete registration information.</li>
+      <li>You are responsible for maintaining the confidentiality of your credentials and all activity under your account.</li>
+      <li>You must notify us immediately at <a href="mailto:support@majhi.tech">support@majhi.tech</a> if you suspect unauthorised access.</li>
+      <li>Accounts are for the registered organisation only. Sharing access with third parties outside your organisation is not permitted.</li>
+      <li>You must be at least 18 years old and have legal capacity to enter into contracts.</li>
+    </ul>
+
+    <h2>3. Acceptable use</h2>
+    <p>You agree not to use the platform to:</p>
+    <ul>
+      <li>Violate any applicable law, regulation, or third-party rights</li>
+      <li>Process sensitive personal data (health, financial, biometric) of candidates without appropriate legal basis</li>
+      <li>Conduct discriminatory hiring practices based on protected characteristics</li>
+      <li>Send unsolicited commercial communications in violation of anti-spam laws</li>
+      <li>Reverse-engineer, decompile, or attempt to extract the source code of the platform</li>
+      <li>Use automated means to access the platform beyond the provided API</li>
+      <li>Introduce malicious code, viruses, or disruptive components</li>
+      <li>Resell, sublicence, or offer the platform as a white-label service without written authorisation</li>
+    </ul>
+
+    <h2>4. Intellectual property</h2>
+    <p>Majhi OS and all associated technology, algorithms, models, designs, and content are the exclusive intellectual property of Majhi Group. These Terms do not grant you any ownership rights. You retain all rights to the data you bring to the platform (your mandate data, internal documents, candidate submissions). You grant us a limited licence to process that data solely to deliver the service.</p>
+
+    <h2>5. Subscription, pricing, and payment</h2>
+    <ul>
+      <li>Subscriptions are billed in advance on a monthly or annual basis, as selected at signup.</li>
+      <li>All fees are exclusive of applicable taxes (GST, VAT, etc.), which you are responsible for.</li>
+      <li>Annual plans are non-refundable except as required by law or where we materially breach these Terms.</li>
+      <li>We reserve the right to change pricing with 30 days' notice. Existing annual subscribers are protected until their renewal date.</li>
+      <li>Overdue payments may result in service suspension after a 7-day grace period.</li>
+    </ul>
+
+    <h2>6. Service availability and SLA</h2>
+    <p>We target 99.5% monthly uptime for the core platform, excluding scheduled maintenance (notified 48 hours in advance) and events beyond our reasonable control. Status updates are available at <a href="https://status.majhi.tech" target="_blank">status.majhi.tech</a>.</p>
+
+    <h2>7. Confidentiality</h2>
+    <p>Each party agrees to keep confidential any non-public information disclosed by the other party in connection with the service. This obligation survives termination for 3 years. It does not apply to information that is publicly available, independently developed, or required to be disclosed by law.</p>
+
+    <h2>8. Termination</h2>
+    <p>You may cancel your subscription at any time from your account dashboard. Cancellation takes effect at the end of the current billing period. We may suspend or terminate your account immediately if you materially breach these Terms, engage in fraudulent activity, or pose a security risk. On termination, your data will be retained for 30 days and then deleted, unless you request earlier deletion.</p>
+
+    <h2>9. Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, Majhi OS's total aggregate liability for any claims arising under or related to these Terms shall not exceed the fees paid by you in the 12 months preceding the claim. In no event shall either party be liable for indirect, incidental, punitive, or consequential damages, even if advised of the possibility of such damages.</p>
+
+    <h2>10. Warranties and disclaimers</h2>
+    <p>We warrant that the platform will perform materially as described in our documentation. Other than this, the platform is provided "as is". We do not warrant that it will be error-free, uninterrupted, or that it will meet all your requirements. Hiring decisions remain entirely your responsibility.</p>
+
+    <h2>11. Governing law and disputes</h2>
+    <p>These Terms are governed by the laws of India. Any dispute shall first be subject to good-faith negotiation. If unresolved within 30 days, disputes shall be referred to binding arbitration under the Arbitration and Conciliation Act, 1996, seated in Bhubaneswar, Odisha. Notwithstanding this, either party may seek injunctive relief in any court of competent jurisdiction.</p>
+
+    <h2>12. Changes to these Terms</h2>
+    <p>We may update these Terms from time to time. Material changes will be notified by email at least 14 days before they take effect. Continued use of the platform after the effective date constitutes acceptance of the updated Terms.</p>
+
+    <div class="legal-footer-note">
+      For questions about these Terms, contact <a href="mailto:legal@majhi.tech">legal@majhi.tech</a>.<br>
+      © 2026 Majhi OS. All rights reserved.
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY OVERLAY -->
+<div class="legal-overlay" id="overlay-security" role="dialog" aria-modal="true" aria-label="Security">
+  <div class="legal-header">
+    <div class="legal-header-left">
+      <button class="legal-back" onclick="closeLegal('security')">← Back</button>
+      <span class="legal-title-bar">Majhi OS</span>
+    </div>
+    <span class="legal-updated">Last updated: 15 May 2026</span>
+  </div>
+  <div class="legal-body">
+    <div class="legal-chip">Security</div>
+    <h1>Security at Majhi OS</h1>
+    <p class="legal-lead">Majhi OS handles sensitive hiring data on behalf of organisations. Security is not a feature — it is a baseline requirement. This page describes how we protect your data and our platform.</p>
+
+    <h2>Infrastructure</h2>
+    <p>Majhi OS is hosted on enterprise-grade cloud infrastructure with ISO 27001-certified data centres. We operate across multiple availability zones to ensure resilience. All production systems run in private networks with no direct public exposure.</p>
+    <ul>
+      <li>Dedicated production and staging environments; no shared infrastructure with test workloads</li>
+      <li>Infrastructure-as-code with version-controlled configuration</li>
+      <li>Automated vulnerability scanning on every deployment</li>
+      <li>DDoS protection and rate limiting at the network edge</li>
+    </ul>
+
+    <h2>Encryption</h2>
+    <table class="legal-table">
+      <thead><tr><th>Layer</th><th>Standard</th></tr></thead>
+      <tbody>
+        <tr><td>Data in transit</td><td>TLS 1.2 minimum; TLS 1.3 preferred. HSTS enforced.</td></tr>
+        <tr><td>Data at rest</td><td>AES-256 encryption for all stored data, including backups.</td></tr>
+        <tr><td>Database</td><td>Encrypted at storage level; field-level encryption for credentials and tokens.</td></tr>
+        <tr><td>Secrets management</td><td>All API keys, credentials, and secrets stored in a dedicated vault; never in environment variables or code.</td></tr>
+        <tr><td>Backups</td><td>Encrypted, tested daily, retained for 30 days, stored in a geographically separate region.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Access controls</h2>
+    <ul>
+      <li><strong>Principle of least privilege:</strong> Every engineer and system component has access only to what is strictly required.</li>
+      <li><strong>Multi-factor authentication (MFA)</strong> is mandatory for all internal systems and production access.</li>
+      <li><strong>Role-based access control (RBAC)</strong> is enforced across the platform and all internal tooling.</li>
+      <li><strong>Zero-trust networking:</strong> Production access requires authenticated, short-lived credentials via a bastion with full audit logging.</li>
+      <li><strong>Background checks</strong> are conducted for all employees and contractors with access to production systems.</li>
+    </ul>
+
+    <h2>Application security</h2>
+    <ul>
+      <li>OWASP Top 10 mitigations applied across all API endpoints</li>
+      <li>Input validation and parameterised queries to prevent injection attacks</li>
+      <li>Content Security Policy (CSP) and other security headers enforced</li>
+      <li>Dependency scanning and automated patching for known CVEs</li>
+      <li>Regular internal security reviews prior to major releases</li>
+    </ul>
+
+    <h2>Monitoring and incident response</h2>
+    <p>Our security operations run continuously:</p>
+    <ul>
+      <li>Real-time anomaly detection across application and infrastructure logs</li>
+      <li>Automated alerting on authentication failures, privilege escalations, and unusual data access patterns</li>
+      <li>Defined incident response playbooks with assigned owners and escalation paths</li>
+      <li>Customers affected by a security incident will be notified within 72 hours, consistent with GDPR requirements</li>
+      <li>Post-incident reviews are conducted for all P1/P2 events, with findings shared on request</li>
+    </ul>
+
+    <h2>Penetration testing</h2>
+    <p>Majhi OS undergoes independent third-party penetration testing at least annually and after significant infrastructure changes. Findings are remediated according to severity within defined SLAs (Critical: 24h, High: 7 days, Medium: 30 days). Summary reports are available to enterprise customers under NDA.</p>
+
+    <h2>Compliance</h2>
+    <div class="legal-highlight">Majhi OS is designed to support GDPR, DPDPA (India), and general data protection compliance. Our Compliance Sentinel module enforces regional privacy constraints at the sourcing layer — ensuring candidate data handling respects applicable law by jurisdiction.</div>
+    <ul>
+      <li>Data Processing Agreements (DPAs) available for all customers — email <a href="mailto:privacy@majhi.tech">privacy@majhi.tech</a></li>
+      <li>Sub-processor list maintained and available on request</li>
+      <li>Working toward SOC 2 Type II certification</li>
+    </ul>
+
+    <h2>Responsible disclosure</h2>
+    <p>If you believe you have found a security vulnerability in Majhi OS, please report it responsibly. We ask that you:</p>
+    <ul>
+      <li>Email details to <a href="mailto:security@majhi.tech">security@majhi.tech</a> with a clear description and steps to reproduce</li>
+      <li>Give us reasonable time to investigate and remediate before public disclosure</li>
+      <li>Not access, modify, or delete data beyond what is necessary to demonstrate the vulnerability</li>
+    </ul>
+    <p>We commit to acknowledging valid reports within 48 hours and keeping you informed of our progress. We do not take legal action against researchers acting in good faith.</p>
+
+    <h2>Business continuity</h2>
+    <ul>
+      <li>Recovery Point Objective (RPO): 1 hour</li>
+      <li>Recovery Time Objective (RTO): 4 hours</li>
+      <li>Disaster recovery plans tested bi-annually</li>
+      <li>Live platform status: <a href="https://status.majhi.tech" target="_blank">status.majhi.tech</a></li>
+    </ul>
+
+    <div class="legal-footer-note">
+      Security questions or vulnerability reports: <a href="mailto:security@majhi.tech">security@majhi.tech</a><br>
+      This page reflects our current security posture and is updated as our programme evolves.
+    </div>
   </div>
 </div>
 
@@ -2314,17 +2617,36 @@
       <span class="footer-logo-name">Majhi OS</span>
     </a>
     <div class="footer-links">
-      <a href="#" onclick="openModal('contact');event.preventDefault()">Privacy</a>
-      <a href="#" onclick="openModal('contact');event.preventDefault()">Terms</a>
-      <a href="#" onclick="openModal('contact');event.preventDefault()">Security</a>
+      <a href="#" onclick="openLegal('privacy');event.preventDefault()">Privacy</a>
+      <a href="#" onclick="openLegal('terms');event.preventDefault()">Terms</a>
+      <a href="#" onclick="openLegal('security');event.preventDefault()">Security</a>
       <a href="#" onclick="openModal('contact');event.preventDefault()">Contact</a>
     </div>
-    <div class="footer-copy">&copy; 2026 Majhi Group. All rights reserved. &middot; <a href="mailto:info@majhigroup.com" style="color:inherit;opacity:0.6">info@majhigroup.com</a></div>
+    <div class="footer-copy">&copy; 2026 Majhi OS. All rights reserved. &middot; <a href="mailto:support@majhi.tech" style="color:inherit;opacity:0.6">support@majhi.tech</a></div>
   </div>
 </footer>
 
 
 <script>
+
+  // ── LEGAL OVERLAYS ───────────────────────────────────────────────
+  function openLegal(name){
+    document.getElementById('overlay-'+name).classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeLegal(name){
+    document.getElementById('overlay-'+name).classList.remove('open');
+    document.body.style.overflow='';
+  }
+  // Close on Escape
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){
+      ['privacy','terms','security'].forEach(n=>{
+        document.getElementById('overlay-'+n)?.classList.remove('open');
+      });
+      document.body.style.overflow='';
+    }
+  });
   // ── HAMBURGER MENU ───────────────────────────────────────────────
   function toggleMenu(){
     const burger = document.getElementById('navBurger');
@@ -2413,19 +2735,28 @@
   signinModal.addEventListener('click', e=>{ if(e.target===signinModal) closeSignin(); });
   document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeSignin(); } });
 
+  const TAB_ORDER = ['trial','demo','sales','contact'];
   function switchTab(tab){
-    ['trial','demo','sales','contact'].forEach(t=>{
+    const idx = TAB_ORDER.indexOf(tab);
+    // Slide indicator
+    const indicator = document.getElementById('tab-indicator');
+    if(indicator) indicator.style.transform = 'translateX('+( idx * 100)+'%)';
+    // Swap tabs + panes
+    TAB_ORDER.forEach(t=>{
       document.getElementById('tab-'+t).classList.toggle('active', t===tab);
-      document.getElementById('pane-'+t).style.display = t===tab ? 'block' : 'none';
+      const pane = document.getElementById('pane-'+t);
+      if(t===tab){
+        pane.style.display='block';
+        pane.classList.remove('pane-active');
+        void pane.offsetWidth; // force reflow so animation retriggers
+        pane.classList.add('pane-active');
+      } else {
+        pane.style.display='none';
+        pane.classList.remove('pane-active');
+      }
     });
     document.getElementById('pane-success').style.display='none';
   }
-
-  // ── FORM ENDPOINT ───────────────────────────────────────────────
-  // Points to the Cloudflare Worker in /majhi-worker/.
-  // After deploying with `wrangler deploy`, replace the URL below with
-  // the *.workers.dev URL shown in the output (or your custom domain).
-  const FORM_ENDPOINT = 'https://majhi-os-forms.YOUR_SUBDOMAIN.workers.dev/';
 
   async function submitForm(type){
     const emailEl  = document.getElementById(type+'-email');
@@ -2443,26 +2774,38 @@
     }
     warnEl.style.display = 'none';
 
-    // Build payload
-    let payload = { type, email, submitted_at: new Date().toISOString() };
+    // Build subject + body
+    const subjectMap = {
+      trial:   'Free Trial Request',
+      demo:    'Demo Request',
+      sales:   'Enterprise Sales Enquiry',
+      contact: 'Contact: General',
+    };
+    let subject = subjectMap[type] || type;
+    let lines   = [`From: ${email}`];
 
     if(type==='trial'){
-      payload.name    = document.getElementById('trial-name').value.trim();
-      payload.company = document.getElementById('trial-company').value.trim();
-      payload.role    = document.getElementById('trial-role').value.trim();
+      const name    = document.getElementById('trial-name').value.trim();
+      const company = document.getElementById('trial-company').value.trim();
+      const role    = document.getElementById('trial-role').value.trim();
+      lines = [`Name: ${name}`, `Email: ${email}`, `Company: ${company}`, `Hiring for: ${role}`];
     } else if(type==='demo'){
-      payload.name    = document.getElementById('demo-name').value.trim();
-      payload.company = document.getElementById('demo-company').value.trim();
-      payload.role    = document.getElementById('demo-role').value.trim();
+      const name    = document.getElementById('demo-name').value.trim();
+      const company = document.getElementById('demo-company').value.trim();
+      const role    = document.getElementById('demo-role').value.trim();
+      lines = [`Name: ${name}`, `Email: ${email}`, `Company: ${company}`, `Hiring for: ${role}`];
     } else if(type==='sales'){
-      payload.name    = document.getElementById('sales-name').value.trim();
-      payload.org     = document.getElementById('sales-org').value.trim();
-      payload.volume  = document.getElementById('sales-vol').value.trim();
+      const name = document.getElementById('sales-name').value.trim();
+      const org  = document.getElementById('sales-org').value.trim();
+      const vol  = document.getElementById('sales-vol').value.trim();
+      lines = [`Name: ${name}`, `Email: ${email}`, `Organisation: ${org}`, `Mandate volume: ${vol}`];
     } else if(type==='contact'){
-      payload.name    = document.getElementById('contact-name').value.trim();
-      payload.subject = document.getElementById('contact-subject').value.trim();
-      payload.message = document.getElementById('contact-msg').value.trim();
-      if(!payload.message){ warnEl.textContent='Please enter your message.'; warnEl.style.display='block'; return; }
+      const name = document.getElementById('contact-name').value.trim();
+      const sub  = document.getElementById('contact-subject').value.trim();
+      const msg  = document.getElementById('contact-msg').value.trim();
+      if(!msg){ warnEl.textContent='Please enter your message.'; warnEl.style.display='block'; return; }
+      subject = 'Contact: ' + (sub || 'General');
+      lines = [`Name: ${name}`, `Email: ${email}`, `Subject: ${sub}`, ``, `${msg}`];
     }
 
     // Loading state
@@ -2472,13 +2815,19 @@
     submitBtn.style.opacity = '0.7';
 
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const res = await fetch('https://formsubmit.co/ajax/support@majhi.tech', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '[Majhi OS] ' + subject,
+          _replyto: email,
+          _template: 'table',
+          message:  lines.join('\n'),
+        })
       });
 
-      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if(data.success !== 'true' && data.success !== true) throw new Error('failed');
 
       // Success
       ['trial','demo','sales','contact'].forEach(t => document.getElementById('pane-'+t).style.display='none');
@@ -2493,11 +2842,10 @@
       document.getElementById('success-body').textContent = bodyMap[type];
 
     } catch(err) {
-      // Restore button and show error
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
       submitBtn.style.opacity = '';
-      warnEl.textContent = 'Something went wrong — please try again or email us directly at info@majhigroup.com.';
+      warnEl.textContent = 'Something went wrong — please try again or email us directly at support@majhi.tech.';
       warnEl.style.display = 'block';
     }
   }
