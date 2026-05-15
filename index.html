@@ -2815,7 +2815,7 @@
     submitBtn.style.opacity = '0.7';
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/support@majhi.tech', {
+      const res = await fetch('https://formspree.io/f/mlgzyaez', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -2827,7 +2827,7 @@
       });
 
       const data = await res.json();
-      if(data.success !== 'true' && data.success !== true) throw new Error('failed');
+      if(!data.ok) throw new Error('failed');
 
       // Success
       ['trial','demo','sales','contact'].forEach(t => document.getElementById('pane-'+t).style.display='none');
