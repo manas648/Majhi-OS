@@ -1363,6 +1363,262 @@
 </div>
 
 
+<!-- ═══════════════════════════════════════════════════════════
+     ICONIC VISUAL: HIRING INFRASTRUCTURE TOPOLOGY MAP
+     ═══════════════════════════════════════════════════════════ -->
+<section style="padding:5.5rem 0 6rem;background:var(--ink);position:relative;overflow:hidden">
+  <!-- ambient glow -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(79,70,229,.12) 0%,transparent 65%);pointer-events:none"></div>
+
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Hiring Infrastructure Topology</div>
+    <h2 class="sh2 reveal" style="color:white;max-width:640px">Every mandate. Live state.<br><mark style="color:#818CF8">One operational graph.</mark></h2>
+    <p class="ssub reveal" style="color:rgba(255,255,255,.4);max-width:560px">This is what Majhi OS sees that your current stack cannot — every node, every signal, every failure vector, in real time.</p>
+  </div>
+
+  <!-- THE CANVAS -->
+  <div class="reveal" style="margin-top:3rem;position:relative">
+    <canvas id="topoCanvas" style="display:block;width:100%;max-height:560px"></canvas>
+
+    <!-- Floating telemetry pills anchored over the canvas -->
+    <div id="topoPills" style="position:absolute;inset:0;pointer-events:none"></div>
+  </div>
+
+  <!-- Legend -->
+  <div class="wrap" style="margin-top:2rem;position:relative">
+    <div style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
+        <div style="width:10px;height:10px;border-radius:50%;background:#34D399"></div> Healthy · nominal flow
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
+        <div style="width:10px;height:10px;border-radius:50%;background:#F59E0B"></div> Degraded · recovery active
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
+        <div style="width:10px;height:10px;border-radius:50%;background:#F87171"></div> Stalled · agent intervening
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
+        <div style="width:10px;height:10px;border-radius:50%;background:#818CF8"></div> Intelligence node · learning
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
+        <span style="display:inline-block;width:22px;height:2px;background:linear-gradient(90deg,rgba(79,70,229,.8),rgba(52,211,153,.8))"></span> Live signal flow
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#topoCanvas { cursor: default; }
+</style>
+
+<script>
+(function(){
+  const canvas = document.getElementById('topoCanvas');
+  const pillsEl = document.getElementById('topoPills');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  // ── Node definitions ──────────────────────────────────────
+  const NODES = [
+    // Core OS
+    { id:'os',    label:'Majhi OS',      sub:'Operational Core',    x:.50, y:.50, r:32, color:'#818CF8', ring:'rgba(129,140,248,.25)', status:'ok',  glow:true },
+    // Sources
+    { id:'src1',  label:'LinkedIn',      sub:'Sourcing agent',      x:.12, y:.18, r:18, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    { id:'src2',  label:'DB Search',     sub:'Profile extraction',  x:.25, y:.10, r:16, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    { id:'src3',  label:'Referrals',     sub:'Intake queue',        x:.10, y:.38, r:15, color:'#F59E0B', ring:'rgba(245,158,11,.2)',   status:'warn'},
+    // Execution
+    { id:'qms',   label:'QMS Engine',    sub:'Quality gating',      x:.35, y:.28, r:22, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'out',   label:'Outreach',      sub:'Multi-touch seq.',    x:.65, y:.28, r:22, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    { id:'dos',   label:'Dossier',       sub:'Evidence layer',      x:.35, y:.72, r:20, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    { id:'neg',   label:'Offer Intel',   sub:'Negotiation agent',   x:.65, y:.72, r:18, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    // Monitoring
+    { id:'tel',   label:'Telemetry',     sub:'Live signal bus',     x:.82, y:.18, r:20, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'rec',   label:'Recovery',      sub:'Auto-remediation',    x:.88, y:.50, r:20, color:'#F87171', ring:'rgba(248,113,113,.2)', status:'err', pulse:true },
+    { id:'ats',   label:'ATS Handoff',   sub:'Greenhouse · Lever',  x:.78, y:.82, r:16, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
+    // Intel
+    { id:'intel', label:'Intelligence',  sub:'Pattern learning',    x:.18, y:.82, r:20, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'load',  label:'Load Balance',  sub:'Recruiter routing',   x:.18, y:.60, r:15, color:'#F59E0B', ring:'rgba(245,158,11,.2)',  status:'warn'},
+  ];
+
+  // ── Edge definitions ──────────────────────────────────────
+  const EDGES = [
+    { from:'src1',  to:'qms',   flow: true,  color:'#34D399' },
+    { from:'src2',  to:'qms',   flow: true,  color:'#34D399' },
+    { from:'src3',  to:'qms',   flow: false, color:'#F59E0B' },
+    { from:'qms',   to:'os',    flow: true,  color:'#818CF8' },
+    { from:'os',    to:'out',   flow: true,  color:'#818CF8' },
+    { from:'out',   to:'tel',   flow: true,  color:'#34D399' },
+    { from:'tel',   to:'os',    flow: true,  color:'#818CF8' },
+    { from:'os',    to:'rec',   flow: true,  color:'#F87171' },
+    { from:'rec',   to:'out',   flow: true,  color:'#F87171' },
+    { from:'os',    to:'dos',   flow: true,  color:'#818CF8' },
+    { from:'dos',   to:'neg',   flow: true,  color:'#34D399' },
+    { from:'neg',   to:'ats',   flow: true,  color:'#34D399' },
+    { from:'os',    to:'intel', flow: true,  color:'#818CF8' },
+    { from:'intel', to:'qms',   flow: true,  color:'#818CF8' },
+    { from:'os',    to:'load',  flow: false, color:'#F59E0B' },
+    { from:'load',  to:'src3',  flow: false, color:'#F59E0B' },
+    { from:'ats',   to:'intel', flow: true,  color:'#34D399' },
+  ];
+
+  // ── Particles ─────────────────────────────────────────────
+  let particles = [];
+  const PARTICLE_COUNT = 55;
+
+  // ── Canvas sizing ─────────────────────────────────────────
+  function resize(){
+    const w = canvas.parentElement.clientWidth;
+    const h = Math.round(w * 0.48);
+    canvas.width  = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+  }
+
+  function nodeXY(node){
+    return {
+      x: node.x * canvas.width  / dpr,
+      y: node.y * canvas.height / dpr
+    };
+  }
+
+  // ── Particle system ───────────────────────────────────────
+  function spawnParticle(){
+    const edge = EDGES[Math.floor(Math.random() * EDGES.length)];
+    const from = NODES.find(n=>n.id===edge.from);
+    const to   = NODES.find(n=>n.id===edge.to);
+    const a = nodeXY(from), b = nodeXY(to);
+    const speed = 0.004 + Math.random() * 0.005;
+    particles.push({ ax:a.x, ay:a.y, bx:b.x, by:b.y, t:0, speed, color: edge.color, r: 2.5 + Math.random() });
+  }
+
+  // ── Animate ───────────────────────────────────────────────
+  let tick = 0;
+  function draw(){
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const sc = dpr;
+    ctx.clearRect(0,0,W,H);
+    ctx.save();
+    ctx.scale(sc, sc);
+    const w = W/sc, h = H/sc;
+
+    // Spawn particles
+    if(particles.length < PARTICLE_COUNT && tick % 4 === 0) spawnParticle();
+    tick++;
+
+    // Draw edges
+    EDGES.forEach(edge => {
+      const from = NODES.find(n=>n.id===edge.from);
+      const to   = NODES.find(n=>n.id===edge.to);
+      const a = nodeXY(from), b = nodeXY(to);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = edge.color + '22';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash(edge.flow ? [] : [4,5]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // Draw particles
+    particles = particles.filter(p => p.t <= 1);
+    particles.forEach(p => {
+      p.t += p.speed;
+      const px = p.ax + (p.bx - p.ax) * p.t;
+      const py = p.ay + (p.by - p.ay) * p.t;
+      const alpha = p.t < 0.15 ? p.t/0.15 : p.t > 0.85 ? (1-p.t)/0.15 : 1;
+      ctx.beginPath();
+      ctx.arc(px, py, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.color + Math.round(alpha*220).toString(16).padStart(2,'0');
+      ctx.fill();
+      // trail
+      ctx.beginPath();
+      const tp = Math.max(0, p.t - 0.06);
+      const tx = p.ax + (p.bx - p.ax) * tp;
+      const ty = p.ay + (p.by - p.ay) * tp;
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(px, py);
+      ctx.strokeStyle = p.color + Math.round(alpha*100).toString(16).padStart(2,'0');
+      ctx.lineWidth = p.r * 0.9;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    });
+
+    // Draw nodes
+    const t = Date.now() / 1000;
+    NODES.forEach(node => {
+      const {x,y} = nodeXY(node);
+      const r = node.r;
+
+      // Outer ring pulse
+      const pulseScale = node.pulse ? 1 + 0.2 * Math.sin(t * 3.5) : 1 + 0.05 * Math.sin(t * 1.5 + node.x*5);
+      ctx.beginPath();
+      ctx.arc(x, y, r * 1.7 * pulseScale, 0, Math.PI*2);
+      ctx.fillStyle = node.ring;
+      ctx.fill();
+
+      // Glow for core OS
+      if(node.glow){
+        const g = ctx.createRadialGradient(x,y,0,x,y,r*3.5);
+        g.addColorStop(0, 'rgba(79,70,229,.18)');
+        g.addColorStop(1, 'rgba(79,70,229,0)');
+        ctx.beginPath();
+        ctx.arc(x,y,r*3.5,0,Math.PI*2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+
+      // Node circle
+      const grad = ctx.createRadialGradient(x-r*.25,y-r*.25,0,x,y,r);
+      grad.addColorStop(0, node.color+'EE');
+      grad.addColorStop(1, node.color+'88');
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Border
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.strokeStyle = node.color + '99';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Status dot
+      const dotColor = node.status==='ok' ? '#34D399' : node.status==='warn' ? '#F59E0B' : '#F87171';
+      ctx.beginPath();
+      ctx.arc(x + r*.62, y - r*.62, 4.5, 0, Math.PI*2);
+      ctx.fillStyle = dotColor;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x + r*.62, y - r*.62, 4.5, 0, Math.PI*2);
+      ctx.strokeStyle = '#0F172A';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Label
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const fs = Math.max(8, r * 0.44);
+      ctx.font = `700 ${fs}px "JetBrains Mono",monospace`;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(node.label, x, y);
+
+      // Sub label below node
+      ctx.font = `500 ${Math.max(7,r*.3)}px system-ui,sans-serif`;
+      ctx.fillStyle = 'rgba(255,255,255,.45)';
+      ctx.fillText(node.sub, x, y + r + 11);
+    });
+
+    ctx.restore();
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', ()=>{ resize(); particles=[]; });
+})();
+</script>
+
 <!-- PROBLEM SECTION -->
 <section class="section" id="problem" style="padding:5.5rem 0;background:var(--bg2)">
   <div class="wrap">
@@ -1389,6 +1645,240 @@
   </div>
 </section>
 
+
+
+
+<!-- SILENT FAILURE SECTION -->
+<section class="section" style="padding:5.5rem 0;background:var(--ink)">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="color:var(--indigo3)">The Silent Failure Problem</div>
+    <h2 class="sh2 reveal" style="color:white">Most hiring systems<br><mark style="color:var(--indigo3)">fail silently.</mark></h2>
+    <p class="ssub reveal" style="color:rgba(255,255,255,.5);max-width:580px">The search looks active. The team looks busy. But invisible failure modes are compounding — until it's week 12 and the board is asking questions.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem" class="reveal">
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #1</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Reply rate collapse</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">Outreach goes out. Reply rates drop from 30% to 8%. No one notices for 3 weeks. The mandate stalls without a single alert.</div>
+      </div>
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #2</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Recruiter overload</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">One recruiter carries 6 mandates. Two are getting 80% of their attention. Four are degrading. No visibility into load distribution until deadlines slip.</div>
+      </div>
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #3</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Stalled mandates</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">No next action. No escalation. The mandate sits in "Active" status while nothing moves. By the time someone notices, week 10 is already week 14.</div>
+      </div>
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #4</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Duplicate candidates</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">Same candidate contacted from two separate mandates, two different recruiters, within 3 days. The candidate notices. Your brand takes a hit you never see.</div>
+      </div>
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #5</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Domain deliverability decay</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">Outreach emails bounce. Domain reputation degrades. Reply rates crater further. No alert. No detection. The outreach engine quietly stops working.</div>
+      </div>
+      <div style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);border-radius:14px;padding:1.75rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:.65rem">Silent Failure #6</div>
+        <div style="font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.35">Invisible bottlenecks</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">Candidates pile up at the dossier stage. Hiring manager review takes 9 days. No alert fires. No escalation happens. The pipeline looks full — but it isn't moving.</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding:1.75rem 2rem;background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.25);border-radius:12px;text-align:center" class="reveal">
+      <div style="font-size:1.05rem;font-weight:700;color:white;margin-bottom:.4rem">Majhi OS was built to detect these failures before they compound.</div>
+      <div style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.7">Live operational telemetry. Automated stall detection. Autonomous recovery execution. No silent failures.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DETECT → EXECUTE → MEASURE FLOW -->
+<section class="section" style="padding:5.5rem 0">
+  <div class="wrap">
+    <div class="eyebrow reveal">Operational Intelligence Engine</div>
+    <h2 class="sh2 reveal">Why Majhi OS is<br><mark>fundamentally different.</mark></h2>
+    <p class="ssub reveal">Every other tool generates activity. Majhi OS generates operational signal — and acts on it autonomously. The difference is the loop.</p>
+
+    <div style="margin-top:4rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;align-items:stretch" class="reveal">
+      <!-- connector line -->
+      <div style="position:absolute;top:52px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--indigo),var(--indigo3),var(--emerald));z-index:0;border-radius:2px"></div>
+
+      <!-- Step 1: Detect -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">01</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em">Detect</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.65">Live funnel degradation, stall signals, reply-rate collapse, load imbalance</div>
+      </div>
+
+      <!-- Step 2: Reason -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">02</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em">Reason</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.65">Analyze mandate health state, identify root cause, determine recovery path</div>
+      </div>
+
+      <!-- Step 3: Execute -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--indigo3));display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">03</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em">Execute</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.65">Autonomous recovery — re-route outreach, escalate, rebalance load, re-activate pipeline</div>
+      </div>
+
+      <!-- Step 4: Measure -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(5,150,105,.12);margin-bottom:1.25rem;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--emerald);margin-bottom:.4rem">04</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em">Measure</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.65">Surface hiring impact — velocity gain, pipeline health delta, recovery confidence</div>
+      </div>
+
+      <!-- Step 5: Optimize -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(5,150,105,.12);margin-bottom:1.25rem;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--emerald);margin-bottom:.4rem">05</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em">Optimize</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.65">Learn operational patterns — every mandate makes the next search faster and more precise</div>
+      </div>
+    </div>
+
+    <!-- Flow insight cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:4rem" class="reveal">
+      <div style="background:var(--ink);border-radius:14px;padding:1.75rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.7);margin-bottom:.65rem">Detect Layer</div>
+        <div style="font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem">Live mandate observability</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7">Every active mandate emits operational telemetry — reply rates, phase velocity, stall risk scores, and recruiter load signals — in real time.</div>
+      </div>
+      <div style="background:var(--ink);border-radius:14px;padding:1.75rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.7);margin-bottom:.65rem">Execute Layer</div>
+        <div style="font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem">Mandate recovery infrastructure</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7">When degradation is detected, recovery agents activate autonomously — re-routing outreach, escalating to assigned recruiters, and logging every intervention.</div>
+      </div>
+      <div style="background:var(--ink);border-radius:14px;padding:1.75rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(52,211,153,.6);margin-bottom:.65rem">Intelligence Layer</div>
+        <div style="font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem">Every mandate makes the system smarter</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7">Recovery patterns, channel performance, and mandate intelligence compound across every search — creating a data moat no point tool can replicate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HIRING SYSTEM HEALTH -->
+<section class="section" style="padding:5.5rem 0;background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow reveal">Operational Command Surface</div>
+    <h2 class="sh2 reveal">Hiring System<br><mark>Health.</mark></h2>
+    <p class="ssub reveal">Majhi OS makes operational health explicit — not implied. Every active mandate has a live health score, telemetry feed, and recovery confidence index. This is your Datadog moment for hiring.</p>
+
+    <div style="margin-top:3rem;background:var(--ink);border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg)" class="reveal">
+      <!-- Header bar -->
+      <div style="background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <div style="width:8px;height:8px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.5)">hiring-system-health · live telemetry</span>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.25)">Updated 14s ago</span>
+      </div>
+
+      <!-- Health metrics grid -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0">
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Mandate Health Score</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#A5B4FC;line-height:1;margin-bottom:.35rem">82<span style="font-size:1rem;opacity:.5">/100</span></div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">+4pts from last week</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Pipeline Stability</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#34D399;line-height:1;margin-bottom:.35rem">Stable</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">All 3 active mandates</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Reply Rate Drift</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#F59E0B;line-height:1;margin-bottom:.35rem">−18%</div>
+          <div style="font-size:.75rem;color:#F59E0B;display:flex;align-items:center;gap:.35rem"><span>⚠</span> Detected · Recovery queued</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Recruiter Load</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#F87171;line-height:1;margin-bottom:.35rem">Over</div>
+          <div style="font-size:.75rem;color:#F87171">Rebalance recommended</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Recovery Confidence</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#34D399;line-height:1;margin-bottom:.35rem">87%</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">Based on mandate signals</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Time-to-Stall Risk</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#F59E0B;line-height:1;margin-bottom:.35rem">6 days</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">VP Engineering · Axiom</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07)">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">Outreach Integrity</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#34D399;line-height:1;margin-bottom:.35rem">Verified</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">DNS · MX · No bounce</div>
+        </div>
+        <div style="padding:1.75rem 1.5rem">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">System Status</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:#34D399;line-height:1;margin-bottom:.35rem">Nominal</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.35)">All agents operational</div>
+        </div>
+      </div>
+
+      <!-- Active alerts -->
+      <div style="padding:1.25rem 1.5rem;background:rgba(245,158,11,.05);border-top:1px solid rgba(245,158,11,.15);display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#F59E0B;font-weight:600">
+          <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#F59E0B;animation:breathe 2s infinite;flex-shrink:0"></span>
+          ALERT: Reply rate drift detected on VP Engineering mandate · Recovery agent queued
+        </div>
+        <div style="margin-left:auto;font-size:.72rem;color:rgba(255,255,255,.25);font-family:'JetBrains Mono',monospace">AUTO-RECOVERY · ETA 4h</div>
+      </div>
+    </div>
+
+    <!-- Infrastructure principle -->
+    <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem" class="reveal">
+      <div style="padding:1.25rem 1.5rem;background:white;border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.5rem">Infrastructure Principle</div>
+        <div style="font-size:.875rem;font-weight:600;color:var(--ink);line-height:1.45">No silent degradation</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;margin-top:.35rem">Every workflow emits signal. Every signal is acted on. No mandate degrades without the system knowing and responding.</div>
+      </div>
+      <div style="padding:1.25rem 1.5rem;background:white;border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.5rem">Infrastructure Principle</div>
+        <div style="font-size:.875rem;font-weight:600;color:var(--ink);line-height:1.45">Visibility before velocity</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;margin-top:.35rem">Knowing what's happening is the prerequisite for fixing it. Majhi OS makes hiring operations fully observable before optimizing them.</div>
+      </div>
+      <div style="padding:1.25rem 1.5rem;background:white;border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.5rem">Infrastructure Principle</div>
+        <div style="font-size:.875rem;font-weight:600;color:var(--ink);line-height:1.45">Recovery must be autonomous</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;margin-top:.35rem">Human escalation should be the exception, not the default. Majhi OS recovers mandates autonomously before they require manual intervention.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
 
 <!-- ICP — WHO IT'S FOR -->
 <section class="section" style="padding:5.5rem 0;background:var(--bg2)">
@@ -2255,126 +2745,255 @@
 
 <hr class="divider">
 
-<!-- COMPETITOR TEARDOWN -->
-<section class="section" id="compare">
+<!-- ARCHITECTURAL COMPARISON -->
+<section class="section" id="compare" style="padding:5.5rem 0;background:var(--bg2)">
   <div class="wrap">
-    <div class="eyebrow reveal">Competitive position</div>
-    <h2 class="sh2 reveal">Built where others<br><mark>hit their ceiling.</mark></h2>
-    <p class="ssub reveal">Every alternative solves a slice of recruiting. Majhi OS is the only system that executes the full mission — with evidence, quality gates, and human command at every stage.</p>
+    <div class="eyebrow reveal">The Operational Visibility Gap</div>
+    <h2 class="sh2 reveal">The old hiring operating model<br><mark>is fundamentally broken.</mark></h2>
+    <p class="ssub reveal">Every tool in your stack was designed in isolation. None of them can see the others. The result is a system that generates activity but cannot observe itself — and cannot recover when it fails.</p>
+  </div>
+
+  <!-- FULL-WIDTH ARCHITECTURAL DIAGRAM -->
+  <div class="reveal" style="margin-top:3.5rem;padding:0 2rem;max-width:1280px;margin-left:auto;margin-right:auto">
+    <div style="display:grid;grid-template-columns:1fr 80px 1fr;gap:0;align-items:stretch;min-height:540px">
+
+      <!-- LEFT: FRAGMENTED STACK -->
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:20px 0 0 20px;padding:2.25rem;position:relative;overflow:hidden">
+        <!-- faint red tint overlay -->
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(220,38,38,.04) 0%,transparent 65%);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;gap:.65rem;margin-bottom:1.75rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--red)"></div>
+            <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">Fragmented Hiring Stack</span>
+          </div>
+
+          <!-- tool chaos grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:1.5rem">
+            <!-- tool card with error state -->
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:var(--red)"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">ATS</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Greenhouse</div>
+              <div style="font-size:.7rem;color:var(--red);display:flex;align-items:center;gap:.3rem"><span>✗</span> No pipeline signal</div>
+            </div>
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#F59E0B"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Sourcing</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">LinkedIn Recruiter</div>
+              <div style="font-size:.7rem;color:#D97706;display:flex;align-items:center;gap:.3rem"><span>⚠</span> Batch only · no state</div>
+            </div>
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:var(--red)"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Outreach</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Sequencer / Lemlist</div>
+              <div style="font-size:.7rem;color:var(--red);display:flex;align-items:center;gap:.3rem"><span>✗</span> No reply telemetry</div>
+            </div>
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:var(--red)"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Tracking</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Spreadsheets</div>
+              <div style="font-size:.7rem;color:var(--red);display:flex;align-items:center;gap:.3rem"><span>✗</span> Always out of date</div>
+            </div>
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:var(--red)"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Reporting</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Manual exports</div>
+              <div style="font-size:.7rem;color:var(--red);display:flex;align-items:center;gap:.3rem"><span>✗</span> Retrospective only</div>
+            </div>
+            <div style="background:white;border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#F59E0B"></div>
+              <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Coordination</div>
+              <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Slack + Email</div>
+              <div style="font-size:.7rem;color:#D97706;display:flex;align-items:center;gap:.3rem"><span>⚠</span> No shared state</div>
+            </div>
+          </div>
+
+          <!-- broken connection visual -->
+          <div style="background:#FEF2F2;border:1px dashed rgba(220,38,38,.3);border-radius:10px;padding:1rem;margin-bottom:1rem">
+            <div style="font-size:.68rem;font-weight:700;color:var(--red);margin-bottom:.5rem;letter-spacing:.06em;text-transform:uppercase">No shared operational signal</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(220,38,38,.6)">
+              <span>ATS</span>
+              <span style="flex:1;border-top:1px dashed rgba(220,38,38,.3);margin:0 .25rem"></span>
+              <span>✗</span>
+              <span style="flex:1;border-top:1px dashed rgba(220,38,38,.3);margin:0 .25rem"></span>
+              <span>Sequencer</span>
+              <span style="flex:1;border-top:1px dashed rgba(220,38,38,.3);margin:0 .25rem"></span>
+              <span>✗</span>
+              <span style="flex:1;border-top:1px dashed rgba(220,38,38,.3);margin:0 .25rem"></span>
+              <span>Sheets</span>
+            </div>
+          </div>
+
+          <!-- failure callouts -->
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--red);background:#FEF2F2;padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Stall detected at week 10 — after leadership escalates
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--red);background:#FEF2F2;padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Reply rate collapse invisible until mandate goes cold
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--red);background:#FEF2F2;padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Operational state: unknown at all times
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER ARROW -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--ink);gap:.5rem;padding:1rem 0">
+        <div style="width:1px;flex:1;background:rgba(255,255,255,.06)"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <div style="writing-mode:vertical-rl;text-orientation:mixed;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25)">vs</div>
+        </div>
+        <div style="width:1px;flex:1;background:rgba(255,255,255,.06)"></div>
+      </div>
+
+      <!-- RIGHT: MAJHI OS INFRASTRUCTURE -->
+      <div style="background:var(--ink);border:1px solid rgba(79,70,229,.25);border-radius:0 20px 20px 0;padding:2.25rem;position:relative;overflow:hidden">
+        <!-- glow -->
+        <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.15) 0%,transparent 65%);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;gap:.65rem;margin-bottom:1.75rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
+            <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34D399">Majhi OS · Unified Infrastructure</span>
+          </div>
+
+          <!-- Central OS core -->
+          <div style="background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.3);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;text-align:center">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;color:#818CF8;margin-bottom:.3rem">MAJHI OS · OPERATIONAL CORE</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.5)">Single unified operational signal across all systems</div>
+          </div>
+
+          <!-- connected modules -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:1.5rem">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Live Telemetry</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Mandate observability</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Real-time signal</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.3s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Recovery</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Autonomous agents</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Auto-remediation</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 1.8s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Orchestration</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Workflow coordination</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Unified state</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.5s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Intelligence</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Compounding learning</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Every mandate trains</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.1s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Audit Trail</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">End-to-end evidence</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Board-ready</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+              <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 1.6s infinite"></div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Command Surface</div>
+              <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Leadership visibility</div>
+              <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Live · no syncs</div>
+            </div>
+          </div>
+
+          <!-- health callouts -->
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#34D399;background:rgba(52,211,153,.08);padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Stall detected at day 6 — auto-recovery initiated, mandate protected
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#34D399;background:rgba(52,211,153,.08);padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Reply rate drift surfaced instantly · sequence re-routed
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#34D399;background:rgba(52,211,153,.08);padding:.5rem .8rem;border-radius:7px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Operational state: fully observable · live · no spreadsheets
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operational comparison table — compact -->
+  <div class="wrap" style="margin-top:3rem">
     <div class="compare-table-wrap reveal">
-      <table class="compare-table" aria-label="Competitor comparison table">
+      <table class="compare-table" aria-label="Operating model comparison" style="table-layout:fixed">
         <thead>
           <tr>
-            <th class="ct-feature">Capability</th>
-            <th class="ct-us">Majhi OS</th>
-            <th>Fetcher</th>
-            <th>Findem</th>
-            <th>HireEZ</th>
-            <th>Agency</th>
+            <th class="ct-feature" style="width:36%">Operational Layer</th>
+            <th style="width:32%;text-align:center;color:rgba(255,255,255,.35);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase">Fragmented Stack</th>
+            <th class="ct-us" style="width:32%;text-align:center">Majhi OS Infrastructure</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="ct-feature-cell">Controlled sourcing + QMS gating</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Full</span></td>
-            <td><span class="ct-yes">✓</span></td>
-            <td><span class="ct-partial">~</span></td>
-            <td><span class="ct-yes">✓</span></td>
-            <td><span class="ct-no">Manual</span></td>
+            <td class="ct-feature-cell">Mandate visibility</td>
+            <td style="text-align:center"><span class="ct-no">Delayed · manual</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Real-time telemetry</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Quality gating (QMS)</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ 20-module execution layer</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-partial">~ Human</span></td>
+            <td class="ct-feature-cell">Stall detection</td>
+            <td style="text-align:center"><span class="ct-no">Manual escalation</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Autonomous detection</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Evidence-backed dossiers</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Auditable</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-partial">~ Variable</span></td>
+            <td class="ct-feature-cell">Pipeline recovery</td>
+            <td style="text-align:center"><span class="ct-no">Reactive</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Automated recovery workflows</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Multi-touch outreach + follow-up</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Verified</span></td>
-            <td><span class="ct-partial">~ Basic</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-yes">✓</span></td>
-            <td><span class="ct-no">Manual</span></td>
+            <td class="ct-feature-cell">Recruiter coordination</td>
+            <td style="text-align:center"><span class="ct-no">Slack + spreadsheets</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Unified orchestration</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Live pipeline telemetry</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Real-time</span></td>
-            <td><span class="ct-partial">~ Limited</span></td>
-            <td><span class="ct-partial">~ Limited</span></td>
-            <td><span class="ct-partial">~ Dashboards</span></td>
-            <td><span class="ct-no">✗</span></td>
+            <td class="ct-feature-cell">Leadership reporting</td>
+            <td style="text-align:center"><span class="ct-partial">Retrospective</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Live command surface</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Stall detection &amp; escalation</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Automated</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
+            <td class="ct-feature-cell">Failure prevention</td>
+            <td style="text-align:center"><span class="ct-no">None</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Predictive degradation alerts</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">Deliverability protection</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ DNS/MX + bounce</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-partial">~ Basic</span></td>
-            <td><span class="ct-no">✗</span></td>
+            <td class="ct-feature-cell">Execution continuity</td>
+            <td style="text-align:center"><span class="ct-no">Human-dependent</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">System-managed</span></td>
           </tr>
           <tr>
-            <td class="ct-feature-cell">ATS handoff (Greenhouse/Lever)</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Native</span></td>
-            <td><span class="ct-partial">~ Partial</span></td>
-            <td><span class="ct-yes">✓</span></td>
-            <td><span class="ct-yes">✓</span></td>
-            <td><span class="ct-no">Manual</span></td>
-          </tr>
-          <tr>
-            <td class="ct-feature-cell">Offer intelligence &amp; negotiation</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Built-in</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-no">✗</span></td>
-            <td><span class="ct-partial">~ Sometimes</span></td>
-          </tr>
-          <tr>
-            <td class="ct-feature-cell">End-to-end operating system</td>
-            <td class="ct-us-cell"><span class="ct-yes">✓ Only one</span></td>
-            <td><span class="ct-no">✗ Point tool</span></td>
-            <td><span class="ct-no">✗ Point tool</span></td>
-            <td><span class="ct-no">✗ Point tool</span></td>
-            <td><span class="ct-no">✗ Not tech</span></td>
+            <td class="ct-feature-cell">Operational state</td>
+            <td style="text-align:center"><span class="ct-no">Unknown · opaque</span></td>
+            <td class="ct-us-cell" style="text-align:center"><span class="ct-yes">Observable · measurable</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="compare-verdict reveal">
-      <div class="verdict-cards">
-        <div class="verdict-card">
-          <div class="verdict-vs">vs. Fetcher</div>
-          <div class="verdict-body">Fetcher surfaces batches. Majhi OS executes the mission: search strategy, quality gating, dossiers, outreach, follow-ups, and telemetry. Controlled execution beats opaque batch tools.</div>
-        </div>
-        <div class="verdict-card">
-          <div class="verdict-vs">vs. Findem</div>
-          <div class="verdict-body">Findem improves how you find people. Majhi OS automates what happens after — and before. A smarter search with no execution layer is still a half-built system.</div>
-        </div>
-        <div class="verdict-card">
-          <div class="verdict-vs">vs. HireEZ</div>
-          <div class="verdict-body">HireEZ assists human outreach. Majhi OS runs verified, sequenced, bounce-protected outreach at scale — across email, LinkedIn, and SMS — with stop-on-reply logic and full deliverability protection built in.</div>
-        </div>
-        <div class="verdict-card">
-          <div class="verdict-vs">vs. Agencies</div>
-          <div class="verdict-body">Agencies charge retainers for work that's largely repeatable. Majhi OS preserves the judgment where it matters (dossiers, offer intelligence) and automates the rest at a fraction of the cost.</div>
-        </div>
+
+    <!-- ATS note -->
+    <div style="margin-top:1.75rem;padding:1.5rem 2rem;background:var(--indigo-bg);border:1px solid var(--indigo-border);border-radius:12px;display:flex;align-items:flex-start;gap:1rem" class="reveal">
+      <div style="flex-shrink:0;width:34px;height:34px;background:var(--indigo);border-radius:8px;display:grid;place-items:center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+      <div>
+        <div style="font-size:.875rem;font-weight:700;color:var(--ink);margin-bottom:.3rem">Majhi OS does not replace your ATS.</div>
+        <div style="font-size:.83rem;color:var(--body);line-height:1.7">It sits <em>above</em> your existing stack and orchestrates the execution layer your ATS was never designed to own — sourcing, outreach, quality gating, telemetry, and autonomous recovery. Complementary by design. Connecting takes minutes.</div>
       </div>
     </div>
   </div>
@@ -2497,6 +3116,173 @@
   </div>
 </section>
 
+<!-- HIRING RELIABILITY INDEX -->
+<section class="section" id="reliability-index" style="padding:5.5rem 0;background:var(--ink);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.1) 0%,transparent 60%);pointer-events:none"></div>
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Proprietary Metric</div>
+    <h2 class="sh2 reveal" style="color:white">Hiring Reliability<br><mark style="color:#818CF8">Index™</mark></h2>
+    <p class="ssub reveal" style="color:rgba(255,255,255,.45);max-width:580px">The only composite score that measures whether your hiring system is structurally reliable — not just active. HRI™ benchmarks five operational dimensions that individually hide failure but collectively reveal it.</p>
+
+    <!-- Index score display -->
+    <div style="display:grid;grid-template-columns:360px 1fr;gap:2.5rem;margin-top:3.5rem;align-items:start" class="reveal">
+
+      <!-- Left: composite score -->
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(129,140,248,.2);border-radius:20px;padding:2.5rem;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4F46E5,#818CF8,#34D399)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:1.25rem">Hiring Reliability Index™</div>
+
+        <!-- Gauge ring SVG -->
+        <div style="position:relative;width:160px;height:160px;margin:0 auto 1.5rem">
+          <svg viewBox="0 0 160 160" style="width:100%;height:100%;transform:rotate(-90deg)">
+            <circle cx="80" cy="80" r="66" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="12"/>
+            <circle cx="80" cy="80" r="66" fill="none" stroke="url(#hriGrad)" stroke-width="12"
+              stroke-dasharray="414.69" stroke-dashoffset="74.64" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="hriGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4F46E5"/>
+                <stop offset="100%" stop-color="#34D399"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:2.6rem;font-weight:800;color:white;line-height:1;letter-spacing:-.04em">82</div>
+            <div style="font-size:.7rem;color:rgba(255,255,255,.35);margin-top:.2rem">/ 100</div>
+          </div>
+        </div>
+
+        <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:100px;padding:.4rem 1rem;margin-bottom:1.25rem">
+          <div style="width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
+          <span style="font-size:.72rem;font-weight:700;color:#34D399">High Reliability</span>
+        </div>
+
+        <div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Score above 75 = structurally sound. Below 60 = silent failure risk elevated. Below 45 = mandate degradation probable within 3 weeks.</div>
+
+        <!-- Benchmark comparison -->
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:10px">
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.75rem">Industry Benchmarks</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem">
+              <span style="font-size:.75rem;color:rgba(255,255,255,.35)">Fragmented stack avg.</span>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <div style="width:80px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden"><div style="width:38%;height:100%;background:#F87171;border-radius:2px"></div></div>
+                <span style="font-size:.72rem;font-weight:700;color:#F87171;min-width:24px">38</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem">
+              <span style="font-size:.75rem;color:rgba(255,255,255,.35)">Single-tool stacks</span>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <div style="width:80px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden"><div style="width:56%;height:100%;background:#F59E0B;border-radius:2px"></div></div>
+                <span style="font-size:.72rem;font-weight:700;color:#F59E0B;min-width:24px">56</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem">
+              <span style="font-size:.75rem;color:rgba(255,255,255,.35)">Majhi OS (avg.)</span>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <div style="width:80px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden"><div style="width:82%;height:100%;background:#34D399;border-radius:2px"></div></div>
+                <span style="font-size:.72rem;font-weight:700;color:#34D399;min-width:24px">82</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: five dimensions -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.25rem">Five Operational Dimensions</div>
+
+        <!-- Dimension 1 -->
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 01</div>
+              <div style="font-size:.9rem;font-weight:700;color:white">Mandate Stability</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">88</div>
+          </div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:88%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Are active mandates progressing at expected velocity with no stall signals?</div>
+        </div>
+
+        <!-- Dimension 2 -->
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 02</div>
+              <div style="font-size:.9rem;font-weight:700;color:white">Response Continuity</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#F59E0B">71</div>
+          </div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:71%;height:100%;background:linear-gradient(90deg,#F59E0B,#FBBF24);border-radius:2px"></div></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Is outreach reply rate stable, domain reputation healthy, and follow-up logic intact?</div>
+        </div>
+
+        <!-- Dimension 3 -->
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 03</div>
+              <div style="font-size:.9rem;font-weight:700;color:white">Recruiter Bandwidth</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">84</div>
+          </div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:84%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Is recruiter load distributed within healthy thresholds, or are mandates being silently deprioritized?</div>
+        </div>
+
+        <!-- Dimension 4 -->
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 04</div>
+              <div style="font-size:.9rem;font-weight:700;color:white">Execution Health</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">90</div>
+          </div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:90%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Are sourcing, QMS gating, dossier generation, and ATS handoff completing within SLA windows?</div>
+        </div>
+
+        <!-- Dimension 5 -->
+        <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.18);border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,113,113,.6);margin-bottom:.2rem">Dimension 05 · At Risk</div>
+              <div style="font-size:.9rem;font-weight:700;color:white">Escalation Risk</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#F87171">61</div>
+          </div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:61%;height:100%;background:linear-gradient(90deg,#F87171,#FCA5A5);border-radius:2px"></div></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.35)">How likely is it that leadership will need to manually intervene in an active mandate within 7 days?</div>
+          <div style="margin-top:.75rem;display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:#F87171;background:rgba(248,113,113,.08);padding:.5rem .75rem;border-radius:6px">
+            <span>⚠</span> Recovery agent queued · auto-rebalance in progress
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Trademark / methodology note -->
+    <div style="margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem" class="reveal">
+      <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Sticky</div>
+        <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">A single number leadership can track.</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">No spreadsheets. No status calls. One score that tells you if your hiring system is structurally reliable this week.</div>
+      </div>
+      <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Benchmarkable</div>
+        <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">Compare across mandates, teams, cycles.</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">HRI™ tracks over time — so you can see if your hiring operation is improving or degrading across quarters and hiring cycles.</div>
+      </div>
+      <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Proprietary</div>
+        <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">No other recruiting system produces this.</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">Because no other system has unified telemetry, execution data, and recovery signals in one layer. HRI™ requires the full Majhi OS stack to compute.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <hr class="divider">
 
 <!-- ROI CALCULATOR -->
@@ -2517,10 +3303,10 @@
             </div>
           </div>
           <div class="roi-field">
-            <label class="roi-label" for="roi-salary">Avg. role salary ($K)</label>
+            <label class="roi-label" for="roi-salary">Average salary ($K)</label>
             <div class="roi-slider-wrap">
-              <input type="range" class="roi-slider" id="roi-salary" min="100" max="400" step="10" value="200" oninput="calcROI()">
-              <div class="roi-slider-val" id="roi-salary-val">$200K</div>
+              <input type="range" class="roi-slider" id="roi-salary" min="100" max="400" step="10" value="233" oninput="calcROI()">
+              <div class="roi-slider-val" id="roi-salary-val">$233K</div>
             </div>
           </div>
           <div class="roi-field">
@@ -2531,7 +3317,7 @@
             </div>
           </div>
           <div class="roi-field">
-            <label class="roi-label" for="roi-agency">Agency / tool spend per year ($K)</label>
+            <label class="roi-label" for="roi-agency">Current agency/tool spend (annual)</label>
             <div class="roi-slider-wrap">
               <input type="range" class="roi-slider" id="roi-agency" min="20" max="400" step="10" value="120" oninput="calcROI()">
               <div class="roi-slider-val" id="roi-agency-val">$120K</div>
@@ -2541,28 +3327,28 @@
       </div>
       <div class="roi-results">
         <div class="roi-result-card" id="roi-cost-saved">
-          <div class="roi-result-label">Stack &amp; tool spend eliminated</div>
+          <div class="roi-result-label">Stack spend eliminated</div>
           <div class="roi-result-val" id="rv-stack">—</div>
-          <div class="roi-result-sub">vs. fragmented workflow tooling</div>
+          <div class="roi-result-sub">65% of current agency / tooling costs</div>
         </div>
         <div class="roi-result-card" id="roi-velocity">
           <div class="roi-result-label">Revenue velocity recovered</div>
           <div class="roi-result-val" id="rv-vel">—</div>
-          <div class="roi-result-sub">from faster time-to-close</div>
+          <div class="roi-result-sub">Based on 14wk → 7wk compression</div>
         </div>
         <div class="roi-result-card roi-result-highlight">
           <div class="roi-result-label">Estimated annual ROI</div>
           <div class="roi-result-val" id="rv-roi">—</div>
-          <div class="roi-result-sub">net of Majhi OS cost</div>
+          <div class="roi-result-sub">Stack savings + velocity gain − Majhi OS cost</div>
         </div>
         <div class="roi-result-card">
           <div class="roi-result-label">Cost per qualified shortlist</div>
           <div class="roi-result-val" id="rv-cps">—</div>
-          <div class="roi-result-sub">vs. ~$4,200 industry average</div>
+          <div class="roi-result-sub">vs ~$6K via agency (est.)</div>
         </div>
         <div class="roi-assumption">
           <div class="roi-assumption-title">Assumptions</div>
-          Majhi OS reduces time-to-close by ~30% (50d vs 14wk avg). Replaces 60–70% of tool stack spend. Each week of open role costs ~1.5% of annual salary in lost team output.
+          65% stack spend reduction model. Revenue velocity based on 1.5% rev/headcount × 3.5x salary multiple per week of delay compression. Majhi OS cost modelled at $5K/role.
         </div>
       </div>
     </div>
@@ -2990,6 +3776,91 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FUTURE OF HIRING OPERATIONS MANIFESTO -->
+<section class="section" style="padding:5.5rem 0;background:var(--ink);position:relative;overflow:hidden" id="manifesto">
+  <!-- Background texture -->
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+    <div style="position:absolute;top:-100px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 65%)"></div>
+    <div style="position:absolute;bottom:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.06) 0%,transparent 65%)"></div>
+  </div>
+
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Strategic Manifesto</div>
+    <h2 class="sh2 reveal" style="color:white;max-width:680px">The Future of<br><mark style="color:#818CF8">Hiring Operations.</mark></h2>
+    <p class="ssub reveal" style="color:rgba(255,255,255,.4);max-width:560px">The hiring infrastructure category doesn't exist yet. We're building it. Here's what it requires — and why everything before it was fundamentally insufficient.</p>
+
+    <!-- Manifesto statements -->
+    <div style="margin-top:4rem;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden" class="reveal">
+
+      <div style="background:var(--ink);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">01</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Fragmented systems cannot self-observe.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">The recruiting stack was never designed as a unified system. Every tool was built in isolation, for isolated workflows. None can see what the others are doing. The result is a hiring operation that looks active — but is structurally blind to its own failure states. Infrastructure requires observability as a first principle.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.015);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">02</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Invisible degradation is the real failure mode.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">Hiring doesn't fail loudly. It stalls quietly. Reply rates collapse by 20% and no one notices for two weeks. A recruiter goes over capacity and three mandates drift without a single alert. The failure accumulates invisibly — until the board asks why the VP search is now at week 14. Infrastructure must detect before it becomes visible to humans.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.015);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">03</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="1.75" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Recovery must be autonomous — not human-dependent.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">If the only way to fix a stalled mandate is to notice it manually, escalate it in a Slack thread, and wait for a human to re-activate it — the system isn't infrastructure. It's just expensive administration. Future hiring infrastructure doesn't wait for humans to fix what it can detect and resolve itself. Autonomy is the line between a tool and an operating system.</div>
+      </div>
+
+      <div style="background:var(--ink);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">04</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="1.75" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Every workflow must emit operational signal.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">In infrastructure software, every action produces telemetry. Not as a feature — as a design requirement. Hiring operations should be no different. Every outreach sequence, every QMS gate, every candidate dossier, every ATS handoff should produce a timestamped signal that the system can reason about. Workflows that don't emit signal are black boxes — and black boxes produce silent failures.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.015);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">05</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Operational intelligence compounds over time.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">The difference between a tool and infrastructure is compounding. A tool does the same thing every time. Infrastructure learns from every execution — which outreach channels perform by role, which QMS gates reduce rework, which escalation patterns predict board rejection. Every mandate should make the next search structurally faster, cheaper, and more reliable. That's a data moat no point tool can replicate.</div>
+      </div>
+
+      <div style="background:var(--ink);padding:2.5rem;position:relative">
+        <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">06</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Hiring reliability is an executive responsibility — not a recruiting one.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">When a VP search stalls at week 12, the cost lands on the CEO's desk — not the recruiter's. Leadership velocity, organizational scaling, and execution predictability all depend on hiring infrastructure that is structurally sound. The future of hiring operations isn't about giving recruiters better tools. It's about giving organizations hiring systems they can depend on.</div>
+      </div>
+
+    </div>
+
+    <!-- Closing statement -->
+    <div style="margin-top:3rem;padding:2.5rem 3rem;background:rgba(79,70,229,.08);border:1px solid rgba(79,70,229,.2);border-radius:16px;text-align:center" class="reveal">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:white;letter-spacing:-.03em;line-height:1.4;max-width:680px;margin:0 auto .75rem">
+        "We're not building better recruiting software.<br>We're building the operational infrastructure layer that hiring has never had."
+      </div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.3)">— Manas Majhi, Founder · Majhi OS</div>
+    </div>
+
   </div>
 </section>
 
@@ -3831,23 +4702,24 @@
     document.getElementById('roi-ttc-val').textContent = ttcWeeks + ' wks';
     document.getElementById('roi-agency-val').textContent = '$' + (agencySpend/1000) + 'K';
 
-    // Majhi OS cost (annual): Starter $30K, Growth $96K, Enterprise $150K+
-    const majhiCost = roles <= 1 ? 30000 : roles <= 3 ? 96000 : roles <= 10 ? 150000 : 200000;
+    // Majhi OS cost: $5K per role (mandate-based pricing model)
+    const majhiCost = roles * 5000;
 
-    // Stack savings: assume 65% of current spend replaced
+    // Stack savings: 65% of current agency/tool spend replaced
     const stackSaved = Math.round(agencySpend * 0.65);
 
-    // Velocity recovered: each week open = 1.5% salary lost in productivity, Majhi reduces by 30%
-    const weeksSaved = ttcWeeks * 0.30;
+    // Velocity recovered: each week open = 1.5% of annual salary in lost output
+    // Majhi OS compresses time-to-close by 50% (e.g. 14wk → 7wk)
+    const weeksSaved = ttcWeeks * 0.50;
     const velPerRole = salary * 0.015 * weeksSaved;
     const velTotal = Math.round(velPerRole * roles);
 
-    // Total ROI
+    // Net ROI = stack savings + velocity recovered − Majhi OS cost
     const totalBenefit = stackSaved + velTotal;
     const roi = totalBenefit - majhiCost;
 
-    // Cost per shortlist: Majhi delivers 6/wk per mandate, avg ~50d = ~7wks → ~42 candidates per mandate
-    const cps = Math.round(majhiCost / (roles * 42));
+    // Cost per qualified shortlist: Majhi delivers 6 ranked candidates per mandate
+    const cps = Math.round(majhiCost / (roles * 6));
 
     document.getElementById('rv-stack').textContent = fmt(stackSaved);
     document.getElementById('rv-vel').textContent = fmt(velTotal);
