@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majhi OS — Mandate Health Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fff;
+            --bg2: #F8F9FB;
+            --bg3: #EEF1F6;
+            --ink: #0D1B2A;
+            --body: #3D4F61;
+            --muted: #7A8FA6;
+            --border: #DDE3EC;
+            --border2: #C8D2E0;
+            --indigo: #4F46E5;
+            --indigo2: #6366F1;
+            --indigo3: #818CF8;
+            --indigo-bg: #EEF2FF;
+            --indigo-border: rgba(79, 70, 229, .18);
+            --emerald: #059669;
+            --emerald-bg: #ECFDF5;
+            --emerald-light: #F0FDF4;
+            --amber: #D97706;
+            --amber-bg: #FFFBEB;
+            --red: #DC2626;
+            --red-light: #FEE2E2;
+            --sh-sm: 0 1px 3px rgba(13, 27, 42, .06), 0 1px 2px rgba(13, 27, 42, .04);
+            --sh-md: 0 4px 16px rgba(13, 27, 42, .07), 0 1px 4px rgba(13, 27, 42, .04);
+            --sh-lg: 0 12px 40px rgba(13, 27, 42, .1), 0 2px 8px rgba(13, 27, 42, .06);
+            --sh-xl: 0 20px 60px rgba(13, 27, 42, .15), 0 4px 12px rgba(13, 27, 42, .08);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', sans-serif; }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .625rem;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            background: var(--indigo);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-mark svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .logo-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: -.025em;
+            color: var(--ink);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 5rem;
+            background: var(--bg);
+        }
+
+        .hero-mesh {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hero-mesh::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: 10%;
+            width: 70%;
+            height: 130%;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(79, 70, 229, .08) 0%, transparent 65%);
+        }
+
+        .hero-mesh::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 55%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(99, 102, 241, .05) 0%, transparent 65%);
+        }
+
+        .hero-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content { }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            background: var(--indigo-bg);
+            border: 1px solid var(--indigo-border);
+            padding: .35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.75rem;
+        }
+
+        .pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--indigo);
+            animation: breathe 2.5s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: .6; }
+        }
+
+        .hero-h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -.04em;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-h1 mark {
+            background: none;
+            color: var(--indigo);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--body);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 420px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--sh-xl);
+        }
+
+        .chart-container {
+            padding: 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chart-title {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .chart-label {
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bar-label {
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--body);
+            min-width: 120px;
+        }
+
+        .bar-wrap {
+            flex: 1;
+            height: 28px;
+            background: var(--bg3);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: .75rem;
+            font-weight: 700;
+            color: white;
+            animation: slideIn 1.2s cubic-bezier(.34, 1.56, .64, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .bar-fill.fragmented { background: linear-gradient(90deg, #DC2626, #EF4444); animation-delay: 0s; }
+        .bar-fill.ats { background: linear-gradient(90deg, #D97706, #F59E0B); animation-delay: .15s; }
+        .bar-fill.majhi { background: linear-gradient(90deg, #4F46E5, #6366F1); animation-delay: .3s; }
+
+        .bar-value {
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--muted);
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* STATS SECTION */
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .eyebrow {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            margin-bottom: .875rem;
+        }
+
+        .sh2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 2rem;
+        }
+
+        /* OPERATIONAL METRICS */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--sh-md);
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sh-lg);
+            border-color: var(--indigo);
+        }
+
+        .metric-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .5rem;
+        }
+
+        .metric-value {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--ink);
+            margin-bottom: .5rem;
+            line-height: 1;
+        }
+
+        .metric-sub {
+            font-size: .8rem;
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        .metric-card.accent {
+            background: linear-gradient(135deg, var(--indigo-bg) 0%, rgba(99, 102, 241, .04) 100%);
+            border-color: var(--indigo-border);
+        }
+
+        .metric-card.accent .metric-value {
+            color: var(--indigo);
+        }
+
+        /* PROBLEM SECTION */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .problem-content { }
+
+        .problem-narrative {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--body);
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-narrative strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .problem-visual {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--sh-md);
+        }
+
+        .health-score-demo {
+            text-align: center;
+        }
+
+        .health-score-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .health-score-ring {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--emerald) 0deg 234deg, var(--bg3) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 16px rgba(5, 150, 105, .15);
+        }
+
+        .health-score-inner {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .health-score-value {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--emerald);
+            line-height: 1;
+        }
+
+        .health-score-unit {
+            font-size: .65rem;
+            color: var(--muted);
+            margin-top: .25rem;
+        }
+
+        .health-status {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--emerald);
+            background: var(--emerald-bg);
+            padding: .5rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* CHECKLIST */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .check-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all .2s;
+        }
+
+        .check-item:hover {
+            border-color: var(--indigo);
+            box-shadow: var(--sh-md);
+        }
+
+        .check-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--indigo-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-icon::after {
+            content: "✓";
+            color: var(--indigo);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .check-content { }
+
+        .check-title {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: .35rem;
+        }
+
+        .check-desc {
+            font-size: .8rem;
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        /* FOCUS BOX */
+        .focus-section {
+            background: linear-gradient(135deg, var(--indigo-bg) 0%, rgba(99, 102, 241, .04) 100%);
+            border: 1px solid var(--indigo-border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .focus-label {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            margin-bottom: 1rem;
+        }
+
+        .focus-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--ink);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CTA BAND */
+        .cta-band {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .cta-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            color: var(--ink);
+            margin-bottom: .75rem;
+            line-height: 1.1;
+        }
+
+        .cta-sub {
+            font-size: .95rem;
+            color: var(--body);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .calendly-container {
+            max-width: 650px;
+            margin: 0 auto;
+            border-radius: 0;
+            overflow: hidden;
+            border: none;
+            box-shadow: none;
+        }
+
+        .cta-note {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 1.5rem;
+        }
+
+        /* ARCHITECTURE */
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .arch-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .arch-num {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--indigo);
+            line-height: 1;
+            margin-bottom: .75rem;
+        }
+
+        .arch-title {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: .75rem;
+        }
+
+        .arch-desc {
+            font-size: .8rem;
+            color: var(--body);
+            line-height: 1.6;
+        }
+
+        .arch-connector {
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--border);
+        }
+
+        .arch-card:last-child .arch-connector {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .arch-connector {
+                display: none !important;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--bg2);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .footer-logo-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .footer-copy {
+            font-size: .78rem;
+            color: var(--muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 2rem 3rem;
+            }
+
+            .hero-h1 {
+                font-size: 2.25rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .sh2 {
+                font-size: 1.75rem;
+            }
+
+            .focus-section {
+                padding: 2rem;
+            }
+
+            .chart-container {
+                padding: 16px;
+            }
+
+            .bar-row {
+                gap: 8px;
+            }
+
+            .bar-label {
+                min-width: 90px;
+                font-size: .75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-h1 {
+                font-size: 1.75rem;
+            }
+
+            .sh2 {
+                font-size: 1.5rem;
+            }
+
+            .check-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .cta-h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="logo-mark">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 12h8M16 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-name">Majhi OS</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-mesh"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-pill" id="heroPill">
+                    <div class="pill-dot"></div>
+                    <span id="pillText">Concurrent Mandates</span>
+                </div>
+
+                <h1 class="hero-h1" id="headline">Running 3 Leadership Hires. One Stalls, All Stall.</h1>
+                <p class="hero-sub" id="subheading">30 minutes. Your actual mandates. No generic demo.</p>
+            </div>
+
+            <div class="hero-visual">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title">Time-to-Fill Comparison</div>
+                        <div class="chart-label">VP-level roles</div>
+                    </div>
+                    <div class="bar-chart" id="chartBars">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPERATIONAL METRICS -->
+    <div class="wrap section">
+        <div class="eyebrow">The Operational Challenge</div>
+        <h2 class="sh2">Why Mandates Fail — And How To Recover Them</h2>
+
+        <div class="metrics-grid" id="metricsGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- PROBLEM SECTION -->
+    <div class="wrap section">
+        <div class="problem-grid">
+            <div class="problem-content">
+                <div class="eyebrow">The Gap</div>
+                <h2 class="sh2">Operational Invisibility Is The Real Cost</h2>
+                <p class="problem-narrative" id="problemNarrative"></p>
+            </div>
+
+            <div class="problem-visual">
+                <div class="health-score-demo">
+                    <div class="health-score-label">Hiring Health Score</div>
+                    <div class="health-score-ring">
+                        <div class="health-score-inner">
+                            <div class="health-score-value">65</div>
+                            <div class="health-score-unit">/ 100</div>
+                        </div>
+                    </div>
+                    <p style="font-size: .85rem; color: var(--body); line-height: 1.6; margin-bottom: 1rem;">
+                        Real-time operational score for your mandate. Predicts failure before it happens.
+                    </p>
+                    <div class="health-status">⚠ At Risk — Recovery Recommended</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div class="wrap section">
+        <div class="eyebrow">The Assessment</div>
+        <h2 class="sh2">30 Minutes. Four Outcomes.</h2>
+
+        <div class="checklist-grid">
+            <div class="check-item">
+                <div class="check-icon"></div>
+                <div class="check-content">
+                    <div class="check-title">Your Timeline</div>
+                    <div class="check-desc">Walk through what happened, where it stalled, signals that were missed</div>
+                </div>
+            </div>
+
+            <div class="check-item">
+                <div class="check-icon"></div>
+                <div class="check-content">
+                    <div class="check-title">Health Score</div>
+                    <div class="check-desc">Real-time operational score for your role(s) — predictive, not reactive</div>
+                </div>
+            </div>
+
+            <div class="check-item">
+                <div class="check-icon"></div>
+                <div class="check-content">
+                    <div class="check-title">Recovery Actions</div>
+                    <div class="check-desc">Which actions would have worked, why they worked, prioritized by impact</div>
+                </div>
+            </div>
+
+            <div class="check-item">
+                <div class="check-icon"></div>
+                <div class="check-content">
+                    <div class="check-title">Infrastructure</div>
+                    <div class="check-desc">Where you stand now, what operational visibility requires, path forward</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOCUS -->
+    <div class="wrap">
+        <div class="focus-section">
+            <div class="focus-label">What You'll Know</div>
+            <p class="focus-text" id="assessmentFocus"></p>
+        </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="wrap section">
+        <div class="eyebrow">How It Works</div>
+        <h2 class="sh2">The Majhi OS Architecture</h2>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-num">1</div>
+                <div class="arch-title">Observability</div>
+                <div class="arch-desc">Real-time mandate health monitoring. Recruiter load. Funnel degradation. Response decay. SLA breaches.</div>
+                <div class="arch-connector">→</div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-num">2</div>
+                <div class="arch-title">Intelligence</div>
+                <div class="arch-desc">Operational reasoning. Why mandates fail. Which recruiter patterns work. Which recovery actions succeed.</div>
+                <div class="arch-connector">→</div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-num">3</div>
+                <div class="arch-title">Execution</div>
+                <div class="arch-desc">Autonomous recovery sequences. Reassign recruiters. Escalate. Rebalance pipelines. No manual orchestration.</div>
+                <div class="arch-connector">→</div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-num">4</div>
+                <div class="arch-title">Attribution</div>
+                <div class="arch-desc">Executive visibility. Cost saved. Hiring velocity. Recruiter efficiency. Recovered revenue. CFO-level reporting.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-band">
+        <div class="cta-inner">
+            <h2 class="cta-h2">Schedule Your Assessment</h2>
+            <p class="cta-sub">30-minute confidential operational assessment. No sales pitch. No obligation.</p>
+
+            <div class="calendly-container">
+                <iframe src="https://calendly.com/manasmajhi/intro-call?embed_domain=majhi.tech&embed_type=Inline" width="100%" height="420" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <div class="logo-mark" style="width: 28px; height: 28px;">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 12h8M16 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="footer-logo-name">Majhi OS</div>
+            </div>
+            <div class="footer-copy">© 2025 Majhi Group · Autonomous Hiring Operations Infrastructure</div>
+        </div>
+    </footer>
+
+    <script>
+        const segments = {
+            'concurrent-mandates': {
+                headline: 'Running 3 Leadership Hires. One Stalls, All Stall.',
+                subheading: '30 minutes. Your actual mandates. No generic demo.',
+                pill: 'Concurrent Mandates',
+                problem: '<strong>Multiple mandates don\'t just compete for recruiter attention—they create a cascade of operational invisibility.</strong> When you\'re running 3+ concurrent leadership hires, your team is stretched thin. One stalling mandate causes others to stall. Your GTM stays two leaders behind your growth plan. You can\'t see why individual mandates are failing because your tools don\'t share state. By the time you notice a collapse, recovery is months away.',
+                metrics: [
+                    { label: 'VP Searches Stall', value: '68%', sub: 'Past week 10 with concurrent mandates' },
+                    { label: 'Recovery Success Rate', value: '3.5x', sub: 'Higher with real-time visibility' },
+                    { label: 'Time Saved', value: '14 days', sub: 'Per concurrent mandate recovered' },
+                    { label: 'Mandate Health Visibility', value: '0%', sub: 'Current state (fragmented stack)', accent: true }
+                ],
+                chartBars: [
+                    { label: 'Fragmented Stack', value: 18, weeks: '18 wk', color: 'fragmented' },
+                    { label: 'Best-in-class ATS', value: 12, weeks: '10 wk', color: 'ats' },
+                    { label: 'Majhi OS', value: 7, weeks: '7 wk (50 days)', color: 'majhi' }
+                ],
+                assessmentFocus: 'You\'ll see exactly which of your concurrent mandates are at operational risk, which recovery actions work in parallel, and how to compress time-to-fill across your entire hiring system.'
+            },
+            'stalled-critical-role': {
+                headline: 'Your $400K Seat Is In Month 4. Here\'s Why.',
+                subheading: '30 minutes. Your actual role. No generic demo.',
+                pill: 'Stalled Critical Role',
+                problem: '<strong>One critical mandate stuck for 100+ days is not a sourcing problem—it\'s an operational one.</strong> Your CFO, VP Sales, or CTO search has drifted to month 3, month 4. Revenue or product roadmap is delayed. Leadership is asking questions. You\'ve tried everything: multiple recruiters, premium outreach, LinkedIn, boards. The median CEO sees this happen at day 60 and doesn\'t understand why it\'s still open. The difference between a 50-day close and a 120-day close is never the talent market. It\'s execution visibility.',
+                metrics: [
+                    { label: 'Median Close Time', value: '50 days', sub: 'With operational visibility' },
+                    { label: 'Industry Standard', value: '98 days', sub: 'Without mandate health monitoring' },
+                    { label: 'Manas Record', value: '41 days', sub: 'Two firms failed in 60+' },
+                    { label: 'Recovery Window', value: '45-60 days', sub: 'Optimal intervention point', accent: true }
+                ],
+                chartBars: [
+                    { label: 'Fragmented Stack', value: 18, weeks: '14 wk', color: 'fragmented' },
+                    { label: 'Best-in-class ATS', value: 12, weeks: '10 wk', color: 'ats' },
+                    { label: 'Majhi OS', value: 7, weeks: '7 wk (50 days)', color: 'majhi' }
+                ],
+                assessmentFocus: 'You\'ll identify the exact operational point where your search stalled, see which recovery actions work for this specific role type, and get a roadmap to compress similar searches in the future.'
+            },
+            'recruiter-overload': {
+                headline: 'Your Recruiters Are Firefighting, Not Preventing Fires.',
+                subheading: '30 minutes. Your actual pipeline. No generic demo.',
+                pill: 'Recruiter Overload',
+                problem: '<strong>Two recruiters. Three concurrent mandates. No operational visibility into any of them.</strong> Your team is managing chaos instead of preventing it. Mandates stall invisibly until someone discovers the collapse at week 8. By then, the recruiting domain has degraded, candidate pipelines have gone cold, and recovery requires starting over. Your best recruiters spend 30% of their time on triage and recovery instead of execution. Majhi OS surfaces failing mandates before they collapse, so your team can act first instead of react last.',
+                metrics: [
+                    { label: 'Stall Rate', value: '60%', sub: '2 recruiters, 3+ concurrent mandates' },
+                    { label: 'Avg Detection Lag', value: '48 hours', sub: 'From stall to visibility' },
+                    { label: 'Team Efficiency Gain', value: '3.2x', sub: 'With mandate visibility' },
+                    { label: 'Recovery Actions Prioritized', value: '100%', sub: 'By impact, not guesswork', accent: true }
+                ],
+                chartBars: [
+                    { label: 'Fragmented Stack', value: 18, weeks: '18 wk', color: 'fragmented' },
+                    { label: 'Best-in-class ATS', value: 12, weeks: '11 wk', color: 'ats' },
+                    { label: 'Majhi OS', value: 7, weeks: '7 wk (50 days)', color: 'majhi' }
+                ],
+                assessmentFocus: 'You\'ll learn how to surface stalling mandates before your team drowns in triage, prioritize recovery actions by impact, and compress time-to-fill even with constrained recruiting capacity.'
+            },
+            'fragmented-visibility': {
+                headline: 'You Have Great Processes. You Can\'t See Inside Them.',
+                subheading: '30 minutes. Your actual tool stack. No generic demo.',
+                pill: 'Fragmented Visibility',
+                problem: '<strong>Greenhouse talks to LinkedIn. LinkedIn talks to email. Email talks to Slack. But no one talks to each other.</strong> Your recruiting stack is fragmented. Mandate health is invisible until someone manually digs through four tools to understand what\'s happening. Recovery actions are guesswork because signals aren\'t connected. You have great people. You have good processes. But operational intelligence requires unified visibility. Majhi OS connects signal across your existing tool stack and shows you real-time mandate health without another platform.',
+                metrics: [
+                    { label: 'Stalls Invisible Until', value: 'Week 8+', sub: 'Because signals aren\'t connected' },
+                    { label: 'Audit Coverage', value: '12%', sub: 'Fragmented stack vs unified' },
+                    { label: 'Manual Synthesis', value: '9 hrs/wk', sub: 'Signal extraction time (eliminated)' },
+                    { label: 'Unified Visibility', value: 'Real-time', sub: 'Without rebuilding your stack', accent: true }
+                ],
+                chartBars: [
+                    { label: 'Fragmented Stack', value: 18, weeks: '18 wk', color: 'fragmented' },
+                    { label: 'Best-in-class ATS', value: 12, weeks: '10 wk', color: 'ats' },
+                    { label: 'Majhi OS', value: 7, weeks: '7 wk (50 days)', color: 'majhi' }
+                ],
+                assessmentFocus: 'You\'ll see how to get real-time mandate health across your tool stack without ripping out Greenhouse, LinkedIn, or anything else—just unified operational intelligence.'
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const segment = urlParams.get('segment') || 'concurrent-mandates';
+        const config = segments[segment] || segments['concurrent-mandates'];
+
+        // Set content
+        document.getElementById('headline').textContent = config.headline;
+        document.getElementById('subheading').textContent = config.subheading;
+        document.getElementById('pillText').textContent = config.pill;
+        document.getElementById('problemNarrative').innerHTML = config.problem;
+        document.getElementById('assessmentFocus').textContent = config.assessmentFocus;
+
+        // Render metrics
+        const metricsGrid = document.getElementById('metricsGrid');
+        metricsGrid.innerHTML = config.metrics.map(m => `
+            <div class="metric-card ${m.accent ? 'accent' : ''}">
+                <div class="metric-label">${m.label}</div>
+                <div class="metric-value">${m.value}</div>
+                <div class="metric-sub">${m.sub}</div>
+            </div>
+        `).join('');
+
+        // Render chart
+        const chartBars = document.getElementById('chartBars');
+        chartBars.innerHTML = config.chartBars.map(bar => `
+            <div class="bar-row">
+                <div class="bar-label">${bar.label}</div>
+                <div class="bar-wrap">
+                    <div class="bar-fill ${bar.color}" style="width: ${(bar.value / 18) * 100}%">${bar.value} wk</div>
+                </div>
+                <div class="bar-value">${bar.weeks}</div>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
