@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Majhi OS — Autonomous Hiring Operations Infrastructure</title>
+  <meta name="description" content="Majhi OS detects failing mandates before they collapse. Real-time observability, failure prediction, and autonomous recovery for hiring systems that can't afford to stall." />
+  <meta name="keywords" content="Majhi OS, hiring operations, autonomous hiring infrastructure, hiring system health, mandate recovery, executive search operations" />
+  <meta property="og:title" content="Majhi OS — Autonomous Hiring Operations Infrastructure" />
+  <meta property="og:description" content="Majhi OS detects failing mandates before they collapse. Real-time observability, failure prediction, and autonomous recovery for hiring systems that can't afford to stall." />
+  <meta property="og:url" content="https://majhi.tech/majhios" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@manasmajhi" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Majhi OS",
+    "applicationCategory": "BusinessApplication",
+    "description": "Autonomous hiring operations infrastructure. Detects failing mandates before they collapse.",
+    "url": "https://majhi.tech",
+    "author": {
+      "@type": "Person",
+      "name": "Manas Majhi",
+      "alternateName": ["Manas Ranjan Majhi", "Maanas Ranjan Majhi"],
+      "url": "https://manasmajhi.com",
+      "sameAs": ["https://majhigroup.com", "https://manasmajhi.com"]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f8f8fb;
+      --surface2: #f0f0f8;
+      --border: #e5e5ef;
+      --text: #0f0f1a;
+      --text-mid: #3a3a52;
+      --muted: #7a7a96;
+      --accent: #5b4fe8;
+      --accent-light: #ede9fe;
+      --accent-dark: #4338ca;
+      --accent-text: #4c1d95;
+      --green: #10b981;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow: hidden;
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .ticker-new {
+      background: var(--accent);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .ticker-items {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .ticker-items span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ticker-items span::before {
+      content: '·';
+      color: var(--border);
+    }
+
+    .ticker-items span:first-child::before { display: none; }
+
+    .ticker-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 16px; height: 16px;
+      fill: none;
+      stroke: white;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links a:hover {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      margin: 0 0.5rem;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-ghost-sm {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      padding: 0.4rem 0.75rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 7rem 2rem 5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.75rem;
+      color: var(--text);
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary-lg:hover { background: var(--accent-dark); }
+    .btn-primary-lg:active { transform: scale(0.98); }
+
+    .btn-outline-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      padding: 0.8rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline-lg:hover { border-color: var(--accent); background: var(--accent-light); }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note svg {
+      width: 14px; height: 14px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── PROBLEM ── */
+    .problem-bg { background: var(--surface); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .failure-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .failure-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.925rem;
+      color: var(--text-mid);
+      padding: 0.875rem 1rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+
+    .fail-x {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      margin-top: 0.1em;
+      background: #fee2e2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ef4444;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .problem-quote {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.45;
+      color: var(--text);
+      padding: 2.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .problem-quote .highlight { color: var(--accent); }
+
+    .problem-quote cite {
+      display: block;
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── LAYERS ── */
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+
+    .layer {
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .layer:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(91,79,232,0.08);
+    }
+
+    .layer-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .layer-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .layer h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .layer p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .layer-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    /* ── FEATURES ── */
+    .features-bg { background: var(--surface); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+
+    .feature {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      transition: border-color 0.2s;
+    }
+
+    .feature:hover { border-color: var(--accent); }
+
+    .feature-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .feature p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── PROOF ── */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+
+    .proof-item {
+      background: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .proof-before {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .proof-after {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .proof-label {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+    }
+
+    /* ── WALKTHROUGH ── */
+    .walkthrough-bg { background: var(--surface); }
+
+    .walkthrough-box {
+      max-width: 680px;
+      margin: 3.5rem auto 0;
+      padding: 3rem;
+      background: white;
+      border: 1.5px solid var(--accent);
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(91,79,232,0.1);
+    }
+
+    .walkthrough-box h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .walkthrough-box > p {
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .walkthrough-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+
+    .walkthrough-checks span {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+    }
+
+    .check-circle {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #d1fae5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #065f46;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    /* ── PRICING ── */
+    .pricing-card {
+      max-width: 460px;
+      margin: 3.5rem auto 0;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-per {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pricing-includes li {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pricing-includes li .check-circle { background: var(--accent-light); color: var(--accent); }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--accent);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 1.25rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      max-width: 460px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      color: var(--accent);
+      padding: 0.875rem 2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-white:hover { opacity: 0.92; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      background: var(--surface);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .footer-logo .logo-icon {
+      width: 24px; height: 24px;
+      border-radius: 5px;
+    }
+
+    .footer-logo .logo-icon svg { width: 12px; height: 12px; }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 4.5rem 1.25rem 3rem; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 1.25rem; }
+      .stats-inner { padding: 2rem 1.25rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .walkthrough-box, .pricing-card { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-new">New</span>
+  <div class="ticker-items">
+    <span><span class="ticker-dot"></span> Live mandate health monitoring — now in general availability</span>
+    <span>Hiring Observability dashboards: cross-mandate telemetry launched</span>
+    <span>Failure Prediction Engine in closed beta — <a href="https://majhi.tech" style="color:var(--accent);font-weight:600;">join waitlist</a></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 16 16">
+        <polyline points="8,3 13,8 8,13" />
+        <line x1="3" y1="8" x2="13" y2="8" />
+      </svg>
+    </div>
+    Majhi OS
+  </a>
+
+  <div class="nav-links">
+    <a href="#problem">Platform</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#proof">Impact</a>
+    <div class="nav-divider"></div>
+    <a href="#walkthrough">Deployment</a>
+  </div>
+
+  <div class="nav-right">
+    <a href="https://manasmajhi.com" class="btn-ghost-sm">Research</a>
+    <a href="https://majhi.tech" class="btn-primary">
+      Book Walkthrough ↗
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding:0;">
+  <div class="hero">
+    <div class="hero-pill">
+      <span class="ticker-dot"></span>
+      Operational Visibility for Recruiting Teams
+    </div>
+
+    <h1>
+      The Operating System<br>
+      for <span class="accent">High-Stakes Hiring.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Recruiting teams lose visibility as hiring scales. Majhi OS gives it back —
+      one controlled system for mandate health, pipeline execution, and full
+      operational telemetry.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://majhi.tech" class="btn-primary-lg">
+        Book Mission Walkthrough →
+      </a>
+      <a href="#proof" class="btn-outline-lg">See proof points</a>
+    </div>
+
+    <div class="hero-note">
+      <svg viewBox="0 0 14 14">
+        <polyline points="2,7 5.5,10.5 12,3.5" />
+      </svg>
+      Onboarding 3 teams this quarter · 2 slots remaining · Mandate-based pricing
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">50d</div>
+      <div class="stat-label">Avg close vs 14-week industry median</div>
+    </div>
+    <div>
+      <div class="stat-num">35%</div>
+      <div class="stat-label">Reply rate (up from 14% with DNS/MX verified)</div>
+    </div>
+    <div>
+      <div class="stat-num">82%</div>
+      <div class="stat-label">Shortlist approval rate (up from 38%)</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Audit trail coverage (up from 9%)</div>
+    </div>
+    <div>
+      <div class="stat-num">68%</div>
+      <div class="stat-label">Of VP searches stall past week 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section problem-bg" id="problem">
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Hiring systems fail quietly.<br>Nobody sees it coming.</h2>
+    <p class="section-body">
+      Most recruiting teams can tell you where candidates are. They cannot tell you
+      which mandates are about to stall, which recruiters are overloaded, or why
+      shortlist approval collapsed three weeks ago.
+    </p>
+
+    <div class="problem-grid">
+      <ul class="failure-list">
+        <li><span class="fail-x">✕</span> Mandate health is invisible until it's too late to recover</li>
+        <li><span class="fail-x">✕</span> Recruiter overload degrades output before anyone notices</li>
+        <li><span class="fail-x">✕</span> Candidate drop-off happens silently, with no system alert</li>
+        <li><span class="fail-x">✕</span> Hiring managers slow pipelines with no accountability layer</li>
+        <li><span class="fail-x">✕</span> Recovery actions are manual, inconsistent, and late</li>
+        <li><span class="fail-x">✕</span> Executives see outcomes — never the operational root cause</li>
+      </ul>
+
+      <blockquote class="problem-quote">
+        "The operational visibility gap is why searches stall. Not bad candidates.
+        Not slow hiring managers. The absence of a system that can
+        <span class="highlight">see what is happening in real time — and act.</span>"
+        <cite>— Manas Majhi, Founder</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section" id="architecture">
+  <div class="section-inner">
+    <div class="section-label">The Architecture</div>
+    <h2 class="section-title">Detect → Suggest → Execute → Measure</h2>
+    <p class="section-body">
+      Four layers running simultaneously across every active mandate.
+      Not a dashboard. An operational system.
+    </p>
+
+    <div class="layers-grid">
+      <div class="layer">
+        <div class="layer-num">01</div>
+        <div class="layer-tag">Layer 1</div>
+        <h3>Observability</h3>
+        <p>Real-time monitoring of mandate health, recruiter load, funnel degradation, response decay, hiring velocity, and SLA breaches.</p>
+        <span class="layer-badge">Think: Datadog for hiring</span>
+      </div>
+      <div class="layer">
+        <div class="layer-num">02</div>
+        <div class="layer-tag">Layer 2</div>
+        <h3>Intelligence</h3>
+        <p>Operational reasoning: why mandates fail, which recruiter patterns work, which recovery actions succeed, where throughput collapses.</p>
+        <span class="layer-badge">Think: Palantir for hiring ops</span>
+      </div>
+      <div class="layer">
+        <div class="layer-num">03</div>
+        <div class="layer-tag">Layer 3</div>
+        <h3>Autonomous Execution</h3>
+        <p>System launches recovery sequences, reassigns recruiters, escalates issues, adjusts workflows — without manual orchestration.</p>
+        <span class="layer-badge">No human required for recovery</span>
+      </div>
+      <div class="layer">
+        <div class="layer-num">04</div>
+        <div class="layer-tag">Layer 4</div>
+        <h3>Attribution & ROI</h3>
+        <p>Cost saved, hiring velocity, recruiter efficiency, recovered revenue. CFO and CEO-level strategic reporting built in.</p>
+        <span class="layer-badge">Board-ready hiring metrics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features-bg">
+  <div class="section-inner">
+    <div class="section-label">Key Capabilities</div>
+    <h2 class="section-title">The metrics that make it addictive</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">◎</div>
+        <h3>Hiring Health Score</h3>
+        <p>Real-time operational score for every active mandate. The metric recruiting teams check first — before anything else.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⬡</div>
+        <h3>Failure Prediction Engine</h3>
+        <p>Predicts stalled mandates, recruiter overload, and candidate drop-off before the failure occurs. Weeks of lead time.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">◈</div>
+        <h3>Recovery Playbooks</h3>
+        <p>System-learned actions that recover mandates. Compounds intelligence over time — gets smarter with every search.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">▣</div>
+        <h3>Executive Visibility Layer</h3>
+        <p>CEO and CFO dashboards. Hiring efficiency, cost saved, velocity metrics. Moves hiring from operational to strategic.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⊕</div>
+        <h3>Recruiter Load Balancing</h3>
+        <p>Real-time capacity monitoring. Detects overload before throughput degrades. Reassigns automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">◉</div>
+        <h3>Full Audit Trail</h3>
+        <p>100% coverage. Every action, every decision, every intervention logged. From 9% to complete operational accountability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section" id="proof">
+  <div class="section-inner">
+    <div class="section-label">Impact</div>
+    <h2 class="section-title">Numbers from mandates already run through the system</h2>
+
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-before">Industry: 14–16 weeks</div>
+        <div class="proof-after">50 days</div>
+        <div class="proof-label">Average mandate close time</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-before">Before: 14%</div>
+        <div class="proof-after">35%</div>
+        <div class="proof-label">Outreach reply rate</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-before">Before: 38%</div>
+        <div class="proof-after">82%</div>
+        <div class="proof-label">Shortlist approval rate</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-before">Before: 9%</div>
+        <div class="proof-after">100%</div>
+        <div class="proof-label">Audit trail coverage</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-before">Fragmented tool stack</div>
+        <div class="proof-after">$3,280</div>
+        <div class="proof-label">Monthly tool spend eliminated</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-before">Industry reality</div>
+        <div class="proof-after">68%</div>
+        <div class="proof-label">VP searches stall past week 10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALKTHROUGH -->
+<section class="section walkthrough-bg" id="walkthrough">
+  <div class="section-inner">
+    <div class="section-label">How to Start</div>
+    <h2 class="section-title" style="text-align:center;">The Mission Walkthrough</h2>
+
+    <div class="walkthrough-box">
+      <h3>45 minutes. Your actual mandate.</h3>
+      <p>
+        Not a demo. Not a pitch deck. We run the walkthrough using your live search
+        as working context — so you leave with specific recovery actions, not a sales follow-up.
+      </p>
+
+      <div class="walkthrough-checks">
+        <span><span class="check-circle">✓</span> We analyse one of your active mandates in real time</span>
+        <span><span class="check-circle">✓</span> You see the Hiring Health Score for your specific search</span>
+        <span><span class="check-circle">✓</span> We identify where the mandate is at risk and why</span>
+        <span><span class="check-circle">✓</span> We show exactly which recovery actions the system would execute</span>
+        <span><span class="check-circle">✓</span> You decide if this is worth deploying — no pressure</span>
+      </div>
+
+      <a href="https://majhi.tech" class="btn-primary-lg" style="width:100%; justify-content:center;">
+        Book a Mission Walkthrough →
+      </a>
+      <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem;">
+        Respond within 24 hours. No sales team. Direct to Manas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title" style="text-align:center;">Straightforward retainer. No surprises.</h2>
+
+    <div class="pricing-card">
+      <div class="pricing-badge">Mandate-based pricing</div>
+      <div class="pricing-amount">$3–4K</div>
+      <div class="pricing-per">per mandate / per month</div>
+
+      <ul class="pricing-includes">
+        <li><span class="check-circle">✓</span> Full Majhi OS stack on your mandate</li>
+        <li><span class="check-circle">✓</span> Real-time Hiring Health Score and failure alerts</li>
+        <li><span class="check-circle">✓</span> Autonomous recovery sequences activated</li>
+        <li><span class="check-circle">✓</span> Weekly executive visibility report</li>
+        <li><span class="check-circle">✓</span> Direct access to Manas throughout</li>
+      </ul>
+
+      <a href="https://majhi.tech" class="btn-primary-lg" style="width:100%; justify-content:center;">
+        Start with a Walkthrough →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Operational intelligence for recruiting teams that can't afford to stall.</h2>
+  <p>
+    Most teams find out a search failed at week 12. Majhi OS flags it at week 4,
+    executes recovery, and closes the mandate before the damage compounds.
+  </p>
+  <a href="https://majhi.tech" class="btn-white">
+    Book a Mission Walkthrough →
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="8,3 13,8 8,13" />
+          <line x1="3" y1="8" x2="13" y2="8" />
+        </svg>
+      </div>
+      Majhi OS
+    </div>
+    <div class="footer-links">
+      <a href="https://manasmajhi.com">Manas Majhi</a>
+      <a href="https://majhigroup.com">Majhi Group</a>
+      <a href="https://majhi.tech">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Majhi OS · Manas Ranjan Majhi</div>
+  </div>
+</footer>
+
+</body>
+</html>
