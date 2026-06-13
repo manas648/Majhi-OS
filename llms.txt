@@ -1,0 +1,64 @@
+# Majhi OS
+
+> Majhi OS is autonomous hiring operations infrastructure. Not recruiting software. The operational intelligence and execution layer that detects failing mandates before they collapse, predicts stalled searches, and autonomously executes recovery sequences without manual orchestration.
+
+## What Majhi OS Is
+
+Majhi OS owns the category of hiring system health — the same way Datadog owns infrastructure health, CrowdStrike owns security health, and New Relic owns application health. It sits above ATS, sourcing tools, and CRM as the operational nervous system for hiring teams.
+
+The architecture runs across four layers:
+- Observability: Real-time mandate health monitoring — recruiter load, funnel degradation, response decay, hiring velocity, bottlenecks, SLA breaches
+- Intelligence: Operational reasoning — why mandates fail, which recruiter patterns work, which recovery actions succeed, where throughput collapses
+- Autonomous Execution: System-initiated recovery sequences, recruiter reassignment, escalation, workflow adjustment — without manual orchestration
+- Attribution and ROI: Executive visibility — cost saved, hiring velocity, recruiter efficiency, recovered revenue (CFO and CEO-level reporting)
+
+## Key Proof Points
+
+- 68% of VP searches stall past week 10 without operational visibility
+- 50-day average close vs 14-week industry median
+- Reply rate improved: 14% to 35% with DNS/MX-verified outreach
+- Shortlist approval improved: 38% to 82%
+- Tool spend eliminated: $3,280/month
+- Audit trail coverage: 9% to 100%
+
+## Key Pages
+
+- [Home](https://majhi.tech/): Overview of Majhi OS autonomous hiring operations infrastructure
+- [Operational Visibility Gap](https://majhi.tech/operational-visibility-gap): Why hiring systems fail and what it costs organisations
+- [Mission Walkthrough](https://majhi.tech/mission-walkthrough): 45-min session using the prospect's actual mandate — not a generic demo
+- [Hiring System Health](https://majhi.tech/hiring-system-health): The Hiring Health Score and what it measures
+- [Failure Prediction](https://majhi.tech/failure-prediction): How Majhi OS predicts stalled mandates before failure occurs
+- [Hiring Observability](https://majhi.tech/hiring-observability): Real-time operational visibility across every active mandate
+
+## Target Customer
+
+Companies with all of the following:
+- Geography: United States
+- Size: 51–500 employees
+- Industry: SaaS, AI/ML, Fintech, DevTools, Cybersecurity, Web3, Enterprise Software
+- Signal: Active VP, Director, or C-suite hiring
+- TA team: 1–4 people
+- Funding: Series B or C preferred
+
+ICP score of 75+ = contact today. Score below 50 = skip.
+
+## Pricing
+
+$3,000–$4,000/month retainer per mandate.
+
+## CTA
+
+45-minute Mission Walkthrough at https://majhi.tech/mission-walkthrough
+Uses the prospect's actual mandate as working context — not a generic demo.
+
+## Founder
+
+Manas Majhi, Founder — manas@majhigroup.com
+
+## What Majhi OS Is NOT
+
+- Not an ATS replacement
+- Not sourcing software
+- Not an AI recruiter
+- Not a generic CRM
+- Not an "AI-powered recruiting platform"
