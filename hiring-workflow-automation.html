@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiring Workflow Automation — Beyond Scheduling and Routing | Majhi OS</title>
+  <meta name="description" content="Most hiring workflow automation tools handle scheduling, routing, and task reminders. What's missing is autonomous execution at the mandate level — recovery sequences that trigger without manual intervention when searches are failing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/hiring-workflow-automation">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/hiring-workflow-automation">
+  <meta property="og:title" content="Hiring Workflow Automation — Beyond Scheduling and Routing | Majhi OS">
+  <meta property="og:description" content="Most hiring workflow automation handles scheduling and routing. Majhi OS adds the autonomous execution layer: recovery sequences that trigger without manual intervention when mandates are failing.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Hiring Workflow Automation — Beyond Scheduling and Routing | Majhi OS">
+  <meta name="twitter:description" content="Most hiring workflow automation handles scheduling and routing. Majhi OS adds autonomous mandate recovery — execution without manual intervention.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#4F46E5">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Hiring Workflow Automation: Beyond Scheduling and Routing","description":"Most hiring workflow automation tools handle scheduling, routing, and reminders. The autonomous execution gap — recovery sequences that trigger without manual intervention at the mandate level — is what Majhi OS was built for.","author":{"@type":"Person","name":"Manas Majhi"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://majhi.tech/hiring-workflow-automation"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is hiring workflow automation?","acceptedAnswer":{"@type":"Answer","text":"Hiring workflow automation uses software to handle repeatable tasks in the recruiting process without manual triggering — interview scheduling, candidate status emails, rejection notices, task reminders, and approval routing. Most modern ATS platforms include basic workflow automation."}},{"@type":"Question","name":"What's the difference between standard hiring workflow automation and autonomous execution?","acceptedAnswer":{"@type":"Answer","text":"Standard hiring workflow automation handles pre-defined, rule-based tasks — if candidate reaches stage X, send email Y. Autonomous execution (what Majhi OS provides) handles dynamic, judgment-based interventions — if mandate health score drops below threshold, select appropriate recovery sequence based on historical pattern data and execute it automatically."}},{"@type":"Question","name":"Can hiring workflow automation prevent search failure?","acceptedAnswer":{"@type":"Answer","text":"Standard automation cannot — it executes tasks, not recovery strategies. Majhi OS autonomous execution can. By monitoring real-time mandate health signals and triggering recovery sequences before failure occurs, Majhi OS prevents the mandate collapse that standard automation is blind to."}},{"@type":"Question","name":"What does Majhi OS automate that other hiring tools don't?","acceptedAnswer":{"@type":"Answer","text":"Majhi OS automates mandate recovery — the sequence of actions a skilled TA Ops manager would take when they detect a search is about to stall. Outreach sequence pivots, recruiter reassignment, hiring manager re-engagement, pipeline rebuild protocols. These are judgment-based interventions that standard automation cannot handle."}},{"@type":"Question","name":"Does Majhi OS replace ATS workflow automation?","acceptedAnswer":{"@type":"Answer","text":"No. Majhi OS integrates with your existing ATS and its workflow automation. It operates at the mandate health layer — above individual candidate stage management — and adds autonomous recovery execution that your ATS cannot provide."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0D1B2A;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#4F46E5;--indigo2:#6366F1;--indigo3:#818CF8;--indigo-bg:#EEF2FF;--indigo-border:rgba(79,70,229,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(79,70,229,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-icon{width:44px;height:44px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:1rem}
+    .card-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Bricolage Grotesque",sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .callout{background:var(--indigo-bg);border:1px solid var(--indigo-border);border-left:4px solid var(--indigo);border-radius:8px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p{font-size:1rem;color:var(--ink);line-height:1.7;font-style:italic}
+    .flow-row{display:flex;flex-direction:column;gap:0;margin-top:2rem;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .flow-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;border-bottom:1px solid var(--border);background:white}
+    .flow-item:last-child{border-bottom:none}
+    .flow-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--indigo);color:white;display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.875rem}
+    .flow-item h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+    .flow-item p{font-size:.9rem;color:var(--body);line-height:1.65}
+    .code-block{background:var(--ink);border-radius:8px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:#a3b8cc;overflow-x:auto;line-height:1.7}
+    .code-block .kw{color:#818CF8}.code-block .str{color:#86EFAC}.code-block .cmt{color:#4B6580}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#4F46E5 0%,#6366F1 100%);text-align:center}
+    .cta-section h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure. Hiring workflow automation at the mandate level — real-time failure detection and autonomous recovery sequences for VP and C-suite searches.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","url":"https://majhi.tech","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Majhi OS delivers autonomous hiring workflow execution at the mandate level — beyond scheduling and routing, into failure detection and recovery.","featureList":["Hiring Health Score","Failure Prediction Engine","Recovery Playbooks — autonomous mandate recovery execution","Outreach Decay Detection","Executive Visibility Layer"],"offers":{"@type":"Offer","price":"3000","priceCurrency":"USD","description":"Per mandate per month"},"provider":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health">Health Score</a>
+      <a href="/hiring-observability">Observability</a>
+      <a href="/operational-visibility-gap">Whitepaper</a>
+      <a href="/mission-walkthrough">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>Hiring Workflow Automation</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>Autonomous Execution</div>
+      <h1 class="page-h1">Hiring workflow automation stopped at <mark>scheduling and routing.</mark><br>The real gap is mandate recovery.</h1>
+      <p class="page-sub">Your ATS can auto-schedule interviews and route approvals. What it cannot do is detect that your VP search is failing in week 4 and execute the recovery sequence automatically — without anyone on your team asking it to.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/failure-prediction" class="btn-outline">See Failure Prediction &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Two Categories</p>
+      <h2 class="section-h2">Standard workflow automation vs. autonomous execution — what's the difference?</h2>
+      <p class="section-body">Both involve software taking action without manual triggering. The difference is the trigger itself and the decision-making required.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color:var(--muted);font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;">Standard Hiring Workflow Automation</h3>
+          <p style="margin-bottom:.875rem;font-size:.95rem;">Rule-based. Pre-defined trigger conditions. Known, scripted outputs.</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;color:var(--body);">&#x2713; &nbsp;Interview invite sent when candidate advances to stage X</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;color:var(--body);">&#x2713; &nbsp;Rejection email sent after stage Y status update</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;color:var(--body);">&#x2713; &nbsp;Task reminder created for recruiter after 3 days of inaction</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;color:var(--body);">&#x2713; &nbsp;Approval routing to hiring manager when shortlist is ready</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;color:var(--red);">&#x2717; &nbsp;Detects that outreach reply rates are below mandate baseline</p>
+          <p style="font-size:.9rem;color:var(--red);">&#x2717; &nbsp;Selects and executes recovery sequence based on failure pattern</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--indigo);font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;">Majhi OS Autonomous Execution</h3>
+          <p style="margin-bottom:.875rem;font-size:.95rem;">Intelligence-based. Monitors operational health signals. Selects and executes appropriate recovery.</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;">&#x2713; &nbsp;Detects reply rate decay relative to mandate baseline</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;">&#x2713; &nbsp;Detects pipeline depletion trajectory — flags before zero</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;">&#x2713; &nbsp;Detects hiring manager engagement lag at shortlist stage</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;">&#x2713; &nbsp;Selects recovery sequence based on failure pattern history</p>
+          <p style="margin-bottom:.5rem;font-size:.9rem;">&#x2713; &nbsp;Executes pivot — outreach reset, re-targeting, escalation</p>
+          <p style="font-size:.9rem;">&#x2713; &nbsp;All without manual orchestration from your team</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:2rem">
+        <p>Standard hiring workflow automation is reactive to candidate actions. Autonomous execution is proactive about mandate health. Both matter — but only one prevents your VP search from becoming a 14-week failure nobody saw coming.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">How Recovery Playbooks Work</p>
+      <h2 class="section-h2">What autonomous mandate recovery actually looks like.</h2>
+      <p class="section-body">When Majhi OS detects a mandate at risk, it selects a Recovery Playbook — a sequenced set of execution actions — based on the failure signature. The playbooks compound intelligence over time: the system learns what works for each failure type and applies it faster on the next mandate.</p>
+      <div class="flow-row">
+        <div class="flow-item">
+          <div class="flow-num">1</div>
+          <div>
+            <h3>Signal Detection — week 3–4, not week 11</h3>
+            <p>The Hiring Health Score monitors outreach reply rates, pipeline stage velocity, hiring manager response times, and candidate drop-off patterns. When the score drops below threshold, the Failure Prediction Engine classifies the failure type: outreach decay, pipeline depletion, stakeholder bottleneck, or intake misalignment.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">2</div>
+          <div>
+            <h3>Playbook Selection — matched to failure signature</h3>
+            <p>Based on the failure classification and historical pattern data, Majhi OS selects the appropriate Recovery Playbook. Outreach decay triggers an outreach pivot with revised targeting parameters. Pipeline depletion triggers a sourcing expansion protocol. Stakeholder bottleneck triggers an escalation sequence to the hiring manager's chain.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">3</div>
+          <div>
+            <h3>Autonomous Execution — no manual orchestration required</h3>
+            <p>The playbook executes. Outreach sequences are paused and replaced. New candidate pools are opened. Escalation messages are drafted and queued for review. Recruiter task assignments are updated. The hiring team is notified that recovery is in progress — not asked to start it themselves.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">4</div>
+          <div>
+            <h3>Attribution — recovery tracked to outcome</h3>
+            <p>When the mandate closes, Majhi OS attributes the outcome back to the recovery actions taken. Which playbook worked. Which signals predicted correctly. This data compounds into the system's intelligence base — making recovery faster and more accurate on the next mandate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What Gets Automated</p>
+      <h2 class="section-h2">The specific hiring workflows Majhi OS executes autonomously.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Outreach Sequence Pivot</h3>
+          <p>When reply rates fall below baseline, Majhi OS halts the current sequence, selects an alternate sequence architecture, adjusts targeting parameters, and relaunches — without a recruiter manually identifying the problem and building a replacement.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Recruiter Reassignment</h3>
+          <p>When recruiter load thresholds are breached or a mandate health score drops and capacity is the issue, Majhi OS flags the overload, identifies available capacity across the team, and executes reassignment with handoff documentation generated automatically.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Hiring Manager Escalation</h3>
+          <p>When a shortlist sits unapproved beyond SLA threshold, or a hiring manager's feedback latency is causing stage delays, Majhi OS triggers an escalation — drafts and queues the escalation message, flags the delay in the executive visibility layer, and updates mandate health accordingly.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <h3>Pipeline Rebuild Protocol</h3>
+          <p>When pipeline depth drops below viable threshold — too few qualified candidates to produce a shortlist — Majhi OS executes a sourcing expansion: broadens geography, adjusts title variants, opens alternate sourcing channels, and updates the intake brief accordingly.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3>SLA Breach Prevention</h3>
+          <p>Before SLAs breach, not after. Majhi OS tracks time-in-stage against SLA commitments for every mandate simultaneously. When a stage is trending toward breach, intervention workflows trigger: hiring manager notification, recruiter task reprioritization, or escalation depending on severity.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>Executive Reporting Automation</h3>
+          <p>Weekly hiring health summaries generated and delivered to leadership — without a TA Ops manager spending two hours pulling data. Real-time cost savings, velocity metrics, recovered mandates, and recruiter efficiency ratios surfaced automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Proof</p>
+      <h2 class="section-h2">What autonomous hiring workflow execution actually produces.</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">50d</div><div class="stat-label">avg mandate close with Majhi OS vs 14-week industry median</div></div>
+        <div class="stat"><div class="stat-val">35%</div><div class="stat-label">outreach reply rate after autonomous pivot from decaying sequences</div></div>
+        <div class="stat"><div class="stat-val">100%</div><div class="stat-label">mandate audit trail coverage — zero gaps in execution record</div></div>
+        <div class="stat"><div class="stat-val">$3,280</div><div class="stat-label">per month eliminated from fragmented tool stack</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>See which hiring workflows in your operation should be running autonomously.</h2>
+    <p>In 45 minutes, we map your hiring system against the Majhi OS autonomous execution framework — using your actual mandate as working context, not a generic demo.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Hiring infrastructure for teams that can't afford to stall.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health">Hiring System Health</a>
+      <a href="/hiring-observability">Hiring Observability</a>
+      <a href="/operational-visibility-gap">Operational Visibility Gap</a>
+      <a href="/failure-prediction">Failure Prediction Engine</a>
+      <a href="/recruiting-operations-software">RecOps Software</a>
+      <a href="/talent-acquisition-operations">TA Ops</a>
+      <a href="/executive-search-software">Executive Search</a>
+      <a href="/hiring-workflow-automation">Workflow Automation</a>
+      <a href="/mission-walkthrough">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body>
+</html>

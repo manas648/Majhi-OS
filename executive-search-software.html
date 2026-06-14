@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Search Software — Why Generic Tools Fail VP and C-Suite Searches | Majhi OS</title>
+  <meta name="description" content="Generic recruiting software wasn't built for VP and C-suite searches. The mandates are longer, the pipelines thinner, the stakes higher. Majhi OS is the operational infrastructure built specifically for executive search.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/executive-search-software">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/executive-search-software">
+  <meta property="og:title" content="Executive Search Software — Why Generic Tools Fail VP and C-Suite Searches | Majhi OS">
+  <meta property="og:description" content="Generic recruiting software wasn't built for executive search. Majhi OS is the operational infrastructure built specifically for VP and C-suite mandates.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Executive Search Software — Why Generic Tools Fail VP and C-Suite Searches | Majhi OS">
+  <meta name="twitter:description" content="Generic recruiting software wasn't built for executive search. Majhi OS is the operational infrastructure built specifically for VP and C-suite mandates.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#4F46E5">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Executive Search Software: Why Generic Tools Fail VP and C-Suite Searches","description":"Most executive search software is ATS infrastructure adapted for senior roles. What's missing is operational intelligence — real-time mandate health, failure prediction, and autonomous recovery designed specifically for the dynamics of VP and C-suite searches.","author":{"@type":"Person","name":"Manas Majhi"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://majhi.tech/executive-search-software"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is executive search software?","acceptedAnswer":{"@type":"Answer","text":"Executive search software helps recruiting teams and search firms manage VP and C-suite mandates — tracking candidate pipelines, managing outreach, storing research, and reporting on search progress. Examples include Invenias, Bullhorn, and Clockwork. Most are built on ATS architecture adapted for senior roles."}},{"@type":"Question","name":"Why do VP and C-suite searches fail more than standard roles?","acceptedAnswer":{"@type":"Answer","text":"Executive searches fail for structural reasons that generic software doesn't address: thinner candidate pools, longer engagement cycles, higher hiring manager expectations, more complex fit criteria, and much longer mandates where outreach decay goes undetected. 68% of VP-level searches stall past week 10 — often because nobody was watching the right operational signals."}},{"@type":"Question","name":"How is Majhi OS different from Invenias or Bullhorn for Executive Search?","acceptedAnswer":{"@type":"Answer","text":"Invenias and Bullhorn are built for tracking and workflow management. They record what happens. Majhi OS monitors what is about to happen — detecting mandate degradation in real time, predicting failure before it occurs, and executing autonomous recovery sequences. It operates above the ATS layer, not inside it."}},{"@type":"Question","name":"What does Majhi OS do when an executive search starts to stall?","acceptedAnswer":{"@type":"Answer","text":"Majhi OS detects the stall signals early — outreach decay, pipeline thinning, hiring manager slowdowns — and triggers a Recovery Playbook automatically. The system selects the appropriate recovery sequence based on what has worked for similar mandates and executes it without manual intervention."}},{"@type":"Question","name":"Can Majhi OS work alongside our existing executive search software?","acceptedAnswer":{"@type":"Answer","text":"Yes. Majhi OS integrates with your existing stack — ATS, CRM, outreach tools. It adds the observability and autonomous execution layer above them. Your team keeps using the tools they have; Majhi OS monitors the system health and intervenes when mandates are at risk."}},{"@type":"Question","name":"How much does Majhi OS cost for executive search firms?","acceptedAnswer":{"@type":"Answer","text":"Majhi OS is priced per active mandate — typically $3,000–$4,000 per mandate per month. For executive search firms where a failed mandate means a lost retainer and a damaged client relationship, the ROI is immediate."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0D1B2A;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#4F46E5;--indigo2:#6366F1;--indigo3:#818CF8;--indigo-bg:#EEF2FF;--indigo-border:rgba(79,70,229,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(79,70,229,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-icon{width:44px;height:44px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:1rem}
+    .card-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Bricolage Grotesque",sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .callout{background:var(--indigo-bg);border:1px solid var(--indigo-border);border-left:4px solid var(--indigo);border-radius:8px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p{font-size:1rem;color:var(--ink);line-height:1.7;font-style:italic}
+    .table-wrap{overflow-x:auto;margin:2rem 0}
+    table{width:100%;border-collapse:collapse;font-size:.9rem}
+    th{background:var(--bg2);font-weight:700;color:var(--ink);padding:.875rem 1.25rem;text-align:left;border-bottom:2px solid var(--border)}
+    td{padding:.875rem 1.25rem;border-bottom:1px solid var(--border);color:var(--body);vertical-align:top}
+    tr:last-child td{border-bottom:none}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#4F46E5 0%,#6366F1 100%);text-align:center}
+    .cta-section h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure built for executive search — real-time mandate health, failure prediction, and autonomous recovery for VP and C-suite searches.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","url":"https://majhi.tech","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Majhi OS is autonomous hiring operations infrastructure built for VP and C-suite executive search mandates.","featureList":["Hiring Health Score — real-time mandate health per executive search","Failure Prediction Engine — detects at-risk searches in week 3 not week 11","Recovery Playbooks — autonomous recovery for stalled executive mandates","Executive Visibility Layer — client-facing reporting for search firms"],"offers":{"@type":"Offer","price":"3000","priceCurrency":"USD","description":"Per mandate per month"},"provider":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health">Health Score</a>
+      <a href="/hiring-observability">Observability</a>
+      <a href="/operational-visibility-gap">Whitepaper</a>
+      <a href="/mission-walkthrough">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>Executive Search Software</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>Executive Search</div>
+      <h1 class="page-h1"><mark>Executive search software</mark> was never built for what executive search actually demands.</h1>
+      <p class="page-sub">VP and C-suite searches have thinner candidate pools, longer engagement cycles, and much higher failure costs. Generic ATS-based tools weren't designed for this. Majhi OS is the operational infrastructure built specifically for executive mandates.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/failure-prediction" class="btn-outline">See Failure Prediction &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">The Problem with Generic Tools</p>
+      <h2 class="section-h2">Why executive searches fail even when recruiting software is in place.</h2>
+      <p class="section-body">Most executive search software was built for volume recruiting and adapted upward. It tracks stages. It manages candidate records. It reports on pipeline conversion. What it doesn't do is monitor the specific failure patterns that make VP and C-suite searches uniquely fragile.</p>
+      <div class="callout">
+        <p>68% of VP-level searches stall past week 10. The failure wasn't sudden — the signals were there in week 3 or 4. Outreach response rates decaying. Pipeline depth thinning. Hiring manager engagement slowing. Nobody was watching the operational signals. That's an infrastructure problem, not a sourcing problem.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <h3>Thin candidate pools go unmonitored</h3>
+          <p>Executive searches often have 50–200 qualified candidates globally, not thousands. When 30 are contacted and 6 respond, outreach decay hits critical threshold immediately. Generic ATS software doesn't flag this — it just shows a pipeline with few entries.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.43 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91"/></svg></div>
+          <h3>Engagement cycles are 5–10x longer</h3>
+          <p>VP candidates don't respond within 48 hours. The engagement cycle — first touch to serious conversation — is often 4–8 weeks. Generic outreach tooling isn't designed to monitor relationship-phase decay at this cadence or flag when momentum is stalling.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Failed mandates are existentially expensive</h3>
+          <p>For executive search firms, a failed mandate means a damaged client relationship, a potential refund or replacement obligation, and a serious reputational cost. For in-house teams, a stalled VP search can delay product launches, sales plans, and fundraising timelines by quarters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">The Landscape</p>
+      <h2 class="section-h2">How Majhi OS compares to existing executive search tools.</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capability</th><th>Invenias / Bullhorn</th><th>Clockwork / SearchLight</th><th>Majhi OS</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Candidate tracking</td><td>&#x2713; Core feature</td><td>&#x2713; Core feature</td><td>&#x2713; Via ATS integration</td></tr>
+            <tr><td>Research management</td><td>&#x2713; Strong</td><td>&#x2713; Strong</td><td>Focused on operational layer</td></tr>
+            <tr><td>Client reporting</td><td>&#x2713; Standard reports</td><td>&#x2713; Strong</td><td>&#x2713; Executive visibility dashboards</td></tr>
+            <tr><td>Real-time mandate health score</td><td>&#x2717;</td><td>&#x2717;</td><td>&#x2713; Hiring Health Score</td></tr>
+            <tr><td>Failure prediction (week 3–4)</td><td>&#x2717;</td><td>&#x2717;</td><td>&#x2713; Failure Prediction Engine</td></tr>
+            <tr><td>Outreach decay detection</td><td>&#x2717;</td><td>&#x2717;</td><td>&#x2713; Real-time monitoring</td></tr>
+            <tr><td>Autonomous recovery sequences</td><td>&#x2717;</td><td>&#x2717;</td><td>&#x2713; Recovery Playbooks</td></tr>
+            <tr><td>Recruiter load balancing</td><td>&#x2717;</td><td>&#x2717;</td><td>&#x2713; Across mandates</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section-body" style="margin-top:1rem;font-size:.9rem;color:var(--muted);">Majhi OS is not a replacement for research and tracking tools. It is the operational intelligence layer that sits above them — monitoring what they cannot and executing recovery when mandates are at risk.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">For Two Audiences</p>
+      <h2 class="section-h2">Built for executive search firms and in-house TA teams running VP searches.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color:var(--indigo);margin-bottom:1.25rem;">Executive Search Firms</h3>
+          <p style="margin-bottom:1rem;">For retained search firms, every mandate is a client relationship at risk. A stalled VP search is not a missed close — it's a damaged retainer, a potential guarantee call, and reputational cost that follows you into the next pitch.</p>
+          <p style="margin-bottom:1rem;">Majhi OS gives your search team real-time visibility into which mandates are healthy and which are degrading — before the client asks. The Recovery Playbook infrastructure means your team never has to wait for a weekly review to discover a search is off track.</p>
+          <p>Proof: A $275K VP of Sales mandate that two search firms failed in 60+ days was closed in 41 days with Majhi OS operational infrastructure running on the mandate.</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--indigo);margin-bottom:1.25rem;">In-House TA Teams Running VP+ Searches</h3>
+          <p style="margin-bottom:1rem;">For internal talent acquisition teams, a failed VP search means an empty seat in a revenue-critical function for another quarter. The hiring manager loses confidence. The CEO starts looking at agencies. Headcount gets frozen.</p>
+          <p style="margin-bottom:1rem;">Majhi OS gives internal TA teams the operational infrastructure they need to run VP and C-suite searches with the same discipline as a retained search firm — without adding headcount or building custom tooling.</p>
+          <p>The Hiring Health Score and executive visibility layer also give your Head of People the data they need to report progress to the CEO — not just "we're working on it."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Proof</p>
+      <h2 class="section-h2">What Majhi OS delivers on executive searches.</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">50d</div><div class="stat-label">avg VP mandate close vs 14-week industry median</div></div>
+        <div class="stat"><div class="stat-val">35%</div><div class="stat-label">outreach reply rate — up from 14% with DNS/MX-verified targeting</div></div>
+        <div class="stat"><div class="stat-val">82%</div><div class="stat-label">shortlist approval rate — up from 38% baseline</div></div>
+        <div class="stat"><div class="stat-val">41d</div><div class="stat-label">closed a $275K search two firms failed in 60+ days</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Map your executive search against the Majhi OS operational framework.</h2>
+    <p>45 minutes. We use your actual active mandate as working context — not a generic demo. You leave with an operational health assessment of your current search.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Hiring infrastructure for teams that can't afford to stall.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health">Hiring System Health</a>
+      <a href="/hiring-observability">Hiring Observability</a>
+      <a href="/operational-visibility-gap">Operational Visibility Gap</a>
+      <a href="/failure-prediction">Failure Prediction Engine</a>
+      <a href="/recruiting-operations-software">RecOps Software</a>
+      <a href="/talent-acquisition-operations">TA Ops</a>
+      <a href="/executive-search-software">Executive Search</a>
+      <a href="/mission-walkthrough">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body>
+</html>

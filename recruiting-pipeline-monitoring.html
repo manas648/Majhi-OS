@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruiting Pipeline Monitoring — Real-Time Visibility Into Every Active Mandate | Majhi OS</title>
+  <meta name="description" content="Recruiting pipeline monitoring tells you what's happening inside every active search right now — not what happened last week. Majhi OS delivers real-time mandate health monitoring with autonomous recovery when pipelines degrade.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/recruiting-pipeline-monitoring">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/recruiting-pipeline-monitoring">
+  <meta property="og:title" content="Recruiting Pipeline Monitoring — Real-Time Visibility Into Every Active Mandate | Majhi OS">
+  <meta property="og:description" content="Recruiting pipeline monitoring tells you what's happening inside every active search right now — not what happened last week. Majhi OS delivers real-time mandate health monitoring with autonomous recovery.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Recruiting Pipeline Monitoring — Real-Time Visibility Into Every Active Mandate | Majhi OS">
+  <meta name="twitter:description" content="Real-time visibility into every active search — plus autonomous recovery when pipelines degrade. That's recruiting pipeline monitoring with Majhi OS.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#4F46E5">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Recruiting Pipeline Monitoring: Real-Time Visibility Into Every Active Mandate","description":"Most recruiting analytics tools report on pipeline performance after the fact. Recruiting pipeline monitoring — as Majhi OS delivers it — provides real-time mandate health signals: outreach decay detection, pipeline depletion trajectory, and autonomous recovery before failure occurs.","author":{"@type":"Person","name":"Manas Majhi"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://majhi.tech/recruiting-pipeline-monitoring"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is recruiting pipeline monitoring?","acceptedAnswer":{"@type":"Answer","text":"Recruiting pipeline monitoring is the real-time tracking of candidate pipeline health across active mandates — including outreach reply rates, stage conversion velocity, pipeline depth, hiring manager engagement, and time-decay signals. Unlike standard recruiting analytics (which report on what already happened), true pipeline monitoring tells you what is happening right now and predicts what will happen next."}},{"@type":"Question","name":"How is recruiting pipeline monitoring different from ATS reporting?","acceptedAnswer":{"@type":"Answer","text":"ATS reporting is retrospective — it tells you what happened in the pipeline last week, last month, or last quarter. Recruiting pipeline monitoring is real-time and predictive — it tells you what is happening right now and flags mandates that are about to fail before they collapse. Majhi OS delivers this through the Hiring Health Score: a live operational score for every active mandate."}},{"@type":"Question","name":"What signals does Majhi OS monitor in the recruiting pipeline?","acceptedAnswer":{"@type":"Answer","text":"Majhi OS monitors: outreach reply rates by sequence and by mandate; pipeline stage velocity vs. historical baseline; candidate drop-off patterns by stage; hiring manager feedback latency; pipeline depth trajectory; outreach sequence decay; recruiter load relative to mandate count; and SLA compliance across all active mandates simultaneously."}},{"@type":"Question","name":"What happens when Majhi OS detects pipeline degradation?","acceptedAnswer":{"@type":"Answer","text":"When the Hiring Health Score drops below threshold or the Failure Prediction Engine identifies a mandate at risk, Majhi OS triggers a Recovery Playbook automatically — selecting the appropriate recovery sequence based on the failure signature and executing it without manual orchestration from your team."}},{"@type":"Question","name":"Do I need to replace my existing recruiting analytics tools?","acceptedAnswer":{"@type":"Answer","text":"No. Majhi OS integrates with your existing ATS and analytics stack. It adds the real-time monitoring and autonomous execution layer above them — filling the gap between retrospective reporting and live operational intelligence."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0D1B2A;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#4F46E5;--indigo2:#6366F1;--indigo3:#818CF8;--indigo-bg:#EEF2FF;--indigo-border:rgba(79,70,229,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(79,70,229,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-icon{width:44px;height:44px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:1rem}
+    .card-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Bricolage Grotesque",sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .callout{background:var(--indigo-bg);border:1px solid var(--indigo-border);border-left:4px solid var(--indigo);border-radius:8px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p{font-size:1rem;color:var(--ink);line-height:1.7;font-style:italic}
+    .signal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:2rem}
+    .signal-card{background:white;border:1px solid var(--border);border-radius:10px;padding:1.25rem;box-shadow:var(--sh-sm)}
+    .signal-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+    .signal-name{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+    .signal-desc{font-size:.85rem;color:var(--body);line-height:1.6}
+    .signal-status{display:inline-block;font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;margin-top:.6rem}
+    .status-watch{background:var(--amber-bg);color:var(--amber)}
+    .status-ok{background:var(--emerald-bg);color:var(--emerald)}
+    .status-alert{background:#FEF2F2;color:var(--red)}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#4F46E5 0%,#6366F1 100%);text-align:center}
+    .cta-section h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2,.signal-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure. Real-time recruiting pipeline monitoring with the Hiring Health Score — and autonomous recovery when mandates degrade.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","url":"https://majhi.tech","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Majhi OS is autonomous hiring operations infrastructure — delivering real-time recruiting pipeline monitoring, failure prediction, and autonomous recovery execution.","featureList":["Hiring Health Score — real-time pipeline health per mandate","Failure Prediction Engine — early warning before mandate collapse","Outreach Decay Detection — live reply rate monitoring","Recruiter Load Monitoring — capacity visibility across all mandates","Recovery Playbooks — autonomous pipeline recovery"],"offers":{"@type":"Offer","price":"3000","priceCurrency":"USD","description":"Per mandate per month"},"provider":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health">Health Score</a>
+      <a href="/hiring-observability">Observability</a>
+      <a href="/operational-visibility-gap">Whitepaper</a>
+      <a href="/mission-walkthrough">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>Recruiting Pipeline Monitoring</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>Real-Time Monitoring</div>
+      <h1 class="page-h1"><mark>Recruiting pipeline monitoring</mark> that tells you what's happening now — not what happened last week.</h1>
+      <p class="page-sub">Your ATS reporting shows you last week's funnel. Majhi OS shows you today's mandate health — and triggers autonomous recovery when pipelines start degrading before anyone on your team notices.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/hiring-observability" class="btn-outline">See Hiring Observability &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">The Visibility Gap</p>
+      <h2 class="section-h2">Why your current recruiting analytics leave mandates blind.</h2>
+      <p class="section-body">Most recruiting analytics tools are built on data warehouse architecture — they collect data from your ATS, process it overnight, and surface reports in the morning. This works well for strategic planning and capacity modeling. It fails completely for operational intervention.</p>
+      <div class="callout">
+        <p>A mandate that collapses in week 11 was failing in week 4. The outreach reply rate was down 60%. The pipeline had three viable candidates left. The hiring manager's last feedback was 12 days ago. Every one of these signals was measurable. Nobody was looking at them in real time. That's the monitoring gap that Majhi OS was built to close.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color:var(--muted);font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;">What ATS Reporting Tells You</h3>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Time-to-fill for mandates closed last quarter</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Funnel conversion rates from last month's data</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Source effectiveness from completed hires</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Average interview-to-offer ratio from last cohort</p>
+          <p style="font-size:.9rem;color:var(--red);">What it doesn't tell you: that your current VP mandate is on track to fail in 3 weeks</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--indigo);font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;">What Majhi OS Monitoring Tells You</h3>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Current Hiring Health Score for every active mandate</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Live outreach reply rate vs. mandate baseline — today</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Current pipeline depth trajectory — projected to zero by week X</p>
+          <p style="margin-bottom:.75rem;font-size:.9rem;">Hiring manager response latency — current, not historical</p>
+          <p style="font-size:.9rem;">Which mandates are at risk of failure right now — and what's being done about it</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">What Majhi OS Monitors</p>
+      <h2 class="section-h2">The signals that predict mandate success or failure.</h2>
+      <p class="section-body">The Hiring Health Score aggregates eight operational signals in real time. Each signal is tracked per mandate and against historical baseline. When a signal crosses threshold, it feeds the Failure Prediction Engine and — if necessary — triggers a Recovery Playbook.</p>
+      <div class="signal-grid">
+        <div class="signal-card">
+          <div class="signal-label">Signal 01</div>
+          <div class="signal-name">Outreach Reply Rate</div>
+          <div class="signal-desc">Reply rate per sequence vs. mandate baseline. Decay below threshold triggers outreach pivot sequence.</div>
+          <span class="signal-status status-watch">High Impact</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 02</div>
+          <div class="signal-name">Pipeline Depth Trajectory</div>
+          <div class="signal-desc">Viable candidates remaining vs. shortlist requirement. Projected depletion date calculated daily.</div>
+          <span class="signal-status status-alert">Critical Signal</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 03</div>
+          <div class="signal-name">Stage Velocity</div>
+          <div class="signal-desc">Time-in-stage per candidate vs. SLA commitment. Flags stalls before they cause SLA breach.</div>
+          <span class="signal-status status-watch">High Impact</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 04</div>
+          <div class="signal-name">Hiring Manager Latency</div>
+          <div class="signal-desc">Days since last hiring manager action (feedback, approval, scheduling). Escalation trigger when latency exceeds threshold.</div>
+          <span class="signal-status status-alert">Critical Signal</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 05</div>
+          <div class="signal-name">Candidate Drop-Off Rate</div>
+          <div class="signal-desc">Candidate withdrawals and non-progresses by stage. High drop-off at offer stage signals compensation or process mismatch.</div>
+          <span class="signal-status status-watch">High Impact</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 06</div>
+          <div class="signal-name">Recruiter Load Index</div>
+          <div class="signal-desc">Active mandate count per recruiter relative to capacity threshold. Overload triggers reassignment protocol.</div>
+          <span class="signal-status status-ok">Monitored</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 07</div>
+          <div class="signal-name">Hiring Velocity</div>
+          <div class="signal-desc">Current days-open vs. target close date. Trajectory calculation: will this mandate close on time at current velocity?</div>
+          <span class="signal-status status-watch">High Impact</span>
+        </div>
+        <div class="signal-card">
+          <div class="signal-label">Signal 08</div>
+          <div class="signal-name">Audit Trail Coverage</div>
+          <div class="signal-desc">Documentation completeness per mandate. Gap detection ensures every candidate action is traceable for reporting and compliance.</div>
+          <span class="signal-status status-ok">Monitored</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">From Monitoring to Recovery</p>
+      <h2 class="section-h2">Monitoring without recovery is just a dashboard. Majhi OS does both.</h2>
+      <p class="section-body">Most analytics and monitoring tools stop at detection — they surface the problem and let a human figure out what to do. Majhi OS closes the loop: when monitoring detects degradation, the system doesn't just alert. It executes recovery.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Monitor</h3>
+          <p>The Hiring Health Score watches all eight signals for every active mandate simultaneously. 24/7. Not in your weekly pipeline review — right now, as outreach is going out and candidates are progressing.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h3>Predict</h3>
+          <p>The Failure Prediction Engine classifies degrading mandates by failure type — outreach decay, pipeline depletion, stakeholder bottleneck — and assigns failure probability. Week 3 or 4, not week 11.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <h3>Recover</h3>
+          <p>Recovery Playbooks execute automatically. Outreach pivots, pipeline expansions, escalations, recruiter reassignments — all triggered by the monitoring layer, without waiting for a TA Ops manager to notice the problem and build a response.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Proof</p>
+      <h2 class="section-h2">What real-time recruiting pipeline monitoring produces.</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">50d</div><div class="stat-label">avg mandate close with Majhi OS — vs. 14-week industry median</div></div>
+        <div class="stat"><div class="stat-val">68%</div><div class="stat-label">of VP searches stall past week 10 without real-time monitoring</div></div>
+        <div class="stat"><div class="stat-val">35%</div><div class="stat-label">outreach reply rate — up from 14% with monitoring-driven pivots</div></div>
+        <div class="stat"><div class="stat-val">100%</div><div class="stat-label">audit trail coverage — every pipeline action traceable</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-h2">Questions about recruiting pipeline monitoring and Majhi OS.</h2>
+      <div class="grid-2" style="margin-top:2rem">
+        <div class="card"><h3>Is Majhi OS a business intelligence tool?</h3><p>No. Business intelligence tools (Tableau, Looker) are built for retrospective analysis. Majhi OS is operational infrastructure — it monitors live mandate signals and executes recovery in real time. Think Datadog, not Power BI.</p></div>
+        <div class="card"><h3>Can I see all my mandates on one dashboard?</h3><p>Yes. The Hiring Health Score gives you a live operational view of every active mandate — health status, key signals, velocity metrics, and recovery actions in progress — on a single command-center view.</p></div>
+        <div class="card"><h3>How is this different from setting up alerts in my ATS?</h3><p>ATS alerts notify you when something has already happened: a candidate hasn't been contacted in X days, a stage has been open for Y days. Majhi OS predicts what is about to happen and executes recovery before you need to intervene. The difference is intervention timing: after the fact vs. before collapse.</p></div>
+        <div class="card"><h3>Who sees the monitoring data?</h3><p>Your recruiting team sees the operational signals via the Hiring Health Score dashboard. Leadership gets the executive visibility layer: velocity, cost savings, recovered mandates, recruiter efficiency — translated into strategic metrics, not operational detail.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>See the live health status of your recruiting pipeline.</h2>
+    <p>In 45 minutes, we map your active mandate against the Majhi OS monitoring framework — and show you exactly which signals are already at risk. Not a demo. Your actual search.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Hiring infrastructure for teams that can't afford to stall.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health">Hiring System Health</a>
+      <a href="/hiring-observability">Hiring Observability</a>
+      <a href="/operational-visibility-gap">Operational Visibility Gap</a>
+      <a href="/failure-prediction">Failure Prediction Engine</a>
+      <a href="/recruiting-operations-software">RecOps Software</a>
+      <a href="/talent-acquisition-operations">TA Ops</a>
+      <a href="/executive-search-software">Executive Search</a>
+      <a href="/hiring-workflow-automation">Workflow Automation</a>
+      <a href="/recruiting-pipeline-monitoring">Pipeline Monitoring</a>
+      <a href="/mission-walkthrough">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Acquisition Operations (TA Ops) — Building a Hiring System That Doesn't Fail | Majhi OS</title>
+  <meta name="description" content="Talent acquisition operations is more than process improvement. It's the infrastructure that keeps hiring systems from collapsing. Learn what mature TA Ops looks like — and what role autonomous execution plays in it.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/talent-acquisition-operations">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/talent-acquisition-operations">
+  <meta property="og:title" content="Talent Acquisition Operations (TA Ops) — Building a Hiring System That Doesn't Fail | Majhi OS">
+  <meta property="og:description" content="Talent acquisition operations is more than process improvement. It's the infrastructure that keeps hiring systems from collapsing. Learn what mature TA Ops looks like — and what role autonomous execution plays in it.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Talent Acquisition Operations (TA Ops) — Building a Hiring System That Doesn't Fail | Majhi OS">
+  <meta name="twitter:description" content="Talent acquisition operations is more than process improvement. It's the infrastructure that keeps hiring systems from collapsing.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#4F46E5">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Talent Acquisition Operations (TA Ops): Building a Hiring System That Doesn't Fail","description":"What mature talent acquisition operations actually requires — from process standardization through observability, autonomous execution, and executive attribution. Where most TA Ops functions stop, and what Majhi OS adds.","author":{"@type":"Person","name":"Manas Majhi"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://majhi.tech/talent-acquisition-operations"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is talent acquisition operations?","acceptedAnswer":{"@type":"Answer","text":"Talent acquisition operations (TA Ops or RecOps) is the function responsible for managing the systems, processes, tools, and data that power a company's hiring. It includes tool stack management, process standardization, analytics, recruiter enablement, and hiring system performance monitoring."}},{"@type":"Question","name":"What does a mature TA Ops function look like?","acceptedAnswer":{"@type":"Answer","text":"Mature TA Ops goes beyond tracking and reporting. It includes real-time mandate health monitoring, failure prediction for high-priority searches, autonomous recovery sequences when pipelines degrade, and executive-level attribution showing hiring ROI. Most TA Ops functions today operate at layers 1 and 2 — process and tooling. Majhi OS adds layers 3 and 4: observability and autonomous execution."}},{"@type":"Question","name":"How is TA Ops different from recruiting?","acceptedAnswer":{"@type":"Answer","text":"Recruiting is the act of sourcing, engaging, and closing candidates. TA Ops is the infrastructure that makes recruiting work at scale — the systems, tools, data pipelines, quality gates, and performance monitoring that prevent hiring from failing. TA Ops operates at the system level; recruiting operates at the candidate level."}},{"@type":"Question","name":"What does Majhi OS add to a TA Ops function?","acceptedAnswer":{"@type":"Answer","text":"Majhi OS adds the observability and autonomous execution layer most TA Ops functions lack. It provides real-time Hiring Health Scores per mandate, a Failure Prediction Engine that identifies at-risk searches in week 3 rather than week 11, and Recovery Playbooks that execute automatically without manual escalation."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0D1B2A;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#4F46E5;--indigo2:#6366F1;--indigo3:#818CF8;--indigo-bg:#EEF2FF;--indigo-border:rgba(79,70,229,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(79,70,229,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-num{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:800;color:var(--indigo-border);margin-bottom:.75rem;line-height:1}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Bricolage Grotesque",sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .callout{background:var(--indigo-bg);border:1px solid var(--indigo-border);border-left:4px solid var(--indigo);border-radius:8px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p{font-size:1rem;color:var(--ink);line-height:1.7;font-style:italic}
+    .maturity-row{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+    .maturity-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;background:white;border:1px solid var(--border);border-radius:12px}
+    .maturity-badge{flex-shrink:0;width:36px;height:36px;border-radius:8px;background:var(--indigo-bg);display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.9rem;color:var(--indigo)}
+    .maturity-badge.active{background:var(--indigo);color:white}
+    .maturity-item h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+    .maturity-item p{font-size:.9rem;color:var(--body);line-height:1.65}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#4F46E5 0%,#6366F1 100%);text-align:center}
+    .cta-section h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure. Real-time mandate health monitoring, failure prediction, and autonomous recovery for talent acquisition teams.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","url":"https://majhi.tech","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Majhi OS is autonomous hiring operations infrastructure — adding the observability and autonomous execution layer to mature TA Ops functions.","featureList":["Hiring Health Score","Failure Prediction Engine","Recovery Playbooks","Executive Visibility Layer"],"offers":{"@type":"Offer","price":"3000","priceCurrency":"USD","description":"Per mandate per month"},"provider":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health">Health Score</a>
+      <a href="/hiring-observability">Observability</a>
+      <a href="/operational-visibility-gap">Whitepaper</a>
+      <a href="/mission-walkthrough">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>Talent Acquisition Operations</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>TA Ops &amp; RecOps</div>
+      <h1 class="page-h1"><mark>Talent Acquisition Operations:</mark><br>The layer that keeps hiring systems from failing.</h1>
+      <p class="page-sub">Most TA Ops functions own the tools, the process, and the reporting. What they don't own yet: real-time mandate health, failure prediction, and autonomous recovery. That's the operational gap Majhi OS was built to close.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/recruiting-operations-software" class="btn-outline">See RecOps Software &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What TA Ops Actually Is</p>
+      <h2 class="section-h2">Talent acquisition operations is a systems function.</h2>
+      <p class="section-body">TA Ops (sometimes called RecOps) is the function responsible for the infrastructure that makes hiring work. Not the act of recruiting — the systems behind it. Tool selection and management. Process standardization. Data pipelines and reporting. Quality gates that prevent bad candidates from advancing. Recruiter enablement. Hiring velocity monitoring.</p>
+      <p class="section-body">In high-growth companies, TA Ops is the difference between a hiring machine and a hiring mess. When TA Ops is mature, mandates close predictably. When it's immature, searches stall without warning, recruiters operate without visibility, and hiring managers lose confidence in the process.</p>
+      <div class="callout">
+        <p>TA Ops is not a recruiting function. It's an operations function that happens to live inside talent acquisition. The best TA Ops leaders think more like engineering managers than sourcing leads. They own systems, data, and infrastructure — not candidate pipelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Maturity Model</p>
+      <h2 class="section-h2">The four stages of TA Ops maturity.</h2>
+      <p class="section-body">Most TA Ops functions stall at stage 2 — where tooling and process are in place, but the team is still reactive rather than predictive. The companies that achieve stage 4 build an autonomous operational layer above their existing stack.</p>
+      <div class="maturity-row">
+        <div class="maturity-item">
+          <div class="maturity-badge">1</div>
+          <div>
+            <h3>Reactive — Process fragmented, tools disconnected</h3>
+            <p>Hiring is managed manually. No central ATS, or ATS adoption is low. Reporting is spreadsheet-based. Recruiters operate independently with no shared visibility. Mandates are managed one at a time, in isolation. Most companies start here and stay here longer than they should.</p>
+          </div>
+        </div>
+        <div class="maturity-item">
+          <div class="maturity-badge">2</div>
+          <div>
+            <h3>Systematic — Tools in place, process documented</h3>
+            <p>ATS is deployed and adopted. Sourcing tools are integrated. Interview processes are standardized. Basic reporting exists — time-to-fill, funnel conversion, source effectiveness. This is where most TA Ops functions plateau. Processes are in place, but the function is still fundamentally reactive.</p>
+          </div>
+        </div>
+        <div class="maturity-item">
+          <div class="maturity-badge">3</div>
+          <div>
+            <h3>Predictive — Real-time monitoring, leading indicators</h3>
+            <p>The function starts to watch for failure before it happens. Mandate health is tracked in real time. Outreach response rates are monitored across cadences. Pipeline depletion is flagged before it reaches zero. Recruiter load is balanced proactively. Most TA Ops functions aspire to this stage but lack the tooling to get there without custom infrastructure.</p>
+          </div>
+        </div>
+        <div class="maturity-item">
+          <div class="maturity-badge active">4</div>
+          <div>
+            <h3>Autonomous — Recovery executes without manual orchestration</h3>
+            <p>The system detects failure signals, selects the appropriate recovery sequence, and executes — without a recruiter or TA Ops manager triggering it manually. Majhi OS is built for this stage. Recovery Playbooks compound intelligence over time. The hiring operation learns what works and applies it automatically. This is the stage that produces predictable hiring velocity at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What Majhi OS Adds</p>
+      <h2 class="section-h2">The observability and execution layer your TA Ops function is missing.</h2>
+      <p class="section-body">Majhi OS is not a TA Ops platform — it's the autonomous infrastructure layer that sits above your existing stack. It adds what even mature TA Ops functions typically lack: real-time mandate health visibility, failure prediction before collapse, and recovery sequences that trigger automatically.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>Hiring Health Score</h3>
+          <p>Every active mandate gets a real-time operational score — tracking response rates, pipeline depth, hiring manager engagement, and time-decay signals. The score is addictive: once teams see it, they can't operate without it.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>Failure Prediction Engine</h3>
+          <p>Identifies mandates at risk of failure in week 3 or 4 — not week 11 when they've already collapsed. Built on pattern recognition across mandate types, outreach sequences, and pipeline progression rates.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>Recovery Playbooks</h3>
+          <p>System-learned recovery sequences that execute automatically when a mandate enters failure territory. The system learns which recovery actions work for which mandate types and compounds that intelligence over time.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">04</div>
+          <h3>Recruiter Load Balancing</h3>
+          <p>Monitors recruiter capacity across all active mandates simultaneously. Flags overload before it causes pipeline degradation. Triggers reassignment sequences when capacity thresholds are breached.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">05</div>
+          <h3>Outreach Decay Detection</h3>
+          <p>Monitors reply rates across all active outreach sequences in real time. Flags when a sequence is underperforming relative to baseline. Triggers pivot sequences before the pipeline depletes.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">06</div>
+          <h3>Executive Visibility Layer</h3>
+          <p>CEO and CFO-level dashboards showing hiring velocity, cost saved, recruiter efficiency, and recovered revenue. Moves TA Ops from a cost center to a measurable strategic function.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Proof</p>
+      <h2 class="section-h2">What mature TA Ops with Majhi OS produces.</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">50d</div><div class="stat-label">avg VP search close vs 14-week industry median</div></div>
+        <div class="stat"><div class="stat-val">68%</div><div class="stat-label">of VP searches stall past week 10 without operational monitoring</div></div>
+        <div class="stat"><div class="stat-val">82%</div><div class="stat-label">shortlist approval rate — up from 38% baseline</div></div>
+        <div class="stat"><div class="stat-val">$3,280</div><div class="stat-label">per month eliminated in fragmented tool spend</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-h2">Common questions about TA Ops and Majhi OS.</h2>
+      <div class="grid-2" style="margin-top:2rem">
+        <div class="card"><h3>Do we need a dedicated TA Ops team to use Majhi OS?</h3><p>No. Majhi OS is built for lean teams — typically 1–4 recruiters running multiple concurrent mandates. It adds the operational intelligence layer that would otherwise require a dedicated TA Ops headcount to build and maintain manually.</p></div>
+        <div class="card"><h3>We already have an ATS and a CRM. What does Majhi OS add?</h3><p>Your ATS manages candidate stages. Your CRM manages relationships. Neither one tells you in real time that a mandate is about to fail — or executes recovery without you asking. That's the gap Majhi OS fills.</p></div>
+        <div class="card"><h3>How long does it take to see value from Majhi OS?</h3><p>The Hiring Health Score starts generating signal from day one. Failure Prediction and Recovery Playbooks compound over the first 30–60 days as the system learns your mandate patterns. The fastest teams see measurable close-rate improvement within the first active mandate.</p></div>
+        <div class="card"><h3>Is Majhi OS a SaaS product or a managed service?</h3><p>Majhi OS is structured as a per-mandate retainer — $3,000–$4,000 per active mandate per month. This aligns our infrastructure directly with your mandate outcomes. We run alongside your team; we don't replace it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Find out which layer of TA Ops maturity your team is at.</h2>
+    <p>In 45 minutes, we map your hiring system against the Majhi OS maturity framework — using your actual active mandate as working context.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Hiring infrastructure for teams that can't afford to stall.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health">Hiring System Health</a>
+      <a href="/hiring-observability">Hiring Observability</a>
+      <a href="/operational-visibility-gap">Operational Visibility Gap</a>
+      <a href="/failure-prediction">Failure Prediction Engine</a>
+      <a href="/recruiting-operations-software">RecOps Software</a>
+      <a href="/talent-acquisition-operations">TA Ops</a>
+      <a href="/mission-walkthrough">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body>
+</html>
