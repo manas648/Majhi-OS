@@ -24,9 +24,9 @@
   <meta name="twitter:image" content="https://majhi.tech/og-image.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234F46E5'/><path d='M8 16h16M16 8l8 8-8 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234F46E5'/><path d='M8 16h16M16 8l8 8-8 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
-  <meta name="theme-color" content="#4F46E5">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23B8882A'/><path d='M8 16h16M16 8l8 8-8 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23B8882A'/><path d='M8 16h16M16 8l8 8-8 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <meta name="theme-color" content="#B8882A">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -77,14 +77,14 @@
 </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;
-      --ink:#0D1B2A;--body:#3D4F61;--muted:#7A8FA6;
+      --ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;
       --border:#DDE3EC;--border2:#C8D2E0;
-      --indigo:#4F46E5;--indigo2:#6366F1;--indigo3:#818CF8;
-      --indigo-bg:#EEF2FF;--indigo-border:rgba(79,70,229,.18);
+      --indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;
+      --indigo-bg:#F8F2E6;--indigo-border:rgba(184,136,42,.18);
       --emerald:#059669;--emerald-bg:#ECFDF5;
       --amber:#D97706;--amber-bg:#FFFBEB;
       --red:#DC2626;
@@ -94,8 +94,8 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif}
+    body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Cormorant Garamond",serif}
     .mono{font-family:"JetBrains Mono",monospace}
 
     /* === NAV === */
@@ -104,7 +104,7 @@
     .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
     .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
     .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
-    .logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .logo-name{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
     /* centre group */
     .nav-links{display:flex;align-items:center;gap:0}
     .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s;letter-spacing:.005em}
@@ -115,13 +115,13 @@
     .nav-sign{font-size:.825rem;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;padding:.45rem .75rem;border-radius:6px;transition:color .15s,background .15s;letter-spacing:.005em}
     .nav-sign:hover{color:var(--ink);background:var(--bg2)}
     .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;letter-spacing:.005em;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
-    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(79,70,229,.3)}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(184,136,42,.3)}
 
     /* === HERO === */
     .hero{position:relative;overflow:hidden;padding:5.5rem 2rem 0;background:var(--bg)}
     .hero-mesh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-    .hero-mesh::before{content:"";position:absolute;top:-40%;left:10%;width:70%;height:130%;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.07) 0%,transparent 65%)}
-    .hero-mesh::after{content:"";position:absolute;top:-20%;right:-10%;width:55%;height:100%;border-radius:50%;background:radial-gradient(ellipse,rgba(99,102,241,.05) 0%,transparent 65%)}
+    .hero-mesh::before{content:"";position:absolute;top:-40%;left:10%;width:70%;height:130%;border-radius:50%;background:radial-gradient(ellipse,rgba(184,136,42,.07) 0%,transparent 65%)}
+    .hero-mesh::after{content:"";position:absolute;top:-20%;right:-10%;width:55%;height:100%;border-radius:50%;background:radial-gradient(ellipse,rgba(212,168,75,.05) 0%,transparent 65%)}
     .hero-inner{max-width:1160px;margin:0 auto;position:relative}
     .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
     .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
@@ -158,7 +158,7 @@
     .dash-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem;margin-bottom:1.25rem}
     .dash-kpi{background:white;border:1px solid var(--border);border-radius:10px;padding:1rem;box-shadow:var(--sh-sm)}
     .kpi-label{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
-    .kpi-val{font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
+    .kpi-val{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
     .kpi-sub{font-size:.72rem;color:var(--muted);margin-top:.3rem;display:flex;align-items:center;gap:.3rem}
     .kpi-up{color:var(--emerald);font-weight:600}
     .dash-table{background:white;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh-sm)}
@@ -205,7 +205,7 @@
     .stats-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:0}
     .stat-block{padding:0 3.5rem;text-align:center}
     .stat-block+.stat-block{border-left:1px solid var(--border)}
-    .stat-n{font-family:"Bricolage Grotesque",sans-serif;font-size:2.25rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
+    .stat-n{font-family:"Cormorant Garamond",serif;font-size:2.25rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
     .stat-l{font-size:.8rem;color:var(--muted);margin-top:.35rem;line-height:1.4}
 
     /* FEATURES */
@@ -213,7 +213,7 @@
     .feature-grid-3{grid-template-columns:repeat(3,1fr)}
     .feature-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:.6rem}
     .feature-card:hover{box-shadow:var(--sh-md);border-color:var(--border2)}
-    .f-card-new{border-color:rgba(99,102,241,.25);background:linear-gradient(135deg,var(--bg) 80%,rgba(99,102,241,.03))}
+    .f-card-new{border-color:rgba(212,168,75,.25);background:linear-gradient(135deg,var(--bg) 80%,rgba(212,168,75,.03))}
     .f-icon{width:40px;height:40px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:.25rem;flex-shrink:0}
     .f-icon svg{width:20px;height:20px;stroke:var(--indigo);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
     .f-icon-indigo{background:var(--indigo-bg)} .f-icon-indigo svg{stroke:var(--indigo)}
@@ -239,7 +239,7 @@
     .step-num{width:32px;height:32px;border-radius:8px;background:var(--bg3);display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;color:var(--muted);flex-shrink:0;margin-top:2px;transition:background .2s,color .2s}
     .how-step.active .step-num{background:var(--indigo);color:white}
     .step-content{}
-    .step-title{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em}
+    .step-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em}
     .step-body{font-size:.87rem;color:var(--body);line-height:1.65}
     .how-preview{position:sticky;top:5rem}
     .preview-card{background:white;border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-lg);overflow:hidden;min-height:340px}
@@ -263,20 +263,20 @@
     .price-card.pop{border-color:var(--indigo);box-shadow:0 0 0 4px var(--indigo-bg),var(--sh-md)}
     .pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--indigo);color:white;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .85rem;border-radius:999px;white-space:nowrap}
     .price-tier{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem}
-    .price-amt{font-family:"Bricolage Grotesque",sans-serif;font-size:3rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1;margin-bottom:.3rem}
+    .price-amt{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1;margin-bottom:.3rem}
     .price-cycle{font-size:.78rem;color:var(--muted);margin-bottom:.875rem}
     .price-desc{font-size:.88rem;color:var(--body);line-height:1.65;padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
     .price-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.75rem}
     .price-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.84rem;color:var(--body);line-height:1.45}
     .price-list li::before{content:"✓";color:var(--emerald);font-weight:800;font-size:.8rem;flex-shrink:0;margin-top:1px}
-    .price-btn{width:100%;padding:.82rem;border-radius:8px;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .15s;border:1.5px solid var(--border);background:white;color:var(--ink);font-family:"Figtree",sans-serif}
+    .price-btn{width:100%;padding:.82rem;border-radius:8px;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .15s;border:1.5px solid var(--border);background:white;color:var(--ink);font-family:"Inter",sans-serif}
     .price-btn:hover{background:var(--bg2);border-color:var(--border2)}
     .price-btn.pb-primary{background:var(--indigo);color:white;border-color:var(--indigo)}
     .price-btn.pb-primary:hover{background:var(--indigo2);border-color:var(--indigo2)}
 
     /* CTA BAND */
     .cta-band{background:var(--ink);padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
-    .cta-band::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:900px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(79,70,229,.25) 0%,transparent 65%);pointer-events:none}
+    .cta-band::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:900px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(184,136,42,.25) 0%,transparent 65%);pointer-events:none}
     .cta-band-inner{position:relative;max-width:600px;margin:0 auto}
     .cta-h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem;line-height:1.1}
     .cta-sub{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:2rem}
@@ -295,7 +295,7 @@
 
     /* Tab switcher — clean pill style */
     .modal-tabs{display:flex;gap:.375rem;margin:0;padding:1.5rem 1.5rem 0;border-bottom:1px solid var(--border);padding-bottom:1.25rem;margin-bottom:1.5rem}
-    .modal-tab{flex:1;font-size:.78rem;font-weight:600;padding:.55rem .75rem;border:1.5px solid var(--border);background:white;cursor:pointer;border-radius:8px;color:var(--body);transition:all .18s;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:.45rem;letter-spacing:.005em;font-family:"Figtree",sans-serif}
+    .modal-tab{flex:1;font-size:.78rem;font-weight:600;padding:.55rem .75rem;border:1.5px solid var(--border);background:white;cursor:pointer;border-radius:8px;color:var(--body);transition:all .18s;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:.45rem;letter-spacing:.005em;font-family:"Inter",sans-serif}
     .modal-tab svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
     .modal-tab:hover:not(.active){border-color:var(--border2);color:var(--ink);background:var(--bg2)}
     .modal-tab.active{border-color:var(--indigo);background:var(--indigo-bg);color:var(--indigo)}
@@ -316,7 +316,7 @@
     .modal-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-bg);background:white}
     .modal-textarea{min-height:88px;resize:vertical}
     .modal-submit{width:100%;background:var(--indigo);color:white;font-size:.875rem;font-weight:700;padding:.875rem;border-radius:8px;border:none;cursor:pointer;transition:background .15s,box-shadow .15s;font-family:inherit;margin-top:.5rem;letter-spacing:.01em}
-    .modal-submit:hover{background:var(--indigo2);box-shadow:0 4px 12px rgba(79,70,229,.3)}
+    .modal-submit:hover{background:var(--indigo2);box-shadow:0 4px 12px rgba(184,136,42,.3)}
     .modal-note{font-size:.71rem;color:var(--muted);text-align:center;margin-top:.6rem;line-height:1.55}
     .modal-note-warn{background:#FFF5F5;border:1px solid #FED7D7;border-radius:6px;color:#C53030;padding:.55rem .85rem;text-align:left;font-size:.77rem;margin-bottom:.5rem}
 
@@ -325,7 +325,7 @@
     footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
     .footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
     .footer-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-    .footer-logo-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+    .footer-logo-name{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
     .footer-links{display:flex;gap:1.5rem}
     .footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .15s}
     .footer-links a:hover{color:var(--ink)}
@@ -375,7 +375,7 @@
     .g2-stars{color:#FF492C;font-size:1rem;letter-spacing:.05em}
     .g2-meta{font-size:.78rem;color:var(--muted)}
     .g2-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--sh-md)}
-    .g2-headline{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.2rem,2.5vw,1.65rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);padding:2rem 2.5rem 1.5rem;border-bottom:1px solid var(--border);line-height:1.2}
+    .g2-headline{font-family:"Cormorant Garamond",serif;font-size:clamp(1.2rem,2.5vw,1.65rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);padding:2rem 2.5rem 1.5rem;border-bottom:1px solid var(--border);line-height:1.2}
     .g2-body-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border)}
     @media(max-width:768px){.g2-body-grid{grid-template-columns:1fr}}
     .g2-col{padding:2rem 2.5rem}
@@ -391,7 +391,7 @@
     .g2-text strong{color:var(--ink);font-weight:600}
     .g2-stats-row{display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;padding:1.75rem 2.5rem;background:var(--ink);gap:1rem}
     .g2-stat{text-align:center}
-    .g2-stat-n{font-family:"Bricolage Grotesque",sans-serif;font-size:1.75rem;font-weight:800;letter-spacing:-.03em;color:white;line-height:1}
+    .g2-stat-n{font-family:"Cormorant Garamond",serif;font-size:1.75rem;font-weight:800;letter-spacing:-.03em;color:white;line-height:1}
     .g2-stat-l{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.35rem;line-height:1.4}
     .g2-stat-sub{font-size:.65rem;color:rgba(255,255,255,.35)}
     .g2-stat-div{width:1px;height:40px;background:rgba(255,255,255,.1);flex-shrink:0}
@@ -408,7 +408,7 @@
     .p1-node .pillar-num{color:var(--indigo)}
     .p2-node .pillar-num{color:var(--emerald)}
     .p3-node .pillar-num{color:#9333EA}
-    .pillar-node-title{font-family:"Bricolage Grotesque",sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);line-height:1.2}
+    .pillar-node-title{font-family:"Cormorant Garamond",serif;font-size:.9rem;font-weight:700;color:var(--ink);line-height:1.2}
     .pillar-chevron{font-size:1.25rem;color:var(--muted);padding:0 .75rem;flex-shrink:0}
     .pillar-flow-label{font-size:.78rem;color:var(--muted);margin-top:.5rem}
 
@@ -423,7 +423,7 @@
     .pillar-card-1 .pillar-card-tag{color:var(--indigo)}
     .pillar-card-2 .pillar-card-tag{color:var(--emerald)}
     .pillar-card-3 .pillar-card-tag{color:#9333EA}
-    .pillar-card-title{font-family:"Bricolage Grotesque",sans-serif;font-size:1.2rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
+    .pillar-card-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
     .pillar-card-body{font-size:.875rem;color:var(--body);line-height:1.75;flex:1}
     .pillar-card-chips{display:flex;flex-wrap:wrap;gap:.4rem}
     .pillar-chip{font-size:.72rem;font-weight:500;color:var(--body);background:var(--bg2);border:1px solid var(--border);padding:.25rem .7rem;border-radius:6px}
@@ -433,11 +433,11 @@
 
     .pillar-moat{margin-top:2rem;background:var(--ink);border-radius:14px;padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
     @media(max-width:768px){.pillar-moat{grid-template-columns:1fr}}
-    .pillar-moat-title{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;color:white;margin-bottom:.6rem}
+    .pillar-moat-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;color:white;margin-bottom:.6rem}
     .pillar-moat-body{font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.75}
     .pillar-stat-row{display:flex;gap:2rem}
     .pillar-stat{text-align:center}
-    .pillar-stat-n{font-family:"Bricolage Grotesque",sans-serif;font-size:1.4rem;font-weight:800;color:var(--indigo3);letter-spacing:-.02em;line-height:1}
+    .pillar-stat-n{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:800;color:var(--indigo3);letter-spacing:-.02em;line-height:1}
     .pillar-stat-l{font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.35rem;line-height:1.5}
 
     
@@ -486,7 +486,7 @@
     .compare-table tr:last-child td{border-bottom:none}
     .compare-table tr:hover td{background:var(--bg2)}
     .ct-feature-cell{text-align:left;font-weight:500;color:var(--ink);font-size:.82rem}
-    .ct-us-cell{background:rgba(79,70,229,.04);font-weight:600}
+    .ct-us-cell{background:rgba(184,136,42,.04);font-weight:600}
     .ct-yes{color:var(--emerald);font-weight:600;font-size:.78rem}
     .ct-partial{color:var(--amber);font-weight:500;font-size:.78rem}
     .ct-no{color:var(--muted);font-size:.78rem}
@@ -508,13 +508,13 @@
     .roi-label{display:block;font-size:.8rem;font-weight:500;color:var(--body);margin-bottom:.75rem}
     .roi-slider-wrap{display:flex;align-items:center;gap:1rem}
     .roi-slider{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:99px;background:var(--bg3);outline:none;cursor:pointer}
-    .roi-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--indigo);cursor:pointer;border:2px solid white;box-shadow:0 1px 4px rgba(79,70,229,.3)}
+    .roi-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--indigo);cursor:pointer;border:2px solid white;box-shadow:0 1px 4px rgba(184,136,42,.3)}
     .roi-slider-val{font-family:"JetBrains Mono",monospace;font-size:.82rem;font-weight:700;color:var(--ink);min-width:60px;text-align:right}
     .roi-results{display:flex;flex-direction:column;gap:1rem}
     .roi-result-card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}
     .roi-result-card.roi-result-highlight{background:var(--indigo-bg);border-color:var(--indigo-border)}
     .roi-result-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
-    .roi-result-val{font-family:"Bricolage Grotesque",sans-serif;font-size:2.25rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1;margin-bottom:.3rem}
+    .roi-result-val{font-family:"Cormorant Garamond",serif;font-size:2.25rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1;margin-bottom:.3rem}
     .roi-result-highlight .roi-result-val{color:var(--indigo)}
     .roi-result-sub{font-size:.75rem;color:var(--muted)}
     .roi-assumption{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:.78rem;color:var(--muted);line-height:1.65}
@@ -522,7 +522,7 @@
 
     /* === VIDEO TEASER === */
     .video-teaser{width:100%;max-width:920px;margin:2.5rem auto 0;position:relative}
-    .vt-frame{position:relative;border-radius:16px;overflow:hidden;background:#060912;border:1px solid rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.04),0 32px 80px rgba(0,0,0,0.55),0 0 60px rgba(99,102,241,0.12);aspect-ratio:2/1}
+    .vt-frame{position:relative;border-radius:16px;overflow:hidden;background:#060912;border:1px solid rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.04),0 32px 80px rgba(0,0,0,0.55),0 0 60px rgba(212,168,75,0.12);aspect-ratio:2/1}
     .vt-frame canvas{width:100%;height:100%;display:block}
     .vt-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;background:rgba(6,9,18,0.5);backdrop-filter:blur(2px);transition:opacity .35s,backdrop-filter .35s;cursor:pointer}
     .vt-overlay.hidden{opacity:0;pointer-events:none;backdrop-filter:blur(0)}
@@ -530,13 +530,13 @@
     .vt-play-btn:hover{transform:scale(1.08)}
     .vt-play-ring{position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.2);animation:ringPulse 2.4s ease-in-out infinite}
     @keyframes ringPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
-    .vt-play-icon{width:72px;height:72px;position:relative;z-index:1;filter:drop-shadow(0 4px 20px rgba(99,102,241,.6))}
+    .vt-play-icon{width:72px;height:72px;position:relative;z-index:1;filter:drop-shadow(0 4px 20px rgba(212,168,75,.6))}
     .vt-label{text-align:center}
     .vt-label-title{font-size:.95rem;font-weight:600;color:white;margin-bottom:.25rem}
     .vt-label-sub{font-size:.78rem;color:rgba(255,255,255,.45)}
     .vt-playing-ui{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(6,9,18,.9));padding:.75rem 1.25rem 1rem}
     .vt-progress-bar{width:100%;height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin-bottom:.75rem;cursor:pointer;overflow:hidden}
-    .vt-progress-fill{height:100%;background:var(--indigo3,#818CF8);border-radius:2px;width:0%;transition:width .1s linear}
+    .vt-progress-fill{height:100%;background:var(--indigo3,#E8C97A);border-radius:2px;width:0%;transition:width .1s linear}
     .vt-controls{display:flex;align-items:center;gap:.875rem}
     .vt-ctrl-btn{width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;display:grid;place-items:center;opacity:.8;transition:opacity .15s}
     .vt-ctrl-btn:hover{opacity:1}
@@ -580,7 +580,7 @@
     @media(max-width:860px){.pcard-layout{grid-template-columns:1fr}}
     .pcard-left{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1rem}
     .pcard-tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
-    .pcard-title{font-family:"Bricolage Grotesque",sans-serif;font-size:1.45rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.15}
+    .pcard-title{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.15}
     .pcard-body{font-size:.875rem;color:var(--body);line-height:1.75}
     .pcard-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
     .pcard-list li{font-size:.85rem;color:var(--body);display:flex;align-items:center;gap:.6rem}
@@ -606,7 +606,7 @@
     /* Agency mandate rows */
     .pcv-mandate-row{display:grid;grid-template-columns:1fr 100px 36px;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:8px;margin-bottom:.5rem}
     .pcv-row-green{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15)}
-    .pcv-row-blue{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15)}
+    .pcv-row-blue{background:rgba(212,168,75,0.06);border:1px solid rgba(212,168,75,0.15)}
     .pcv-row-amber{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15)}
     .pcv-m-name{font-size:.78rem;font-weight:600;color:var(--ink)}
     .pcv-m-sub{font-size:.68rem;color:var(--muted);margin-top:1px}
@@ -617,7 +617,7 @@
     .pcv-m-pct{font-size:.7rem;font-weight:700;color:var(--muted);text-align:right}
     .pcv-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
     .pcv-stat{text-align:center}
-    .pcv-stat-n{font-family:"Bricolage Grotesque",sans-serif;font-size:1.25rem;font-weight:800;color:var(--indigo);line-height:1}
+    .pcv-stat-n{font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:800;color:var(--indigo);line-height:1}
     .pcv-stat-l{font-size:.62rem;color:var(--muted);margin-top:.2rem;line-height:1.3}
 
     /* In-house stack comparison */
@@ -636,7 +636,7 @@
     .pcv-dossier-score{position:relative;width:72px;height:72px;flex-shrink:0}
     .pcv-ring-svg{width:72px;height:72px}
     .pcv-ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .pcv-ring-n{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:800;color:var(--indigo);line-height:1}
+    .pcv-ring-n{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:800;color:var(--indigo);line-height:1}
     .pcv-ring-s{font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
     .pcv-dossier-name{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:2px}
     .pcv-dossier-sub{font-size:.72rem;color:var(--muted);margin-bottom:.5rem}
@@ -646,7 +646,7 @@
     .pcv-evidence-list{background:#F8F9FB;border-radius:8px;padding:.65rem .85rem;margin-bottom:.65rem}
     .pcv-ev-label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
     .pcv-ev-item{font-size:.72rem;color:var(--body);padding:.2rem 0;font-family:"JetBrains Mono",monospace}
-    .pcv-rec{font-size:.75rem;color:var(--muted);background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:7px;padding:.5rem .75rem}
+    .pcv-rec{font-size:.75rem;color:var(--muted);background:rgba(212,168,75,0.06);border:1px solid rgba(212,168,75,0.15);border-radius:7px;padding:.5rem .75rem}
     .pcv-rec strong{color:var(--indigo)}
 
     /* === OLD PERSONA (remove) === */
@@ -667,7 +667,7 @@
     @media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
     .faq-col{display:flex;flex-direction:column}
     .faq-item{border-bottom:1px solid var(--border)}
-    .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;font-size:.9rem;font-weight:600;color:var(--ink);background:none;border:none;cursor:pointer;text-align:left;font-family:"Figtree",sans-serif;transition:color .15s}
+    .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;font-size:.9rem;font-weight:600;color:var(--ink);background:none;border:none;cursor:pointer;text-align:left;font-family:"Inter",sans-serif;transition:color .15s}
     .faq-q:hover{color:var(--indigo)}
     .faq-chevron{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform .25s}
     .faq-q[aria-expanded="true"] .faq-chevron{transform:rotate(180deg)}
@@ -688,9 +688,9 @@
     @media(max-width:900px){.founder-identity{position:static;align-items:center;text-align:center}}
     .founder-photo-wrap{margin-bottom:.5rem}
     .founder-photo-img{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:center top;display:block}
-    .founder-photo-ring{width:110px;height:110px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#C9A84C,rgba(99,102,241,0.5));box-shadow:0 0 0 1px rgba(255,255,255,0.06)}
+    .founder-photo-ring{width:110px;height:110px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#C9A84C,rgba(212,168,75,0.5));box-shadow:0 0 0 1px rgba(255,255,255,0.06)}
 
-    .founder-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.35rem;font-weight:800;color:white;letter-spacing:-.03em}
+    .founder-name{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:800;color:white;letter-spacing:-.03em}
     .founder-role{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold,#C9A84C);margin-top:-.25rem}
     .founder-press-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:.25rem}
     .founder-press-row{display:flex;flex-wrap:wrap;gap:.35rem}
@@ -713,7 +713,7 @@
     .founder-graf{font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:1rem}
     .founder-bold{color:rgba(255,255,255,0.9);font-weight:500}
     .founder-graf-small{font-size:.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:1rem}
-    .founder-pullquote{font-family:"Bricolage Grotesque",sans-serif;font-size:1.45rem;font-weight:700;letter-spacing:-.02em;line-height:1.3;color:white;border-left:3px solid var(--gold,#C9A84C);padding-left:1.25rem;margin:1.5rem 0;font-style:normal}
+    .founder-pullquote{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:700;letter-spacing:-.02em;line-height:1.3;color:white;border-left:3px solid var(--gold,#C9A84C);padding-left:1.25rem;margin:1.5rem 0;font-style:normal}
     .founder-pullquote em{color:var(--gold,#C9A84C);font-style:normal}
 
     /* Framework */
@@ -721,7 +721,7 @@
     @media(max-width:700px){.founder-framework{grid-template-columns:1fr;gap:1rem}}
     .founder-fw-step{text-align:center}
     .founder-fw-num{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:.35rem}
-    .founder-fw-label{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:800;color:var(--gold,#C9A84C);margin-bottom:.35rem}
+    .founder-fw-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:800;color:var(--gold,#C9A84C);margin-bottom:.35rem}
     .founder-fw-desc{font-size:.72rem;color:rgba(255,255,255,0.4);line-height:1.5}
     .founder-fw-arrow{color:rgba(255,255,255,0.2);font-size:1.25rem;padding-top:.75rem;text-align:center}
     @media(max-width:700px){.founder-fw-arrow{display:none}}
@@ -730,7 +730,7 @@
     .founder-close-cta{background:none;border:none;color:var(--gold,#C9A84C);font-weight:700;font-size:1.05rem;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;font-family:inherit}
     .founder-close-cta:hover{opacity:.8}
     .founder-sig{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.25rem;margin-top:.5rem}
-    .founder-sig-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:white;font-style:italic}
+    .founder-sig-name{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:700;color:white;font-style:italic}
     .founder-sig-title{font-size:.78rem;color:rgba(255,255,255,0.35);margin-top:.2rem}
 
 
@@ -764,7 +764,7 @@
     /* === PRODUCT SENTENCE BANNER === */
     .product-sentence{background:var(--ink);padding:3.5rem 0;margin:0}
     .ps-inner{max-width:1160px;margin:0 auto;padding:0 2rem;text-align:center}
-    .ps-text{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.03em;color:white;line-height:1.3;max-width:800px;margin:0 auto}
+    .ps-text{font-family:"Cormorant Garamond",serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.03em;color:white;line-height:1.3;max-width:800px;margin:0 auto}
     .ps-text em{color:var(--indigo3);font-style:normal}
     .ps-sub{font-size:.88rem;color:rgba(255,255,255,.45);margin-top:.875rem;letter-spacing:.005em}
 
@@ -774,18 +774,18 @@
     .dossier-modal{background:white;border-radius:20px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;box-shadow:0 32px 80px rgba(13,27,42,.25);transform:translateY(16px);transition:transform .25s cubic-bezier(.4,0,.2,1)}
     .dossier-modal-overlay.open .dossier-modal{transform:translateY(0)}
     .dm-header{position:sticky;top:0;background:white;border-bottom:1px solid var(--border);padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;z-index:10;border-radius:20px 20px 0 0}
-    .dm-title{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+    .dm-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
     .dm-close{width:32px;height:32px;border-radius:8px;background:var(--bg2);border:none;cursor:pointer;display:grid;place-items:center;color:var(--muted);font-size:1.1rem;transition:background .15s}
     .dm-close:hover{background:var(--bg3)}
     .dm-body{padding:1.5rem}
     .dm-tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);margin-bottom:.5rem}
     .dm-candidate-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
-    .dm-avatar{width:52px;height:52px;border-radius:12px;background:var(--indigo-bg);display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:800;color:var(--indigo);flex-shrink:0}
-    .dm-name{font-family:"Bricolage Grotesque",sans-serif;font-size:1.2rem;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+    .dm-avatar{width:52px;height:52px;border-radius:12px;background:var(--indigo-bg);display:grid;place-items:center;font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:800;color:var(--indigo);flex-shrink:0}
+    .dm-name{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:800;color:var(--ink);letter-spacing:-.03em}
     .dm-sub{font-size:.82rem;color:var(--muted);margin-top:.15rem}
     .dm-score-row{display:flex;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap}
     .dm-score-card{flex:1;min-width:100px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem;text-align:center}
-    .dm-score-n{font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:800;color:var(--indigo);line-height:1}
+    .dm-score-n{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:800;color:var(--indigo);line-height:1}
     .dm-score-l{font-size:.65rem;color:var(--muted);margin-top:.25rem;text-transform:uppercase;letter-spacing:.07em}
     .dm-section{margin-bottom:1.25rem}
     .dm-section-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
@@ -858,7 +858,7 @@
     .deploy-card-head.enterprise{background:var(--ink)}
     .deploy-tier-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .85rem;border-radius:999px;margin-bottom:1.1rem}
     .tier-pill-growth{background:var(--indigo-bg);color:var(--indigo);border:1px solid var(--indigo-border)}
-    .tier-pill-enterprise{background:rgba(129,140,248,.15);color:#818CF8;border:1px solid rgba(129,140,248,.2)}
+    .tier-pill-enterprise{background:rgba(232,201,122,.15);color:#E8C97A;border:1px solid rgba(232,201,122,.2)}
     .deploy-name{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.15;margin-bottom:.6rem}
     .deploy-card-head.enterprise .deploy-name{color:white}
     .deploy-desc{font-size:.875rem;color:var(--body);line-height:1.7;max-width:400px}
@@ -877,7 +877,7 @@
     .deploy-card-foot.enterprise-foot{background:var(--ink);border-top:1px solid rgba(255,255,255,.08)}
     .deploy-range-label{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
     .deploy-card-foot.enterprise-foot .deploy-range-label{color:rgba(255,255,255,.3)}
-    .deploy-range-val{font-family:"Bricolage Grotesque",sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
+    .deploy-range-val{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
     .deploy-card-foot.enterprise-foot .deploy-range-val{color:white}
     .deploy-cta{font-size:.875rem;font-weight:600;padding:.7rem 1.4rem;border-radius:8px;cursor:pointer;white-space:nowrap;transition:all .15s;border:1.5px solid;font-family:inherit}
     .deploy-cta-outline{background:white;color:var(--ink);border-color:var(--border2)}
@@ -891,7 +891,7 @@
     .deploy-outcome-wrap{margin-top:3rem;border:1px solid var(--border);border-radius:14px;overflow:hidden}
     .deploy-outcome-head{background:var(--ink);padding:.875rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
     .deploy-outcome-head span{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-    .deploy-outcome-head span:last-child{color:rgba(129,140,248,.8)}
+    .deploy-outcome-head span:last-child{color:rgba(232,201,122,.8)}
     .deploy-outcome-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:.9rem 1.5rem;border-bottom:1px solid var(--border);align-items:center;transition:background .15s}
     .deploy-outcome-row:last-child{border-bottom:none}
     .deploy-outcome-row:hover{background:var(--indigo-bg)}
@@ -931,7 +931,7 @@
     @media(max-width:860px){.why-now-grid{grid-template-columns:1fr;gap:2rem}}
     .wn-stat-stack{display:flex;flex-direction:column;gap:1rem}
     .wn-stat{background:white;border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.25rem}
-    .wn-stat-n{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:800;color:var(--indigo);letter-spacing:-.04em;line-height:1;flex-shrink:0;min-width:70px}
+    .wn-stat-n{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:800;color:var(--indigo);letter-spacing:-.04em;line-height:1;flex-shrink:0;min-width:70px}
     .wn-stat-text{font-size:.84rem;color:var(--body);line-height:1.6}
     .wn-stat-text strong{color:var(--ink);display:block;font-size:.9rem;margin-bottom:.15rem}
     .wn-points{display:flex;flex-direction:column;gap:1rem}
@@ -968,11 +968,11 @@
     .es-event.ok{color:#4ADE80}
     .es-event.warn{color:#FCD34D}
     .es-event.err{color:#F87171}
-    .es-event.human{color:#818CF8}
+    .es-event.human{color:#E8C97A}
     .es-badge{font-size:.6rem;font-weight:600;border-radius:4px;padding:.1rem .45rem;white-space:nowrap}
     .es-badge-ok{background:rgba(74,222,128,.15);color:#4ADE80}
     .es-badge-warn{background:rgba(252,211,77,.12);color:#FCD34D}
-    .es-badge-human{background:rgba(129,140,248,.15);color:#818CF8}
+    .es-badge-human{background:rgba(232,201,122,.15);color:#E8C97A}
 
     .es-right{display:flex;flex-direction:column;gap:1.25rem}
     .es-alert{background:white;border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start}
@@ -1042,12 +1042,12 @@
     .legal-header-left{display:flex;align-items:center;gap:1rem}
     .legal-back{font-size:.85rem;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:.35rem .75rem;border-radius:6px;transition:color .15s,background .15s}
     .legal-back:hover{color:var(--ink);background:var(--bg2)}
-    .legal-title-bar{font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+    .legal-title-bar{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
     .legal-updated{font-size:.75rem;color:var(--muted)}
     .legal-body{flex:1;overflow-y:auto;padding:3rem 2rem;max-width:800px;margin:0 auto;width:100%}
-    .legal-body h1{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);margin-bottom:.5rem}
+    .legal-body h1{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);margin-bottom:.5rem}
     .legal-body .legal-lead{font-size:1.05rem;color:var(--body);line-height:1.75;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
-    .legal-body h2{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin:2rem 0 .75rem;letter-spacing:-.02em}
+    .legal-body h2{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin:2rem 0 .75rem;letter-spacing:-.02em}
     .legal-body p{font-size:.9rem;color:var(--body);line-height:1.8;margin-bottom:1rem}
     .legal-body ul{font-size:.9rem;color:var(--body);line-height:1.8;margin:.5rem 0 1rem 1.25rem}
     .legal-body ul li{margin-bottom:.35rem}
@@ -1070,7 +1070,7 @@
       font-family: inherit; font-size: .88rem; color: var(--ink);
       background: white; outline: none; transition: border-color .2s, box-shadow .2s;
     }
-    .wp-gate-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
+    .wp-gate-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(184,136,42,.1); }
     .wp-gate-input::placeholder { color: var(--muted); }
     .wp-gate-btn {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -1080,7 +1080,7 @@
       justify-content: center; transition: background .15s, box-shadow .15s, transform .1s;
       margin-bottom: .65rem;
     }
-    .wp-gate-btn:hover { background: var(--indigo2); box-shadow: 0 4px 14px rgba(79,70,229,.3); transform: translateY(-1px); }
+    .wp-gate-btn:hover { background: var(--indigo2); box-shadow: 0 4px 14px rgba(184,136,42,.3); transform: translateY(-1px); }
     .wp-gate-btn:active { transform: translateY(0); }
     .wp-gate-meta { font-size: .72rem; color: var(--muted); }
     .wp-gate-warn { font-size: .78rem; color: var(--red); background: #FEF2F2; border: 1px solid #FECACA; border-radius: 7px; padding: .5rem .85rem; margin-bottom: .6rem; }
@@ -1391,11 +1391,11 @@
      ═══════════════════════════════════════════════════════════ -->
 <section style="padding:5.5rem 0 6rem;background:var(--ink);position:relative;overflow:hidden">
   <!-- ambient glow -->
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(79,70,229,.12) 0%,transparent 65%);pointer-events:none"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(184,136,42,.12) 0%,transparent 65%);pointer-events:none"></div>
 
   <div class="wrap" style="position:relative">
-    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Hiring Infrastructure Topology</div>
-    <h2 class="sh2 reveal" style="color:white;max-width:640px">Every mandate. Live state.<br><mark style="color:#818CF8">One operational graph.</mark></h2>
+    <div class="eyebrow reveal" style="color:rgba(232,201,122,.7)">Hiring Infrastructure Topology</div>
+    <h2 class="sh2 reveal" style="color:white;max-width:640px">Every mandate. Live state.<br><mark style="color:#E8C97A">One operational graph.</mark></h2>
     <p class="ssub reveal" style="color:rgba(255,255,255,.4);max-width:560px">This is what Majhi OS sees that your current stack cannot — every node, every signal, every failure vector, in real time.</p>
   </div>
 
@@ -1420,10 +1420,10 @@
         <div style="width:10px;height:10px;border-radius:50%;background:#F87171"></div> Stalled · agent intervening
       </div>
       <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
-        <div style="width:10px;height:10px;border-radius:50%;background:#818CF8"></div> Intelligence node · learning
+        <div style="width:10px;height:10px;border-radius:50%;background:#E8C97A"></div> Intelligence node · learning
       </div>
       <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.4)">
-        <span style="display:inline-block;width:22px;height:2px;background:linear-gradient(90deg,rgba(79,70,229,.8),rgba(52,211,153,.8))"></span> Live signal flow
+        <span style="display:inline-block;width:22px;height:2px;background:linear-gradient(90deg,rgba(184,136,42,.8),rgba(52,211,153,.8))"></span> Live signal flow
       </div>
     </div>
   </div>
@@ -1442,22 +1442,22 @@
   // ── Node definitions ──────────────────────────────────────
   const NODES = [
     // Core OS
-    { id:'os',    label:'Majhi OS',      sub:'Operational Core',    x:.50, y:.50, r:32, color:'#818CF8', ring:'rgba(129,140,248,.25)', status:'ok',  glow:true },
+    { id:'os',    label:'Majhi OS',      sub:'Operational Core',    x:.50, y:.50, r:32, color:'#E8C97A', ring:'rgba(232,201,122,.25)', status:'ok',  glow:true },
     // Sources
     { id:'src1',  label:'LinkedIn',      sub:'Sourcing agent',      x:.12, y:.18, r:18, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     { id:'src2',  label:'DB Search',     sub:'Profile extraction',  x:.25, y:.10, r:16, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     { id:'src3',  label:'Referrals',     sub:'Intake queue',        x:.10, y:.38, r:15, color:'#F59E0B', ring:'rgba(245,158,11,.2)',   status:'warn'},
     // Execution
-    { id:'qms',   label:'QMS Engine',    sub:'Quality gating',      x:.35, y:.28, r:22, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'qms',   label:'QMS Engine',    sub:'Quality gating',      x:.35, y:.28, r:22, color:'#E8C97A', ring:'rgba(232,201,122,.2)', status:'ok'  },
     { id:'out',   label:'Outreach',      sub:'Multi-touch seq.',    x:.65, y:.28, r:22, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     { id:'dos',   label:'Dossier',       sub:'Evidence layer',      x:.35, y:.72, r:20, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     { id:'neg',   label:'Offer Intel',   sub:'Negotiation agent',   x:.65, y:.72, r:18, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     // Monitoring
-    { id:'tel',   label:'Telemetry',     sub:'Live signal bus',     x:.82, y:.18, r:20, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'tel',   label:'Telemetry',     sub:'Live signal bus',     x:.82, y:.18, r:20, color:'#E8C97A', ring:'rgba(232,201,122,.2)', status:'ok'  },
     { id:'rec',   label:'Recovery',      sub:'Auto-remediation',    x:.88, y:.50, r:20, color:'#F87171', ring:'rgba(248,113,113,.2)', status:'err', pulse:true },
     { id:'ats',   label:'ATS Handoff',   sub:'Greenhouse · Lever',  x:.78, y:.82, r:16, color:'#34D399', ring:'rgba(52,211,153,.2)',   status:'ok'  },
     // Intel
-    { id:'intel', label:'Intelligence',  sub:'Pattern learning',    x:.18, y:.82, r:20, color:'#818CF8', ring:'rgba(129,140,248,.2)', status:'ok'  },
+    { id:'intel', label:'Intelligence',  sub:'Pattern learning',    x:.18, y:.82, r:20, color:'#E8C97A', ring:'rgba(232,201,122,.2)', status:'ok'  },
     { id:'load',  label:'Load Balance',  sub:'Recruiter routing',   x:.18, y:.60, r:15, color:'#F59E0B', ring:'rgba(245,158,11,.2)',  status:'warn'},
   ];
 
@@ -1466,17 +1466,17 @@
     { from:'src1',  to:'qms',   flow: true,  color:'#34D399' },
     { from:'src2',  to:'qms',   flow: true,  color:'#34D399' },
     { from:'src3',  to:'qms',   flow: false, color:'#F59E0B' },
-    { from:'qms',   to:'os',    flow: true,  color:'#818CF8' },
-    { from:'os',    to:'out',   flow: true,  color:'#818CF8' },
+    { from:'qms',   to:'os',    flow: true,  color:'#E8C97A' },
+    { from:'os',    to:'out',   flow: true,  color:'#E8C97A' },
     { from:'out',   to:'tel',   flow: true,  color:'#34D399' },
-    { from:'tel',   to:'os',    flow: true,  color:'#818CF8' },
+    { from:'tel',   to:'os',    flow: true,  color:'#E8C97A' },
     { from:'os',    to:'rec',   flow: true,  color:'#F87171' },
     { from:'rec',   to:'out',   flow: true,  color:'#F87171' },
-    { from:'os',    to:'dos',   flow: true,  color:'#818CF8' },
+    { from:'os',    to:'dos',   flow: true,  color:'#E8C97A' },
     { from:'dos',   to:'neg',   flow: true,  color:'#34D399' },
     { from:'neg',   to:'ats',   flow: true,  color:'#34D399' },
-    { from:'os',    to:'intel', flow: true,  color:'#818CF8' },
-    { from:'intel', to:'qms',   flow: true,  color:'#818CF8' },
+    { from:'os',    to:'intel', flow: true,  color:'#E8C97A' },
+    { from:'intel', to:'qms',   flow: true,  color:'#E8C97A' },
     { from:'os',    to:'load',  flow: false, color:'#F59E0B' },
     { from:'load',  to:'src3',  flow: false, color:'#F59E0B' },
     { from:'ats',   to:'intel', flow: true,  color:'#34D399' },
@@ -1582,8 +1582,8 @@
       // Glow for core OS
       if(node.glow){
         const g = ctx.createRadialGradient(x,y,0,x,y,r*3.5);
-        g.addColorStop(0, 'rgba(79,70,229,.18)');
-        g.addColorStop(1, 'rgba(79,70,229,0)');
+        g.addColorStop(0, 'rgba(184,136,42,.18)');
+        g.addColorStop(1, 'rgba(184,136,42,0)');
         ctx.beginPath();
         ctx.arc(x,y,r*3.5,0,Math.PI*2);
         ctx.fillStyle = g;
@@ -1715,7 +1715,7 @@
         <div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7">Candidates pile up at the dossier stage. Hiring manager review takes 9 days. No alert fires. No escalation happens. The pipeline looks full — but it isn't moving.</div>
       </div>
     </div>
-    <div style="margin-top:2.5rem;padding:1.75rem 2rem;background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.25);border-radius:12px;text-align:center" class="reveal">
+    <div style="margin-top:2.5rem;padding:1.75rem 2rem;background:rgba(184,136,42,.1);border:1px solid rgba(184,136,42,.25);border-radius:12px;text-align:center" class="reveal">
       <div style="font-size:1.05rem;font-weight:700;color:white;margin-bottom:.4rem">Majhi OS was built to detect these failures before they compound.</div>
       <div style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.7">Live operational telemetry. Automated stall detection. Autonomous recovery execution. No silent failures.</div>
     </div>
@@ -1737,7 +1737,7 @@
 
       <!-- Step 1: Detect -->
       <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
-        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(184,136,42,.12);margin-bottom:1.25rem;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         </div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">01</div>
@@ -1747,7 +1747,7 @@
 
       <!-- Step 2: Reason -->
       <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
-        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(184,136,42,.12);margin-bottom:1.25rem;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
         </div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">02</div>
@@ -1757,7 +1757,7 @@
 
       <!-- Step 3: Execute -->
       <div style="display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .75rem">
-        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--indigo3));display:grid;place-items:center;box-shadow:0 0 0 8px rgba(79,70,229,.12);margin-bottom:1.25rem;flex-shrink:0">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--indigo3));display:grid;place-items:center;box-shadow:0 0 0 8px rgba(184,136,42,.12);margin-bottom:1.25rem;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.4rem">03</div>
@@ -1789,12 +1789,12 @@
     <!-- Flow insight cards -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:4rem" class="reveal">
       <div style="background:var(--ink);border-radius:14px;padding:1.75rem">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.7);margin-bottom:.65rem">Detect Layer</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.7);margin-bottom:.65rem">Detect Layer</div>
         <div style="font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem">Live mandate observability</div>
         <div style="font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7">Every active mandate emits operational telemetry — reply rates, phase velocity, stall risk scores, and recruiter load signals — in real time.</div>
       </div>
       <div style="background:var(--ink);border-radius:14px;padding:1.75rem">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.7);margin-bottom:.65rem">Execute Layer</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.7);margin-bottom:.65rem">Execute Layer</div>
         <div style="font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem">Mandate recovery infrastructure</div>
         <div style="font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7">When degradation is detected, recovery agents activate autonomously — re-routing outreach, escalating to assigned recruiters, and logging every intervention.</div>
       </div>
@@ -2081,14 +2081,14 @@
             <div class="pcv-header">
               <div class="pcv-dots"><span></span><span></span><span></span></div>
               <div class="pcv-title">Digital Dossier · VP AI Platform</div>
-              <div class="pcv-live" style="color:#6366F1;background:rgba(99,102,241,0.1)"><span class="pcv-live-dot" style="background:#6366F1"></span>Verified</div>
+              <div class="pcv-live" style="color:#D4A84B;background:rgba(212,168,75,0.1)"><span class="pcv-live-dot" style="background:#D4A84B"></span>Verified</div>
             </div>
             <div class="pcv-body">
               <div class="pcv-dossier-row">
                 <div class="pcv-dossier-score">
                   <svg viewBox="0 0 80 80" class="pcv-ring-svg">
-                    <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(99,102,241,0.12)" stroke-width="8"/>
-                    <circle cx="40" cy="40" r="32" fill="none" stroke="#6366F1" stroke-width="8" stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="22" transform="rotate(-90 40 40)"/>
+                    <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(212,168,75,0.12)" stroke-width="8"/>
+                    <circle cx="40" cy="40" r="32" fill="none" stroke="#D4A84B" stroke-width="8" stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="22" transform="rotate(-90 40 40)"/>
                   </svg>
                   <div class="pcv-ring-label"><span class="pcv-ring-n">9.2</span><span class="pcv-ring-s">Fit</span></div>
                 </div>
@@ -2878,9 +2878,9 @@
       </div>
 
       <!-- RIGHT: MAJHI OS INFRASTRUCTURE -->
-      <div style="background:var(--ink);border:1px solid rgba(79,70,229,.25);border-radius:0 20px 20px 0;padding:2.25rem;position:relative;overflow:hidden">
+      <div style="background:var(--ink);border:1px solid rgba(184,136,42,.25);border-radius:0 20px 20px 0;padding:2.25rem;position:relative;overflow:hidden">
         <!-- glow -->
-        <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.15) 0%,transparent 65%);pointer-events:none"></div>
+        <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,136,42,.15) 0%,transparent 65%);pointer-events:none"></div>
         <div style="position:relative">
           <div style="display:flex;align-items:center;gap:.65rem;margin-bottom:1.75rem">
             <div style="width:8px;height:8px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
@@ -2888,46 +2888,46 @@
           </div>
 
           <!-- Central OS core -->
-          <div style="background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.3);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;text-align:center">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;color:#818CF8;margin-bottom:.3rem">MAJHI OS · OPERATIONAL CORE</div>
+          <div style="background:rgba(184,136,42,.15);border:1px solid rgba(184,136,42,.3);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;text-align:center">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;color:#E8C97A;margin-bottom:.3rem">MAJHI OS · OPERATIONAL CORE</div>
             <div style="font-size:.78rem;color:rgba(255,255,255,.5)">Single unified operational signal across all systems</div>
           </div>
 
           <!-- connected modules -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:1.5rem">
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Live Telemetry</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Live Telemetry</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Mandate observability</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Real-time signal</div>
             </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.3s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Recovery</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Recovery</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Autonomous agents</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Auto-remediation</div>
             </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 1.8s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Orchestration</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Orchestration</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Workflow coordination</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Unified state</div>
             </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.5s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Intelligence</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Intelligence</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Compounding learning</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Every mandate trains</div>
             </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 2.1s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Audit Trail</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Audit Trail</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">End-to-end evidence</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Board-ready</div>
             </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.2);border-radius:12px;padding:1rem;position:relative">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(232,201,122,.2);border-radius:12px;padding:1rem;position:relative">
               <div style="position:absolute;top:.75rem;right:.75rem;width:7px;height:7px;border-radius:50%;background:#34D399;animation:breathe 1.6s infinite"></div>
-              <div style="font-size:.62rem;font-weight:700;color:rgba(129,140,248,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Command Surface</div>
+              <div style="font-size:.62rem;font-weight:700;color:rgba(232,201,122,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Command Surface</div>
               <div style="font-size:.8rem;font-weight:600;color:white;margin-bottom:.25rem">Leadership visibility</div>
               <div style="font-size:.7rem;color:#34D399;display:flex;align-items:center;gap:.3rem"><span>✓</span> Live · no syncs</div>
             </div>
@@ -3141,19 +3141,19 @@
 
 <!-- HIRING RELIABILITY INDEX -->
 <section class="section" id="reliability-index" style="padding:5.5rem 0;background:var(--ink);position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.1) 0%,transparent 60%);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(184,136,42,.1) 0%,transparent 60%);pointer-events:none"></div>
   <div class="wrap" style="position:relative">
-    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Proprietary Metric</div>
-    <h2 class="sh2 reveal" style="color:white">Hiring Reliability<br><mark style="color:#818CF8">Index™</mark></h2>
+    <div class="eyebrow reveal" style="color:rgba(232,201,122,.7)">Proprietary Metric</div>
+    <h2 class="sh2 reveal" style="color:white">Hiring Reliability<br><mark style="color:#E8C97A">Index™</mark></h2>
     <p class="ssub reveal" style="color:rgba(255,255,255,.45);max-width:580px">The only composite score that measures whether your hiring system is structurally reliable — not just active. HRI™ benchmarks five operational dimensions that individually hide failure but collectively reveal it.</p>
 
     <!-- Index score display -->
     <div style="display:grid;grid-template-columns:360px 1fr;gap:2.5rem;margin-top:3.5rem;align-items:start" class="reveal">
 
       <!-- Left: composite score -->
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(129,140,248,.2);border-radius:20px;padding:2.5rem;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4F46E5,#818CF8,#34D399)"></div>
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:1.25rem">Hiring Reliability Index™</div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(232,201,122,.2);border-radius:20px;padding:2.5rem;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#B8882A,#E8C97A,#34D399)"></div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:1.25rem">Hiring Reliability Index™</div>
 
         <!-- Gauge ring SVG -->
         <div style="position:relative;width:160px;height:160px;margin:0 auto 1.5rem">
@@ -3163,7 +3163,7 @@
               stroke-dasharray="414.69" stroke-dashoffset="74.64" stroke-linecap="round"/>
             <defs>
               <linearGradient id="hriGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4F46E5"/>
+                <stop offset="0%" stop-color="#B8882A"/>
                 <stop offset="100%" stop-color="#34D399"/>
               </linearGradient>
             </defs>
@@ -3218,12 +3218,12 @@
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
             <div>
-              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 01</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.2rem">Dimension 01</div>
               <div style="font-size:.9rem;font-weight:700;color:white">Mandate Stability</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">88</div>
           </div>
-          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:88%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:88%;height:100%;background:linear-gradient(90deg,#B8882A,#34D399);border-radius:2px"></div></div>
           <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Are active mandates progressing at expected velocity with no stall signals?</div>
         </div>
 
@@ -3231,7 +3231,7 @@
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
             <div>
-              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 02</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.2rem">Dimension 02</div>
               <div style="font-size:.9rem;font-weight:700;color:white">Response Continuity</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#F59E0B">71</div>
@@ -3244,12 +3244,12 @@
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
             <div>
-              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 03</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.2rem">Dimension 03</div>
               <div style="font-size:.9rem;font-weight:700;color:white">Recruiter Bandwidth</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">84</div>
           </div>
-          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:84%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:84%;height:100%;background:linear-gradient(90deg,#B8882A,#34D399);border-radius:2px"></div></div>
           <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Is recruiter load distributed within healthy thresholds, or are mandates being silently deprioritized?</div>
         </div>
 
@@ -3257,12 +3257,12 @@
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.25rem 1.5rem">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
             <div>
-              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.2rem">Dimension 04</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.2rem">Dimension 04</div>
               <div style="font-size:.9rem;font-weight:700;color:white">Execution Health</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:800;color:#34D399">90</div>
           </div>
-          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:90%;height:100%;background:linear-gradient(90deg,#4F46E5,#34D399);border-radius:2px"></div></div>
+          <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.6rem"><div style="width:90%;height:100%;background:linear-gradient(90deg,#B8882A,#34D399);border-radius:2px"></div></div>
           <div style="font-size:.78rem;color:rgba(255,255,255,.35)">Are sourcing, QMS gating, dossier generation, and ATS handoff completing within SLA windows?</div>
         </div>
 
@@ -3288,17 +3288,17 @@
     <!-- Trademark / methodology note -->
     <div style="margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem" class="reveal">
       <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
-        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Sticky</div>
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.4rem">Sticky</div>
         <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">A single number leadership can track.</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">No spreadsheets. No status calls. One score that tells you if your hiring system is structurally reliable this week.</div>
       </div>
       <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
-        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Benchmarkable</div>
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.4rem">Benchmarkable</div>
         <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">Compare across mandates, teams, cycles.</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">HRI™ tracks over time — so you can see if your hiring operation is improving or degrading across quarters and hiring cycles.</div>
       </div>
       <div style="padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px">
-        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.6);margin-bottom:.4rem">Proprietary</div>
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.6);margin-bottom:.4rem">Proprietary</div>
         <div style="font-size:.84rem;font-weight:700;color:white;margin-bottom:.35rem">No other recruiting system produces this.</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6">Because no other system has unified telemetry, execution data, and recovery signals in one layer. HRI™ requires the full Majhi OS stack to compute.</div>
       </div>
@@ -3684,47 +3684,47 @@
       <!-- Left: content -->
       <div style="padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
         <!-- background glow -->
-        <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,transparent 65%);pointer-events:none"></div>
+        <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,136,42,.18) 0%,transparent 65%);pointer-events:none"></div>
         <div style="position:relative;z-index:1">
           <!-- meta row -->
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:2rem">
-            <span style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(129,140,248,.9);background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.2);border-radius:100px;padding:4px 12px">Featured Report</span>
+            <span style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,201,122,.9);background:rgba(232,201,122,.12);border:1px solid rgba(232,201,122,.2);border-radius:100px;padding:4px 12px">Featured Report</span>
             <span style="font-size:.7rem;color:rgba(255,255,255,.25);font-weight:500">2025</span>
           </div>
           <!-- title -->
           <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.6rem">The Operational Visibility Gap</div>
           <h3 style="font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem">Why recruiting<br>breaks at scale.</h3>
-          <div style="width:48px;height:3px;background:linear-gradient(90deg,#4F46E5,#818CF8);border-radius:2px;margin-bottom:1.5rem"></div>
+          <div style="width:48px;height:3px;background:linear-gradient(90deg,#B8882A,#E8C97A);border-radius:2px;margin-bottom:1.5rem"></div>
           <p style="font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;margin-bottom:2rem">A research report documenting the structural failure modes of fragmented hiring execution — the compounding loop that causes VP-level searches to stall, and what genuine operational infrastructure actually requires.</p>
 
           <!-- report contents -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-bottom:2.5rem">
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>Four structural failure modes
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>Four structural failure modes
             </div>
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>Compounding failure loop diagram
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>Compounding failure loop diagram
             </div>
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>Operational maturity model
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>Operational maturity model
             </div>
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>Benchmark data: speed &amp; cost
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>Benchmark data: speed &amp; cost
             </div>
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>System boundary architecture
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>System boundary architecture
             </div>
             <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.45)">
-              <div style="width:3px;height:3px;border-radius:50%;background:#818CF8;flex-shrink:0"></div>Failure recovery logic
+              <div style="width:3px;height:3px;border-radius:50%;background:#E8C97A;flex-shrink:0"></div>Failure recovery logic
             </div>
           </div>
 
           <!-- CTA row — no gate -->
           <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
             <a href="majhi_os_whitepaper_updated.pdf" download="Majhi_OS_The_Operational_Visibility_Gap.pdf"
-               style="display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:700;color:white;background:#4F46E5;border-radius:8px;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s,box-shadow .15s"
-               onmouseover="this.style.background='#4338CA';this.style.boxShadow='0 4px 16px rgba(79,70,229,.4)'"
-               onmouseout="this.style.background='#4F46E5';this.style.boxShadow='none'">
+               style="display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:700;color:white;background:#B8882A;border-radius:8px;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s,box-shadow .15s"
+               onmouseover="this.style.background='#4338CA';this.style.boxShadow='0 4px 16px rgba(184,136,42,.4)'"
+               onmouseout="this.style.background='#B8882A';this.style.boxShadow='none'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download Research Report
             </a>
@@ -3779,7 +3779,7 @@
               <div style="font-size:1.2rem;font-weight:800;color:#34D399;letter-spacing:-.03em;line-height:1">50%</div>
               <div style="font-size:.72rem;color:rgba(255,255,255,.4);margin-top:3px;line-height:1.4">reduction in time-to-fill on unified operational infrastructure</div>
             </div>
-            <div style="background:rgba(79,70,229,.08);border:1px solid rgba(79,70,229,.2);border-radius:8px;padding:.65rem .85rem">
+            <div style="background:rgba(184,136,42,.08);border:1px solid rgba(184,136,42,.2);border-radius:8px;padding:.65rem .85rem">
               <div style="font-size:1.2rem;font-weight:800;color:#A5B4FC;letter-spacing:-.03em;line-height:1">12%</div>
               <div style="font-size:.72rem;color:rgba(255,255,255,.4);margin-top:3px;line-height:1.4">of fragmented teams have any full audit trail on hiring decisions</div>
             </div>
@@ -3788,12 +3788,12 @@
 
         <!-- walkthrough nudge -->
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem">
-          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(129,140,248,.7);margin-bottom:.4rem">After reading</div>
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,201,122,.7);margin-bottom:.4rem">After reading</div>
           <div style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:.75rem">Request an operational walkthrough — see the execution layer using your own mandate context.</div>
           <button onclick="window.open('https://calendly.com/manasmajhi/intro-call','_blank')"
-            style="font-size:.75rem;font-weight:600;color:rgba(129,140,248,.9);background:none;border:1px solid rgba(129,140,248,.25);border-radius:6px;padding:.4rem .85rem;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s"
-            onmouseover="this.style.borderColor='rgba(129,140,248,.6)';this.style.color='#818CF8'"
-            onmouseout="this.style.borderColor='rgba(129,140,248,.25)';this.style.color='rgba(129,140,248,.9)'">
+            style="font-size:.75rem;font-weight:600;color:rgba(232,201,122,.9);background:none;border:1px solid rgba(232,201,122,.25);border-radius:6px;padding:.4rem .85rem;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s"
+            onmouseover="this.style.borderColor='rgba(232,201,122,.6)';this.style.color='#E8C97A'"
+            onmouseout="this.style.borderColor='rgba(232,201,122,.25)';this.style.color='rgba(232,201,122,.9)'">
             Request walkthrough →
           </button>
         </div>
@@ -3808,13 +3808,13 @@
 <section class="section" style="padding:5.5rem 0;background:var(--ink);position:relative;overflow:hidden" id="manifesto">
   <!-- Background texture -->
   <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-    <div style="position:absolute;top:-100px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 65%)"></div>
+    <div style="position:absolute;top:-100px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(184,136,42,.08) 0%,transparent 65%)"></div>
     <div style="position:absolute;bottom:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.06) 0%,transparent 65%)"></div>
   </div>
 
   <div class="wrap" style="position:relative">
-    <div class="eyebrow reveal" style="color:rgba(129,140,248,.7)">Strategic Manifesto</div>
-    <h2 class="sh2 reveal" style="color:white;max-width:680px">The Future of<br><mark style="color:#818CF8">Hiring Operations.</mark></h2>
+    <div class="eyebrow reveal" style="color:rgba(232,201,122,.7)">Strategic Manifesto</div>
+    <h2 class="sh2 reveal" style="color:white;max-width:680px">The Future of<br><mark style="color:#E8C97A">Hiring Operations.</mark></h2>
     <p class="ssub reveal" style="color:rgba(255,255,255,.4);max-width:560px">The hiring infrastructure category doesn't exist yet. We're building it. Here's what it requires — and why everything before it was fundamentally insufficient.</p>
 
     <!-- Manifesto statements -->
@@ -3822,8 +3822,8 @@
 
       <div style="background:var(--ink);padding:2.5rem;position:relative">
         <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">01</div>
-        <div style="width:40px;height:40px;border-radius:10px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);display:grid;place-items:center;margin-bottom:1.25rem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(184,136,42,.15);border:1px solid rgba(184,136,42,.25);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8C97A" stroke-width="1.75" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
         <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Fragmented systems cannot self-observe.</div>
         <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">The recruiting stack was never designed as a unified system. Every tool was built in isolation, for isolated workflows. None can see what the others are doing. The result is a hiring operation that looks active — but is structurally blind to its own failure states. Infrastructure requires observability as a first principle.</div>
@@ -3831,8 +3831,8 @@
 
       <div style="background:rgba(255,255,255,.015);padding:2.5rem;position:relative">
         <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">02</div>
-        <div style="width:40px;height:40px;border-radius:10px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);display:grid;place-items:center;margin-bottom:1.25rem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(184,136,42,.15);border:1px solid rgba(184,136,42,.25);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8C97A" stroke-width="1.75" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Invisible degradation is the real failure mode.</div>
         <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">Hiring doesn't fail loudly. It stalls quietly. Reply rates collapse by 20% and no one notices for two weeks. A recruiter goes over capacity and three mandates drift without a single alert. The failure accumulates invisibly — until the board asks why the VP search is now at week 14. Infrastructure must detect before it becomes visible to humans.</div>
@@ -3858,8 +3858,8 @@
 
       <div style="background:rgba(255,255,255,.015);padding:2.5rem;position:relative">
         <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">05</div>
-        <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);display:grid;place-items:center;margin-bottom:1.25rem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,201,122,.1);border:1px solid rgba(232,201,122,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8C97A" stroke-width="1.75" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
         <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Operational intelligence compounds over time.</div>
         <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">The difference between a tool and infrastructure is compounding. A tool does the same thing every time. Infrastructure learns from every execution — which outreach channels perform by role, which QMS gates reduce rework, which escalation patterns predict board rejection. Every mandate should make the next search structurally faster, cheaper, and more reliable. That's a data moat no point tool can replicate.</div>
@@ -3867,8 +3867,8 @@
 
       <div style="background:var(--ink);padding:2.5rem;position:relative">
         <div style="position:absolute;top:2.5rem;right:2.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.12);font-weight:700">06</div>
-        <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);display:grid;place-items:center;margin-bottom:1.25rem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.75" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,201,122,.1);border:1px solid rgba(232,201,122,.2);display:grid;place-items:center;margin-bottom:1.25rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8C97A" stroke-width="1.75" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
         <div style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.75rem;letter-spacing:-.02em;line-height:1.3">Hiring reliability is an executive responsibility — not a recruiting one.</div>
         <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75">When a VP search stalls at week 12, the cost lands on the CEO's desk — not the recruiter's. Leadership velocity, organizational scaling, and execution predictability all depend on hiring infrastructure that is structurally sound. The future of hiring operations isn't about giving recruiters better tools. It's about giving organizations hiring systems they can depend on.</div>
@@ -3877,7 +3877,7 @@
     </div>
 
     <!-- Closing statement -->
-    <div style="margin-top:3rem;padding:2.5rem 3rem;background:rgba(79,70,229,.08);border:1px solid rgba(79,70,229,.2);border-radius:16px;text-align:center" class="reveal">
+    <div style="margin-top:3rem;padding:2.5rem 3rem;background:rgba(184,136,42,.08);border:1px solid rgba(184,136,42,.2);border-radius:16px;text-align:center" class="reveal">
       <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:white;letter-spacing:-.03em;line-height:1.4;max-width:680px;margin:0 auto .75rem">
         "We're not building better recruiting software.<br>We're building the operational infrastructure layer that hiring has never had."
       </div>
@@ -4769,8 +4769,8 @@
 
     const C = {
       bg:'#060912', surface:'#0d1220', card:'#111827',
-      border:'rgba(255,255,255,0.07)', indigo:'#6366F1',
-      indigoBright:'#818CF8', emerald:'#10B981', amber:'#F59E0B',
+      border:'rgba(255,255,255,0.07)', indigo:'#D4A84B',
+      indigoBright:'#E8C97A', emerald:'#10B981', amber:'#F59E0B',
       rose:'#F43F5E', text:'rgba(255,255,255,0.9)', muted:'rgba(255,255,255,0.38)',
     };
 
@@ -4805,7 +4805,7 @@
     function drawBg(){
       ctx.fillStyle=C.bg; ctx.fillRect(0,0,W,H);
       const g=ctx.createRadialGradient(W*.5,0,0,W*.5,0,W*.7);
-      g.addColorStop(0,'rgba(99,102,241,0.09)'); g.addColorStop(1,'transparent');
+      g.addColorStop(0,'rgba(212,168,75,0.09)'); g.addColorStop(1,'transparent');
       ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     }
 
