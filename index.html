@@ -215,7 +215,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;
@@ -1225,6 +1225,8 @@
     .wp-gate-success { margin-top: 1.75rem; display: flex; align-items: center; gap: .85rem; background: var(--emerald-bg); border: 1px solid rgba(5,150,105,.2); border-radius: 12px; padding: 1rem 1.25rem; }
     .wp-gate-success-icon { width: 32px; height: 32px; background: var(--emerald); color: white; border-radius: 50%; display: grid; place-items: center; font-size: .9rem; font-weight: 700; flex-shrink: 0; }
     .wp-gate-success-msg { font-size: .88rem; color: var(--emerald); font-weight: 500; }
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+    .reveal.in{opacity:1;transform:translateY(0)}
   </style>
   <!-- Microsoft Clarity -->
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wrcyj4i86y");</script>
@@ -3861,7 +3863,7 @@
           <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
             <a href="majhi_os_whitepaper_updated.pdf" download="Majhi_OS_The_Operational_Visibility_Gap.pdf"
                style="display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:700;color:white;background:#B8882A;border-radius:8px;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s,box-shadow .15s"
-               onmouseover="this.style.background='#4338CA';this.style.boxShadow='0 4px 16px rgba(184,136,42,.4)'"
+               onmouseover="this.style.background='#D4A84B';this.style.boxShadow='0 4px 16px rgba(184,136,42,.4)'"
                onmouseout="this.style.background='#B8882A';this.style.boxShadow='none'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download Research Report
@@ -4335,14 +4337,16 @@
 <div class="modal-bg" id="signinModal" role="dialog" aria-modal="true" aria-labelledby="signin-title">
   <div class="modal">
     <button class="modal-x" onclick="closeSignin()" aria-label="Close">&times;</button>
-    <div class="modal-eye">Welcome back</div>
-    <h3 class="modal-h3" id="signin-title">Sign in to Majhi OS.</h3>
-    <p class="modal-sub">Use your official organisation email. Personal email addresses (Gmail, Yahoo, Hotmail, Outlook.com) are not accepted.</p>
-    <div class="modal-field"><label class="modal-label">Work email <span class="modal-req">*</span></label><input class="modal-input" id="signin-email" type="email" placeholder="you@company.com" oninput="clearSigninWarn()" /></div>
-    <div class="modal-field"><label class="modal-label">Password <span class="modal-req">*</span></label><input class="modal-input" id="signin-pw" type="password" placeholder="Your password" /></div>
-    <div class="modal-note modal-note-warn" id="signin-warn" style="display:none"></div>
-    <button class="modal-submit" onclick="submitSignin()">Sign in &rarr;</button>
-    <div class="modal-note">Official company email required &middot; Issues? Contact <strong>support@majhi.tech</strong></div>
+    <div class="modal-pane pane-active" style="padding:1.75rem 1.5rem 1.5rem">
+      <div class="modal-eye">Welcome back</div>
+      <h3 class="modal-h3" id="signin-title">Sign in to Majhi OS.</h3>
+      <p class="modal-sub">Use your official organisation email. Personal email addresses (Gmail, Yahoo, Hotmail, Outlook.com) are not accepted.</p>
+      <div class="modal-field"><label class="modal-label">Work email <span class="modal-req">*</span></label><input class="modal-input" id="signin-email" type="email" placeholder="you@company.com" oninput="clearSigninWarn()" /></div>
+      <div class="modal-field"><label class="modal-label">Password <span class="modal-req">*</span></label><input class="modal-input" id="signin-pw" type="password" placeholder="Your password" /></div>
+      <div class="modal-note modal-note-warn" id="signin-warn" style="display:none"></div>
+      <button class="modal-submit" onclick="submitSignin()">Sign in &rarr;</button>
+      <div class="modal-note">Official company email required &middot; Issues? Contact <strong>support@majhi.tech</strong></div>
+    </div>
   </div>
 </div>
 
