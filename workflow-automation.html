@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow Automation — Majhi OS | Autonomous Hiring Workflow Execution</title>
+  <meta name="description" content="Majhi OS automates hiring workflows through condition-based triggers and Recovery Playbooks — executing recovery sequences, pipeline rebalancing, and escalation actions without manual orchestration.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/workflow-automation.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/workflow-automation.html">
+  <meta property="og:title" content="Workflow Automation — Majhi OS | Autonomous Hiring Workflow Execution">
+  <meta property="og:description" content="Majhi OS automates hiring workflows through condition-based triggers and Recovery Playbooks — executing recovery sequences, pipeline rebalancing, and escalation actions without manual orchestration.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Workflow Automation — Majhi OS | Autonomous Hiring Workflow Execution">
+  <meta name="twitter:description" content="Majhi OS automates hiring workflows through condition-based triggers and Recovery Playbooks — executing recovery sequences, pipeline rebalancing, and escalation actions without manual orchestration.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#B8882A">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure. Majhi OS detects failing mandates before they collapse, executes recovery sequences, and delivers real-time hiring system observability.","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"},"sameAs":["https://majhigroup.com","https://manasmajhi.com"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech/"},{"@type":"ListItem","position":2,"name":"Workflow Automation","item":"https://majhi.tech/workflow-automation.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Workflow Automation — Majhi OS | Autonomous Hiring Workflow Execution","description":"Majhi OS automates hiring workflows through condition-based triggers and Recovery Playbooks — executing recovery sequences, pipeline rebalancing, and escalation actions without manual orchestration.","url":"https://majhi.tech/workflow-automation.html","mainEntityOfPage":"https://majhi.tech/workflow-automation.html","author":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder","worksFor":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}},"publisher":{"@type":"Organization","name":"Majhi OS","logo":{"@type":"ImageObject","url":"https://majhi.tech/og-image.png"}},"datePublished":"2026-06-01","dateModified":"2026-07-01"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--indigo-bg:#F8F2E6;--indigo-border:rgba(184,136,42,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Cormorant Garamond",serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s;letter-spacing:.005em}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;letter-spacing:.005em;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(184,136,42,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(184,136,42,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center;margin-bottom:1rem}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-icon{width:44px;height:44px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:1rem}
+    .card-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Cormorant Garamond",serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#B8882A 0%,#D4A84B 100%);text-align:center}
+    .cta-section h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2,.stat-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>Workflow Automation</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>Platform</div>
+      <h1 class="page-h1">Hiring workflows that <mark>run themselves.</mark></h1>
+      <p class="page-sub">Manual workflow orchestration means someone has to notice a problem, decide to act, and then act. Majhi OS removes that latency. Condition met — action executed. No human in the loop for operational decisions.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/human-in-the-loop.html" class="btn-outline">Human-in-the-Loop &#8594;</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+  <div class="section-inner">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-h2">Triggers, Playbooks, and the Recovery Engine.</h2>
+    <p class="section-body">Workflow automation in Majhi OS works in three layers: Triggers detect the condition, Playbooks select the action, and the Recovery Engine executes it — with a full audit trail of what ran, why, and what happened.</p><p class="section-body">Nothing runs without a logged trigger. Nothing executes without a matching Playbook. Nothing completes without a measured outcome.</p>
+    <div class="grid-3"><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+  <h3>Condition Triggers</h3>
+  <p>Hiring Health Score drops below threshold. Reply rate falls below 20%. Mandate passes day 14 without a shortlist. Recruiter capacity exceeds 4 VP-level mandates. Each condition has a defined trigger with a mapped action.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+  <h3>Recovery Playbooks</h3>
+  <p>System-learned action sequences that have worked before for similar mandate conditions. The Recovery Agent selects the highest-confidence Playbook and executes it. The system learns from outcomes and refines.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+  <h3>Outcome Measurement</h3>
+  <p>Every automated action is measured: did the Playbook execution improve mandate health? Did the outreach pivot lift reply rates? Did the pipeline rebalancing recover stage depth? Outcomes feed back into Playbook selection.</p>
+</div></div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">What Gets Automated</p>
+    <h2 class="section-h2">The workflows Majhi OS runs without human instruction.</h2>
+    <p class="section-body">These are the operational actions that previously required a recruiter, a manager, or a weekly meeting to initiate. Majhi OS runs them automatically — with full audit trail and rollback capability.</p>
+    <div class="grid-3"><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+  <h3>Outreach Pivot</h3>
+  <p>Reply rate decaying → sequence copy adjusted → channel shifted from email to LinkedIn DM → timing cadence modified. Executed within hours of decay signal, not after a weekly review.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+  <h3>Pipeline Rebalancing</h3>
+  <p>Stage depleted below minimum viable depth → sourcing agent re-prioritised → ICP criteria recalibrated → new candidate batch queued. Mandate pipeline stays healthy without manual intervention.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+  <h3>Hiring Manager Sync</h3>
+  <p>Shortlist stalled in review for more than 3 days → automated brief sent to hiring manager with priority summary → calendar hold created for review → escalation flagged if no response within 24 hours.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+  <h3>Recruiter Reassignment</h3>
+  <p>Recruiter capacity exceeds threshold → mandate flagged for workload review → reassignment recommendation surfaced → transition brief prepared. Load balancing before quality drops.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+  <h3>SLA Escalation</h3>
+  <p>Mandate approaching SLA breach → escalation sequence initiates → leadership notified → recovery actions accelerated → post-breach review scheduled automatically if breach occurs despite escalation.</p>
+</div><div class="card">
+  <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+  <h3>Close Sequence</h3>
+  <p>Offer extended → close sequence initiates → proactive engagement maintained with candidate → counter-offer risk monitored → hiring manager briefed on close strategy based on candidate signals.</p>
+</div></div>
+  </div>
+</section>
+  <section class="cta-section">
+    <h2>See Majhi OS on your actual mandate.</h2>
+    <p>In 45 minutes, we map your hiring system's operational gaps — using your live mandate as working context, not a generic demo.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Autonomous hiring operations infrastructure.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="/why-majhi-os-exists.html">Why We Exist</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body></html>
