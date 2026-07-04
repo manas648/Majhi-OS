@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiring Reliability Index&#8482; vs Time-to-Fill &#8212; Why TTF Is the Wrong Metric</title>
+  <meta name="description" content="Time-to-fill measures outcomes after a search fails. The Hiring Reliability Index&#8482; measures system health before failure. Why TTF is a lagging indicator and HRI is the leading metric recruiting teams need.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://majhi.tech/hiring-reliability-index-vs-time-to-fill.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://majhi.tech/hiring-reliability-index-vs-time-to-fill.html">
+  <meta property="og:title" content="Hiring Reliability Index&#8482; vs Time-to-Fill &#8212; Why TTF Is the Wrong Metric">
+  <meta property="og:description" content="Time-to-fill measures outcomes after a search fails. The Hiring Reliability Index&#8482; measures system health before failure. Why TTF is a lagging indicator and HRI is the leading metric recruiting teams need.">
+  <meta property="og:image" content="https://majhi.tech/og-image.png">
+  <meta property="og:site_name" content="Majhi OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@majhitech">
+  <meta name="twitter:title" content="Hiring Reliability Index&#8482; vs Time-to-Fill &#8212; Why TTF Is the Wrong Metric">
+  <meta name="twitter:description" content="Time-to-fill measures outcomes after a search fails. The Hiring Reliability Index&#8482; measures system health before failure. Why TTF is a lagging indicator and HRI is the leading metric recruiting teams need.">
+  <meta name="twitter:image" content="https://majhi.tech/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#B8882A">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Hiring Reliability Index&#8482; vs Time-to-Fill &#8212; Why TTF Is the Wrong Metric","description":"Time-to-fill measures outcomes after a search fails. The Hiring Reliability Index&#8482; measures system health before failure. Why TTF is a lagging indicator and HRI is the leading metric recruiting teams need.","author":{"@type":"Person","name":"Manas Majhi"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://majhi.tech/hiring-reliability-index-vs-time-to-fill"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root{--bg:#fff;--bg2:#F8F9FB;--bg3:#EEF1F6;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--border2:#C8D2E0;--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--indigo-bg:#F8F2E6;--indigo-border:rgba(184,136,42,.18);--emerald:#059669;--emerald-bg:#ECFDF5;--amber:#D97706;--amber-bg:#FFFBEB;--red:#DC2626;--sh-sm:0 1px 3px rgba(13,27,42,.06),0 1px 2px rgba(13,27,42,.04);--sh-md:0 4px 16px rgba(13,27,42,.07),0 1px 4px rgba(13,27,42,.04);--sh-lg:0 12px 40px rgba(13,27,42,.1),0 2px 8px rgba(13,27,42,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:"Cormorant Garamond",serif}
+    .mono{font-family:"JetBrains Mono",monospace}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .logo-mark{width:30px;height:30px;background:var(--indigo);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+    .logo-mark svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round}
+    .logo-name{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:0}
+    .nav-links a{font-size:.825rem;font-weight:500;color:var(--body);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:color .15s,background .15s;letter-spacing:.005em}
+    .nav-links a:hover{color:var(--ink);background:var(--bg2)}
+    .nav-right{display:flex;align-items:center;gap:.5rem}
+    .nav-cta{font-size:.825rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.5rem 1.15rem;border-radius:7px;transition:background .15s,box-shadow .15s;white-space:nowrap;letter-spacing:.005em;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+    .nav-cta:hover{background:var(--indigo2);box-shadow:0 2px 8px rgba(184,136,42,.3)}
+    .page-hero{padding:5rem 2rem 3.5rem;background:var(--bg);position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;top:-40%;left:5%;width:60%;height:120%;border-radius:50%;background:radial-gradient(ellipse,rgba(184,136,42,.06) 0%,transparent 65%);pointer-events:none}
+    .page-inner{max-width:1160px;margin:0 auto;position:relative}
+    .breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--indigo)}
+    .breadcrumb span{color:var(--border2)}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--indigo);background:var(--indigo-bg);border:1px solid var(--indigo-border);padding:.35rem 1rem;border-radius:999px;margin-bottom:1.75rem}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:breathe 2.5s ease-in-out infinite}
+    @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+    .page-h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);max-width:800px;margin-bottom:1.25rem}
+    .page-h1 mark{background:none;color:var(--indigo)}
+    .page-sub{font-size:1.1rem;font-weight:400;color:var(--body);line-height:1.75;max-width:600px;margin-bottom:2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center;margin-bottom:1rem}
+    .btn-cta{font-size:.9rem;font-weight:600;color:white;background:var(--indigo);border:none;cursor:pointer;padding:.75rem 1.75rem;border-radius:8px;transition:background .15s,transform .12s;text-decoration:none;display:inline-block}
+    .btn-cta:hover{background:var(--indigo2);transform:translateY(-1px)}
+    .btn-outline{font-size:.9rem;font-weight:500;color:var(--body);background:none;border:1.5px solid var(--border2);cursor:pointer;padding:.72rem 1.75rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--indigo3);color:var(--ink);background:var(--indigo-bg)}
+    .section{padding:4rem 2rem}
+    .section-alt{background:var(--bg2)}
+    .section-inner{max-width:1160px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:.75rem}
+    .section-h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+    .section-body{font-size:1rem;color:var(--body);line-height:1.8;max-width:700px;margin-bottom:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-top:2.5rem}
+    .card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+    .card-icon{width:44px;height:44px;border-radius:10px;background:var(--indigo-bg);display:grid;place-items:center;margin-bottom:1rem}
+    .card-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+    .card p{font-size:.95rem;color:var(--body);line-height:1.7}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .stat{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+    .stat-val{font-family:"Cormorant Garamond",serif;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;color:var(--indigo);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    .callout{background:var(--indigo-bg);border:1px solid var(--indigo-border);border-left:4px solid var(--indigo);border-radius:8px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p{font-size:1rem;color:var(--ink);line-height:1.7;font-style:italic}
+    .cta-section{padding:5rem 2rem;background:linear-gradient(135deg,#B8882A 0%,#D4A84B 100%);text-align:center}
+    .cta-section h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;color:white;margin-bottom:1rem}
+    .cta-section p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+    .btn-white{font-size:.95rem;font-weight:600;color:var(--indigo);background:white;border:none;cursor:pointer;padding:.8rem 2rem;border-radius:8px;transition:all .15s;text-decoration:none;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .site-footer{background:var(--ink);color:var(--muted);padding:3rem 2rem;font-size:.875rem;text-align:center}
+    .footer-inner{max-width:1160px;margin:0 auto}
+    .footer-logo{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.75rem}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
+    .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Majhi OS",
+  "url": "https://majhi.tech",
+  "description": "Autonomous hiring operations infrastructure. Detects failing mandates before they collapse, executes recovery sequences, and delivers real-time hiring system observability.",
+  "email": "manas@majhi.tech",
+  "founder": {"@type": "Person","name": "Manas Majhi","jobTitle": "Founder"}
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Majhi OS",
+  "url": "https://majhi.tech",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Majhi OS is autonomous hiring operations infrastructure &#8212; the operational intelligence and execution layer that detects failing mandates, executes recovery sequences, and delivers real-time hiring system observability.",
+  "featureList": ["Hiring Reliability Index&#8482; &#8212; composite mandate health score","Digital Dossier &#8212; evidence-backed candidate intelligence","Failure Prediction Engine &#8212; predicts stalled mandates before collapse","Recovery Playbooks &#8212; autonomous recovery sequences","Executive Visibility Layer &#8212; CEO/CFO hiring ROI dashboards"],
+  "offers": {"@type": "Offer","price": "3000","priceCurrency": "USD","description": "Per mandate per month"},
+  "provider": {"@type": "Organization","name": "Majhi OS","url": "https://majhi.tech"}
+}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech/"},{"@type":"ListItem","position":2,"name":"HRI vs Time-to-Fill","item":"https://majhi.tech/hiring-reliability-index-vs-time-to-fill.html"}]}</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Hiring Reliability Index&#8482; vs Time-to-Fill &#8212; Why TTF Is the Wrong Metric",
+  "url": "https://majhi.tech/hiring-reliability-index-vs-time-to-fill.html",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Majhi OS",
+    "url": "https://majhi.tech"
+  },
+  "description": "Time-to-fill measures outcomes after a search fails. The Hiring Reliability Index&#8482; measures system health before failure. Why TTF is a lagging indicator and HRI is the leading metric recruiting teams need."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "TTF arrives after the damage is done.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Time-to-fill is measured when a candidate accepts an offer. By that point, if the search took 18 weeks instead of 8, the cost has already been incurred. The pipeline gap has already existed. The revenue impact has already accrued."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The decay happens between status reports.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A mandate with a TTF of 14 weeks had an HRI of 74 in week 2, 61 in week 5, 48 in week 8, and 39 in week 11. Each of those drops was an intervention opportunity. None of them were visible in a TTF metric &#8212; or a weekly status email."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Use TTF for reporting. Use HRI for operations.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "These metrics serve different audiences. TTF belongs in a quarterly business review. HRI belongs on a hiring operations dashboard, updated in real time, driving automated recovery actions when thresholds are breached."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Replace your status report with a live HRI dashboard.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 45 minutes, Majhi OS will show you the HRI on your current mandate &#8212; alongside the TTF trajectory it predicts if no action is taken."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-reliability-index.html">Reliability Index</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough &#8594;</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="page-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Majhi OS</a><span>/</span><span>HRI vs Time-to-Fill</span>
+      </nav>
+      <div class="hero-pill"><span class="pill-dot"></span>Leading vs Lagging</div>
+      <h1 class="page-h1"><mark>Time-to-Fill is a post-mortem.</mark><br>HRI is an early warning system.</h1>
+      <p class="page-sub">Time-to-fill tells you what happened. The Hiring Reliability Index&#8482; tells you what&#8217;s about to happen. One is a scorecard. The other is a monitoring system. They are not competing metrics &#8212; they operate at different points in the mandate timeline.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/manasmajhi/intro-call" class="btn-cta">Book a Mission Walkthrough &#8594;</a>
+        <a href="/hiring-reliability-index.html" class="btn-outline">See the Reliability Index &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">The Fundamental Problem</p>
+      <h2 class="section-h2">TTF arrives after the damage is done.</h2>
+      <p class="section-body">Time-to-fill is measured when a candidate accepts an offer. By that point, if the search took 18 weeks instead of 8, the cost has already been incurred. The pipeline gap has already existed. The revenue impact has already accrued.</p>
+      <p class="section-body">TTF is a useful summary metric for quarterly reviews. It is useless for operational management of an active search.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Time-to-Fill (Lagging)</h3>
+          <p>Measured at close. Tells you how long the search took. Useful for retrospective analysis. Has no predictive power. Cannot trigger an intervention. Is the industry&#8217;s default metric for a broken reason.</p>
+        </div>
+        <div class="card">
+          <h3>HRI (Leading)</h3>
+          <p>Measured continuously. Tells you where the search is going. Useful for operational management. Triggers interventions before failure. Is the metric that makes mandate recovery possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">What TTF Cannot See</p>
+      <h2 class="section-h2">The decay happens between status reports.</h2>
+      <p class="section-body">A mandate with a TTF of 14 weeks had an HRI of 74 in week 2, 61 in week 5, 48 in week 8, and 39 in week 11. Each of those drops was an intervention opportunity. None of them were visible in a TTF metric &#8212; or a weekly status email.</p>
+      <div class="callout"><p>Every mandate that failed had a recoverable window. TTF will never show you that window. HRI shows you nothing but that window.</p></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">The Right Metric Stack</p>
+      <h2 class="section-h2">Use TTF for reporting. Use HRI for operations.</h2>
+      <p class="section-body">These metrics serve different audiences. TTF belongs in a quarterly business review. HRI belongs on a hiring operations dashboard, updated in real time, driving automated recovery actions when thresholds are breached.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Executive Reporting</h3>
+          <p>Time-to-fill, offer acceptance rate, cost per hire. Backward-looking summaries that tell the story of what happened. Relevant once a quarter.</p>
+        </div>
+        <div class="card">
+          <h3>Operational Management</h3>
+          <p>Hiring Reliability Index, pipeline velocity, outreach response rate, recruiter load. Forward-looking signals that drive action. Relevant every day.</p>
+        </div>
+        <div class="card">
+          <h3>Recovery Decisions</h3>
+          <p>HRI score plus signal breakdown tells the recruiting team exactly which intervention to run &#8212; not a judgment call, a system recommendation based on what recovered similar mandates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Related Reading</p>
+      <h2 class="section-h2">More from Majhi OS.</h2>
+      <div class="grid-3" style="margin-top:2rem;">
+      <a href="/hiring-system-health.html" class="card" style="text-decoration:none;display:block;">
+        <h3 style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem;">Hiring System Health</h3>
+        <p style="font-size:.9rem;color:var(--body);line-height:1.65;">The real-time operational score for every active mandate. Monitor pipeline velocity, recruiter load, and funnel health in one view.</p>
+        <p style="font-size:.8rem;font-weight:600;color:var(--indigo);margin-top:.75rem;">Read more &#8594;</p>
+      </a>
+      <a href="/failure-prediction.html" class="card" style="text-decoration:none;display:block;">
+        <h3 style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem;">Failure Prediction Engine</h3>
+        <p style="font-size:.9rem;color:var(--body);line-height:1.65;">Detects early stall signals across recruiter load, funnel velocity, and outreach decay before mandates collapse.</p>
+        <p style="font-size:.8rem;font-weight:600;color:var(--indigo);margin-top:.75rem;">Read more &#8594;</p>
+      </a>
+      <a href="/hiring-observability.html" class="card" style="text-decoration:none;display:block;">
+        <h3 style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem;">Hiring Observability</h3>
+        <p style="font-size:.9rem;color:var(--body);line-height:1.65;">The DevOps concept applied to talent acquisition. Logs, metrics, and traces for every active mandate.</p>
+        <p style="font-size:.8rem;font-weight:600;color:var(--indigo);margin-top:.75rem;">Read more &#8594;</p>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Replace your status report with a live HRI dashboard.</h2>
+    <p>In 45 minutes, Majhi OS will show you the HRI on your current mandate &#8212; alongside the TTF trajectory it predicts if no action is taken.</p>
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-white">Book Your Mission Walkthrough &#8594;</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring. Autonomous infrastructure for teams that can&#8217;t afford to stall.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-reliability-index.html">Hiring Reliability Index&#8482;</a>
+      <a href="/digital-dossier.html">Digital Dossier</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>&#169; 2026 Majhi Group. All rights reserved. &#183; <a href="https://majhi.tech" style="color:inherit">majhi.tech</a></p>
+  </div>
+</footer>
+</body></html>
