@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring OS Components: The Four Layers of a Hiring Operating System | Majhi OS</title>
+<meta name="description" content="A hiring operating system has four essential components: an observability layer, an intelligence layer, an autonomous execution layer, and an attribution layer. This guide explains what each does and why all four are necessary.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-os-components.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Hiring OS Components: The Four Layers of a Hiring Operating System | Majhi OS">
+<meta property="og:description" content="A hiring operating system has four essential components: an observability layer, an intelligence layer, an autonomous execution layer, and an attribution layer. This guide explains what each does and why all four are necessary."><meta property="og:url" content="https://majhi.tech/hiring-os-components.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hiring OS Components: The Four Layers of a Hiring Operating System | Majhi OS">
+<meta name="twitter:description" content="A hiring operating system has four essential components: an observability layer, an intelligence layer, an autonomous execution layer, and an attribution layer. This guide explains what each does and why all four are necessary.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:600}
+h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--indigo);text-decoration:none}
+a:hover{color:var(--indigo2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.logo-mark{width:28px;height:28px;color:var(--indigo)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-links a:hover{color:var(--indigo)}
+.nav-right{margin-left:1.5rem}
+.nav-cta{background:var(--indigo);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500}
+.nav-cta:hover{background:var(--indigo2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--indigo3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem}
+.btn-primary:hover{background:var(--indigo2);color:#fff}
+.btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:.75rem 1.8rem;border-radius:8px;font-weight:500;font-size:.95rem}
+.content-section{max-width:900px;margin:0 auto;padding:4rem 2rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card-icon{font-size:1.8rem;margin-bottom:.75rem}
+.card h3{color:var(--ink)}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--indigo3)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.25rem}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--indigo);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink)}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--indigo);color:var(--indigo)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.breadcrumb{max-width:900px;margin:0 auto;padding:1rem 2rem;font-size:.85rem;color:var(--muted)}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb span{margin:0 .4rem}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:center;margin:1.5rem 0}
+.footer-links a{color:rgba(255,255,255,.5);font-size:.875rem}
+.footer-links a:hover{color:var(--indigo3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content-section{padding:2.5rem 1.5rem}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Hiring OS Components: The Four Layers of a Hiring Operating System","description":"A hiring operating system has four essential components: an observability layer, an intelligence layer, an autonomous execution layer, and an attribution layer. This guide explains what each does and why all four are necessary.","url":"https://majhi.tech/hiring-os-components.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":'What are the components of a hiring operating system?',"acceptedAnswer":{"@type":"Answer","text":'A complete hiring OS has four layers: observability (real-time telemetry from all active searches), intelligence (failure prediction and recovery recommendation), autonomous execution (recovery sequences without manual intervention), and attribution (ROI tracking for executive reporting).'}},
+{"@type":"Question","name":'Do all four components need to be present for a hiring OS to work?',"acceptedAnswer":{"@type":"Answer","text":'Yes — in the sense that removing any layer degrades the system significantly. Without observability, there is nothing for intelligence to interpret. Without intelligence, execution is guesswork. Without attribution, you cannot prove the value of the system or improve it over time.'}},
+{"@type":"Question","name":'What is the observability layer in a hiring OS?',"acceptedAnswer":{"@type":"Answer","text":'The observability layer is the real-time telemetry system that continuously collects operational signals from every active mandate — response decay rates, funnel velocity, recruiter load, pipeline depth, and SLA proximity. It is the sensor network that feeds every other layer.'}},
+{"@type":"Question","name":'What makes the execution layer different from workflow automation?',"acceptedAnswer":{"@type":"Answer","text":'Workflow automation executes predefined rules. The execution layer in a hiring OS acts based on intelligence layer recommendations — which are specific to the current state of each mandate, weighted against historical outcomes, and selected from a ranked set of recovery options rather than triggered by a simple if-then rule.'}},
+{"@type":"Question","name":'How does the attribution layer make the hiring OS defensible to a CFO?',"acceptedAnswer":{"@type":"Answer","text":'By tracking which actions produced which outcomes in financial terms: mandate recovery value (avoided cost of a failed search), hiring velocity improvement (days saved × daily revenue impact of an open seat), and tool spend eliminated. These are CFO-language metrics that justify the hiring OS investment against measurable financial impact.'}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring OS Components: The Four Layers of a Hiring Operating System","item":"https://majhi.tech/hiring-os-components.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough →</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="/">Majhi OS</a><span>&#8250;</span> <a href="/hiring-os-components.html">Related</a><span>&#8250;</span> Hiring OS Components: The Four Layers of a Hiring Operating System</div>
+<section class="hero">
+  <div class="pill">Hiring OS — Components Guide</div>
+  <h1>Hiring OS Components: The Four Essential Layers</h1>
+  <p class="hero-sub">A genuine hiring operating system is not one feature. It is four operational layers that work together to provide complete control over your hiring system.</p>
+  <div class="hero-btns">
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book a Mission Walkthrough &#8594;</a>
+    <a href="/operational-visibility-gap.html" class="btn-secondary">Read the Whitepaper</a>
+  </div>
+</section>
+<div class="content-section">
+<h2>Why a Hiring OS Needs Four Layers</h2>
+<p>A hiring operating system that only has observability is a dashboard — useful but not actionable. One that only has execution is automation — powerful but not intelligent. A complete hiring OS requires all four layers working together: observability to detect signals, intelligence to interpret them, execution to act on them, and attribution to prove the value of acting.</p>
+
+<div class="card-grid">
+<div class="card"><div class="card-icon">&#128225;</div><h3>Layer 1: Observability</h3><p>The telemetry layer. Collects real-time operational signals from every active mandate: response decay rates, funnel velocity, recruiter load index, pipeline depth, SLA breach proximity. Think Datadog — but for hiring operations.</p></div>
+<div class="card"><div class="card-icon">&#129504;</div><h3>Layer 2: Intelligence</h3><p>The reasoning layer. Interprets telemetry signals using failure pattern recognition, recovery action recommendation, recruiter behavior analysis, and market signal integration. Determines what the signals mean and what should be done about them.</p></div>
+<div class="card"><div class="card-icon">&#9889;</div><h3>Layer 3: Autonomous Execution</h3><p>The action layer. Activates recovery sequences, adjusts outreach cadence, escalates to leadership, rebalances recruiter loads — autonomously, based on the intelligence layer's recommendations. The system acts; humans review and approve where judgment is required.</p></div>
+<div class="card"><div class="card-icon">&#128202;</div><h3>Layer 4: Attribution</h3><p>The ROI layer. Tracks which actions produced which outcomes — cost saved, hiring velocity improvement, mandates recovered, tool spend eliminated. Makes the hiring OS visible and defensible to CFOs and CEOs who need to see financial impact.</p></div>
+</div>
+
+<h2>How the Four Layers Interact</h2>
+<p>The interaction is sequential but continuous. The Observability Layer detects a response decay signal on Mandate 4. The Intelligence Layer identifies it as a 72% probability failure signal based on historical pattern matching. The Execution Layer activates Recovery Sequence B (outreach methodology adjustment), which was the highest-probability intervention for this specific signal pattern. The Attribution Layer records the intervention, tracks the outcome, and adds the data point to the intelligence model for future pattern matching.</p>
+
+<div class="callout"><p>"Remove any one of the four layers and you lose the compounding effect. Observability without intelligence is data noise. Intelligence without execution is analysis paralysis. Execution without attribution is guesswork. All four layers together is what makes a hiring OS genuinely operational." — Manas Majhi</p></div>
+
+<h2>What Happens When a Layer Is Missing</h2>
+<p>Most recruiting teams have partial layer coverage. ATS reporting provides a primitive observability layer but no intelligence or execution. Some teams add a standalone analytics tool — now they have basic observability and limited intelligence, but still no execution. When execution is manual (a recruiter decides to act on an insight), the 7–14 day human lag between signal detection and action is reintroduced. The full four-layer OS eliminates that lag.</p>
+<div class="stat-row">
+<div class="stat"><div class="stat-num">4</div><div class="stat-label">layers required for a complete hiring OS</div></div>
+<div class="stat"><div class="stat-num">Layer 1</div><div class="stat-label">observability — what is happening right now</div></div>
+<div class="stat"><div class="stat-num">Layer 3</div><div class="stat-label">autonomous execution — acts without human lag</div></div>
+<div class="stat"><div class="stat-num">Compounds</div><div class="stat-label">all four layers improve with every mandate</div></div>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What are the components of a hiring operating system?</h3><p>A complete hiring OS has four layers: observability (real-time telemetry from all active searches), intelligence (failure prediction and recovery recommendation), autonomous execution (recovery sequences without manual intervention), and attribution (ROI tracking for executive reporting).</p>
+<h3>Do all four components need to be present for a hiring OS to work?</h3><p>Yes — in the sense that removing any layer degrades the system significantly. Without observability, there is nothing for intelligence to interpret. Without intelligence, execution is guesswork. Without attribution, you cannot prove the value of the system or improve it over time.</p>
+<h3>What is the observability layer in a hiring OS?</h3><p>The observability layer is the real-time telemetry system that continuously collects operational signals from every active mandate — response decay rates, funnel velocity, recruiter load, pipeline depth, and SLA proximity. It is the sensor network that feeds every other layer.</p>
+<h3>What makes the execution layer different from workflow automation?</h3><p>Workflow automation executes predefined rules. The execution layer in a hiring OS acts based on intelligence layer recommendations — which are specific to the current state of each mandate, weighted against historical outcomes, and selected from a ranked set of recovery options rather than triggered by a simple if-then rule.</p>
+<h3>How does the attribution layer make the hiring OS defensible to a CFO?</h3><p>By tracking which actions produced which outcomes in financial terms: mandate recovery value (avoided cost of a failed search), hiring velocity improvement (days saved × daily revenue impact of an open seat), and tool spend eliminated. These are CFO-language metrics that justify the hiring OS investment against measurable financial impact.</p>
+
+<div class="related-links"><h3>Related Concepts</h3><a href="/hiring-operating-system.html">Hiring Operating System</a><a href="/what-is-a-hiring-operating-system.html">What Is a Hiring OS?</a><a href="/hiring-os-vs-ats.html">Hiring OS vs. ATS</a><a href="/hiring-os-implementation.html">Hiring OS Implementation</a></div>
+</div>
+<section class="cta-section">
+  <h2>See Majhi OS in Action</h2>
+  <p>We use your actual mandate as working context. Book a 45-minute Mission Walkthrough and see what operational intelligence looks like for your specific hiring system.</p>
+  <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book Mission Walkthrough &#8594;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/hiring-infrastructure.html">Hiring Infrastructure</a>
+      <a href="/hiring-operating-system.html">Hiring OS</a>
+      <a href="/hiring-telemetry.html">Hiring Telemetry</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>2026 Majhi Group. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Candidate Intelligence Graph | Majhi OS</title>
+<meta name="description" content="The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns across every executive search — powering 82% shortlist approval rates.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/candidate-intelligence-graph.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Candidate Intelligence Graph | Majhi OS">
+<meta property="og:description" content="The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns across every executive search — powering 82% shortlist approval rates."><meta property="og:url" content="https://majhi.tech/candidate-intelligence-graph.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Candidate Intelligence Graph | Majhi OS">
+<meta name="twitter:description" content="The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns across every executive search — powering 82% shortlist approval rates.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:600}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--indigo);text-decoration:none}
+a:hover{color:var(--indigo2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.logo-mark{width:28px;height:28px;color:var(--indigo)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-links a:hover{color:var(--indigo)}
+.nav-right{margin-left:1.5rem}
+.nav-cta{background:var(--indigo);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500}
+.nav-cta:hover{background:var(--indigo2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:5rem 2rem 4rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.2rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--indigo3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem}
+.btn-primary:hover{background:var(--indigo2);color:#fff}
+.btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:.75rem 1.8rem;border-radius:8px;font-weight:500;font-size:.95rem}
+.content-section{max-width:900px;margin:0 auto;padding:4rem 2rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card-icon{font-size:2rem;margin-bottom:.75rem}
+.card h3{color:var(--ink)}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--indigo3)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.25rem}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--indigo);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.breadcrumb{max-width:900px;margin:0 auto;padding:1rem 2rem;font-size:.85rem;color:var(--muted)}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb span{margin:0 .4rem}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:center;margin:1.5rem 0}
+.footer-links a{color:rgba(255,255,255,.5);font-size:.875rem}
+.footer-links a:hover{color:var(--indigo3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content-section{padding:2.5rem 1.5rem}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Candidate Intelligence Graph","description":"The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns across every executive search — powering 82% shortlist approval rates.","url":"https://majhi.tech/candidate-intelligence-graph.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":'What is the Candidate Intelligence Graph?',"acceptedAnswer":{"@type":"Answer","text":"The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns for each active mandate. It is a live intelligence layer that updates continuously as new signals arrive."}},
+{"@type":"Question","name":'How does the graph improve shortlist approval rates?',"acceptedAnswer":{"@type":"Answer","text":'By presenting candidates with full operational context — fit scores, risk flags, behavioral signals, market position — instead of just resumes. Hiring managers make faster, more confident decisions when they have intelligence, not just information.'}},
+{"@type":"Question","name":'Is the Candidate Intelligence Graph a candidate database?',"acceptedAnswer":{"@type":"Answer","text":'No. A database is static — it stores profiles. The Graph is dynamic — it updates continuously as new signals emerge from outreach, interviews, and reference checks.'}},
+{"@type":"Question","name":'What signals feed the Candidate Intelligence Graph?',"acceptedAnswer":{"@type":"Answer","text":'Outreach response rates, interview engagement signals, reference data, compensation expectations, market availability, tenure patterns, scope history, and behavioral indicators from the engagement process.'}},
+{"@type":"Question","name":'How does the graph protect against bad executive hires?',"acceptedAnswer":{"@type":"Answer","text":'By surfacing risk flags early — tenure patterns that suggest misalignment, scope signals that indicate overextension, cultural indicators that predict friction — before an offer is extended.'}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Candidate Intelligence Graph","item":"https://majhi.tech/candidate-intelligence-graph.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://majhi.tech","description":"Hiring system health monitoring, failure prediction, and autonomous recovery.","offers":{"@type":"Offer","priceCurrency":"USD","description":"$3,000-$4,000/month per mandate"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough →</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="/">Majhi OS</a><span>&#8250;</span> Candidate Intelligence Graph</div>
+<section class="hero">
+  <div class="pill">Majhi OS Intelligence Layer</div>
+  <h1>Candidate Intelligence Graph™</h1>
+  <p class="hero-sub">A resume tells you where someone worked. The Candidate Intelligence Graph tells you whether they will succeed in this specific role at this specific company at this specific moment.</p>
+  <div class="hero-btns">
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book a Mission Walkthrough &#8594;</a>
+    <a href="/operational-visibility-gap.html" class="btn-secondary">Read the Whitepaper</a>
+  </div>
+</section>
+<div class="content-section">
+<h2>What Is the Candidate Intelligence Graph?</h2>
+<p>The Candidate Intelligence Graph is the operational data model that maps every candidate's fit signals, risk factors, and behavioral patterns against the specific mandate context. Unlike a candidate database that stores historical information, the Graph is a live intelligence layer — continuously updated as new signals emerge from outreach, interviews, and market data.</p>
+<h2>Five Dimensions of Candidate Intelligence</h2>
+<p>Majhi OS maps candidate intelligence across five dimensions that predict executive success:</p>
+<div class="card-grid">
+<div class="card"><div class="card-icon">🎯</div><h3>Mandate Fit Score</h3><p>Quantified alignment between the candidate's operational history and the specific requirements of the current mandate.</p></div>
+<div class="card"><div class="card-icon">⚠️</div><h3>Risk Flag Index</h3><p>Identified risk factors — tenure patterns, scope mismatches, cultural signals — scored and weighted against the hiring context.</p></div>
+<div class="card"><div class="card-icon">🔄</div><h3>Behavioral Signal Map</h3><p>Patterns from outreach response, interview engagement, and reference signals that predict offer acceptance and 90-day success.</p></div>
+<div class="card"><div class="card-icon">📊</div><h3>Market Position Score</h3><p>How the candidate ranks against the current market for this role — accounting for compensation expectations and competing opportunities.</p></div>
+<div class="card"><div class="card-icon">🏆</div><h3>Succession Probability</h3><p>Likelihood the candidate will grow into expanded scope — critical for hiring managers who need to think 18 months ahead.</p></div>
+</div>
+<h2>How the Graph Powers 82% Shortlist Approval</h2>
+<p>Before Majhi OS, shortlist approval rates in executive search average 38% — meaning hiring managers reject more than half the candidates presented.</p>
+<div class="callout"><p>“Shortlist approval went from 38% to 82% not because we found better candidates — it is because we presented them with the intelligence that turned a gut decision into a confident one.” — Manas Majhi</p></div>
+<h2>The Graph vs. a Candidate Database</h2>
+<p>A candidate database is static — it stores profiles. The Candidate Intelligence Graph is dynamic — it updates continuously as new signals arrive. When a candidate responds to outreach after a two-week silence, the graph updates their engagement probability. When a reference reveals a risk flag, the graph surfaces it immediately.</p>
+
+<div class="stat-row">
+<div class="stat"><div class="stat-num">82%</div><div class="stat-label">shortlist approval rate</div></div>
+<div class="stat"><div class="stat-num">90%+</div><div class="stat-label">offer acceptance rate</div></div>
+<div class="stat"><div class="stat-num">41 days</div><div class="stat-label">avg close on $275K search</div></div>
+<div class="stat"><div class="stat-num">38%→82%</div><div class="stat-label">shortlist approval improvement</div></div>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What is the Candidate Intelligence Graph?</h3><p>The Candidate Intelligence Graph is Majhi OS's proprietary data model that maps candidate fit signals, risk factors, and behavioral patterns for each active mandate. It is a live intelligence layer that updates continuously as new signals arrive.</p>
+<h3>How does the graph improve shortlist approval rates?</h3><p>By presenting candidates with full operational context — fit scores, risk flags, behavioral signals, market position — instead of just resumes. Hiring managers make faster, more confident decisions when they have intelligence, not just information.</p>
+<h3>Is the Candidate Intelligence Graph a candidate database?</h3><p>No. A database is static — it stores profiles. The Graph is dynamic — it updates continuously as new signals emerge from outreach, interviews, and reference checks.</p>
+<h3>What signals feed the Candidate Intelligence Graph?</h3><p>Outreach response rates, interview engagement signals, reference data, compensation expectations, market availability, tenure patterns, scope history, and behavioral indicators from the engagement process.</p>
+<h3>How does the graph protect against bad executive hires?</h3><p>By surfacing risk flags early — tenure patterns that suggest misalignment, scope signals that indicate overextension, cultural indicators that predict friction — before an offer is extended.</p>
+
+</div>
+<section class="cta-section">
+  <h2>See Majhi OS in Action</h2>
+  <p>We use your actual mandate as working context. Book a 45-minute Mission Walkthrough and see what operational intelligence looks like for your specific hiring system.</p>
+  <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book Mission Walkthrough &#8594;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/hiring-infrastructure.html">Hiring Infrastructure</a>
+      <a href="/hiring-operating-system.html">Hiring OS</a>
+      <a href="/hiring-telemetry.html">Hiring Telemetry</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>2026 Majhi Group. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

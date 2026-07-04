@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success | Majhi OS</title>
+<meta name="description" content="The six core hiring telemetry metrics — response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength — are the operational signals that predict executive search outcomes.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-telemetry-metrics.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success | Majhi OS">
+<meta property="og:description" content="The six core hiring telemetry metrics — response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength — are the operational signals that predict executive search outcomes."><meta property="og:url" content="https://majhi.tech/hiring-telemetry-metrics.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success | Majhi OS">
+<meta name="twitter:description" content="The six core hiring telemetry metrics — response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength — are the operational signals that predict executive search outcomes.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:600}
+h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--indigo);text-decoration:none}
+a:hover{color:var(--indigo2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.logo-mark{width:28px;height:28px;color:var(--indigo)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-links a:hover{color:var(--indigo)}
+.nav-right{margin-left:1.5rem}
+.nav-cta{background:var(--indigo);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500}
+.nav-cta:hover{background:var(--indigo2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--indigo3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem}
+.btn-primary:hover{background:var(--indigo2);color:#fff}
+.btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:.75rem 1.8rem;border-radius:8px;font-weight:500;font-size:.95rem}
+.content-section{max-width:900px;margin:0 auto;padding:4rem 2rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card-icon{font-size:1.8rem;margin-bottom:.75rem}
+.card h3{color:var(--ink)}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--indigo3)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.25rem}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--indigo);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink)}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--indigo);color:var(--indigo)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.breadcrumb{max-width:900px;margin:0 auto;padding:1rem 2rem;font-size:.85rem;color:var(--muted)}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb span{margin:0 .4rem}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:center;margin:1.5rem 0}
+.footer-links a{color:rgba(255,255,255,.5);font-size:.875rem}
+.footer-links a:hover{color:var(--indigo3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content-section{padding:2.5rem 1.5rem}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success","description":"The six core hiring telemetry metrics — response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength — are the operational signals that predict executive search outcomes.","url":"https://majhi.tech/hiring-telemetry-metrics.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":'What are the six hiring telemetry metrics?',"acceptedAnswer":{"@type":"Answer","text":'Response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength. Together, they provide complete operational visibility into the health of every active executive search.'}},
+{"@type":"Question","name":'Which hiring telemetry metric is the most important?',"acceptedAnswer":{"@type":"Answer","text":'Response decay rate is the most reliable leading indicator of mandate failure — detectable 3–4 weeks before pipeline collapse. However, the compound signal from all six metrics is more predictive than any single metric alone.'}},
+{"@type":"Question","name":'What is a healthy mandate health score?',"acceptedAnswer":{"@type":"Answer","text":'Above 65 on the 0–100 Majhi OS scale. Below 50 triggers active monitoring with increased telemetry frequency. Below 35 triggers automatic recovery sequence activation.'}},
+{"@type":"Question","name":'How often are telemetry metrics calculated?',"acceptedAnswer":{"@type":"Answer","text":'Continuously — all six metrics are updated whenever new data is available. Response decay rate and funnel velocity update with every outreach and pipeline event. Recruiter load index updates daily. Health score recalculates every time any input metric changes.'}},
+{"@type":"Question","name":'What triggers an autonomous recovery sequence?',"acceptedAnswer":{"@type":"Answer","text":'A health score below 35, a response decay signal exceeding the danger threshold, a recruiter load index above 0.9 for 5+ business days, or an SLA breach probability above 50%. Each threshold is configurable per client based on their operational preferences.'}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success","item":"https://majhi.tech/hiring-telemetry-metrics.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough →</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="/">Majhi OS</a><span>&#8250;</span> <a href="/hiring-telemetry-metrics.html">Related</a><span>&#8250;</span> Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success</div>
+<section class="hero">
+  <div class="pill">Hiring Telemetry Metrics</div>
+  <h1>Hiring Telemetry Metrics: The Six Signals That Predict Mandate Success</h1>
+  <p class="hero-sub">ATS metrics measure what happened. Telemetry metrics measure what is about to happen. These six signals are the difference between reacting to failure and preventing it.</p>
+  <div class="hero-btns">
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book a Mission Walkthrough &#8594;</a>
+    <a href="/operational-visibility-gap.html" class="btn-secondary">Read the Whitepaper</a>
+  </div>
+</section>
+<div class="content-section">
+<h2>Why Six Metrics, Not One</h2>
+<p>Mandate failure is rarely caused by a single failure mode. It is typically a compound of two or three converging signals: response decay + recruiter overload, or pipeline thinning + interview scheduling bottleneck, or SLA proximity + candidate drop-off. A single composite metric misses the compound signals. Six distinct telemetry metrics allow Majhi OS to identify the specific combination driving each mandate's risk profile — and select the appropriate compound recovery action.</p>
+
+<h2>Metric 1: Response Decay Rate</h2>
+<p><strong>What it is:</strong> The rate at which outreach response rates decline over the course of a mandate. Calculated as the week-over-week change in response rate across all outreach activity for the mandate.</p>
+<p><strong>Healthy range:</strong> Decline of less than 2 percentage points per week.</p>
+<p><strong>Danger signal:</strong> Decline exceeding 4 percentage points per week, or total response rate below 8%.</p>
+<p><strong>Why it matters:</strong> Response decay is the earliest reliable predictor of pipeline collapse. It is detectable 3–4 weeks before the pipeline empties — giving Majhi OS enough lead time to intervene.</p>
+
+<h2>Metric 2: Funnel Velocity</h2>
+<p><strong>What it is:</strong> The time candidates take to progress through each pipeline stage, measured against historical benchmarks for this mandate type.</p>
+<p><strong>Healthy range:</strong> Within 20% of the benchmark velocity for each stage.</p>
+<p><strong>Danger signal:</strong> Any stage running 50%+ slower than benchmark — particularly screening-to-shortlist and shortlist-to-offer transitions.</p>
+<p><strong>Why it matters:</strong> Stage velocity slowdowns compound across the pipeline. A 2-week delay at screening becomes a 4-week delay by the offer stage when other slowdowns are added.</p>
+
+<h2>Metric 3: Recruiter Load Index</h2>
+<p><strong>What it is:</strong> A composite score for each recruiter's mandate burden — weighting the number of active mandates by complexity, current stage, and active outreach obligations.</p>
+<p><strong>Healthy range:</strong> Load index below 0.8 (scale of 0–1.0).</p>
+<p><strong>Danger signal:</strong> Load index above 0.9 for more than 5 business days — indicating sustained overload that degrades outreach quality and shortlist rigor.</p>
+<p><strong>Why it matters:</strong> Recruiter overload is the most common undisclosed cause of mandate stalls — recruiters rarely self-report capacity issues until quality has already degraded.</p>
+
+<h2>Metric 4: Mandate Health Score</h2>
+<p><strong>What it is:</strong> A composite operational score (0–100) calculated from all six telemetry metrics, weighted against historical benchmarks for mandates of similar type, stage, and market conditions.</p>
+<p><strong>Healthy range:</strong> Above 65.</p>
+<p><strong>Danger signal:</strong> Below 50 triggers active monitoring; below 35 triggers autonomous recovery sequence activation.</p>
+<p><strong>Why it matters:</strong> The Health Score is the primary operational metric that makes mandate health visible at a glance — the instrument panel reading that drives command center priority.</p>
+
+<h2>Metric 5: SLA Breach Proximity</h2>
+<p><strong>What it is:</strong> The probability that the current mandate trajectory will result in a close-date SLA breach, expressed as a percentage and a time-to-breach estimate.</p>
+<p><strong>Healthy range:</strong> Below 25% breach probability.</p>
+<p><strong>Danger signal:</strong> Above 50% breach probability triggers escalation to the responsible authority level.</p>
+<p><strong>Why it matters:</strong> SLA breach probability surfaces the downstream consequence of current telemetry patterns — translating operational signals into business impact language.</p>
+
+<h2>Metric 6: Recovery Signal Strength</h2>
+<p><strong>What it is:</strong> A measure of whether an active recovery intervention is working — tracking the health score trajectory for the 5–10 business days following intervention activation.</p>
+<p><strong>Healthy range:</strong> Health score improving by at least 3 points per day after intervention.</p>
+<p><strong>Danger signal:</strong> No improvement or continued decline after 5 business days — triggering evaluation of an alternative recovery approach.</p>
+<p><strong>Why it matters:</strong> Recovery effectiveness monitoring closes the feedback loop — ensuring that a recovery sequence is actually working and switching to a different approach if it is not.</p>
+
+<div class="callout"><p>"Six metrics, measured continuously, give us the compound signal picture that makes failure prediction reliable. Any one of these metrics alone is a data point. Together, they are an operational intelligence layer." — Manas Majhi, Founder, Majhi OS</p></div>
+<div class="stat-row">
+<div class="stat"><div class="stat-num">6</div><div class="stat-label">telemetry metrics measured continuously per mandate</div></div>
+<div class="stat"><div class="stat-num">Week 3–4</div><div class="stat-label">when response decay signals future pipeline collapse</div></div>
+<div class="stat"><div class="stat-num">0–100</div><div class="stat-label">mandate health score scale — below 35 triggers recovery</div></div>
+<div class="stat"><div class="stat-num">50%+</div><div class="stat-label">SLA breach probability triggers automatic escalation</div></div>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What are the six hiring telemetry metrics?</h3><p>Response decay rate, funnel velocity, recruiter load index, mandate health score, SLA breach proximity, and recovery signal strength. Together, they provide complete operational visibility into the health of every active executive search.</p>
+<h3>Which hiring telemetry metric is the most important?</h3><p>Response decay rate is the most reliable leading indicator of mandate failure — detectable 3–4 weeks before pipeline collapse. However, the compound signal from all six metrics is more predictive than any single metric alone.</p>
+<h3>What is a healthy mandate health score?</h3><p>Above 65 on the 0–100 Majhi OS scale. Below 50 triggers active monitoring with increased telemetry frequency. Below 35 triggers automatic recovery sequence activation.</p>
+<h3>How often are telemetry metrics calculated?</h3><p>Continuously — all six metrics are updated whenever new data is available. Response decay rate and funnel velocity update with every outreach and pipeline event. Recruiter load index updates daily. Health score recalculates every time any input metric changes.</p>
+<h3>What triggers an autonomous recovery sequence?</h3><p>A health score below 35, a response decay signal exceeding the danger threshold, a recruiter load index above 0.9 for 5+ business days, or an SLA breach probability above 50%. Each threshold is configurable per client based on their operational preferences.</p>
+
+<div class="related-links"><h3>Related Concepts</h3><a href="/hiring-telemetry.html">Hiring Telemetry</a><a href="/what-is-hiring-telemetry.html">What Is Hiring Telemetry?</a><a href="/hiring-telemetry-dashboard.html">Hiring Telemetry Dashboard</a><a href="/hiring-telemetry-vs-reporting.html">Telemetry vs. Reporting</a></div>
+</div>
+<section class="cta-section">
+  <h2>See Majhi OS in Action</h2>
+  <p>We use your actual mandate as working context. Book a 45-minute Mission Walkthrough and see what operational intelligence looks like for your specific hiring system.</p>
+  <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book Mission Walkthrough &#8594;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/hiring-infrastructure.html">Hiring Infrastructure</a>
+      <a href="/hiring-operating-system.html">Hiring OS</a>
+      <a href="/hiring-telemetry.html">Hiring Telemetry</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>2026 Majhi Group. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

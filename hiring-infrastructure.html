@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Infrastructure | Majhi OS</title>
+<meta name="description" content="Hiring infrastructure is the operational backbone that prevents executive search mandates from failing. Majhi OS delivers real-time health monitoring, failure prediction, and autonomous recovery for recruiting teams.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-infrastructure.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Hiring Infrastructure | Majhi OS">
+<meta property="og:description" content="Hiring infrastructure is the operational backbone that prevents executive search mandates from failing. Majhi OS delivers real-time health monitoring, failure prediction, and autonomous recovery for recruiting teams."><meta property="og:url" content="https://majhi.tech/hiring-infrastructure.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hiring Infrastructure | Majhi OS">
+<meta name="twitter:description" content="Hiring infrastructure is the operational backbone that prevents executive search mandates from failing. Majhi OS delivers real-time health monitoring, failure prediction, and autonomous recovery for recruiting teams.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--indigo:#B8882A;--indigo2:#D4A84B;--indigo3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:600}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--indigo);text-decoration:none}
+a:hover{color:var(--indigo2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.logo-mark{width:28px;height:28px;color:var(--indigo)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-links a:hover{color:var(--indigo)}
+.nav-right{margin-left:1.5rem}
+.nav-cta{background:var(--indigo);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500}
+.nav-cta:hover{background:var(--indigo2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:5rem 2rem 4rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.2rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--indigo3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem}
+.btn-primary:hover{background:var(--indigo2);color:#fff}
+.btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:.75rem 1.8rem;border-radius:8px;font-weight:500;font-size:.95rem}
+.content-section{max-width:900px;margin:0 auto;padding:4rem 2rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card-icon{font-size:2rem;margin-bottom:.75rem}
+.card h3{color:var(--ink)}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--indigo3)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.25rem}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--indigo);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.breadcrumb{max-width:900px;margin:0 auto;padding:1rem 2rem;font-size:.85rem;color:var(--muted)}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb span{margin:0 .4rem}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:center;margin:1.5rem 0}
+.footer-links a{color:rgba(255,255,255,.5);font-size:.875rem}
+.footer-links a:hover{color:var(--indigo3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content-section{padding:2.5rem 1.5rem}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Hiring Infrastructure","description":"Hiring infrastructure is the operational backbone that prevents executive search mandates from failing. Majhi OS delivers real-time health monitoring, failure prediction, and autonomous recovery for recruiting teams.","url":"https://majhi.tech/hiring-infrastructure.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":'What is hiring infrastructure?',"acceptedAnswer":{"@type":"Answer","text":'Hiring infrastructure is the operational backbone of an executive search function — the systems that monitor mandate health, predict failures, and execute autonomous recovery actions. It sits above your ATS and recruiting tools, providing real-time operational intelligence across all active searches.'}},
+{"@type":"Question","name":'How is hiring infrastructure different from an ATS?',"acceptedAnswer":{"@type":"Answer","text":'An ATS tracks candidates and workflow stages. Hiring infrastructure monitors the health of the system running those searches — recruiter load, response decay, funnel velocity, SLA breach risk. One is a record-keeper; the other is a command center.'}},
+{"@type":"Question","name":'Why do hiring systems fail without infrastructure?',"acceptedAnswer":{"@type":"Answer","text":'Without operational visibility, problems compound silently. A recruiter becomes overloaded, outreach response rates decay, candidate pipelines thin out — but nobody sees it until the mandate collapses at week 12.'}},
+{"@type":"Question","name":'What does Majhi OS provide as hiring infrastructure?',"acceptedAnswer":{"@type":"Answer","text":'Majhi OS provides four infrastructure layers: observability (real-time mandate monitoring), intelligence (failure prediction), autonomous execution (recovery sequences), and attribution (ROI reporting for CFOs and CEOs).'}},
+{"@type":"Question","name":'How much does hiring infrastructure cost?',"acceptedAnswer":{"@type":"Answer","text":'Majhi OS is structured as a $3,000–$4,000/month retainer per active mandate. Given the $50K–$200K cost of a failed executive search, the ROI is typically achieved within the first recovered mandate.'}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring Infrastructure","item":"https://majhi.tech/hiring-infrastructure.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Majhi OS","url":"https://majhi.tech","description":"Autonomous hiring operations infrastructure.","email":"manas@majhi.tech","founder":{"@type":"Person","name":"Manas Majhi","jobTitle":"Founder"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Majhi OS","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://majhi.tech","description":"Hiring system health monitoring, failure prediction, and autonomous recovery.","offers":{"@type":"Offer","priceCurrency":"USD","description":"$3,000-$4,000/month per mandate"}}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-name">Majhi OS</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Platform</a>
+      <a href="/#workflow">Workflow</a>
+      <a href="/hiring-system-health.html">Health Score</a>
+      <a href="/hiring-observability.html">Observability</a>
+      <a href="/operational-visibility-gap.html">Whitepaper</a>
+      <a href="/mission-walkthrough.html">Walkthrough</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/manasmajhi/intro-call" class="nav-cta">Book Walkthrough →</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="/">Majhi OS</a><span>&#8250;</span> Hiring Infrastructure</div>
+<section class="hero">
+  <div class="pill">Majhi OS Infrastructure Layer</div>
+  <h1>Hiring Infrastructure™</h1>
+  <p class="hero-sub">Most recruiting teams track candidates. Majhi OS monitors the infrastructure those searches run on — in real time, before mandates stall.</p>
+  <div class="hero-btns">
+    <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book a Mission Walkthrough &#8594;</a>
+    <a href="/operational-visibility-gap.html" class="btn-secondary">Read the Whitepaper</a>
+  </div>
+</section>
+<div class="content-section">
+<h2>What Is Hiring Infrastructure?</h2>
+<p>Hiring infrastructure is the operational layer beneath your recruiting workflows — the systems, signals, and recovery mechanisms that determine whether a search succeeds or collapses. Like DevOps infrastructure in software engineering, hiring infrastructure is invisible when it works and catastrophic when it fails. Majhi OS makes it visible, measurable, and self-healing.</p>
+<h2>The Four Layers of Hiring Infrastructure</h2>
+<p>Majhi OS structures hiring infrastructure across four operational layers that work together to prevent mandate failure:</p>
+<div class="card-grid">
+<div class="card"><div class="card-icon">📡</div><h3>Observability Layer</h3><p>Real-time monitoring of mandate health, recruiter load, funnel degradation, and response decay across every active search.</p></div>
+<div class="card"><div class="card-icon">🧠</div><h3>Intelligence Layer</h3><p>Operational reasoning that identifies why mandates fail, which recruiter patterns correlate with success, and where throughput collapses.</p></div>
+<div class="card"><div class="card-icon">⚡</div><h3>Execution Layer</h3><p>Autonomous recovery sequences that reassign recruiters, escalate issues, and rebalance pipelines without manual orchestration.</p></div>
+<div class="card"><div class="card-icon">📊</div><h3>Attribution Layer</h3><p>Executive visibility into cost saved, hiring velocity, recruiter efficiency, and recovered revenue — CFO and CEO-level reporting.</p></div>
+</div>
+<h2>Why Hiring Infrastructure Fails</h2>
+<p>68% of VP searches stall past week 10. The root cause is not a shortage of candidates — it is a shortage of operational visibility. When no one can see inside a search in real time, problems compound silently until the mandate collapses.</p>
+<h2>Hiring Infrastructure vs. an ATS</h2>
+<p>An ATS tracks what happened. Hiring infrastructure monitors what is happening — and acts before failure occurs. Your ATS stores candidate records. Majhi OS monitors recruiter load thresholds, response decay rates, pipeline velocity, and SLA breach risk.</p>
+<div class="callout"><p>“An ATS is a database. Hiring infrastructure is a command center. One records history. The other prevents failure.” — Manas Majhi, Founder, Majhi OS</p></div>
+<h2>The Cost of Missing Hiring Infrastructure</h2>
+<p>A stalled VP search costs $50,000–$200,000 in lost productivity before the role is filled. Executive searches that fail past week 10 have a 68% lower probability of closing. Majhi OS detects failure signals at week 3–4, triggering recovery sequences before the mandate reaches critical state.</p>
+
+<div class="stat-row">
+<div class="stat"><div class="stat-num">68%</div><div class="stat-label">VP searches stall past week 10</div></div>
+<div class="stat"><div class="stat-num">50 days</div><div class="stat-label">avg close vs 14-week median</div></div>
+<div class="stat"><div class="stat-num">35%</div><div class="stat-label">reply rate after MX verification</div></div>
+<div class="stat"><div class="stat-num">82%</div><div class="stat-label">shortlist approval rate</div></div>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What is hiring infrastructure?</h3><p>Hiring infrastructure is the operational backbone of an executive search function — the systems that monitor mandate health, predict failures, and execute autonomous recovery actions. It sits above your ATS and recruiting tools, providing real-time operational intelligence across all active searches.</p>
+<h3>How is hiring infrastructure different from an ATS?</h3><p>An ATS tracks candidates and workflow stages. Hiring infrastructure monitors the health of the system running those searches — recruiter load, response decay, funnel velocity, SLA breach risk. One is a record-keeper; the other is a command center.</p>
+<h3>Why do hiring systems fail without infrastructure?</h3><p>Without operational visibility, problems compound silently. A recruiter becomes overloaded, outreach response rates decay, candidate pipelines thin out — but nobody sees it until the mandate collapses at week 12.</p>
+<h3>What does Majhi OS provide as hiring infrastructure?</h3><p>Majhi OS provides four infrastructure layers: observability (real-time mandate monitoring), intelligence (failure prediction), autonomous execution (recovery sequences), and attribution (ROI reporting for CFOs and CEOs).</p>
+<h3>How much does hiring infrastructure cost?</h3><p>Majhi OS is structured as a $3,000–$4,000/month retainer per active mandate. Given the $50K–$200K cost of a failed executive search, the ROI is typically achieved within the first recovered mandate.</p>
+
+</div>
+<section class="cta-section">
+  <h2>See Majhi OS in Action</h2>
+  <p>We use your actual mandate as working context. Book a 45-minute Mission Walkthrough and see what operational intelligence looks like for your specific hiring system.</p>
+  <a href="https://calendly.com/manasmajhi/intro-call" class="btn-primary">Book Mission Walkthrough &#8594;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Majhi OS</div>
+    <p>The Operating System for High-Stakes Hiring.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/hiring-system-health.html">Hiring System Health</a>
+      <a href="/hiring-observability.html">Hiring Observability</a>
+      <a href="/hiring-infrastructure.html">Hiring Infrastructure</a>
+      <a href="/hiring-operating-system.html">Hiring OS</a>
+      <a href="/hiring-telemetry.html">Hiring Telemetry</a>
+      <a href="/operational-visibility-gap.html">Operational Visibility Gap</a>
+      <a href="/failure-prediction.html">Failure Prediction Engine</a>
+      <a href="/mission-walkthrough.html">Mission Walkthrough</a>
+      <a href="https://www.majhigroup.com">Majhi Group</a>
+    </div>
+    <p>2026 Majhi Group. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
