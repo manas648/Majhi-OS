@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How We Measure Hiring Health | Majhi OS</title>
+<meta name="description" content="Majhi OS converts 12 operational signals across every active mandate into a single Hiring Health Score — a real-time metric that tells recruiting teams exactly where each search stands and what needs to happen next.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/how-we-measure-hiring-health.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How We Measure Hiring Health | Majhi OS">
+<meta property="og:description" content="Majhi OS converts 12 operational signals across every active mandate into a single Hiring Health Score — a real-time metric that tells recruiting teams exactly where each search stands and what needs to happen next.">
+<meta property="og:url" content="https://majhi.tech/how-we-measure-hiring-health.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How We Measure Hiring Health | Majhi OS">
+<meta name="twitter:description" content="Majhi OS converts 12 operational signals across every active mandate into a single Hiring Health Score — a real-time metric that tells recruiting teams exactly where each search stands and what needs to happen next.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.layer-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;margin:1rem 0;border-left:4px solid var(--gold)}
+.layer-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+.layer-block h3{margin-top:0;color:var(--ink)}
+.signal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.signal-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}
+.signal-desc{font-size:.83rem;color:var(--muted)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How We Measure Hiring Health","description":"Majhi OS converts 12 operational signals across every active mandate into a single Hiring Health Score — a real-time metric that tells recruiting teams exactly where each search stands and what needs to happen next.","url":"https://majhi.tech/how-we-measure-hiring-health.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What signals does the Hiring Health Score track?","acceptedAnswer":{"@type":"Answer","text":"It tracks 12 operational signals including response decay rate, pipeline velocity, recruiter load index, shortlist conversion, hiring manager engagement, outreach saturation, days on mandate, offer acceptance trajectory, candidate drop-off rate, feedback loop latency, SLA compliance, and recovery action coverage."}},{"@type":"Question","name":"How often is the Hiring Health Score updated?","acceptedAnswer":{"@type":"Answer","text":"The score is updated in real time as signals change. When a key threshold is crossed, the system flags the mandate and can trigger a recovery sequence automatically."}},{"@type":"Question","name":"What happens when a mandate score falls below 45?","acceptedAnswer":{"@type":"Answer","text":"A score below 45 is classified as Critical. Majhi OS automatically triggers a mandate recovery sequence — the specific recovery actions are selected from the Recovery Playbook library based on which signals drove the score decline."}},{"@type":"Question","name":"How is the Hiring Health Score different from a recruiting dashboard?","acceptedAnswer":{"@type":"Answer","text":"Recruiting dashboards report on activity — interviews scheduled, candidates sourced. The Hiring Health Score reports on mandate health — whether the search is actually on track to close successfully. It synthesizes 12 signals into one actionable number rather than presenting raw metrics."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://majhi.tech/how-we-measure-hiring-health.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/what-is-autonomous-hiring.html">Autonomous Hiring</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<section class="hero">
+<div class="pill">Majhi OS Methodology</div>
+<h1>How We Measure Hiring Health</h1>
+<p class="hero-sub">Most recruiting teams can tell you how many roles are open. Very few can tell you which ones are actually healthy. The Hiring Health Score changes that.</p>
+<a href="https://majhi.tech" class="hero-btn">Book a Mission Walkthrough</a>
+</section>
+<div class="content">
+
+<p>The core problem with traditional recruiting dashboards is that they report on activity, not health. They show you how many candidates were sourced, how many interviews were scheduled, how many offers were sent. What they don't show you is whether the mandate is actually moving toward a successful close — or silently drifting toward failure.</p>
+
+<p>The Hiring Health Score is Majhi OS's answer to that problem. It synthesizes 12 operational signals across every active mandate into a single number, updated in real time, that tells a recruiting leader exactly which searches are on track, which are degrading, and which require immediate intervention.</p>
+
+<h2>The 12 Signals We Track</h2>
+<p>Each signal is weighted based on its predictive correlation with mandate failure. The weights are adjusted over time as the system learns from outcomes across mandates.</p>
+
+<div class="signal-grid">
+<div class="signal"><div class="signal-name">Response Decay Rate</div><div class="signal-desc">Rate at which outreach response rates are declining over the past 14 days</div></div>
+<div class="signal"><div class="signal-name">Pipeline Velocity</div><div class="signal-desc">Time between pipeline stages vs. benchmark. Slowdowns compound.</div></div>
+<div class="signal"><div class="signal-name">Recruiter Load Index</div><div class="signal-desc">Active mandates per recruiter relative to historical capacity threshold</div></div>
+<div class="signal"><div class="signal-name">Shortlist Conversion</div><div class="signal-desc">% of sourced candidates reaching shortlist. Below 38% signals intake misalignment.</div></div>
+<div class="signal"><div class="signal-name">Hiring Manager Engagement</div><div class="signal-desc">Response time and feedback quality from the hiring manager</div></div>
+<div class="signal"><div class="signal-name">Outreach Saturation</div><div class="signal-desc">% of ICP candidates already contacted in prior rounds</div></div>
+<div class="signal"><div class="signal-name">Days on Mandate</div><div class="signal-desc">Current age vs. predicted close date. Divergence triggers early warning.</div></div>
+<div class="signal"><div class="signal-name">Offer Acceptance Trajectory</div><div class="signal-desc">Whether the current pipeline has offer-ready candidates within 15 days</div></div>
+<div class="signal"><div class="signal-name">Candidate Drop-Off Rate</div><div class="signal-desc">% of candidates disengaging after first contact or first interview</div></div>
+<div class="signal"><div class="signal-name">Feedback Loop Latency</div><div class="signal-desc">Average time between interview and structured feedback submission</div></div>
+<div class="signal"><div class="signal-name">SLA Compliance</div><div class="signal-desc">Whether key milestones — shortlist, first interview, offer — are on schedule</div></div>
+<div class="signal"><div class="signal-name">Recovery Action Coverage</div><div class="signal-desc">Whether triggered recovery playbooks have been activated and completed</div></div>
+</div>
+
+<h2>How the Score Is Calculated</h2>
+<p>The 12 signals are normalized to a 0–100 scale and aggregated using a weighted model. The weighting is not static — it adapts based on mandate type, industry, role level, and historical outcomes for similar searches.</p>
+
+<div class="data-box">
+<h4>Hiring Health Score Bands</h4>
+<div class="data-row"><span>85–100</span><span>Healthy — mandate is on track for on-time close</span></div>
+<div class="data-row"><span>65–84</span><span>Watch — one or more signals are degrading; monitor closely</span></div>
+<div class="data-row"><span>45–64</span><span>At Risk — recovery action recommended within 48 hours</span></div>
+<div class="data-row"><span>Below 45</span><span>Critical — mandate recovery sequence triggered automatically</span></div>
+</div>
+
+<div class="callout"><p>"Most teams find out a mandate is failing when the CEO asks why the role has been open for four months. The Hiring Health Score tells you in week three."</p></div>
+
+<h2>What the Score Enables</h2>
+<div class="card-grid">
+<div class="card"><h3>Early Warning</h3><p>Degrading mandates are flagged before they stall — typically 3–4 weeks before a human recruiter would notice.</p></div>
+<div class="card"><h3>Prioritization</h3><p>Recruiting leaders can instantly see which mandates need attention and which are running smoothly — without reading through CRM notes.</p></div>
+<div class="card"><h3>Accountability</h3><p>Every score change is logged with a cause. Nothing can degrade silently.</p></div>
+<div class="card"><h3>Executive Visibility</h3><p>CEOs and CFOs can see the operational health of the entire hiring portfolio at a glance — not just headcount numbers.</p></div>
+</div>
+
+<h2>Why One Number Matters</h2>
+<p>Synthesis is the point. Recruiting teams don't need more dashboards. They need a single signal that tells them where to look. The Hiring Health Score replaces 12 separate metrics that no one has time to read with one number that requires immediate action when it drops.</p>
+
+<p>The Hiring Health Score is also what makes the <a href="https://majhi.tech/what-is-failure-prediction.html">Failure Prediction Engine</a> actionable. Without a real-time health signal, prediction is theoretical. With it, prediction triggers a specific response.</p>
+
+<div class="stat-row">
+<div class="stat"><div class="stat-num">12</div><div class="stat-label">Signals per mandate</div></div>
+<div class="stat"><div class="stat-num">3–4 wk</div><div class="stat-label">Early warning lead time</div></div>
+<div class="stat"><div class="stat-num">100%</div><div class="stat-label">Audit trail coverage</div></div>
+<div class="stat"><div class="stat-num">Real-time</div><div class="stat-label">Score update frequency</div></div>
+</div>
+
+<div class="related-links">
+<h3>Related</h3>
+<a href="https://majhi.tech/what-is-hiring-health-score.html">What Is a Hiring Health Score?</a><a href="https://majhi.tech/what-is-failure-prediction.html">Failure Prediction Engine</a><a href="https://majhi.tech/how-we-detect-failing-mandates.html">How We Detect Failing Mandates</a><a href="https://majhi.tech/what-is-mandate-recovery.html">What Is Mandate Recovery?</a><a href="https://majhi.tech/what-is-hiring-observability.html">Hiring Observability</a>
+</div>
+</div>
+<section class="cta-section">
+<h2>See how it works on your actual mandate</h2>
+<p>A Mission Walkthrough uses your live search as working context — not a generic demo. 45 minutes. No slides.</p>
+<a href="https://majhi.tech" class="cta-btn">Book a Mission Walkthrough</a>
+</section>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Reliability Calculator | Majhi OS</title>
+<meta name="description" content="Calculate your Hiring Reliability Score — a real-time measure of how likely your current VP and leadership searches are to close on time, without stalling. Benchmarked against Majhi OS operational data.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-reliability-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiring Reliability Calculator | Majhi OS">
+<meta property="og:description" content="Calculate your Hiring Reliability Score — a real-time measure of how likely your current VP and leadership searches are to close on time, without stalling. Benchmarked against Majhi OS operational data.">
+<meta property="og:url" content="https://majhi.tech/hiring-reliability-calculator.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF;--success:#1A7F4E;--warn:#C45C00;--danger:#B5292A}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600}
+h2{font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:600;margin-bottom:.75rem;margin-top:2rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+p{margin-bottom:.9rem}
+a{color:var(--gold);text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:3.5rem 2rem 3rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:.8rem}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.72);max-width:620px;margin:0 auto 1.5rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.78rem;font-weight:500;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:.05em}
+.tool-wrap{max-width:820px;margin:2.5rem auto;padding:0 1.5rem 3rem}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2.5rem;margin-bottom:1.5rem}
+.field-group{margin-bottom:1.5rem}
+label{display:block;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer;margin:.3rem 0}
+.range-labels{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:.2rem}
+input[type=number],select{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:8px;font-size:.95rem;font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg)}
+input[type=number]:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.radio-group{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.radio-group label{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:400;font-size:.88rem;margin:0}
+.radio-group input[type=radio]{accent-color:var(--gold)}
+.radio-group label:has(input:checked){border-color:var(--gold);background:rgba(184,136,42,.06);color:var(--ink);font-weight:500}
+.calc-btn{background:var(--gold);color:#fff;border:none;padding:.85rem 2.2rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;width:100%;margin-top:.5rem;font-family:'Inter',sans-serif}
+.calc-btn:hover{background:var(--gold2)}
+.results{display:none;margin-top:1.5rem;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.score-circle{width:140px;height:140px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Cormorant Garamond',serif}
+.score-num{font-size:3rem;font-weight:700;line-height:1}
+.score-label{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+.score-healthy{background:rgba(26,127,78,.1);border:3px solid #1A7F4E;color:#1A7F4E}
+.score-watch{background:rgba(184,136,42,.1);border:3px solid var(--gold);color:var(--gold)}
+.score-risk{background:rgba(196,92,0,.1);border:3px solid var(--warn);color:var(--warn)}
+.score-critical{background:rgba(181,41,42,.1);border:3px solid var(--danger);color:var(--danger)}
+.result-band{padding:1.2rem 1.5rem;border-radius:10px;margin-bottom:1rem;font-size:.93rem}
+.band-healthy{background:rgba(26,127,78,.08);border:1px solid rgba(26,127,78,.25)}
+.band-watch{background:rgba(184,136,42,.08);border:1px solid rgba(184,136,42,.3)}
+.band-risk{background:rgba(196,92,0,.08);border:1px solid rgba(196,92,0,.25)}
+.band-critical{background:rgba(181,41,42,.08);border:1px solid rgba(181,41,42,.25)}
+.result-label{font-weight:600;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.2rem 0}
+.metric-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.metric-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
+.metric-lbl{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.flag-list{list-style:none;margin:.5rem 0}
+.flag-list li{padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.88rem;display:flex;gap:.6rem}
+.flag-list li:last-child{border-bottom:none}
+.flag-icon{flex-shrink:0}
+.cta-result{background:var(--ink);color:#fff;padding:1.5rem;border-radius:10px;text-align:center;margin-top:1.5rem}
+.cta-result p{color:rgba(255,255,255,.75);margin-bottom:1rem;font-size:.9rem}
+.cta-result a{background:var(--gold);color:#fff;padding:.7rem 1.8rem;border-radius:6px;font-weight:600;font-size:.88rem;display:inline-block}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2rem;text-align:center;font-size:.82rem;margin-top:3rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;margin-bottom:.3rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:640px){.nav-links{display:none}.tool-card{padding:1.2rem 1.2rem}.metric-grid{grid-template-columns:1fr}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hiring Reliability Calculator","description":"Calculate your Hiring Reliability Score — a real-time measure of how likely your current VP and leadership searches are to close on time, without stalling. Benchmarked against Majhi OS operational data.","url":"https://majhi.tech/hiring-reliability-calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring Reliability Calculator","item":"https://majhi.tech/hiring-reliability-calculator.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<div class="hero">
+<div class="pill">Free Tool — Majhi OS</div>
+<h1>Hiring Reliability Calculator</h1>
+<p class="hero-sub">5 questions. Instant score. See exactly where your hiring system is reliable — and where it isn't.</p>
+</div>
+
+<div class="tool-wrap">
+<div class="tool-card">
+<h2>Calculate Your Hiring Reliability Score</h2>
+<p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem">Answer 5 questions about your current hiring operations. Your score reveals where you sit on the reliability spectrum and what to fix first.</p>
+
+<div class="field-group">
+<label>How many VP or Director-level searches did you run in the past 12 months?</label>
+<div class="radio-group">
+<label><input type="radio" name="q1" value="1"> 1–2</label>
+<label><input type="radio" name="q1" value="2"> 3–5</label>
+<label><input type="radio" name="q1" value="3"> 6–10</label>
+<label><input type="radio" name="q1" value="4"> 11+</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>What percentage of those searches stalled past week 8 without a close?</label>
+<div class="radio-group">
+<label><input type="radio" name="q2" value="4"> 0–20%</label>
+<label><input type="radio" name="q2" value="3"> 21–40%</label>
+<label><input type="radio" name="q2" value="2"> 41–60%</label>
+<label><input type="radio" name="q2" value="1"> 61%+</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>What is your average time-to-fill for VP-level roles (in days)?</label>
+<div class="radio-group">
+<label><input type="radio" name="q3" value="4"> Under 45 days</label>
+<label><input type="radio" name="q3" value="3"> 45–65 days</label>
+<label><input type="radio" name="q3" value="2"> 66–90 days</label>
+<label><input type="radio" name="q3" value="1"> 90+ days</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How many active leadership searches is each recruiter on your team managing simultaneously?</label>
+<div class="radio-group">
+<label><input type="radio" name="q4" value="4"> 1–2</label>
+<label><input type="radio" name="q4" value="3"> 3–4</label>
+<label><input type="radio" name="q4" value="2"> 5–6</label>
+<label><input type="radio" name="q4" value="1"> 7+</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How would you describe your real-time visibility into active mandate health?</label>
+<div class="radio-group">
+<label><input type="radio" name="q5" value="4"> Full visibility — I know the status of every mandate in real time</label>
+<label><input type="radio" name="q5" value="3"> Good visibility — weekly check-ins, mostly current</label>
+<label><input type="radio" name="q5" value="2"> Limited — I rely on recruiter updates</label>
+<label><input type="radio" name="q5" value="1"> Minimal — I find out when something is wrong</label>
+</div>
+</div>
+
+<button class="calc-btn" onclick="calcReliability()">Calculate My Hiring Reliability Score</button>
+
+<div class="results" id="rel-results">
+<div class="score-circle" id="rel-circle">
+<div class="score-num" id="rel-score-num">--</div>
+<div class="score-label">Reliability</div>
+</div>
+<div id="rel-band-div"></div>
+<div class="metric-grid">
+<div class="metric-box"><div class="metric-val" id="rel-stall">--</div><div class="metric-lbl">Industry stall rate: 68%</div></div>
+<div class="metric-box"><div class="metric-val" id="rel-benchmark">50 days</div><div class="metric-lbl">Majhi OS median close</div></div>
+</div>
+<ul class="flag-list" id="rel-flags"></ul>
+<div class="cta-result">
+<p>See how Majhi OS applies to your specific mandate portfolio — using your actual searches as context.</p>
+<a href="https://majhi.tech">Book a Mission Walkthrough</a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function calcReliability() {
+  const q = ['q1','q2','q3','q4','q5'];
+  let total = 0; let answered = 0;
+  const vals = {};
+  q.forEach(name => {
+    const el = document.querySelector('input[name="'+name+'"]:checked');
+    if (el) { total += parseInt(el.value); answered++; vals[name] = parseInt(el.value); }
+  });
+  if (answered < 5) { alert('Please answer all 5 questions.'); return; }
+  const pct = Math.round((total / 20) * 100);
+  const circle = document.getElementById('rel-circle');
+  const scoreEl = document.getElementById('rel-score-num');
+  const bandDiv = document.getElementById('rel-band-div');
+  const flagsEl = document.getElementById('rel-flags');
+  scoreEl.textContent = pct;
+  circle.className = 'score-circle';
+  let bandClass, bandLabel, bandMsg;
+  if (pct >= 80) { circle.classList.add('score-healthy'); bandClass='band-healthy'; bandLabel='High Reliability'; bandMsg='Your hiring system is operating above the industry baseline. The risk of mandate failure is low. Focus on maintaining this performance as your team scales.'; }
+  else if (pct >= 60) { circle.classList.add('score-watch'); bandClass='band-watch'; bandLabel='Moderate Reliability'; bandMsg='Your system is functioning but has identifiable weaknesses. One or two signal degradations could push a mandate into failure territory. The issues are recoverable now — harder to fix at week 10.'; }
+  else if (pct >= 40) { circle.classList.add('score-risk'); bandClass='band-risk'; bandLabel='At Risk'; bandMsg='Your hiring system has structural gaps that are actively affecting mandate performance. Without intervention, 40–60% of your current searches are likely to stall.'; }
+  else { circle.classList.add('score-critical'); bandClass='band-critical'; bandLabel='Critical'; bandMsg='Your hiring system is operating in failure mode. Most of your current mandates are at risk of stalling or have already stalled. Immediate structural intervention is required.'; }
+  bandDiv.innerHTML = '<div class="result-band '+bandClass+'"><div class="result-label">'+bandLabel+'</div><p style="margin:0;font-size:.9rem">'+bandMsg+'</p></div>';
+  const flags = [];
+  if (vals.q2 <= 2) flags.push({icon:'⚠️', text:'Stall rate above 40% — your mandate failure rate is above the industry median of 68%. This suggests outreach decay, intake misalignment, or recruiter overload.'});
+  if (vals.q3 <= 2) flags.push({icon:'⏱️', text:'Time-to-fill above 65 days — you are operating at or above the industry median. The Majhi OS benchmark is 50 days.'});
+  if (vals.q4 <= 2) flags.push({icon:'🔴', text:'Recruiter load is high — managing 5+ mandates simultaneously degrades outreach quality and follow-up speed before any metric shows it explicitly.'});
+  if (vals.q5 <= 2) flags.push({icon:'👁️', text:'Observability gap — you are relying on recruiter status updates rather than real-time mandate health data. This is the most common cause of late failure detection.'});
+  if (flags.length === 0) flags.push({icon:'✅', text:'No critical flags identified. Your system is performing above baseline on all measured dimensions.'});
+  flagsEl.innerHTML = flags.map(f => '<li><span class="flag-icon">'+f.icon+'</span><span>'+f.text+'</span></li>').join('');
+  document.getElementById('rel-results').style.display = 'block';
+  document.getElementById('rel-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS.</p>
+</footer>
+</body>
+</html>

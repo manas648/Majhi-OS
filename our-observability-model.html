@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Hiring Observability Model | Majhi OS</title>
+<meta name="description" content="Majhi OS instruments every active mandate with real-time operational data — the same way engineering teams instrument software systems. This is what hiring observability means: continuous visibility into mandate health, recruiter load, pipeline velocity, and outreach performance across the entire hiring portfolio.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/our-observability-model.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Our Hiring Observability Model | Majhi OS">
+<meta property="og:description" content="Majhi OS instruments every active mandate with real-time operational data — the same way engineering teams instrument software systems. This is what hiring observability means: continuous visibility into mandate health, recruiter load, pipeline velocity, and outreach performance across the entire hiring portfolio.">
+<meta property="og:url" content="https://majhi.tech/our-observability-model.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Hiring Observability Model | Majhi OS">
+<meta name="twitter:description" content="Majhi OS instruments every active mandate with real-time operational data — the same way engineering teams instrument software systems. This is what hiring observability means: continuous visibility into mandate health, recruiter load, pipeline velocity, and outreach performance across the entire hiring portfolio.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.layer-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;margin:1rem 0;border-left:4px solid var(--gold)}
+.layer-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+.layer-block h3{margin-top:0;color:var(--ink)}
+.signal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.signal-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}
+.signal-desc{font-size:.83rem;color:var(--muted)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Our Hiring Observability Model","description":"Majhi OS instruments every active mandate with real-time operational data — the same way engineering teams instrument software systems. This is what hiring observability means: continuous visibility into mandate health, recruiter load, pipeline velocity, and outreach performance across the entire hiring portfolio.","url":"https://majhi.tech/our-observability-model.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does hiring observability mean?","acceptedAnswer":{"@type":"Answer","text":"Hiring observability is the ability to see what is happening inside every active mandate in real time — mandate health scores, recruiter load, pipeline velocity, outreach performance, hiring manager behavior, and SLA compliance — without needing to ask for a status update or read through CRM notes."}},{"@type":"Question","name":"How is hiring observability different from a recruiting dashboard?","acceptedAnswer":{"@type":"Answer","text":"A recruiting dashboard reports on activity — interviews scheduled, candidates sourced. Hiring observability reports on health — whether each mandate is actually on track to close successfully. It uses real-time signals and trend analysis rather than periodic activity counts."}},{"@type":"Question","name":"What is the operational data graph?","acceptedAnswer":{"@type":"Answer","text":"The operational data graph is the accumulated record of how mandates behave under different conditions — which signal patterns precede failure, which recovery sequences produce successful closes, which recruiter behaviors correlate with efficiency. It grows with every mandate and makes the intelligence and prediction layers more accurate over time."}},{"@type":"Question","name":"Why does the executive visibility layer matter?","acceptedAnswer":{"@type":"Answer","text":"CEOs and CFOs typically have no real-time visibility into hiring operations. They find out searches are failing when they ask for a status update. The executive visibility layer surfaces portfolio-level hiring health — velocity, cost of vacancy, recruiter efficiency — so leadership can treat hiring as a measurable operational function, not a black box."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://majhi.tech/our-observability-model.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/what-is-autonomous-hiring.html">Autonomous Hiring</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<section class="hero">
+<div class="pill">Majhi OS Methodology</div>
+<h1>Our Hiring Observability Model</h1>
+<p class="hero-sub">Engineering teams wouldn't run production systems without monitoring. Most recruiting teams run hiring portfolios with almost no real-time visibility. That's the observability gap.</p>
+<a href="https://majhi.tech" class="hero-btn">Book a Mission Walkthrough</a>
+</section>
+<div class="content">
+
+<p>In software engineering, observability is the ability to understand what is happening inside a system from the outside — by examining its outputs, logs, and metrics without needing to inspect the code directly. When a production system degrades, observability tools surface the problem before users report it.</p>
+
+<p>Majhi OS applies the same principle to hiring systems. Most recruiting teams know how many roles are open and how many candidates are in the pipeline. Very few can tell you, in real time, which mandates are healthy, which are degrading, and which are about to fail. That's the observability gap — and it's why 68% of VP searches stall past week 10.</p>
+
+<h2>What We Instrument</h2>
+<p>Hiring observability requires instrumenting the right things. Not everything that can be measured is predictively useful. Majhi OS instruments the signals that have the highest correlation with mandate outcomes.</p>
+
+<div class="card-grid">
+<div class="card"><h3>Mandate Health</h3><p>Hiring Health Score per mandate, updated in real time. Score trend over the past 14 days. Predicted close date vs. actual days on mandate.</p></div>
+<div class="card"><h3>Recruiter Load</h3><p>Active mandate count per recruiter. Time-weighted load index accounting for mandate complexity. Proximity to capacity threshold — not a hard cap, but a degradation predictor.</p></div>
+<div class="card"><h3>Pipeline Velocity</h3><p>Time between stages by mandate and by role type. Slowdowns in specific stages (e.g., first interview to hiring manager review) that predict engagement drop-off.</p></div>
+<div class="card"><h3>Outreach Performance</h3><p>Response rates by message type, candidate segment, and timing. Decay rate over time. Channel effectiveness comparison.</p></div>
+<div class="card"><h3>Hiring Manager Behavior</h3><p>Feedback latency, shortlist approval patterns, interview attendance. The hiring manager is often the invisible bottleneck — observability makes their behavior visible.</p></div>
+<div class="card"><h3>SLA Compliance</h3><p>Whether mandates are hitting key milestones on schedule. Drift from committed timelines. The gap between what was promised and what is happening.</p></div>
+</div>
+
+<h2>The Operational Data Graph</h2>
+<p>Over time, the signals Majhi OS collects form a proprietary operational data graph — a continuously growing body of knowledge about how hiring systems behave under different conditions. This is what makes the intelligence layer more accurate over time.</p>
+
+<p>The data graph captures not just what happened, but the sequence in which it happened and what came next. Response decay followed by intake misalignment followed by mandate failure — that's a pattern. Response decay followed by outreach recalibration followed by successful close — that's a recovery signature. The more mandates in the graph, the more accurately the system can distinguish between the two.</p>
+
+<div class="callout"><p>"Datadog doesn't just show you whether your servers are up. It shows you whether your system is healthy. We built the same thing for hiring — because hiring systems fail the same way software systems fail: gradually, then all at once."</p></div>
+
+<h2>Real-Time vs. Periodic Reporting</h2>
+<p>The distinction matters. Traditional recruiting reports are retrospective — they tell you what happened last week or last quarter. Observability is prospective — it tells you what is happening now and what the trend predicts.</p>
+
+<div class="data-box">
+<h4>Traditional Reporting vs. Hiring Observability</h4>
+<div class="data-row"><span>Update frequency</span><span>Weekly/monthly vs. Real-time</span></div>
+<div class="data-row"><span>Signal type</span><span>Activity counts vs. Health indicators</span></div>
+<div class="data-row"><span>Time orientation</span><span>Retrospective vs. Prospective</span></div>
+<div class="data-row"><span>Action trigger</span><span>Human review vs. Automated threshold</span></div>
+<div class="data-row"><span>Failure detection</span><span>After failure vs. 3–4 weeks before</span></div>
+<div class="data-row"><span>Audit coverage</span><span>Partial vs. 100%</span></div>
+</div>
+
+<h2>The Executive Visibility Layer</h2>
+<p>Observability isn't only useful to recruiting teams. The same signals that tell a TA leader which mandates need attention tell a CEO which hires are on track and which are at risk — without requiring a status meeting.</p>
+
+<p>The executive visibility layer surfaces a portfolio-level view: hiring health by function, velocity by role type, cost of vacancy by mandate, recruiter efficiency across the team. This is the layer that moves Majhi OS from a recruiting tool to a strategic business system — one that a CFO and CEO can use to understand hiring as an operational function, not a black box.</p>
+
+<h2>Why Observability Changes the Operational Model</h2>
+<p>When a team has real-time observability into their hiring portfolio, they stop managing by intuition and start managing by signal. They don't ask recruiters for status updates — they see the status in real time. They don't find out a search is failing when the hiring manager escalates — they intervene 3 weeks earlier. They don't debate whether the recruiting function is performing — they measure it.</p>
+
+<p>That shift — from intuition to signal, from retrospective to prospective, from manual monitoring to automated detection — is what Majhi OS is built to produce. Observability is the foundation that makes it possible.</p>
+
+<div class="stat-row">
+<div class="stat"><div class="stat-num">12</div><div class="stat-label">Signals instrumented per mandate</div></div>
+<div class="stat"><div class="stat-num">Real-time</div><div class="stat-label">Update frequency</div></div>
+<div class="stat"><div class="stat-num">100%</div><div class="stat-label">Audit trail coverage</div></div>
+<div class="stat"><div class="stat-num">9%</div><div class="stat-label">Typical coverage before Majhi OS</div></div>
+</div>
+
+<div class="related-links">
+<h3>Related</h3>
+<a href="https://majhi.tech/what-is-hiring-observability.html">What Is Hiring Observability?</a><a href="https://majhi.tech/how-we-measure-hiring-health.html">How We Measure Hiring Health</a><a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">How We Build Hiring Infrastructure</a><a href="https://majhi.tech/what-is-operational-visibility.html">What Is Operational Visibility?</a><a href="https://majhi.tech/what-is-hiring-attribution.html">What Is Hiring Attribution?</a>
+</div>
+</div>
+<section class="cta-section">
+<h2>See how it works on your actual mandate</h2>
+<p>A Mission Walkthrough uses your live search as working context — not a generic demo. 45 minutes. No slides.</p>
+<a href="https://majhi.tech" class="cta-btn">Book a Mission Walkthrough</a>
+</section>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS. All rights reserved.</p>
+</footer>
+</body>
+</html>

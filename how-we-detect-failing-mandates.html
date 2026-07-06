@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How We Detect Failing Mandates | Majhi OS</title>
+<meta name="description" content="Majhi OS identifies mandate failure risk 3–4 weeks before it becomes visible to human recruiters. The Failure Prediction Engine monitors behavioral signals, pipeline patterns, and historical failure correlations to surface at-risk searches before they collapse.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/how-we-detect-failing-mandates.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How We Detect Failing Mandates | Majhi OS">
+<meta property="og:description" content="Majhi OS identifies mandate failure risk 3–4 weeks before it becomes visible to human recruiters. The Failure Prediction Engine monitors behavioral signals, pipeline patterns, and historical failure correlations to surface at-risk searches before they collapse.">
+<meta property="og:url" content="https://majhi.tech/how-we-detect-failing-mandates.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How We Detect Failing Mandates | Majhi OS">
+<meta name="twitter:description" content="Majhi OS identifies mandate failure risk 3–4 weeks before it becomes visible to human recruiters. The Failure Prediction Engine monitors behavioral signals, pipeline patterns, and historical failure correlations to surface at-risk searches before they collapse.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.layer-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;margin:1rem 0;border-left:4px solid var(--gold)}
+.layer-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+.layer-block h3{margin-top:0;color:var(--ink)}
+.signal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.signal-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}
+.signal-desc{font-size:.83rem;color:var(--muted)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How We Detect Failing Mandates","description":"Majhi OS identifies mandate failure risk 3–4 weeks before it becomes visible to human recruiters. The Failure Prediction Engine monitors behavioral signals, pipeline patterns, and historical failure correlations to surface at-risk searches before they collapse.","url":"https://majhi.tech/how-we-detect-failing-mandates.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When does Majhi OS first detect failure risk on a mandate?","acceptedAnswer":{"@type":"Answer","text":"The earliest detectable signals typically appear in week 3 of a mandate. Behavioral signals — recruiter load patterns, hiring manager response latency — can flag risk before any pipeline metric looks alarming. The average early warning lead time is 3–4 weeks before the failure would be visible to a human observer."}},{"@type":"Question","name":"What is the most common cause of VP search failure?","acceptedAnswer":{"@type":"Answer","text":"Based on patterns across mandates, the most common combination is outreach decay combined with intake misalignment — the recruiter is contacting the right volume of candidates, but the shortlist approval rate is below 38%, indicating the profile is wrong. This combination, if uncorrected past week 6, has a high correlation with mandate stall."}},{"@type":"Question","name":"How does the model improve over time?","acceptedAnswer":{"@type":"Answer","text":"Every mandate Majhi OS manages contributes to the prediction model. As more mandates complete — successfully or not — the system identifies which early signals were most predictive for which mandate types. The model compounds: it becomes more accurate as more historical data accumulates."}},{"@type":"Question","name":"What happens after a mandate is flagged as at-risk?","acceptedAnswer":{"@type":"Answer","text":"The system identifies the specific failure type driving the flag and selects the appropriate Recovery Playbook from the library. Depending on the failure type, recovery actions may include outreach recalibration, recruiter reassignment, intake session with the hiring manager, or pipeline expansion. The response is targeted, not generic."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://majhi.tech/how-we-detect-failing-mandates.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/what-is-autonomous-hiring.html">Autonomous Hiring</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<section class="hero">
+<div class="pill">Majhi OS Methodology</div>
+<h1>How We Detect Failing Mandates</h1>
+<p class="hero-sub">68% of VP searches stall past week 10. Most teams don't notice until week 12. The Failure Prediction Engine closes that gap.</p>
+<a href="https://majhi.tech" class="hero-btn">Book a Mission Walkthrough</a>
+</section>
+<div class="content">
+
+<p>Mandate failure rarely announces itself. It accumulates quietly — a slight drop in response rates, a recruiter who is slightly overloaded, a hiring manager who takes a day longer to give feedback. None of these events triggers an alarm. Together, they predict a stalled search with high accuracy.</p>
+
+<p>The Failure Prediction Engine is the layer of Majhi OS that detects these accumulating patterns before they become a crisis. It doesn't wait for a mandate to fail — it identifies the behavioral and operational signals that precede failure and surfaces them while there is still time to recover.</p>
+
+<div class="stat-row">
+<div class="stat"><div class="stat-num">68%</div><div class="stat-label">VP searches stall past week 10</div></div>
+<div class="stat"><div class="stat-num">3–4 wk</div><div class="stat-label">Average early warning lead time</div></div>
+<div class="stat"><div class="stat-num">Week 3</div><div class="stat-label">Earliest detectable failure signal</div></div>
+<div class="stat"><div class="stat-num">14%→35%</div><div class="stat-label">Reply rate after DNS/MX-verified recovery</div></div>
+</div>
+
+<h2>The Failure Prediction Model</h2>
+<p>The model is built on three input categories: behavioral signals (how recruiters and hiring managers are acting), pipeline signals (how candidates are moving through the funnel), and historical correlation (what patterns have preceded failure on comparable mandates).</p>
+
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-body"><h4>Behavioral Signal Monitoring</h4>
+<p>The system tracks recruiter activity patterns, hiring manager response latency, and feedback quality. A recruiter managing 6 active mandates who takes 48+ hours to respond to candidate replies is exhibiting a load signature that correlates with mandate failure within 3 weeks.</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-body"><h4>Pipeline Pattern Recognition</h4>
+<p>Certain pipeline shapes predict failure before any individual metric looks alarming. A top-of-funnel that is generating volume but converting poorly to shortlist is a different failure type than a mandate where sourcing has stopped entirely. The model distinguishes between them and triggers different responses.</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-body"><h4>Historical Correlation</h4>
+<p>Every mandate Majhi OS manages contributes to the prediction model. When a current search matches the behavioral and pipeline signature of mandates that failed in the past — same role type, similar market conditions, comparable recruiter load — the system surfaces the pattern. The model compounds over time: more mandates means more accurate predictions.</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-body"><h4>Threshold Breach Detection</h4>
+<p>Specific thresholds trigger immediate escalation regardless of the broader model. Response decay exceeding 40% over 14 days. Pipeline velocity dropping below 50% of role-type benchmark. Recruiter load crossing the capacity threshold. These are hard triggers — they don't require model confirmation to fire.</p></div>
+</div>
+
+<h2>What Gets Flagged</h2>
+<div class="card-grid">
+<div class="card"><h3>Outreach Decay</h3><p>Reply rates declining faster than baseline for this role type and market segment. Often the first visible signal of a mandate losing momentum.</p></div>
+<div class="card"><h3>Pipeline Compression</h3><p>Fewer candidates are advancing between stages than comparable mandates at the same point in the search. The funnel is narrowing prematurely.</p></div>
+<div class="card"><h3>Recruiter Overload</h3><p>The assigned recruiter's load has exceeded their capacity threshold. Quality of outreach and follow-up degrades under load before any metric shows it explicitly.</p></div>
+<div class="card"><h3>Intake Misalignment</h3><p>Shortlist approval rate below 38% indicates a mismatch between the candidate profile being sourced and what the hiring manager actually wants. Without correction, the pipeline fills with the wrong people.</p></div>
+<div class="card"><h3>Engagement Collapse</h3><p>Candidates who were engaged are going silent. Often caused by a slow interview process — if competitors are moving faster, your best candidates exit quietly.</p></div>
+<div class="card"><h3>Velocity Stall</h3><p>The search has been open longer than the predicted close date without an explanation. Time on mandate is a leading indicator of cost and eventual failure.</p></div>
+</div>
+
+<h2>From Detection to Action</h2>
+<p>Detection without response is just a dashboard. When the Failure Prediction Engine flags a mandate, it doesn't just alert a recruiter — it identifies the specific failure type and selects the appropriate <a href="https://majhi.tech/how-we-design-recovery-playbooks.html">Recovery Playbook</a>. The action follows automatically from the diagnosis.</p>
+
+<div class="callout"><p>"The difference between a stalled search and a recovered search is usually a 72-hour window. Most teams don't know they're in that window until it has already passed."</p></div>
+
+<h2>Why This Can't Be Done Manually</h2>
+<p>A recruiting team managing 6–8 active mandates simultaneously doesn't have the bandwidth to monitor 12 signals per mandate in real time. They prioritize based on which hiring managers are loudest, not which mandates are closest to failure. The Failure Prediction Engine removes the dependency on recruiter attention — it monitors everything continuously and surfaces what needs action, when it needs it.</p>
+
+<div class="related-links">
+<h3>Related</h3>
+<a href="https://majhi.tech/what-is-failure-prediction.html">What Is Failure Prediction?</a><a href="https://majhi.tech/how-we-measure-hiring-health.html">How We Measure Hiring Health</a><a href="https://majhi.tech/how-we-design-recovery-playbooks.html">How We Design Recovery Playbooks</a><a href="https://majhi.tech/what-is-outreach-decay.html">What Is Outreach Decay?</a><a href="https://majhi.tech/what-is-pipeline-degradation.html">What Is Pipeline Degradation?</a>
+</div>
+</div>
+<section class="cta-section">
+<h2>See how it works on your actual mandate</h2>
+<p>A Mission Walkthrough uses your live search as working context — not a generic demo. 45 minutes. No slides.</p>
+<a href="https://majhi.tech" class="cta-btn">Book a Mission Walkthrough</a>
+</section>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS. All rights reserved.</p>
+</footer>
+</body>
+</html>

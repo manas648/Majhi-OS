@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Infrastructure Score | Majhi OS</title>
+<meta name="description" content="Assess your hiring infrastructure maturity across four layers: Observability, Intelligence, Autonomous Execution, and Attribution. 12 questions. Instant maturity score with gap analysis.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-infrastructure-score.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiring Infrastructure Score | Majhi OS">
+<meta property="og:description" content="Assess your hiring infrastructure maturity across four layers: Observability, Intelligence, Autonomous Execution, and Attribution. 12 questions. Instant maturity score with gap analysis.">
+<meta property="og:url" content="https://majhi.tech/hiring-infrastructure-score.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF;--success:#1A7F4E;--warn:#C45C00;--danger:#B5292A}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600}
+h2{font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:600;margin-bottom:.75rem;margin-top:2rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+p{margin-bottom:.9rem}
+a{color:var(--gold);text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:3.5rem 2rem 3rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:.8rem}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.72);max-width:620px;margin:0 auto 1.5rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.78rem;font-weight:500;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:.05em}
+.tool-wrap{max-width:820px;margin:2.5rem auto;padding:0 1.5rem 3rem}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2.5rem;margin-bottom:1.5rem}
+.field-group{margin-bottom:1.5rem}
+label{display:block;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer;margin:.3rem 0}
+.range-labels{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:.2rem}
+input[type=number],select{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:8px;font-size:.95rem;font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg)}
+input[type=number]:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.radio-group{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.radio-group label{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:400;font-size:.88rem;margin:0}
+.radio-group input[type=radio]{accent-color:var(--gold)}
+.radio-group label:has(input:checked){border-color:var(--gold);background:rgba(184,136,42,.06);color:var(--ink);font-weight:500}
+.calc-btn{background:var(--gold);color:#fff;border:none;padding:.85rem 2.2rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;width:100%;margin-top:.5rem;font-family:'Inter',sans-serif}
+.calc-btn:hover{background:var(--gold2)}
+.results{display:none;margin-top:1.5rem;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.score-circle{width:140px;height:140px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Cormorant Garamond',serif}
+.score-num{font-size:3rem;font-weight:700;line-height:1}
+.score-label{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+.score-healthy{background:rgba(26,127,78,.1);border:3px solid #1A7F4E;color:#1A7F4E}
+.score-watch{background:rgba(184,136,42,.1);border:3px solid var(--gold);color:var(--gold)}
+.score-risk{background:rgba(196,92,0,.1);border:3px solid var(--warn);color:var(--warn)}
+.score-critical{background:rgba(181,41,42,.1);border:3px solid var(--danger);color:var(--danger)}
+.result-band{padding:1.2rem 1.5rem;border-radius:10px;margin-bottom:1rem;font-size:.93rem}
+.band-healthy{background:rgba(26,127,78,.08);border:1px solid rgba(26,127,78,.25)}
+.band-watch{background:rgba(184,136,42,.08);border:1px solid rgba(184,136,42,.3)}
+.band-risk{background:rgba(196,92,0,.08);border:1px solid rgba(196,92,0,.25)}
+.band-critical{background:rgba(181,41,42,.08);border:1px solid rgba(181,41,42,.25)}
+.result-label{font-weight:600;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.2rem 0}
+.metric-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.metric-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
+.metric-lbl{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.flag-list{list-style:none;margin:.5rem 0}
+.flag-list li{padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.88rem;display:flex;gap:.6rem}
+.flag-list li:last-child{border-bottom:none}
+.flag-icon{flex-shrink:0}
+.cta-result{background:var(--ink);color:#fff;padding:1.5rem;border-radius:10px;text-align:center;margin-top:1.5rem}
+.cta-result p{color:rgba(255,255,255,.75);margin-bottom:1rem;font-size:.9rem}
+.cta-result a{background:var(--gold);color:#fff;padding:.7rem 1.8rem;border-radius:6px;font-weight:600;font-size:.88rem;display:inline-block}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2rem;text-align:center;font-size:.82rem;margin-top:3rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;margin-bottom:.3rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:640px){.nav-links{display:none}.tool-card{padding:1.2rem 1.2rem}.metric-grid{grid-template-columns:1fr}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hiring Infrastructure Score","description":"Assess your hiring infrastructure maturity across four layers: Observability, Intelligence, Autonomous Execution, and Attribution. 12 questions. Instant maturity score with gap analysis.","url":"https://majhi.tech/hiring-infrastructure-score.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring Infrastructure Score","item":"https://majhi.tech/hiring-infrastructure-score.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<div class="hero">
+<div class="pill">Free Assessment — Majhi OS</div>
+<h1>Hiring Infrastructure Score</h1>
+<p class="hero-sub">12 questions. Four layers. See exactly where your hiring infrastructure is strong and where it's leaving mandates exposed.</p>
+</div>
+
+<div class="tool-wrap">
+<div class="tool-card">
+<h2>Assess Your Hiring Infrastructure Maturity</h2>
+<p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem">12 questions across the four infrastructure layers: Observability, Intelligence, Execution, and Attribution. Your score reveals your maturity level and the gaps that carry the most operational risk.</p>
+
+<div class="field-group">
+<label style="color:var(--gold);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em">Layer 1 — Observability</label>
+<label>Can you see the health status of every active mandate in real time, without asking a recruiter?</label>
+<div class="radio-group">
+<label><input type="radio" name="obs1" value="3"> Yes, real-time dashboard</label>
+<label><input type="radio" name="obs1" value="2"> Weekly status reports</label>
+<label><input type="radio" name="obs1" value="1"> I ask recruiters for updates</label>
+<label><input type="radio" name="obs1" value="0"> No visibility</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you track recruiter load (active mandates per recruiter) as an operational metric?</label>
+<div class="radio-group">
+<label><input type="radio" name="obs2" value="3"> Yes, with thresholds and alerts</label>
+<label><input type="radio" name="obs2" value="2"> Yes, informally</label>
+<label><input type="radio" name="obs2" value="1"> Rarely</label>
+<label><input type="radio" name="obs2" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you track outreach response rate decay (not just current rate, but trend over time)?</label>
+<div class="radio-group">
+<label><input type="radio" name="obs3" value="3"> Yes, per mandate in real time</label>
+<label><input type="radio" name="obs3" value="2"> Occasionally, per campaign</label>
+<label><input type="radio" name="obs3" value="1"> Only total response rate</label>
+<label><input type="radio" name="obs3" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label style="color:var(--gold);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.5rem">Layer 2 — Intelligence</label>
+<label>Can your system predict which mandates are likely to stall before they actually stall?</label>
+<div class="radio-group">
+<label><input type="radio" name="int1" value="3"> Yes, with 3+ weeks lead time</label>
+<label><input type="radio" name="int1" value="2"> Sometimes, based on experience</label>
+<label><input type="radio" name="int1" value="1"> Usually after it's already stalling</label>
+<label><input type="radio" name="int1" value="0"> No — we find out when it's too late</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you know why specific mandates failed — documented, not just assumed?</label>
+<div class="radio-group">
+<label><input type="radio" name="int2" value="3"> Yes, structured post-mortems on every failure</label>
+<label><input type="radio" name="int2" value="2"> Usually — discussed in team meetings</label>
+<label><input type="radio" name="int2" value="1"> Sometimes</label>
+<label><input type="radio" name="int2" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you know which recruiter behaviors correlate with faster mandate closes?</label>
+<div class="radio-group">
+<label><input type="radio" name="int3" value="3"> Yes, measured and documented</label>
+<label><input type="radio" name="int3" value="2"> Informally understood</label>
+<label><input type="radio" name="int3" value="1"> Gut feel only</label>
+<label><input type="radio" name="int3" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label style="color:var(--gold);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.5rem">Layer 3 — Execution</label>
+<label>When a mandate is flagged as at-risk, how does your team respond?</label>
+<div class="radio-group">
+<label><input type="radio" name="exe1" value="3"> Automated recovery sequence triggers</label>
+<label><input type="radio" name="exe1" value="2"> Defined playbook is followed</label>
+<label><input type="radio" name="exe1" value="1"> Recruiter decides ad hoc</label>
+<label><input type="radio" name="exe1" value="0"> No defined response</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you have documented recovery playbooks — specific actions for specific failure types?</label>
+<div class="radio-group">
+<label><input type="radio" name="exe2" value="3"> Yes, maintained and updated</label>
+<label><input type="radio" name="exe2" value="2"> Informal guidelines</label>
+<label><input type="radio" name="exe2" value="1"> In individual recruiters' heads</label>
+<label><input type="radio" name="exe2" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Can you rebalance recruiter load across the team when one recruiter is overloaded?</label>
+<div class="radio-group">
+<label><input type="radio" name="exe3" value="3"> Yes, with defined rebalancing process</label>
+<label><input type="radio" name="exe3" value="2"> Sometimes, when escalated</label>
+<label><input type="radio" name="exe3" value="1"> Rarely — it's disruptive</label>
+<label><input type="radio" name="exe3" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label style="color:var(--gold);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.5rem">Layer 4 — Attribution</label>
+<label>Can you calculate the cost of a stalled or failed mandate in dollar terms?</label>
+<div class="radio-group">
+<label><input type="radio" name="att1" value="3"> Yes, per mandate with methodology</label>
+<label><input type="radio" name="att1" value="2"> Rough estimate</label>
+<label><input type="radio" name="att1" value="1"> Conceptually, not calculated</label>
+<label><input type="radio" name="att1" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Does your CEO or CFO have visibility into hiring operations performance?</label>
+<div class="radio-group">
+<label><input type="radio" name="att2" value="3"> Yes, regular operational dashboard</label>
+<label><input type="radio" name="att2" value="2"> Quarterly reporting</label>
+<label><input type="radio" name="att2" value="1"> Only when they ask</label>
+<label><input type="radio" name="att2" value="0"> No</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>Do you attribute hiring outcomes (good or bad) to specific operational decisions?</label>
+<div class="radio-group">
+<label><input type="radio" name="att3" value="3"> Yes, structured attribution model</label>
+<label><input type="radio" name="att3" value="2"> Informally, in retrospectives</label>
+<label><input type="radio" name="att3" value="1"> Rarely</label>
+<label><input type="radio" name="att3" value="0"> No</label>
+</div>
+</div>
+
+<button class="calc-btn" onclick="calcInfra()">Calculate My Infrastructure Score</button>
+
+<div class="results" id="infra-results">
+<div class="score-circle" id="infra-circle">
+<div class="score-num" id="infra-score-num">--</div>
+<div class="score-label">/ 36</div>
+</div>
+<div id="infra-band-div"></div>
+<div class="metric-grid">
+<div class="metric-box"><div class="metric-val" id="obs-score">--</div><div class="metric-lbl">Observability / 9</div></div>
+<div class="metric-box"><div class="metric-val" id="int-score">--</div><div class="metric-lbl">Intelligence / 9</div></div>
+<div class="metric-box"><div class="metric-val" id="exe-score">--</div><div class="metric-lbl">Execution / 9</div></div>
+<div class="metric-box"><div class="metric-val" id="att-score">--</div><div class="metric-lbl">Attribution / 9</div></div>
+</div>
+<ul class="flag-list" id="infra-flags"></ul>
+<div class="cta-result">
+<p>A Mission Walkthrough maps your infrastructure gaps against your actual active mandates. 45 minutes. No slides.</p>
+<a href="https://majhi.tech">Book a Mission Walkthrough</a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function calcInfra(){
+  const layers = {obs:['obs1','obs2','obs3'],int:['int1','int2','int3'],exe:['exe1','exe2','exe3'],att:['att1','att2','att3']};
+  const scores = {};
+  let total = 0; let allAnswered = true;
+  for (const [layer, qs] of Object.entries(layers)){
+    let ls = 0;
+    for(const q of qs){
+      const el = document.querySelector('input[name="'+q+'"]:checked');
+      if(!el){allAnswered=false;break;}
+      ls += parseInt(el.value);
+    }
+    scores[layer] = ls; total += ls;
+  }
+  if(!allAnswered){alert('Please answer all 12 questions.');return;}
+  document.getElementById('infra-score-num').textContent = total;
+  document.getElementById('obs-score').textContent = scores.obs;
+  document.getElementById('int-score').textContent = scores.int;
+  document.getElementById('exe-score').textContent = scores.exe;
+  document.getElementById('att-score').textContent = scores.att;
+  const circle = document.getElementById('infra-circle');
+  const bandDiv = document.getElementById('infra-band-div');
+  circle.className = 'score-circle';
+  let bandClass, maturity, msg;
+  const pct = total/36;
+  if(pct>=.8){circle.classList.add('score-healthy');bandClass='band-healthy';maturity='Autonomous';msg='Your hiring infrastructure is operating at the highest maturity level. You have real-time observability, predictive intelligence, automated recovery, and executive-level attribution. Focus on compounding the operational intelligence layer.';}
+  else if(pct>=.6){circle.classList.add('score-watch');bandClass='band-watch';maturity='Predictive';msg='You have strong operational foundations but gaps in one or two layers. The most common gap at this level is the execution layer — detection without automatic response. Closing that gap is the highest-leverage next step.';}
+  else if(pct>=.35){circle.classList.add('score-risk');bandClass='band-risk';maturity='Operational';msg='Your team is managing hiring operationally but reactively. You respond to problems after they surface. The intelligence and execution layers are where the most operational risk lives at this maturity level.';}
+  else{circle.classList.add('score-critical');bandClass='band-critical';maturity='Reactive';msg='Your hiring system is operating without infrastructure. Problems are discovered when hiring managers escalate, not when signals degrade. Building the observability layer first is the prerequisite for everything else.';}
+  bandDiv.innerHTML='<div class="result-band '+bandClass+'"><div class="result-label">Maturity Level: '+maturity+'</div><p style="margin:0;font-size:.9rem">'+msg+'</p></div>';
+  const flags = [];
+  if(scores.obs<=4)flags.push({icon:'👁️',text:'Observability gap — you are missing real-time visibility into mandate health. This is the foundation layer. Without it, intelligence and execution have nothing to act on.'});
+  if(scores.int<=4)flags.push({icon:'🧠',text:'Intelligence gap — your system cannot predict failure before it happens. You are discovering problems at week 10 instead of week 3.'});
+  if(scores.exe<=4)flags.push({icon:'⚙️',text:'Execution gap — when mandates are flagged, your response is ad hoc. Defined playbooks and automated recovery sequences significantly reduce the time between detection and resolution.'});
+  if(scores.att<=4)flags.push({icon:'📊',text:'Attribution gap — you cannot connect hiring operations to business outcomes in dollar terms. This is what makes hiring invisible to CFO and CEO-level decision-making.'});
+  if(flags.length===0)flags.push({icon:'✅',text:'No critical gaps. Your infrastructure is performing above baseline across all four layers.'});
+  document.getElementById('infra-flags').innerHTML=flags.map(f=>'<li><span class="flag-icon">'+f.icon+'</span><span>'+f.text+'</span></li>').join('');
+  document.getElementById('infra-results').style.display='block';
+  document.getElementById('infra-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS.</p>
+</footer>
+</body>
+</html>

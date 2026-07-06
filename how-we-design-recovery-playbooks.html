@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How We Design Recovery Playbooks | Majhi OS</title>
+<meta name="description" content="Majhi OS Recovery Playbooks are system-learned action sequences that recover stalled mandates. Each playbook is matched to a specific failure type, executed in a defined sequence, and measured for outcome — so the system gets more effective with every recovery.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/how-we-design-recovery-playbooks.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How We Design Recovery Playbooks | Majhi OS">
+<meta property="og:description" content="Majhi OS Recovery Playbooks are system-learned action sequences that recover stalled mandates. Each playbook is matched to a specific failure type, executed in a defined sequence, and measured for outcome — so the system gets more effective with every recovery.">
+<meta property="og:url" content="https://majhi.tech/how-we-design-recovery-playbooks.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How We Design Recovery Playbooks | Majhi OS">
+<meta name="twitter:description" content="Majhi OS Recovery Playbooks are system-learned action sequences that recover stalled mandates. Each playbook is matched to a specific failure type, executed in a defined sequence, and measured for outcome — so the system gets more effective with every recovery.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:700px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.layer-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;margin:1rem 0;border-left:4px solid var(--gold)}
+.layer-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+.layer-block h3{margin-top:0;color:var(--ink)}
+.signal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.signal{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.signal-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}
+.signal-desc{font-size:.83rem;color:var(--muted)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How We Design Recovery Playbooks","description":"Majhi OS Recovery Playbooks are system-learned action sequences that recover stalled mandates. Each playbook is matched to a specific failure type, executed in a defined sequence, and measured for outcome — so the system gets more effective with every recovery.","url":"https://majhi.tech/how-we-design-recovery-playbooks.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a Recovery Playbook?","acceptedAnswer":{"@type":"Answer","text":"A Recovery Playbook is a system-learned action sequence matched to a specific mandate failure type. It is not a checklist — it is a cause-and-effect model where a specific failure type triggers a specific ordered action sequence, measured against a specific outcome metric."}},{"@type":"Question","name":"How does Majhi OS know which playbook to use?","acceptedAnswer":{"@type":"Answer","text":"The system classifies the active failure types based on which signals are driving the health score decline, then selects the action sequence with the highest historical recovery rate for that failure type on comparable mandate profiles."}},{"@type":"Question","name":"Can multiple failure types be active simultaneously?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most stalled mandates have 2–3 active failure types. The playbook is sequenced to address them in dependency order — for example, recruiter overload must be resolved before outreach recalibration can be effective."}},{"@type":"Question","name":"How do Recovery Playbooks improve over time?","acceptedAnswer":{"@type":"Answer","text":"After each mandate closes, the recovery sequence is attributed to the outcome. Actions that correlated with health score recovery are weighted more heavily in future playbook selections. Actions that didn't move the needle are deprioritized. The library compounds with every mandate."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://majhi.tech/how-we-design-recovery-playbooks.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/what-is-autonomous-hiring.html">Autonomous Hiring</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<section class="hero">
+<div class="pill">Majhi OS Methodology</div>
+<h1>How We Design Recovery Playbooks</h1>
+<p class="hero-sub">A recovery playbook is not a checklist. It is a cause-and-effect model — specific failure type triggers specific action sequence, measured against specific outcome metric.</p>
+<a href="https://majhi.tech" class="hero-btn">Book a Mission Walkthrough</a>
+</section>
+<div class="content">
+
+<p>When a mandate is flagged as at-risk, the question isn't "what should we do?" — it's "which actions have recovered this specific failure type before, and in what sequence?" That distinction is what separates a Recovery Playbook from a to-do list.</p>
+
+<p>Majhi OS builds and maintains a library of Recovery Playbooks — action sequences matched to specific failure types, ordered by historical effectiveness, and updated as outcomes accumulate. The system doesn't prescribe generic best practices. It executes the specific sequence that has worked for this type of failure on comparable mandates.</p>
+
+<h2>The Failure Taxonomy</h2>
+<p>Before a playbook can be assigned, the failure type must be identified. Majhi OS classifies mandate failures into six primary categories, each requiring a distinct recovery approach.</p>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 01</div>
+<h3>Outreach Decay</h3>
+<p>Response rates declining faster than baseline. Cause: usually a combination of outreach fatigue (too many messages to the same population), timing misalignment, or messaging that doesn't match the candidate's current context. Recovery: message recalibration, ICP expansion, channel diversification.</p>
+</div>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 02</div>
+<h3>Intake Misalignment</h3>
+<p>Shortlist approval below 38%. Cause: the candidate profile being sourced doesn't match what the hiring manager actually wants — often because the intake brief captured the job description, not the actual hire criteria. Recovery: structured intake session to reset criteria, historical shortlist review to identify the approval pattern.</p>
+</div>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 03</div>
+<h3>Recruiter Overload</h3>
+<p>Recruiter managing too many active mandates. Cause: load accumulation without rebalancing. Recovery: mandate reassignment or load reduction through prioritization. Speed of rebalancing matters — overloaded recruiter performance degrades fastest in the first 10 days after threshold breach.</p>
+</div>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 04</div>
+<h3>Engagement Collapse</h3>
+<p>Candidates going silent after first contact or first interview. Cause: usually process speed — if competitors are moving faster, candidates exit without explanation. Recovery: interview cadence compression, candidate re-engagement sequence, process bottleneck removal.</p>
+</div>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 05</div>
+<h3>Sourcing Exhaustion</h3>
+<p>Primary sourcing channels saturated. Cause: the ICP definition is too narrow or the reachable population has been fully contacted. Recovery: ICP expansion, adjacent market sourcing, channel shift (e.g., from LinkedIn outreach to referral activation).</p>
+</div>
+
+<div class="layer-block">
+<div class="layer-label">Failure Type 06</div>
+<h3>Decision Stall</h3>
+<p>Strong candidates in pipeline but no offer movement. Cause: usually hiring manager hesitation — budget uncertainty, role scope disagreement, or indecision on criteria. Recovery: hiring manager escalation, stakeholder alignment session, offer package modeling.</p>
+</div>
+
+<h2>How Playbooks Are Built</h2>
+
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-body"><h4>Failure Type Classification</h4>
+<p>The system identifies the primary and secondary failure types driving the mandate's health score decline. Multiple failure types can be active simultaneously — the playbook is sequenced to address them in dependency order (you can't fix outreach decay if recruiter overload is still active).</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-body"><h4>Action Sequence Selection</h4>
+<p>From the Recovery Playbook library, the system selects the action sequence with the highest historical recovery rate for this failure type on comparable mandate profiles. Actions are ordered — some must happen before others to be effective.</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-body"><h4>Execution and Tracking</h4>
+<p>Each action in the sequence is assigned, tracked, and timestamped. The system monitors whether actions are completed and whether the relevant signals are improving after each action. If the expected signal improvement doesn't materialize, the playbook escalates to the next intervention.</p></div>
+</div>
+
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-body"><h4>Outcome Attribution</h4>
+<p>After the mandate closes — successfully or not — the recovery sequence is attributed to the outcome. Which actions correlated with score recovery? Which didn't move the needle? This feedback loop is what makes the library more accurate over time.</p></div>
+</div>
+
+<div class="callout"><p>"The playbook library is the operational memory of the system. Every recovered mandate teaches the system something that applies to the next one. That compounding is the moat."</p></div>
+
+<h2>What Autonomous Execution Means Here</h2>
+<p>For recovery actions that don't require human judgment — outreach message recalibration, interview calendar optimization, candidate re-engagement sequences — Majhi OS executes them directly. Recruiters are only pulled in for actions that require human decision-making: intake resets, offer conversations, escalations. The system handles everything else automatically.</p>
+
+<div class="data-box">
+<h4>Recovery Outcomes (Majhi OS Mandates)</h4>
+<div class="data-row"><span>Shortlist approval rate after intake reset</span><span>38% → 82%</span></div>
+<div class="data-row"><span>Reply rate after outreach recalibration</span><span>14% → 35%</span></div>
+<div class="data-row"><span>Average close time vs. industry median</span><span>50 days vs. 14 weeks</span></div>
+<div class="data-row"><span>Mandates closed within predicted window after recovery</span><span>High</span></div>
+</div>
+
+<div class="related-links">
+<h3>Related</h3>
+<a href="https://majhi.tech/what-is-a-recovery-playbook.html">What Is a Recovery Playbook?</a><a href="https://majhi.tech/how-we-detect-failing-mandates.html">How We Detect Failing Mandates</a><a href="https://majhi.tech/what-is-mandate-recovery.html">What Is Mandate Recovery?</a><a href="https://majhi.tech/what-is-autonomous-execution.html">What Is Autonomous Execution?</a><a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health Score</a>
+</div>
+</div>
+<section class="cta-section">
+<h2>See how it works on your actual mandate</h2>
+<p>A Mission Walkthrough uses your live search as working context — not a generic demo. 45 minutes. No slides.</p>
+<a href="https://majhi.tech" class="cta-btn">Book a Mission Walkthrough</a>
+</section>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS. All rights reserved.</p>
+</footer>
+</body>
+</html>

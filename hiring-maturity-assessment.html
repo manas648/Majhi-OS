@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Maturity Assessment | Majhi OS</title>
+<meta name="description" content="A 20-question hiring maturity assessment for TA leads and VPs of People. Score your team across process, tooling, data quality, detection speed, and scalability. Get your maturity tier and the 3 highest-leverage improvements.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-maturity-assessment.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiring Maturity Assessment | Majhi OS">
+<meta property="og:description" content="A 20-question hiring maturity assessment for TA leads and VPs of People. Score your team across process, tooling, data quality, detection speed, and scalability. Get your maturity tier and the 3 highest-leverage improvements.">
+<meta property="og:url" content="https://majhi.tech/hiring-maturity-assessment.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF;--success:#1A7F4E;--warn:#C45C00;--danger:#B5292A}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600}
+h2{font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:600;margin-bottom:.75rem;margin-top:2rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+p{margin-bottom:.9rem}
+a{color:var(--gold);text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:3.5rem 2rem 3rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:.8rem}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.72);max-width:620px;margin:0 auto 1.5rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.78rem;font-weight:500;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:.05em}
+.tool-wrap{max-width:820px;margin:2.5rem auto;padding:0 1.5rem 3rem}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2.5rem;margin-bottom:1.5rem}
+.field-group{margin-bottom:1.5rem}
+label{display:block;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer;margin:.3rem 0}
+.range-labels{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:.2rem}
+input[type=number],select{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:8px;font-size:.95rem;font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg)}
+input[type=number]:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.radio-group{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.radio-group label{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:400;font-size:.88rem;margin:0}
+.radio-group input[type=radio]{accent-color:var(--gold)}
+.radio-group label:has(input:checked){border-color:var(--gold);background:rgba(184,136,42,.06);color:var(--ink);font-weight:500}
+.calc-btn{background:var(--gold);color:#fff;border:none;padding:.85rem 2.2rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;width:100%;margin-top:.5rem;font-family:'Inter',sans-serif}
+.calc-btn:hover{background:var(--gold2)}
+.results{display:none;margin-top:1.5rem;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.score-circle{width:140px;height:140px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Cormorant Garamond',serif}
+.score-num{font-size:3rem;font-weight:700;line-height:1}
+.score-label{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+.score-healthy{background:rgba(26,127,78,.1);border:3px solid #1A7F4E;color:#1A7F4E}
+.score-watch{background:rgba(184,136,42,.1);border:3px solid var(--gold);color:var(--gold)}
+.score-risk{background:rgba(196,92,0,.1);border:3px solid var(--warn);color:var(--warn)}
+.score-critical{background:rgba(181,41,42,.1);border:3px solid var(--danger);color:var(--danger)}
+.result-band{padding:1.2rem 1.5rem;border-radius:10px;margin-bottom:1rem;font-size:.93rem}
+.band-healthy{background:rgba(26,127,78,.08);border:1px solid rgba(26,127,78,.25)}
+.band-watch{background:rgba(184,136,42,.08);border:1px solid rgba(184,136,42,.3)}
+.band-risk{background:rgba(196,92,0,.08);border:1px solid rgba(196,92,0,.25)}
+.band-critical{background:rgba(181,41,42,.08);border:1px solid rgba(181,41,42,.25)}
+.result-label{font-weight:600;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.2rem 0}
+.metric-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.metric-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
+.metric-lbl{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.flag-list{list-style:none;margin:.5rem 0}
+.flag-list li{padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.88rem;display:flex;gap:.6rem}
+.flag-list li:last-child{border-bottom:none}
+.flag-icon{flex-shrink:0}
+.cta-result{background:var(--ink);color:#fff;padding:1.5rem;border-radius:10px;text-align:center;margin-top:1.5rem}
+.cta-result p{color:rgba(255,255,255,.75);margin-bottom:1rem;font-size:.9rem}
+.cta-result a{background:var(--gold);color:#fff;padding:.7rem 1.8rem;border-radius:6px;font-weight:600;font-size:.88rem;display:inline-block}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2rem;text-align:center;font-size:.82rem;margin-top:3rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;margin-bottom:.3rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:640px){.nav-links{display:none}.tool-card{padding:1.2rem 1.2rem}.metric-grid{grid-template-columns:1fr}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hiring Maturity Assessment","description":"A 20-question hiring maturity assessment for TA leads and VPs of People. Score your team across process, tooling, data quality, detection speed, and scalability. Get your maturity tier and the 3 highest-leverage improvements.","url":"https://majhi.tech/hiring-maturity-assessment.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech"},{"@type":"ListItem","position":2,"name":"Hiring Maturity Assessment","item":"https://majhi.tech/hiring-maturity-assessment.html"}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="https://majhi.tech" class="nav-logo">Majhi <span>OS</span></a>
+<div class="nav-links">
+<a href="https://majhi.tech/what-is-hiring-health-score.html">Hiring Health</a>
+<a href="https://majhi.tech/how-we-build-hiring-infrastructure.html">Methodology</a>
+</div>
+<a href="https://majhi.tech" class="nav-cta">Mission Walkthrough</a>
+</div></nav>
+<div class="hero">
+<div class="pill">Free Assessment — Majhi OS</div>
+<h1>Hiring Maturity Assessment</h1>
+<p class="hero-sub">20 questions. 5 maturity tiers. Find out where your hiring function stands and what to build next.</p>
+</div>
+
+<div class="tool-wrap">
+<div class="tool-card">
+<h2>Hiring Maturity Assessment</h2>
+<p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem">20 questions covering your hiring process, tooling, team capacity, data quality, and recovery capability. Your maturity tier determines which operational investments will move the needle most.</p>
+
+<div class="field-group">
+<label>How would you describe your current hiring process documentation?</label>
+<div class="radio-group">
+<label><input type="radio" name="m1" value="1"> Informal — in people's heads</label>
+<label><input type="radio" name="m1" value="2"> Partially documented</label>
+<label><input type="radio" name="m1" value="3"> Fully documented and followed</label>
+<label><input type="radio" name="m1" value="4"> Documented, measured, and continuously improved</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you track candidate status across active searches?</label>
+<div class="radio-group">
+<label><input type="radio" name="m2" value="1"> Spreadsheets or email threads</label>
+<label><input type="radio" name="m2" value="2"> Basic ATS</label>
+<label><input type="radio" name="m2" value="3"> ATS with structured stage tracking</label>
+<label><input type="radio" name="m2" value="4"> ATS integrated with health monitoring</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How is your outreach to passive candidates managed?</label>
+<div class="radio-group">
+<label><input type="radio" name="m3" value="1"> Manual LinkedIn messages</label>
+<label><input type="radio" name="m3" value="2"> Semi-structured sequences</label>
+<label><input type="radio" name="m3" value="3"> Structured sequences with response tracking</label>
+<label><input type="radio" name="m3" value="4"> Sequences with decay monitoring and auto-recalibration</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How are intake briefs created for new leadership searches?</label>
+<div class="radio-group">
+<label><input type="radio" name="m4" value="1"> We use the job description</label>
+<label><input type="radio" name="m4" value="2"> Informal conversation with hiring manager</label>
+<label><input type="radio" name="m4" value="3"> Structured intake session with written brief</label>
+<label><input type="radio" name="m4" value="4"> Structured intake with signed criteria and scoring threshold</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you measure recruiter performance?</label>
+<div class="radio-group">
+<label><input type="radio" name="m5" value="1"> Placements made</label>
+<label><input type="radio" name="m5" value="2"> Placements + time-to-fill</label>
+<label><input type="radio" name="m5" value="3"> Multi-metric (TTF, shortlist quality, offer rate)</label>
+<label><input type="radio" name="m5" value="4"> Full operational scorecard including load, decay, recovery rate</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>What is your current outreach reply rate for VP-level passive candidates?</label>
+<div class="radio-group">
+<label><input type="radio" name="m6" value="1"> Below 10%</label>
+<label><input type="radio" name="m6" value="2"> 10–20%</label>
+<label><input type="radio" name="m6" value="3"> 21–30%</label>
+<label><input type="radio" name="m6" value="4"> 31%+</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How often do you conduct structured post-mortems on failed or stalled searches?</label>
+<div class="radio-group">
+<label><input type="radio" name="m7" value="1"> Never</label>
+<label><input type="radio" name="m7" value="2"> Occasionally</label>
+<label><input type="radio" name="m7" value="3"> For major failures</label>
+<label><input type="radio" name="m7" value="4"> After every search — success or failure</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How are candidate shortlists evaluated before presentation to the hiring manager?</label>
+<div class="radio-group">
+<label><input type="radio" name="m8" value="1"> Recruiter judgment</label>
+<label><input type="radio" name="m8" value="2"> Informal criteria check</label>
+<label><input type="radio" name="m8" value="3"> Structured criteria review</label>
+<label><input type="radio" name="m8" value="4"> Scored against intake criteria with QMS gate</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How much time passes between a search stalling and your team taking corrective action?</label>
+<div class="radio-group">
+<label><input type="radio" name="m9" value="1"> Weeks — we find out late</label>
+<label><input type="radio" name="m9" value="2"> 1–2 weeks after it's visible</label>
+<label><input type="radio" name="m9" value="3"> Days — caught by recruiter review</label>
+<label><input type="radio" name="m9" value="4"> Hours — automated detection and response</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How is your interview process managed across multiple active searches?</label>
+<div class="radio-group">
+<label><input type="radio" name="m10" value="1"> Ad hoc scheduling</label>
+<label><input type="radio" name="m10" value="2"> Recruiter-managed scheduling</label>
+<label><input type="radio" name="m10" value="3"> Structured process with stage SLAs</label>
+<label><input type="radio" name="m10" value="4"> Automated coordination with engagement monitoring</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you handle candidate disengagement during the interview process?</label>
+<div class="radio-group">
+<label><input type="radio" name="m11" value="1"> We find out when they stop responding</label>
+<label><input type="radio" name="m11" value="2"> Recruiter follow-up when noticed</label>
+<label><input type="radio" name="m11" value="3"> Structured re-engagement protocol</label>
+<label><input type="radio" name="m11" value="4"> Automated engagement monitoring with triggered re-engagement</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>What data do you use to make sourcing channel decisions?</label>
+<div class="radio-group">
+<label><input type="radio" name="m12" value="1"> Intuition and past experience</label>
+<label><input type="radio" name="m12" value="2"> Basic response rate tracking</label>
+<label><input type="radio" name="m12" value="3"> Response rate + conversion by channel</label>
+<label><input type="radio" name="m12" value="4"> Full channel ROI including time-to-close correlation</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How is reference checking conducted for executive candidates?</label>
+<div class="radio-group">
+<label><input type="radio" name="m13" value="1"> Candidate-provided references only</label>
+<label><input type="radio" name="m13" value="2"> Mixed candidate and independent</label>
+<label><input type="radio" name="m13" value="3"> Structured independent reference calls</label>
+<label><input type="radio" name="m13" value="4"> Structured independent + back-channel references</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you manage recruiter workload across the team?</label>
+<div class="radio-group">
+<label><input type="radio" name="m14" value="1"> No formal tracking</label>
+<label><input type="radio" name="m14" value="2"> Mandate count tracking</label>
+<label><input type="radio" name="m14" value="3"> Load-weighted capacity model</label>
+<label><input type="radio" name="m14" value="4"> Automated load balancing with threshold alerts</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you track hiring velocity (time-to-fill by role type)?</label>
+<div class="radio-group">
+<label><input type="radio" name="m15" value="1"> We don't</label>
+<label><input type="radio" name="m15" value="2"> Total time-to-fill only</label>
+<label><input type="radio" name="m15" value="3"> By role type and level</label>
+<label><input type="radio" name="m15" value="4"> By role type, level, and market conditions</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>What reporting does your CEO or CFO receive on hiring operations?</label>
+<div class="radio-group">
+<label><input type="radio" name="m16" value="1"> Nothing formal</label>
+<label><input type="radio" name="m16" value="2"> Headcount updates</label>
+<label><input type="radio" name="m16" value="3"> Pipeline status and time-to-fill</label>
+<label><input type="radio" name="m16" value="4"> Full operational dashboard with cost and velocity metrics</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How do you validate that a new search strategy is working?</label>
+<div class="radio-group">
+<label><input type="radio" name="m17" value="1"> When a candidate is hired</label>
+<label><input type="radio" name="m17" value="2"> When shortlist is assembled</label>
+<label><input type="radio" name="m17" value="3"> Mid-search strategy review at week 3</label>
+<label><input type="radio" name="m17" value="4"> Continuous signal monitoring against predicted milestones</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How are hiring SLAs defined and communicated to stakeholders?</label>
+<div class="radio-group">
+<label><input type="radio" name="m18" value="1"> No SLAs defined</label>
+<label><input type="radio" name="m18" value="2"> Informal expectations</label>
+<label><input type="radio" name="m18" value="3"> Written SLAs per role type</label>
+<label><input type="radio" name="m18" value="4"> SLAs with automated tracking and breach alerts</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How does your team learn from successful searches?</label>
+<div class="radio-group">
+<label><input type="radio" name="m19" value="1"> Informally — knowledge stays with the recruiter</label>
+<label><input type="radio" name="m19" value="2"> Team discussion after close</label>
+<label><input type="radio" name="m19" value="3"> Documented learnings shared with the team</label>
+<label><input type="radio" name="m19" value="4"> Structured attribution — learnings update operational playbooks</label>
+</div>
+</div>
+
+<div class="field-group">
+<label>How would you describe your hiring team's capacity to handle a 50% increase in search volume?</label>
+<div class="radio-group">
+<label><input type="radio" name="m20" value="1"> Would break immediately</label>
+<label><input type="radio" name="m20" value="2"> Would struggle significantly</label>
+<label><input type="radio" name="m20" value="3"> Could manage with process strain</label>
+<label><input type="radio" name="m20" value="4"> Infrastructure would scale without quality degradation</label>
+</div>
+</div>
+
+<button class="calc-btn" onclick="calcMaturity()">Calculate My Hiring Maturity</button>
+
+<div class="results" id="mat-results">
+<div class="score-circle" id="mat-circle">
+<div class="score-num" id="mat-score-num">--</div>
+<div class="score-label">/ 80</div>
+</div>
+<div id="mat-band-div"></div>
+<ul class="flag-list" id="mat-flags"></ul>
+<div class="cta-result">
+<p>A Mission Walkthrough maps your maturity gaps directly against your active mandate portfolio. See what changes first.</p>
+<a href="https://majhi.tech">Book a Mission Walkthrough</a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function calcMaturity(){
+  const qs=['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10','m11','m12','m13','m14','m15','m16','m17','m18','m19','m20'];
+  let total=0;let ok=true;
+  const low={};
+  for(const q of qs){
+    const el=document.querySelector('input[name="'+q+'"]:checked');
+    if(!el){ok=false;break;}
+    const v=parseInt(el.value);
+    total+=v;
+    if(v<=2)low[q]=v;
+  }
+  if(!ok){alert('Please answer all 20 questions.');return;}
+  document.getElementById('mat-score-num').textContent=total;
+  const circle=document.getElementById('mat-circle');
+  const bandDiv=document.getElementById('mat-band-div');
+  circle.className='score-circle';
+  let bandClass,tier,msg;
+  const pct=total/80;
+  if(pct>=.8){circle.classList.add('score-healthy');bandClass='band-healthy';tier='Tier 5 — Infrastructure-Led';msg='Your hiring function is operating as a managed infrastructure system. You have the foundations to scale hiring volume without proportional headcount growth. The focus at this tier is operational intelligence compounding — making the system smarter with every search.';}
+  else if(pct>=.65){circle.classList.add('score-watch');bandClass='band-watch';tier='Tier 4 — System-Driven';msg='Your team is operating with strong process and data foundations. The remaining gaps are typically in automation and attribution. Closing these moves you from a well-run recruiting function to a self-improving infrastructure.';}
+  else if(pct>=.5){circle.classList.add('score-risk');bandClass='band-risk';tier='Tier 3 — Process-Oriented';msg='You have documented processes and structured tracking, but the system is still primarily human-driven. Detection and response rely on recruiter judgment rather than automated signals. The execution layer is where the most leverage lives for teams at this tier.';}
+  else if(pct>=.35){circle.classList.add('score-critical');bandClass='band-critical';tier='Tier 2 — Tool-Dependent';msg='Your team has adopted tools but lacks the operational layer that makes tools effective. Data exists but isn't being used for prediction or recovery. The intelligence layer — moving from tracking to reasoning — is the priority investment.';}
+  else{circle.classList.add('score-critical');bandClass='band-critical';tier='Tier 1 — Ad Hoc';msg='Your hiring function is operating on intuition and individual effort. There is no operational infrastructure — process, data, or recovery. The first investment should be observability: visibility into what is happening before working on why.';}
+  bandDiv.innerHTML='<div class="result-band '+bandClass+'"><div class="result-label">'+tier+'</div><p style="margin:0;font-size:.9rem">'+msg+'</p></div>';
+  const priorityMap={
+    m1:'Process documentation — undocumented processes can't be measured or improved.',
+    m4:'Intake brief quality — the foundation of every search strategy.',
+    m8:'Shortlist evaluation rigor — directly impacts shortlist approval rate.',
+    m9:'Detection speed — slow detection means mandates fail before intervention is possible.',
+    m14:'Recruiter load management — overloaded recruiters degrade quality before any metric shows it.',
+    m16:'Executive visibility — hiring operations without leadership visibility can't attract strategic investment.',
+    m19:'Learning loops — without structured attribution, every search starts from scratch.',
+    m20:'Scalability — hiring functions that break under volume increases aren't infrastructure.',
+  };
+  const flags=[];
+  for(const [q,v] of Object.entries(low)){
+    if(priorityMap[q])flags.push({icon:'⚠️',text:priorityMap[q]});
+  }
+  if(flags.length===0)flags.push({icon:'✅',text:'No critical gaps at your maturity tier. The focus should be compounding your current strengths.'});
+  flags.splice(4);
+  document.getElementById('mat-flags').innerHTML=flags.map(f=>'<li><span class="flag-icon">'+f.icon+'</span><span>'+f.text+'</span></li>').join('');
+  document.getElementById('mat-results').style.display='block';
+  document.getElementById('mat-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer class="site-footer">
+<div class="footer-logo">Majhi <span>OS</span></div>
+<p>Autonomous hiring operations infrastructure. &copy; 2026 Majhi OS.</p>
+</footer>
+</body>
+</html>
