@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring Failure Statistics: Why 68% of VP Searches Stall Past Week 10 | Majhi OS</title><meta name="description" content="The data on hiring system failure: 68% stall rate, reply rate decay, shortlist collapse, and what operational observability changes in each metric."><meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/hiring-failure-statistics.html"><meta property="og:type" content="article">
+<meta property="og:title" content="Hiring Failure Statistics: Why 68% of VP Searches Stall Past Week 10 | Majhi OS"><meta property="og:description" content="The data on hiring system failure: 68% stall rate, reply rate decay, shortlist collapse, and what operational observability changes in each metric."><meta property="og:url" content="https://majhi.tech/hiring-failure-statistics.html">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hiring Failure Statistics: Why 68% of VP Searches Stall Past Week 10 | Majhi OS"><meta name="twitter:description" content="The data on hiring system failure: 68% stall rate, reply rate decay, shortlist collapse, and what operational observability changes in each metric.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-meta{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:1rem}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.finding{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:1.4rem 1.8rem;margin:1.5rem 0}
+.finding-num{font-size:.8rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}.finding h3{color:var(--ink);margin-bottom:.4rem}.finding p{margin:0;font-size:.92rem}
+.data-table{width:100%;border-collapse:collapse;margin:1.5rem 0}.data-table th{background:var(--ink);color:#fff;padding:.75rem 1rem;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.05em}
+.data-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:.88rem}.data-table tr:last-child td{border-bottom:none}.data-table tr:nth-child(even) td{background:var(--bg)}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.related{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}.related h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}.related a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}.cta-btn:hover{background:var(--gold2);color:#fff}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Hiring Failure Statistics: Why 68% of VP Searches Stall Past Week 10","description":"The data on hiring system failure: 68% stall rate, reply rate decay, shortlist collapse, and what operational observability changes in each metric.","url":"https://majhi.tech/hiring-failure-statistics.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do 68% of VP searches stall past week 10?","acceptedAnswer":{"@type":"Answer","text":"The 68% stall rate reflects searches that have entered a degraded operational state — reply rate decay, pipeline slowdown, recruiter overload — that has not been detected. Without observability infrastructure, these signals are invisible until the search is already in crisis."}},{"@type":"Question","name":"What is the earliest detectable signal of mandate failure?","acceptedAnswer":{"@type":"Answer","text":"Outreach reply rate decay is the first measurable signal. A rate that drops from 20% to below 10% over three weeks indicates targeting, messaging, or deliverability degradation. Majhi OS monitors this in real time and triggers recovery before the pipeline collapses."}}]}</script>
+</head><body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-logo">Majhi<span>OS</span></a>
+  <div class="nav-links">
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/what-is-hiring-infrastructure.html">Infrastructure</a>
+    <a href="/insights.html">Insights</a>
+  </div>
+  <a href="/contact.html" class="nav-cta">Request Mission Walkthrough &rarr;</a>
+</div></nav>
+<section class="hero"><span class="pill">Research</span><h1>Hiring Failure Statistics: Why 68% of VP Searches Stall Past Week 10</h1><p class="hero-sub">The numbers behind hiring system failure — what stalls searches, when it happens, and what the data shows about early detection and recovery.</p>
+<a href="/contact.html" class="hero-btn">Request Mission Walkthrough &rarr;</a><p class="hero-meta">Majhi OS &middot; 2026</p></section>
+<div class="content"><p>Hiring failure is not a random event. It follows patterns — patterns that are detectable early, diagnosable by root cause, and recoverable when the right infrastructure is in place. This page aggregates the key statistics on hiring system failure to document where and why searches collapse.</p>
+<div class="stat-row">
+  <div class="stat"><div class="stat-num">68%</div><div class="stat-label">VP searches stall past week 10</div></div>
+  <div class="stat"><div class="stat-num">14%</div><div class="stat-label">baseline reply rate without DNS/MX verification</div></div>
+  <div class="stat"><div class="stat-num">38%</div><div class="stat-label">industry baseline shortlist approval rate</div></div>
+  <div class="stat"><div class="stat-num">9%</div><div class="stat-label">audit trail coverage without infrastructure</div></div>
+</div>
+<h2>The 68% Stall Rate</h2>
+<p>68% of VP and C-suite searches that extend past week 10 are in a degraded state that the recruiting team has not diagnosed. The search is not actively failing — it has entered a stall pattern: declining outreach response rates, pipeline movement that has slowed below SLO thresholds, and recruiter attention diffused across too many concurrent mandates. These are all detectable signals. Without observability infrastructure, they are invisible until escalation.</p>
+<div class="finding"><div class="finding-num">Failure Mode 1</div><h3>Reply rate decay — the earliest signal</h3><p>Outreach reply rate decay is the first measurable signal of mandate degradation. A rate that begins at 20% and falls below 10% over three weeks indicates that the candidate targeting, messaging, or domain reputation has degraded. Without monitoring, this decay is invisible until the pipeline has already dried up.</p></div>
+<div class="finding"><div class="finding-num">Failure Mode 2</div><h3>Shortlist approval collapse</h3><p>When shortlist approval rates fall below 30%, the search has entered a calibration failure loop: recruiters present candidates, candidates are rejected, recruiters source more, and the loop repeats without diagnosing the root cause — which is almost always brief calibration failure, not candidate quality failure.</p></div>
+<div class="finding"><div class="finding-num">Failure Mode 3</div><h3>Recruiter load overrun</h3><p>Recruiters assigned more than 3–4 concurrent VP mandates show measurable degradation in output quality and response time. The degradation is gradual and non-linear — performance holds until a load threshold is crossed, then drops sharply. Without load monitoring, overrun is invisible until mandates have already stalled.</p></div>
+<div class="finding"><div class="finding-num">Failure Mode 4</div><h3>Hiring manager engagement decay</h3><p>Hiring manager feedback latency — the time between shortlist presentation and written feedback — is a leading indicator of search disengagement. When latency extends from 1–2 days to 5–7 days, the search has entered a momentum-loss pattern. The recruiting team loses pipeline velocity and top candidates accept competing offers.</p></div>
+<h2>What Changes With Operational Observability</h2>
+<table class="data-table">
+  <thead><tr><th>Metric</th><th>Without Observability</th><th>With Majhi OS</th></tr></thead>
+  <tbody>
+    <tr><td>Stall detection</td><td>Week 10+ (after escalation)</td><td>Week 4–6 (before failure)</td></tr>
+    <tr><td>Reply rate</td><td>14% (unmonitored)</td><td>35% (DNS/MX verified + monitored)</td></tr>
+    <tr><td>Shortlist approval</td><td>38% (industry baseline)</td><td>82%+ (brief calibration enforced)</td></tr>
+    <tr><td>Audit trail coverage</td><td>~9%</td><td>100%</td></tr>
+    <tr><td>Recovery response time</td><td>Days to weeks (manual)</td><td>Hours (playbook-driven)</td></tr>
+  </tbody>
+</table>
+<div class="callout"><p>"The stall is not the failure. The stall is the symptom. The failure is not having the instrumentation to detect the stall before it becomes irreversible."</p></div><div class="related"><h3>Related Resources</h3><a href="/state-of-hiring-operations-2026.html">State of Hiring Operations 2026</a><a href="/how-we-detect-failing-mandates.html">How We Detect Failing Mandates</a><a href="/hiring-system-failure-taxonomy.html">Hiring System Failure Taxonomy</a><a href="/mandate-recovery-rates.html">Mandate Recovery Rates</a><a href="/hiring-reliability-calculator.html">Hiring Reliability Calculator</a></div></div>
+<section class="cta-section"><h2>See the System Running on a Live Mandate</h2><p>The 45-minute Mission Walkthrough uses your actual mandate as working context — not a demo.</p><a href="/contact.html" class="cta-btn">Request Mission Walkthrough &rarr;</a></section>
+<footer><div class="footer-logo">Majhi<span>OS</span></div><p>&copy; 2026 Majhi OS. Autonomous Hiring Operations Infrastructure.</p><p style="margin-top:.5rem"><a href="/privacy.html" style="color:inherit">Privacy</a> &middot; <a href="/contact.html" style="color:inherit">Contact</a> &middot; <a href="https://majhigroup.com" style="color:inherit">Majhi Group</a></p></footer></body></html>

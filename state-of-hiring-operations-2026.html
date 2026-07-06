@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The State of Hiring Operations 2026 | Majhi OS</title>
+<meta name="description" content="Six key findings on why 68% of VP searches stall, the operational visibility gap in recruiting, and what autonomous hiring infrastructure changes in execution and outcomes.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/state-of-hiring-operations-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The State of Hiring Operations 2026 | Majhi OS">
+<meta property="og:description" content="Six key findings on why 68% of VP searches stall, the operational visibility gap in recruiting, and what autonomous hiring infrastructure changes in execution and outcomes.">
+<meta property="og:url" content="https://majhi.tech/state-of-hiring-operations-2026.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The State of Hiring Operations 2026 | Majhi OS">
+<meta name="twitter:description" content="Six key findings on why 68% of VP searches stall, the operational visibility gap in recruiting, and what autonomous hiring infrastructure changes in execution and outcomes.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-meta{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:1rem}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.finding{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:1.4rem 1.8rem;margin:1.5rem 0}
+.finding-num{font-size:.8rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.finding h3{color:var(--ink);margin-bottom:.4rem}
+.finding p{margin:0;font-size:.92rem}
+.data-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.data-table th{background:var(--ink);color:#fff;padding:.75rem 1rem;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.05em}
+.data-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:.88rem}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even) td{background:var(--bg)}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:1.5rem 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0;font-size:1rem}
+.related{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"The State of Hiring Operations 2026","description":"Six key findings on why 68% of VP searches stall, the operational visibility gap in recruiting, and what autonomous hiring infrastructure changes in execution and outcomes.","url":"https://majhi.tech/state-of-hiring-operations-2026.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The State of Hiring Operations 2026","description":"Six key findings on why 68% of VP searches stall, the operational visibility gap in recruiting, and what autonomous hiring infrastructure changes in execution and outcomes.","url":"https://majhi.tech/state-of-hiring-operations-2026.html","author":{"@type":"Organization","name":"Majhi OS"},"publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do 68% of VP searches stall past week 10?","acceptedAnswer":{"@type":"Answer","text":"Most searches stall not because the right candidate doesn't exist, but because the search system has entered a degraded state that no one has detected. Operational visibility infrastructure detects this at week 4–6, before irreversible failure."}},{"@type":"Question","name":"What is the operational visibility gap?","acceptedAnswer":{"@type":"Answer","text":"The operational visibility gap is the difference between what recruiting leaders know about their hiring operations and what is actually happening inside them. Without observability infrastructure, mandate health is assessed subjectively and stalls are detected reactively."}}]}</script>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-logo">Majhi<span>OS</span></a>
+  <div class="nav-links">
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/what-is-hiring-infrastructure.html">Infrastructure</a>
+    <a href="/insights.html">Insights</a>
+  </div>
+  <a href="/contact.html" class="nav-cta">Request Mission Walkthrough &rarr;</a>
+</div></nav>
+<section class="hero">
+  <span class="pill">2026 Report</span>
+  <h1>The State of Hiring Operations 2026</h1>
+  <p class="hero-sub">Six key findings on the operational visibility gap in recruiting — why most searches stall silently, what the data shows, and what changes when infrastructure replaces manual judgment.</p>
+  <a href="/contact.html" class="hero-btn">Request Mission Walkthrough &rarr;</a>
+  <p class="hero-meta">Majhi OS &middot; 2026</p>
+</section>
+<div class="content">
+
+<p>Hiring operations in 2026 sit at an inflection point. The tools that recruiting teams use — ATS platforms, outreach automation, sourcing databases — have become commodities. What has not become a commodity is the operational intelligence to know when a mandate is failing, why it is failing, and what to do about it before the failure becomes irreversible. This report documents the state of that gap.</p>
+
+<div class="stat-row">
+  <div class="stat"><div class="stat-num">68%</div><div class="stat-label">VP searches stall past week 10</div></div>
+  <div class="stat"><div class="stat-num">50</div><div class="stat-label">day close vs 14-week industry median</div></div>
+  <div class="stat"><div class="stat-num">35%</div><div class="stat-label">reply rate (up from 14% baseline)</div></div>
+  <div class="stat"><div class="stat-num">82%</div><div class="stat-label">shortlist approval (up from 38%)</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">audit trail coverage (up from 9%)</div></div>
+</div>
+
+<h2>Key Findings</h2>
+
+<div class="finding"><div class="finding-num">Finding 1</div><h3>68% of VP searches stall past week 10 — and most teams don't know why</h3><p>The majority of leadership searches that extend past week 10 are not stalling because the right candidate doesn't exist. They are stalling because the search system — outreach sequences, pipeline stages, recruiter workflows — has entered a degraded state that no one has detected. Hiring managers escalate. Recruiters respond reactively. The root cause goes undiagnosed.</p></div>
+
+<div class="finding"><div class="finding-num">Finding 2</div><h3>Operational visibility is the missing infrastructure layer</h3><p>Most recruiting teams have tools for executing hiring tasks. Almost none have tools for monitoring the health of those tasks in real time. The result is an operational visibility gap: searches that are failing look identical to searches that are healthy until they are already in crisis. The instrumentation required to detect early degradation — response decay curves, pipeline velocity SLOs, recruiter load monitoring — does not exist in standard ATS and CRM tooling.</p></div>
+
+<div class="finding"><div class="finding-num">Finding 3</div><h3>Reply rate is a leading indicator, not a vanity metric</h3><p>Outreach reply rate is the earliest detectable signal of mandate health. A baseline rate of 14% — typical for unoptimised outreach — means 86 out of 100 candidates never enter the pipeline. Verified-domain outreach (DNS/MX-verified email targeting) moves this to 35%, more than doubling the effective candidate pool without changing the sourcing strategy. Rate decay is the first signal Majhi OS detects when monitoring mandate health.</p></div>
+
+<div class="finding"><div class="finding-num">Finding 4</div><h3>Shortlist approval is a diagnostic, not just an outcome</h3><p>A 38% shortlist approval rate — the industry baseline — means that 62% of presented candidates do not advance to interview. The most common cause is not candidate quality: it is brief calibration failure. When intake is properly instrumented and the evidence dossier framework is applied, approval rates move above 80%. Low approval is a diagnostic signal, not a sourcing problem.</p></div>
+
+<div class="finding"><div class="finding-num">Finding 5</div><h3>Tool fragmentation is a leading cost driver with no visibility</h3><p>Recruiting teams operating without consolidated infrastructure accumulate tool spend across ATS, sourcing, outreach, scheduling, and reporting platforms. The median fragmented stack costs $3,000–$3,500 per month while producing less operational data than a unified infrastructure layer. Majhi OS clients have eliminated an average of $3,280 per month in redundant tool spend after consolidating to operational infrastructure.</p></div>
+
+<div class="finding"><div class="finding-num">Finding 6</div><h3>Audit trail coverage is a compliance and intelligence gap</h3><p>Recruiting operations teams report audit trail coverage — the percentage of candidate touchpoints, decisions, and status changes that are logged — of approximately 9% without dedicated infrastructure. Full coverage (100%) is achievable and produces two compounding benefits: compliance documentation and the operational data required to train recovery playbooks. Intelligence compounds only when the data exists.</p></div>
+
+<h2>The Operational Visibility Gap in Detail</h2>
+<p>The gap between what recruiting leaders know about their hiring operations and what is actually happening inside those operations is the defining infrastructure problem of 2026. It has three dimensions:</p>
+
+<table class="data-table">
+  <thead><tr><th>Dimension</th><th>Without Observability</th><th>With Majhi OS</th></tr></thead>
+  <tbody>
+    <tr><td>Mandate health visibility</td><td>Subjective — recruiter judgment</td><td>Real-time Health Score per mandate</td></tr>
+    <tr><td>Stall detection</td><td>Reactive — after escalation</td><td>Predictive — detected at week 4–6</td></tr>
+    <tr><td>Reply rate optimisation</td><td>Manual — per-recruiter variation</td><td>DNS/MX verified, systematically applied</td></tr>
+    <tr><td>Recruiter load monitoring</td><td>None — headcount-based only</td><td>Real-time load per recruiter per mandate</td></tr>
+    <tr><td>Recovery actions</td><td>Ad hoc — manager judgment</td><td>Playbook-driven — autonomous execution</td></tr>
+    <tr><td>Audit trail</td><td>~9% coverage</td><td>100% coverage</td></tr>
+  </tbody>
+</table>
+
+<h2>Where Hiring Operations Infrastructure Is Going</h2>
+<p>The trajectory of hiring operations mirrors the trajectory of software operations a decade ago: from manual monitoring and reactive incident response to automated observability, SLO-based alerting, and autonomous remediation. The organisations that build hiring operations infrastructure now will have a compounding advantage over those that remain in reactive mode.</p>
+<p>The Majhi OS architecture maps this trajectory explicitly: Layer 1 (Observability) → Layer 2 (Intelligence) → Layer 3 (Autonomous Execution) → Layer 4 (Attribution and ROI). Organisations currently operating without Layer 1 are not positioned to benefit from Layers 2, 3, or 4. The infrastructure must be built in sequence.</p>
+
+<div class="callout"><p>"The hiring team is flying blind. Not because the data doesn't exist — because there's no instrument that reads it. That's the infrastructure problem Majhi OS was built to solve."</p></div>
+
+<h2>Methodology Note</h2>
+<p>Data in this report is drawn from Majhi OS's operational monitoring of active hiring mandates and from publicly available benchmarks (LinkedIn Talent Trends, SHRM hiring metrics, Korn Ferry leadership research). Where Majhi OS operational data is cited, it represents observed outcomes from instrumented mandates, not modelled projections.</p>
+
+<div class="related"><h3>Related Resources</h3><a href="/how-we-measure-hiring-health.html">How We Measure Hiring Health</a><a href="/how-we-detect-failing-mandates.html">How We Detect Failing Mandates</a><a href="/our-observability-model.html">Our Hiring Observability Model</a><a href="/hiring-failure-statistics.html">Hiring Failure Statistics</a><a href="/hiring-reliability-calculator.html">Hiring Reliability Calculator</a></div>
+</div>
+<section class="cta-section">
+  <h2>See the System Running on a Live Mandate</h2>
+  <p>The 45-minute Mission Walkthrough uses your actual mandate as working context — not a demo.</p>
+  <a href="/contact.html" class="cta-btn">Request Mission Walkthrough &rarr;</a>
+</section>
+<footer>
+  <div class="footer-logo">Majhi<span>OS</span></div>
+  <p>&copy; 2026 Majhi OS. Autonomous Hiring Operations Infrastructure.</p>
+  <p style="margin-top:.5rem"><a href="/privacy.html" style="color:inherit">Privacy</a> &middot; <a href="/contact.html" style="color:inherit">Contact</a> &middot; <a href="https://majhigroup.com" style="color:inherit">Majhi Group</a></p>
+</footer>
+</body>
+</html>
