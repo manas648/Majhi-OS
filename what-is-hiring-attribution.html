@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Is Hiring Attribution? | Majhi OS</title>
+<meta name="description" content="Hiring attribution is the practice of tracking which actions, interventions, and investments in a recruiting operation actually produced hires — enabling teams to measure the ROI of their search process and compound what works.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/what-is-hiring-attribution.html">
+<meta property="og:type" content="website"><meta property="og:title" content="What Is Hiring Attribution? | Majhi OS">
+<meta property="og:description" content="Hiring attribution is the practice of tracking which actions, interventions, and investments in a recruiting operation actually produced hires — enabling teams to measure the ROI of their search process and compound what works."><meta property="og:url" content="https://majhi.tech/what-is-hiring-attribution.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What Is Hiring Attribution? | Majhi OS">
+<meta name="twitter:description" content="Hiring attribution is the practice of tracking which actions, interventions, and investments in a recruiting operation actually produced hires — enabling teams to measure the ROI of their search process and compound what works.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-logo">Majhi<span>OS</span></a>
+  <div class="nav-links">
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/what-is-hiring-infrastructure.html">Infrastructure</a>
+    <a href="/insights.html">Insights</a>
+  </div>
+  <a href="/contact.html" class="nav-cta">Request Mission Walkthrough &rarr;</a>
+</div></nav>
+<section class="hero">
+  <span class="pill">Definition</span>
+  <h1>What Is Hiring Attribution?</h1>
+  <p class="hero-sub">Without attribution, recruiting teams run the same ineffective sequences on every mandate. With it, they compound what works — and the system gets faster and more effective on every search.</p>
+  <a href="/contact.html" class="hero-btn">See Majhi OS in Action &rarr;</a>
+</section>
+<div class="content">
+
+<h2>The Definition of Hiring Attribution</h2>
+<p>Hiring attribution is the systematic tracking of which sourcing channels, outreach sequences, assessment methods, and operational interventions produced specific hiring outcomes — enabling recruiting teams to identify what is working, what is not, and where investment produces the highest return. It is the measurement and learning layer of hiring infrastructure.</p>
+<p>Without attribution, recruiting operations are run on instinct and experience. The recruiter who has a high close rate does not know which specific practices drove that outcome — and cannot transfer them to others. The organisation that eliminated tool spend does not know whether that decision improved or degraded outcomes. Attribution makes cause and effect visible.</p>
+
+<h2>What Hiring Attribution Tracks</h2>
+<div class="card-grid">
+  <div class="card"><h3>Source Attribution</h3><p>Which sourcing channel (LinkedIn, referral network, database, direct approach) produced candidates who made it to shortlist? Which produced candidates who were rejected at assessment? Source quality, not source volume.</p></div>
+  <div class="card"><h3>Sequence Attribution</h3><p>Which outreach sequence — message framing, timing, sequence length, channel mix — produced the response rates that led to hires? Sequence A vs Sequence B on equivalent mandates.</p></div>
+  <div class="card"><h3>Intervention Attribution</h3><p>When a recovery playbook was executed — brief revision, outreach relaunch, recruiter reassignment — did the mandate close? How much faster than the counterfactual? Attribution validates the recovery system.</p></div>
+  <div class="card"><h3>Cost Attribution</h3><p>Which tool spend, which recruiter time, which firm spend produced hires? Cost per hire by channel, recruiter, and mandate type. The basis for any ROI calculation on the recruiting function.</p></div>
+</div>
+
+<div class="callout"><p>"The $3,280/month in eliminated tool spend was only possible because attribution showed what the tools were producing. Without that data, the conversation was 'we might need these tools.' With attribution, it was 'these three tools have produced zero shortlist-quality candidates in the last 90 days.' Different conversation."</p></div>
+
+<div class="data-box">
+  <h4>Attribution Coverage (Before/After Majhi OS)</h4>
+  <div class="data-row"><span>Documented hiring decisions</span><span>9% → 100%</span></div>
+  <div class="data-row"><span>Source attribution on closed mandates</span><span>Not tracked → full visibility</span></div>
+  <div class="data-row"><span>Recovery intervention outcomes</span><span>Not measurable → tracked per playbook</span></div>
+  <div class="data-row"><span>Cost per hire by channel</span><span>Estimated → calculated</span></div>
+</div>
+
+<div class="related-links">
+  <h3>Related Concepts</h3>
+  <a href="/what-is-hiring-observability.html">What Is Hiring Observability?</a>
+<a href="/what-is-hiring-health-score.html">What Is a Hiring Health Score?</a>
+<a href="/what-is-a-recovery-playbook.html">What Is a Recovery Playbook?</a>
+<a href="/what-is-recruiting-operations.html">What Is Recruiting Operations?</a>
+<a href="/what-is-talent-acquisition-ops.html">What Is Talent Acquisition Operations?</a>
+<a href="/what-is-hiring-infrastructure.html">What Is Hiring Infrastructure?</a>
+</div>
+</div>
+<section class="cta-section">
+  <h2>See It Running on a Live Mandate</h2>
+  <p>The 45-minute Mission Walkthrough uses your actual mandate as working context — not a demo. See how Majhi OS monitors, predicts, and recovers your hiring system in real time.</p>
+  <a href="/contact.html" class="cta-btn">Request Mission Walkthrough &rarr;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-logo">Majhi<span>OS</span></div>
+  <p>&copy; 2026 Majhi OS. Autonomous Hiring Operations Infrastructure.</p>
+  <p style="margin-top:.5rem"><a href="/privacy.html" style="color:inherit">Privacy</a> &middot; <a href="/contact.html" style="color:inherit">Contact</a> &middot; <a href="https://majhigroup.com" style="color:inherit">Majhi Group</a></p>
+</footer>
+</body></html>
