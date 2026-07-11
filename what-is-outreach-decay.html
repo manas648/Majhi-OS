@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Is Outreach Decay? | Majhi OS</title>
+<meta name="description" content="Outreach decay is the decline in the effectiveness of a recruiting outreach program over time — measured as falling response rates, open rates, and pipeline conversion from outreach — caused by pool exhaustion, message fatigue, or deliverability degradation.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/what-is-outreach-decay.html">
+<meta property="og:type" content="website"><meta property="og:title" content="What Is Outreach Decay? | Majhi OS">
+<meta property="og:description" content="Outreach decay is the decline in the effectiveness of a recruiting outreach program over time — measured as falling response rates, open rates, and pipeline conversion from outreach — caused by pool exhaustion, message fatigue, or deliverability degradation."><meta property="og:url" content="https://majhi.tech/what-is-outreach-decay.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What Is Outreach Decay? | Majhi OS">
+<meta name="twitter:description" content="Outreach decay is the decline in the effectiveness of a recruiting outreach program over time — measured as falling response rates, open rates, and pipeline conversion from outreach — caused by pool exhaustion, message fatigue, or deliverability degradation.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="nav-logo">Majhi<span>OS</span></a>
+  <div class="nav-links">
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/what-is-hiring-infrastructure.html">Infrastructure</a>
+    <a href="/insights.html">Insights</a>
+  <a href="/executive-hiring-framework-library.html">Frameworks</a>
+    <a href="/executive-hiring-decision-guides.html" class="nav-link">Decision Guides</a>
+  </div>
+  <a href="/contact.html" class="nav-cta">Request Mission Walkthrough &rarr;</a>
+</div></nav>
+<section class="hero">
+  <span class="pill">Definition</span>
+  <h1>What Is Outreach Decay?</h1>
+  <p class="hero-sub">Outreach that worked in week 1 stops working in week 4. That is outreach decay — and it is one of the earliest and most reliable leading indicators of a search that is about to stall.</p>
+  <a href="/contact.html" class="hero-btn">See Majhi OS in Action &rarr;</a>
+</section>
+<div class="content">
+
+<h2>The Definition of Outreach Decay</h2>
+<p>Outreach decay is the measurable decline in the performance of a recruiting outreach program as a mandate progresses — typically manifesting as falling response rates, declining open rates, and deteriorating pipeline conversion from outreach activity. It is caused by some combination of pool exhaustion (the reachable candidates have been contacted), message fatigue (repetition without response reduces future response probability), and deliverability degradation (email domain reputation declining from high send volumes).</p>
+<p>Outreach decay is distinct from response decay: response decay measures the outcome (fewer candidates responding); outreach decay measures the broader program performance, including email deliverability, open rates, and sequence engagement at each stage. Both are signals; outreach decay is the earlier and more comprehensive one.</p>
+
+<h2>The Three Causes of Outreach Decay</h2>
+<div class="step"><div class="step-num">01</div><div class="step-body"><h4>Pool exhaustion</h4><p>The defined candidate pool — the segment of the market that matches the brief and is reachable through the recruiter's channels — has been contacted. The people who were going to respond have responded. Continued outreach to the same pool will produce diminishing returns regardless of message quality.</p></div></div>
+<div class="step"><div class="step-num">02</div><div class="step-body"><h4>Message fatigue</h4><p>Candidates in a niche market who receive repeated outreach from recruiters — whether the same recruiter or different ones running similar searches — develop fatigue responses: lower open rates, lower click rates, and lower response rates even to genuinely relevant opportunities.</p></div></div>
+<div class="step"><div class="step-num">03</div><div class="step-body"><h4>Deliverability degradation</h4><p>High-volume outreach from a domain that lacks proper DNS/MX authentication degrades email deliverability — increasing spam filter interception rates and reducing the proportion of outreach that actually reaches the intended recipient. This is a technical cause that is often mistaken for a message quality problem.</p></div></div>
+
+<div class="callout"><p>"Reply rate improvement from 14% to 35% required two changes: DNS/MX verification to fix deliverability (technical, not copy), and outreach decay detection that triggered a pool refresh and sequence reset at the right moment. Neither change required better writing. Both required better infrastructure."</p></div>
+
+<div class="data-box">
+  <h4>Outreach Decay Detection</h4>
+  <div class="data-row"><span>Healthy response rate</span><span>15–35% (executive outreach)</span></div>
+  <div class="data-row"><span>Early decay signal</span><span>Response rate declining week-over-week for 2 weeks</span></div>
+  <div class="data-row"><span>Critical decay signal</span><span>Response rate below 8% sustained</span></div>
+  <div class="data-row"><span>Deliverability fix (DNS/MX)</span><span>14% → 35% reply rate improvement (real result)</span></div>
+  <div class="data-row"><span>Majhi OS trigger</span><span>Automated pool refresh + sequence reset</span></div>
+</div>
+
+<div class="related-links">
+  <h3>Related Concepts</h3>
+  <a href="/what-is-response-decay.html">What Is Response Decay?</a>
+<a href="/what-is-pipeline-degradation.html">What Is Pipeline Degradation?</a>
+<a href="/what-is-hiring-observability.html">What Is Hiring Observability?</a>
+<a href="/what-is-a-recovery-playbook.html">What Is a Recovery Playbook?</a>
+<a href="/what-is-failure-prediction.html">What Is Failure Prediction?</a>
+<a href="/what-is-mandate-recovery.html">What Is Mandate Recovery?</a>
+</div>
+</div>
+<section class="cta-section">
+  <h2>See It Running on a Live Mandate</h2>
+  <p>The 45-minute Mission Walkthrough uses your actual mandate as working context — not a demo. See how Majhi OS monitors, predicts, and recovers your hiring system in real time.</p>
+  <a href="/contact.html" class="cta-btn">Request Mission Walkthrough &rarr;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-logo">Majhi<span>OS</span></div>
+  <p>&copy; 2026 Majhi OS. Autonomous Hiring Operations Infrastructure.</p>
+  <p style="margin-top:.5rem"><a href="/privacy.html" style="color:inherit">Privacy</a> &middot; <a href="/contact.html" style="color:inherit">Contact</a> &middot; <a href="https://majhigroup.com" style="color:inherit">Majhi Group</a></p>
+</footer>
+</body></html>

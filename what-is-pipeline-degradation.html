@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Is Pipeline Degradation? | Majhi OS</title>
+<meta name="description" content="Pipeline degradation is the progressive slowdown and thinning of a candidate pipeline in an active search — caused by outreach decay, brief misalignment, recruiter overload, or hiring manager bottlenecks — that leads to search failure if unaddressed.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://majhi.tech/what-is-pipeline-degradation.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What Is Pipeline Degradation? | Majhi OS">
+<meta property="og:description" content="Pipeline degradation is the progressive slowdown and thinning of a candidate pipeline in an active search — caused by outreach decay, brief misalignment, recruiter overload, or hiring manager bottlenecks — that leads to search failure if unaddressed.">
+<meta property="og:url" content="https://majhi.tech/what-is-pipeline-degradation.html">
+<meta property="og:image" content="https://majhi.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Is Pipeline Degradation? | Majhi OS">
+<meta name="twitter:description" content="Pipeline degradation is the progressive slowdown and thinning of a candidate pipeline in an active search — caused by outreach decay, brief misalignment, recruiter overload, or hiring manager bottlenecks — that leads to search failure if unaddressed.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8882A;--gold2:#D4A84B;--gold3:#E8C97A;--ink:#0A1628;--body:#3D4F61;--muted:#7A8FA6;--border:#DDE3EC;--bg:#FAFBFC;--card:#FFFFFF}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--bg);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--ink);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-bottom:1rem;margin-top:2.5rem}
+h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+p{margin-bottom:1rem}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem}
+.nav-logo{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{color:var(--body);font-size:.9rem}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-size:.875rem;font-weight:500;margin-left:1rem}
+.nav-cta:hover{background:var(--gold2)!important}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2f50 100%);color:#fff;padding:4.5rem 2rem 3.5rem;text-align:center}
+.hero h1{color:#fff;margin-bottom:1.25rem;margin-top:0}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 2rem}
+.pill{display:inline-block;background:rgba(184,136,42,.2);color:var(--gold3);border:1px solid rgba(184,136,42,.4);padding:.3rem 1rem;border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-btn{background:var(--gold);color:#fff;padding:.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.hero-btn:hover{background:var(--gold2);color:#fff}
+.content{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;background:var(--ink);border-radius:12px;padding:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3)}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.25rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin:1.5rem 0 2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.card h3{color:var(--ink);margin-top:0}
+.step{display:flex;gap:1rem;margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:32px;line-height:1}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.step-body p{font-size:.9rem;margin:0}
+.callout{background:linear-gradient(135deg,rgba(184,136,42,.08),rgba(184,136,42,.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;font-style:italic;color:var(--ink)}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.data-box h4{font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.data-row:last-child{border-bottom:none}
+.data-row span:last-child{font-weight:600;color:var(--ink)}
+.related-links{margin:2rem 0;padding:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.related-links h3{margin-bottom:1rem;color:var(--ink);font-size:1rem}
+.related-links a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.875rem;color:var(--body)}
+.related-links a:hover{border-color:var(--gold);color:var(--gold)}
+.cta-section{background:var(--ink);color:#fff;padding:4rem 2rem;text-align:center}
+.cta-section h2{color:#fff;margin-bottom:1rem;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-weight:600;font-size:.95rem;display:inline-block}
+.cta-btn:hover{background:var(--gold2);color:#fff}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:.4rem}
+.footer-logo span{color:var(--gold3)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:3rem 1.5rem}.content{padding:2.5rem 1.5rem}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":'What Is Pipeline Degradation?',"description":'Pipeline degradation is the progressive slowdown and thinning of a candidate pipeline in an active search — caused by outreach decay, brief misalignment, recruiter overload, or hiring manager bottlenecks — that leads to search failure if unaddressed.',"url":"https://majhi.tech/what-is-pipeline-degradation.html","publisher":{"@type":"Organization","name":"Majhi OS","url":"https://majhi.tech"}}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":'Pipeline degradation is gradual and individually explicable.',"acceptedAnswer":{"@type":"Answer","text":'Only at the pattern level is it recognisable — which is why infrastructure is required to detect it.'}},
+{"@type":"Question","name":'Degradation is the mechanism behind the 68% stall rate.',"acceptedAnswer":{"@type":"Answer","text":'The signals are always present before the stall becomes visible.'}}
+]}
+</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Majhi<span>OS</span></a>
+    <div class="nav-links">
+      <a href="/how-it-works.html">How It Works</a>
+      <a href="/what-is-hiring-infrastructure.html">Infrastructure</a>
+      <a href="/insights.html">Insights</a>
+    <a href="/executive-hiring-framework-library.html">Frameworks</a>
+    <a href="/executive-hiring-decision-guides.html" class="nav-link">Decision Guides</a>
+  </div>
+    <a href="/contact.html" class="nav-cta">Request Mission Walkthrough &rarr;</a>
+  </div>
+</nav>
+<section class="hero">
+  <span class="pill">Definition</span>
+  <h1>What Is Pipeline Degradation?</h1>
+  <p class="hero-sub">Pipeline degradation is how most searches fail. It does not happen suddenly — it accumulates across weeks of small signals that individually look explainable and collectively produce a stalled mandate.</p>
+  <a href="/contact.html" class="hero-btn">See Majhi OS in Action &rarr;</a>
+</section>
+<div class="content">
+
+<h2>The Definition of Pipeline Degradation</h2>
+<p>Pipeline degradation is the progressive weakening of a candidate pipeline in an active search mandate — measured as slowing stage velocity, declining candidate volume, rising stage drop-off rates, and falling response rates on new outreach. Left undetected, pipeline degradation produces a stalled mandate; left unaddressed after detection, it produces a failed one.</p>
+<p>The critical characteristic of pipeline degradation is that it is gradual. Unlike a sudden candidate dropout or a hiring manager who explicitly withdraws the mandate, degradation looks like a series of individually explicable events: one slow week of outreach, one shortlist that did not land, one interview cycle that took longer than expected. Only at the pattern level is it recognisable as degradation.</p>
+
+<h2>The Four Causes of Pipeline Degradation</h2>
+<div class="card-grid">
+  <div class="card"><h3>Outreach Pool Exhaustion</h3><p>The recruiter has reached the reachable segment of the target candidate pool. Response rates are falling not because messaging is weak, but because the addressable pool has been contacted and did not respond.</p></div>
+  <div class="card"><h3>Brief Misalignment</h3><p>The search is sourcing the wrong candidates. Shortlist approval is low, and new sourcing produces more of the same. The pipeline cannot fill because it is being fed the wrong input.</p></div>
+  <div class="card"><h3>Decision Bottlenecks</h3><p>Hiring manager response time is creating candidate dropout between stages. Candidates who wait 2 weeks for interview feedback are either off the market or no longer interested.</p></div>
+  <div class="card"><h3>Recruiter Capacity Constraints</h3><p>A recruiter with 5+ active mandates cannot give a degrading pipeline the attention it needs. The degradation accelerates because the recruiter cannot respond to the signals fast enough.</p></div>
+</div>
+
+<div class="callout"><p>"Pipeline degradation is the mechanism by which 68% of searches stall past week 10. It does not announce itself. It shows up as a slightly slower week, a slightly lower response rate, a slightly longer interview cycle. The infrastructure's job is to recognise the pattern before the recruiting manager does."</p></div>
+
+<div class="data-box">
+  <h4>Degradation Detection Signals</h4>
+  <div class="data-row"><span>Weekly sourcing output decline >20%</span><span>Pool exhaustion signal</span></div>
+  <div class="data-row"><span>Stage velocity increasing week-over-week</span><span>Decision bottleneck signal</span></div>
+  <div class="data-row"><span>Candidate drop-off at screening >40%</span><span>Brief misalignment signal</span></div>
+  <div class="data-row"><span>Days per interview stage >10</span><span>HM engagement signal</span></div>
+</div>
+
+<div class="related-links">
+  <h3>Related Concepts</h3>
+  <a href="/what-is-hiring-observability.html">What Is Hiring Observability?</a>
+<a href="/what-is-response-decay.html">What Is Response Decay?</a>
+<a href="/what-is-failure-prediction.html">What Is Failure Prediction?</a>
+<a href="/what-is-a-compounding-failure-loop.html">What Is a Compounding Failure Loop?</a>
+<a href="/what-is-mandate-recovery.html">What Is Mandate Recovery?</a>
+<a href="/what-is-hiring-health-score.html">What Is a Hiring Health Score?</a>
+</div>
+</div>
+<section class="cta-section">
+  <h2>See It Running on a Live Mandate</h2>
+  <p>The 45-minute Mission Walkthrough uses your actual mandate as working context — not a demo. See how Majhi OS monitors, predicts, and recovers your hiring system in real time.</p>
+  <a href="/contact.html" class="cta-btn">Request Mission Walkthrough &rarr;</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-logo">Majhi<span>OS</span></div>
+  <p>&copy; 2026 Majhi OS. Autonomous Hiring Operations Infrastructure.</p>
+  <p style="margin-top:.5rem"><a href="/privacy.html" style="color:inherit">Privacy</a> &middot; <a href="/contact.html" style="color:inherit">Contact</a> &middot; <a href="https://majhigroup.com" style="color:inherit">Majhi Group</a></p>
+</footer>
+</body>
+</html>
