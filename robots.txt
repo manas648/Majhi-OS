@@ -1,22 +1,20 @@
 # Majhi OS — robots.txt
-# Updated: June 2026
-
-# Content signals:
-# search: yes   — may collect content for search indexing
-# ai-input: yes — may use content for AI grounding, RAG, and citations
-# ai-train: no  — may NOT use content for AI model training
+# Updated: July 2026
+# Content signals: search=yes, ai-input=yes, ai-train=no
+# Allowing AI search citation crawlers (GPTBot, Google-Extended) for GEO/AEO.
+# Training data use remains disallowed via Cloudflare Content-Signal.
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 Disallow: /admin/
 Disallow: /app/
 Disallow: /api/
 
-# AI inference bots — ALLOWED (grounding, citations, AI answers)
-User-agent: ClaudeBot
-Allow: /
+# Sitemap
+Sitemap: https://majhi.tech/sitemap.xml
 
+# AI search citation crawlers — ALLOWED for real-time search answers and citations
+# (RFC 9309: Allow beats Disallow on equal path specificity)
 User-agent: GPTBot
 Allow: /
 
@@ -26,27 +24,21 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: meta-externalagent
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
-# AI training bots — BLOCKED
-User-agent: CCBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
+# Training data crawlers — blocked
 User-agent: Amazonbot
 Disallow: /
 
 User-agent: Applebot-Extended
 Disallow: /
 
-# Sitemap
-Sitemap: https://majhi.tech/sitemap.xml
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /

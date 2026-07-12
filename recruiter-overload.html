@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Recruiter Overload: How Carrying Too Many Mandates Kills Search Quality | Majhi OS</title>
   <meta name="description" content="A recruiter managing four concurrent VP searches has 25% attention on each. That&#39;s not enough. Here&#39;s how recruiter overload compounds — and what operational systems do to prevent it.">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://majhi.tech/recruiter-overload.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/recruiter-overload.html">
@@ -75,6 +75,12 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.stats-inner{grid-template-columns:1fr 1fr}}
+  
+    /* Quick Answer box */
+    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
+    .quick-answer strong{color:#0a1628}
+    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
+
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech/"},{"@type":"ListItem","position":2,"name":"Recruiter Overload: How Carrying Too Many Mandates Kills Search Quality","item":"https://majhi.tech/recruiter-overload.html"}]}</script>
 
@@ -134,6 +140,22 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://majhi.tech/recruiter-overload.html",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".quick-answer",
+      ".article-body p:first-of-type",
+      "h1",
+      "h2"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <nav><div class="nav-inner">
@@ -169,6 +191,11 @@
   <div class="stat"><div class="stat-val">82%</div><div class="stat-label">shortlist approval rate</div></div>
 </div></div>
 <div class="article-wrap"><div class="article-body">
+<div class="quick-answer">
+  <div class="qa-label">Quick Answer</div>
+  Recruiter overload is the most common undetected cause of mandate degradation. When one recruiter carries 4+ concurrent searches, two receive 80% of attention and two degrade without a single alert. Majhi OS monitors recruiter load per mandate in real time and triggers rebalancing before velocity drops — before leadership asks why the search has gone quiet.
+</div>
+
 <p>There's a number above which an executive recruiter cannot effectively manage concurrent searches. Most recruiting operations don't know what that number is. Most don't track it. And most discover they've crossed it only when searches start failing.</p>
 <p>Recruiter overload is one of the most consistent — and consistently overlooked — causes of executive search failure. It doesn't announce itself. It shows up as slower outreach, thinner shortlists, delayed candidate briefs, and eventually a search that stalls without a clear reason why.</p>
 <h2>What Recruiter Overload Actually Means</h2>
