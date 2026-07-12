@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Hiring Velocity: What It Is, Why It Collapses, and How to Fix It | Majhi OS</title>
   <meta name="description" content="Hiring velocity isn't about going faster. It's about removing the invisible drag that slows searches down without anyone noticing. Here's how to measure and fix it.">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://majhi.tech/hiring-velocity.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/hiring-velocity.html">
@@ -89,6 +89,12 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.stats-inner{grid-template-columns:1fr 1fr}}
+  
+    /* Quick Answer box */
+    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
+    .quick-answer strong{color:#0a1628}
+    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
+
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Majhi OS","item":"https://majhi.tech/"},{"@type":"ListItem","position":2,"name":"Hiring Velocity: What It Is, Why It Collapses, and How to Fix It","item":"https://majhi.tech/hiring-velocity.html"}]}</script>
 
@@ -140,6 +146,22 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://majhi.tech/hiring-velocity.html",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".quick-answer",
+      ".article-body p:first-of-type",
+      "h1",
+      "h2"
+    ]
+  }
+}
+</script>
 </head><body>
 <nav><div class="nav-inner">
   <a href="/" class="nav-logo">
@@ -174,6 +196,11 @@
   <div class="stat"><div class="stat-val">82%</div><div class="stat-label">shortlist approval rate</div></div>
 </div></div>
 <div class="article-wrap"><div class="article-body">
+<div class="quick-answer">
+  <div class="qa-label">Quick Answer</div>
+  Hiring velocity measures how quickly leadership roles move through each stage of the search pipeline. Majhi OS clients compress VP and C-suite time-to-close from the 14-week industry median to 50 days — by detecting funnel decay at the stage level and triggering targeted recovery before velocity loss compounds into a stalled mandate.
+</div>
+
 <p>Hiring velocity is one of those metrics that every recruiting team tracks and almost none fully understand.</p>
 <p>Most definitions focus on speed — how quickly a role goes from open to filled, or how fast candidates move through the funnel. The implication is that to improve hiring velocity, you need to move faster: more outreach, shorter interview cycles, faster decisions.</p>
 <p>That's the wrong model. And it explains why so many companies work harder on their recruiting process without actually closing roles faster.</p>

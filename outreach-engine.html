@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Outreach Engine — Majhi OS | Verified, Personalised, Sequenced Outreach</title>
   <meta name="description" content="Majhi OS runs DNS/MX verified outreach sequences personalised to each candidate. Reply rates increased from 14% to 35%. This is the outreach infrastructure behind every Majhi OS mandate.">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://majhi.tech/outreach-engine.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/outreach-engine.html">
@@ -91,7 +91,13 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2,.stat-row{grid-template-columns:1fr}}
-</style>
+
+    /* Quick Answer box */
+    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
+    .quick-answer strong{color:#0a1628}
+    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
+
+  </style>
 
 <script type="application/ld+json">
 {
@@ -140,6 +146,22 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://majhi.tech/outreach-engine.html",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".quick-answer",
+      ".article-body p:first-of-type",
+      "h1",
+      "h2"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <nav>
@@ -180,7 +202,11 @@
   <div class="section-inner">
     <p class="section-label">The Infrastructure</p>
     <h2 class="section-h2">Verification before personalisation.</h2>
-    <p class="section-body">Most outreach fails before it's read. Unverified emails hit spam. Incorrect contacts waste cycles. Majhi OS runs DNS/MX verification on every contact before any sequence begins — which is why reply rates improved from 14% to 35%.</p><p class="section-body">Verification is not optional. It's the first gate.</p>
+    <div class="quick-answer">
+  <div class="qa-label">Quick Answer</div>
+  The Majhi OS outreach engine drafts hyper-personalized 3-touch sequences from each candidate's own dossier — their proof points, career trajectory, and the role's problem tension — not from templates. DNS/MX verified before sending, with stop-on-reply and bounce-kill logic active. Result: 41% reply rate on VP and C-suite candidates, 0% email bounce rate.
+</div>
+<p class="section-body">Most outreach fails before it's read. Unverified emails hit spam. Incorrect contacts waste cycles. Majhi OS runs DNS/MX verification on every contact before any sequence begins — which is why reply rates improved from 14% to 35%.</p><p class="section-body">Verification is not optional. It's the first gate.</p>
     <div class="grid-3"><div class="card">
   <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
   <h3>DNS/MX Verification</h3>
