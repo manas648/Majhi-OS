@@ -54,7 +54,9 @@ p{margin-bottom:16px;font-size:.95rem;color:var(--text)}
 .cta-btn{display:inline-block;background:var(--gold);color:#fff;padding:13px 32px;font-size:.9rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
 footer{background:rgba(0,0,0,.3);border-top:1px solid var(--border);padding:30px 48px;text-align:center;font-size:.8rem;color:rgba(255,255,255,.35)}
 @media(max-width:720px){.hero{padding:40px 20px}.content{padding:40px 20px}.breadcrumb{padding:12px 20px}header{padding:16px 20px}h1{font-size:1.9rem}.code-block{font-size:.72rem}.schema-header{flex-direction:column;align-items:flex-start;gap:6px}}
+.quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}.quick-answer strong{color:#0a1628}.qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://majhi.tech/benchmark-data-schema.html","speakable":{"@type":"SpeakableSpecification","cssSelector":[".quick-answer","h1","h2"]}}</script>
 </head>
 <body>
 <header><div class="logo">Majhi OS</div><nav><a href="/">Home</a><a href="/what-is-majhi-os">Platform</a><a href="/state-of-hiring-operations-2026">Research</a><a href="/#contact">Contact</a></nav></header>
@@ -66,6 +68,8 @@ footer{background:rgba(0,0,0,.3);border-top:1px solid var(--border);padding:30px
   <div class="report-meta">Schema Version: 1.0 &nbsp;·&nbsp; Published: July 2026 &nbsp;·&nbsp; See also: <a href="/hiring-data-api">API Docs</a></div>
 </div>
 <div class="content">
+<div class="quick-answer"><div class="qa-label">Quick Answer</div><p>Complete field definitions, data types, and methodology notes for the Majhi OS hiring operations JSON schema — hiring benchmarks, mandate health metrics, and executive search outcomes.</p></div>
+
 
   <h2>Schema Design Principles</h2>
   <p>Every field has a <code style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85em">source</code> key that explains where the data comes from. Percentage values are decimals (0.68, not 68). Industry ranges use <code style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85em">_low</code> and <code style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85em">_high</code> suffixes. Majhi OS outcomes use the <code style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85em">majhi_os</code> key. Baseline-before values use <code style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85em">baseline_before</code>. This pattern is consistent across all three endpoints.</p>
