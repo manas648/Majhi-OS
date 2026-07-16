@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Failure Prediction Engine &#8212; Majhi OS | Predict Mandate Stalls Before They Happen</title>
   <meta name="description" content="The Majhi OS Failure Prediction Engine detects early stall signals across recruiter load, funnel velocity, outreach decay, and candidate disengagement &#8212; surfacing recovery playbooks before mandates collapse.">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://majhi.tech/failure-prediction.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/failure-prediction.html">
@@ -97,12 +97,6 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
-  
-    /* Quick Answer box */
-    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
-    .quick-answer strong{color:#0a1628}
-    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
-
   </style>
 
 <script type="application/ld+json">
@@ -178,22 +172,20 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "https://majhi.tech/failure-prediction.html",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".quick-answer",
-      ".article-body p:first-of-type",
-      "h1",
-      "h2"
-    ]
+
+  <!-- Speakable: AEO/GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Failure Prediction Engine &#8212; Majhi OS | Predict Mandate Stalls Before They Happen",
+    "url": "https://majhi.tech/failure-prediction.html",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".quick-answer p"]
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
 <nav>
@@ -274,11 +266,7 @@
     <div class="section-inner">
       <p class="section-label">Recovery Playbooks</p>
       <h2 class="section-h2">The system learns what actions recover mandates.</h2>
-      <div class="quick-answer">
-  <div class="qa-label">Quick Answer</div>
-  The Majhi OS Failure Prediction Engine monitors five real-time signals — recruiter load, funnel velocity, response decay, candidate engagement, and SLA breach probability — and triggers targeted recovery actions before week 10. It has reduced average stall-detection time from 3 weeks to under 72 hours across active mandates.
-</div>
-<p class="section-body">Recovery Playbooks are not generic advice. They are system-learned sequences built from operational data across hundreds of mandates &#8212; specific actions, sequenced by impact probability, matched to the exact failure pattern detected.</p>
+      <p class="section-body">Recovery Playbooks are not generic advice. They are system-learned sequences built from operational data across hundreds of mandates &#8212; specific actions, sequenced by impact probability, matched to the exact failure pattern detected.</p>
       <div class="callout"><p>"When the prediction engine flagged outreach decay on the VP Engineering search, the recovery playbook recommended: pause current sequence, pivot to second-degree network activation, reframe outreach around current product launch. Reply rate recovered from 9% to 28% in 8 days."</p></div>
       <p class="section-body">Over time, the Failure Prediction Engine gets smarter. Every mandate that runs through Majhi OS adds to the operational intelligence graph &#8212; improving prediction accuracy and playbook effectiveness with each cycle.</p>
     </div>

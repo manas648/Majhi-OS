@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Why Majhi OS Exists | The Problem With Hiring Systems</title>
   <meta name="description" content="68% of VP searches stall past week 10. No one can see inside the system in real time. Majhi OS was built to fix that — autonomous hiring operations infrastructure for teams that can't afford to stall.">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://majhi.tech/why-majhi-os-exists.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/why-majhi-os-exists.html">
@@ -91,13 +91,7 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2,.stat-row{grid-template-columns:1fr}}
-
-    /* Quick Answer box */
-    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
-    .quick-answer strong{color:#0a1628}
-    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
-
-  </style>
+</style>
 
 <script type="application/ld+json">
 {
@@ -146,22 +140,20 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "https://majhi.tech/why-majhi-os-exists.html",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".quick-answer",
-      ".article-body p:first-of-type",
-      "h1",
-      "h2"
-    ]
+
+  <!-- Speakable: AEO/GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Why Majhi OS Exists | The Problem With Hiring Systems",
+    "url": "https://majhi.tech/why-majhi-os-exists.html",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".quick-answer p"]
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
 <nav>
@@ -202,11 +194,7 @@
   <div class="section-inner">
     <p class="section-label">The Problem</p>
     <h2 class="section-h2">Hiring systems fail in silence.</h2>
-    <div class="quick-answer">
-  <div class="qa-label">Quick Answer</div>
-  Majhi OS exists because every recruiting breakdown follows the same shape: fragmented tools, no quality gates, no operational visibility. The search looks active until week 10, when leadership escalates — and by then, the best candidates are gone. Majhi OS is the operational infrastructure layer that detects and recovers hiring failure before it compounds into a missed hire.
-</div>
-<p class="section-body">Most recruiting software was built to help teams send outreach, track candidates, and schedule interviews. None of it was built to tell you that a mandate is failing before it collapses.</p><p class="section-body">By the time a VP search stalls — week 10, week 14, week 18 — the failure was visible at week 3. Wrong intake. Wrong channels. Wrong recruiter load. The signal was there. The system couldn't surface it.</p>
+    <p class="section-body">Most recruiting software was built to help teams send outreach, track candidates, and schedule interviews. None of it was built to tell you that a mandate is failing before it collapses.</p><p class="section-body">By the time a VP search stalls — week 10, week 14, week 18 — the failure was visible at week 3. Wrong intake. Wrong channels. Wrong recruiter load. The signal was there. The system couldn't surface it.</p>
     <div class="grid-3"><div class="card">
   <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
   <h3>The Operational Visibility Gap</h3>

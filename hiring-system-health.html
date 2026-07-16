@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hiring System Health â Majhi OS | Real-Time Mandate Health Monitoring</title>
   <meta name="description" content="The Hiring System Health Score is a real-time operational metric for every active mandate. Monitor recruiter load, funnel velocity, and SLA breach probability before searches stall. Think Datadog â for your hiring system.">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://majhi.tech/hiring-system-health.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://majhi.tech/hiring-system-health.html">
@@ -97,12 +97,6 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:1.25rem 0}
     .footer-links a{color:var(--muted);text-decoration:none;transition:color .15s}.footer-links a:hover{color:white}
     @media(max-width:768px){.nav-links{display:none}.grid-3,.grid-2{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}}
-  
-    /* Quick Answer box */
-    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
-    .quick-answer strong{color:#0a1628}
-    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
-
   </style>
 
 <script type="application/ld+json">
@@ -186,22 +180,20 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "https://majhi.tech/hiring-system-health.html",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".quick-answer",
-      ".article-body p:first-of-type",
-      "h1",
-      "h2"
-    ]
+
+  <!-- Speakable: AEO/GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Hiring System Health â Majhi OS | Real-Time Mandate Health Monitoring",
+    "url": "https://majhi.tech/hiring-system-health.html",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".quick-answer p"]
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
 <nav>
@@ -243,11 +235,7 @@
     <div class="section-inner">
       <p class="section-label">The Problem</p>
       <h2 class="section-h2">Most recruiting teams know they have a mandate in trouble around week 10.</h2>
-      <div class="quick-answer">
-  <div class="qa-label">Quick Answer</div>
-  The Hiring System Health Score tracks five real-time signals per mandate: recruiter load, funnel velocity, outreach response decay, candidate engagement, and SLA breach probability. When the composite score drops below threshold, Majhi OS surfaces a specific Recovery Playbook — the sequence of actions most likely to reverse the stall based on prior mandate data.
-</div>
-<p class="section-body">By then, the search has been stalled for three weeks. The hiring manager has lost confidence. The team is in manual recovery mode &#8212; juggling spreadsheets, Slack threads, and emergency pipeline reviews.</p>
+      <p class="section-body">By then, the search has been stalled for three weeks. The hiring manager has lost confidence. The team is in manual recovery mode &#8212; juggling spreadsheets, Slack threads, and emergency pipeline reviews.</p>
       <p class="section-body">68% of VP searches stall past week 10. Not because the talent doesn't exist. Because nobody can see inside the search while it's happening. No real-time visibility. No operational signals. No early warning.</p>
       <div class="callout"><p>"The problem isn't the talent market. The problem is that hiring systems have no equivalent of a health dashboard. Majhi OS fixes that."</p></div>
     </div>

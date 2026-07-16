@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Operational Visibility Gap: Why Recruiting Mandates Stall | Majhi OS</title>
   <meta name="description" content="68% of VP searches stall past week 10. The cause isn't bad sourcing — it's a complete absence of operational visibility inside the recruiting system. This is the Operational Visibility Gap.">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://majhi.tech/operational-visibility-gap.html">
 
   <!-- Open Graph -->
@@ -133,12 +133,6 @@
     .cta-btn:hover { text-decoration: none; opacity: 0.92; }
 
     @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } .article-meta { flex-direction: column; gap: 0.5rem; } }
-  
-    /* Quick Answer box */
-    .quick-answer{background:#f0f7ff;border-left:4px solid #0a1628;border-radius:0 8px 8px 0;padding:20px 24px;margin:0 0 32px;font-size:.95rem;color:#1a1a1a;line-height:1.6}
-    .quick-answer strong{color:#0a1628}
-    .qa-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px}
-
   </style>
 
 <script type="application/ld+json">
@@ -253,22 +247,20 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "https://majhi.tech/operational-visibility-gap.html",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".quick-answer",
-      ".article-body p:first-of-type",
-      "h1",
-      "h2"
-    ]
+
+  <!-- Speakable: AEO/GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "The Operational Visibility Gap: Why Recruiting Mandates Stall | Majhi OS",
+    "url": "https://majhi.tech/operational-visibility-gap.html",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".quick-answer p"]
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
 
@@ -298,11 +290,6 @@
   </div>
 
   <div class="article-body">
-<div class="quick-answer">
-  <div class="qa-label">Quick Answer</div>
-  The operational visibility gap is the absence of real-time signal inside an active executive search. 68% of VP searches stall past week 10 because no system alerts the recruiter when reply rates collapse, mandates drift from intake, or the shortlist trajectory won't close. Majhi OS closes this gap with live mandate telemetry and autonomous recovery.
-</div>
-
 
     <div class="stat-row">
       <div class="stat-card">
